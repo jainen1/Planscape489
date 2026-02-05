@@ -1198,6 +1198,10 @@ PrefabInstance:
       propertyPath: isFixed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
+      propertyPath: activity
+      value: 
+      objectReference: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
     - target: {fileID: 5387064905194597772, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: m_Name
       value: Activity (4)
@@ -1308,6 +1312,10 @@ PrefabInstance:
       propertyPath: title
       value: Taxes!!
       objectReference: {fileID: 0}
+    - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
+      propertyPath: activity
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c277ad369505a74c847bbd4a4cf3e1e, type: 2}
     - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: panelColor.b
       value: 0.8907293
@@ -2181,6 +2189,10 @@ PrefabInstance:
       value: Gaming
       objectReference: {fileID: 0}
     - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
+      propertyPath: activity
+      value: 
+      objectReference: {fileID: 11400000, guid: 882caa7b0f6cc8145814fa6aff23fd69, type: 2}
+    - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: panelColor.b
       value: 0.6933962
       objectReference: {fileID: 0}
@@ -2502,6 +2514,10 @@ PrefabInstance:
       propertyPath: title
       value: Lunch
       objectReference: {fileID: 0}
+    - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
+      propertyPath: activity
+      value: 
+      objectReference: {fileID: 11400000, guid: a36fa761798fa564395235ec1252a04c, type: 2}
     - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: panelColor.b
       value: 0.6367924
@@ -2876,6 +2892,10 @@ PrefabInstance:
       propertyPath: isFixed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3020503061148434279, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
+      propertyPath: activity
+      value: 
+      objectReference: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
     - target: {fileID: 5387064905194597772, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: m_Name
       value: Activity

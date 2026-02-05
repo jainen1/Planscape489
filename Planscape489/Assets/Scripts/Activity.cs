@@ -13,7 +13,7 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private bool mouseDown;
 
     public void OnPointerDown(PointerEventData eventData) {
-        Debug.Log("clicked");
+        //Debug.Log("clicked");
         mouseDown = true;
     }
 

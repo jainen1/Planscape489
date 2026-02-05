@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class ActivityColor : MonoBehaviour
 {
-    [SerializeField] private string title;
-    [SerializeField] private Color panelColor;
+    [SerializeField] private ActivityObject activity;
 
     [SerializeField] private GameObject grid;
 
@@ -21,17 +20,22 @@ public class ActivityColor : MonoBehaviour
     private void Awake() {
         ActivityGrid gridComponent = FindFirstObjectByType<ActivityGrid>();
         //Grid gridComponent = grid.GetComponent<Grid>();
-        int cellLength = 5;
-        Debug.Log("Old size is " + panel.GetComponent<RectTransform>().GetSize());
+
+        int cellLength = activity.length;
+        //int cellLength = RandomCellLength();
         panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
         panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
-        Debug.Log("New size is " + panel.GetComponent<RectTransform>().GetSize());
 
-        panel.GetComponent<Image>().color = panelColor;
-        panelShadow.GetComponent<Image>().color = new Color(panelColor.r, panelColor.g, panelColor.b, 0.7f);
-        textObject.GetComponent<TextMeshProUGUI>().color = new Color(panelColor.r * 0.35f, panelColor.g * 0.35f, panelColor.b * 0.35f, panelColor.a);
-        textObject.GetComponent<TextMeshProUGUI>().text = title;
+        panel.GetComponent<Image>().color = new Color(activity.color.r, activity.color.g, activity.color.b, 1.0f);
+        panelShadow.GetComponent<Image>().color = new Color(activity.color.r, activity.color.g, activity.color.b, 0.7f);
+        textObject.GetComponent<TextMeshProUGUI>().color = new Color(activity.color.r * 0.35f, activity.color.g * 0.35f, activity.color.b * 0.35f, 1.0f);
+        textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
 
         lockIcon.SetActive(isFixed);
+    }
+
+    //temporary length randomizer
+    private int RandomCellLength() {
+        return Random.Range(1, 8);
     }
 }
