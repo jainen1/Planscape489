@@ -733,7 +733,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534839484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -798,7 +798,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.3395386, y: -1.0966187}
+  m_Offset: {x: 1.7376709, y: -1.0966187}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -808,7 +808,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2578.8813, y: 903.47546}
+  m_Size: {x: 1570.813, y: 903.47546}
   m_EdgeRadius: 0
 --- !u!1001 &569420154
 PrefabInstance:
@@ -2480,11 +2480,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2837902547925215376, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -106
+      value: -106.00006
       objectReference: {fileID: 0}
     - target: {fileID: 2837902547925215376, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18.169067
+      value: -18.169128
       objectReference: {fileID: 0}
     - target: {fileID: 2837902547925215376, guid: 8e7cf591ca20db74d8b253f1347ba62c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

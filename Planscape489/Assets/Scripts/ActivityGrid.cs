@@ -14,6 +14,7 @@ public class ActivityGrid : MonoBehaviour
 
 
         //gameObject.GetComponent<RectTransform>().rect.yMax = 0;
+        Debug.Log("Cell width = " + getCellWidth() + ", Cell height = " + getCellHeight());
     }
 
     // Update is called once per frame
