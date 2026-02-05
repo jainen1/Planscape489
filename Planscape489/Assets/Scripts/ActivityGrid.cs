@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class ActivityGrid : MonoBehaviour
 {
-    [SerializeField] private int rows;
-    [SerializeField] private int columns;
+    public int rows;
+    public int columns;
 
     [SerializeField] private BoxCollider2D collider;
+
+    [SerializeField] public float offsetX;
+    [SerializeField] public float offsetY;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSizeX: 225
   gridSizeY: 28
-  offsetX: -48
+  offsetX: 15.2
   offsetY: 11
   parentActivity: {fileID: 665445286140538598}
 --- !u!1 &665445286140538598
@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shadow: {fileID: 272534570844538311}
-  activity: {fileID: 0}
   isFixed: 0
 --- !u!61 &1689841464034256041
 BoxCollider2D:
@@ -494,8 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe0278c93d338b40bd6c09a275ec0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: 
-  panelColor: {r: 0.9137255, g: 0.88235295, b: 1, a: 1}
+  activity: {fileID: 0}
   grid: {fileID: 0}
   panel: {fileID: 665445286140538598}
   panelShadow: {fileID: 272534570844538311}
