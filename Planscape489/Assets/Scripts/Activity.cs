@@ -12,13 +12,19 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private bool mouseDown;
 
+    [SerializeField] private AudioClip pickUp;
+    [SerializeField] private AudioClip putDown;
+    [SerializeField] private float audioVolume;
+
     public void OnPointerDown(PointerEventData eventData) {
         //Debug.Log("clicked");
         mouseDown = true;
+        AudioSource.PlayClipAtPoint(pickUp, Vector3.zero, audioVolume);
     }
 
     public void OnPointerUp(PointerEventData eventData) {
         mouseDown = false;
+        AudioSource.PlayClipAtPoint(putDown, Vector3.zero, audioVolume);
     }
 
     void Start() {

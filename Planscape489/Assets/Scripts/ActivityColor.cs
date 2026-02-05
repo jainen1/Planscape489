@@ -21,10 +21,14 @@ public class ActivityColor : MonoBehaviour
         ActivityGrid gridComponent = FindFirstObjectByType<ActivityGrid>();
         //Grid gridComponent = grid.GetComponent<Grid>();
 
-        int cellLength = activity.length;
-        //int cellLength = RandomCellLength();
-        panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
-        panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
+        Vector2 newSize = new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * activity.length);
+
+        gameObject.GetComponent<RectTransform>().SetSize(newSize);
+        panel.GetComponent<BoxCollider2D>().size = newSize;
+        textObject.GetComponent<RectTransform>().SetSize(newSize);
+
+        //panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
+        //panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
 
         panel.GetComponent<Image>().color = new Color(activity.color.r, activity.color.g, activity.color.b, 1.0f);
         panelShadow.GetComponent<Image>().color = new Color(activity.color.r, activity.color.g, activity.color.b, 0.7f);
