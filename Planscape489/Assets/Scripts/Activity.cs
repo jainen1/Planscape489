@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject shadow;
-    [SerializeField] private GameObject activity;
 
     public bool isFixed;
 
@@ -24,7 +23,6 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void Start() {
         mouseDown = false;
-        isFixed = activity.GetComponent<Activity>().isFixed;
     }
 
     // Update is called once per frame

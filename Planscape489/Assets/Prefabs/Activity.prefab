@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4138348412110496993}
   - component: {fileID: 3947971382625035757}
   - component: {fileID: 8038817018806726272}
-  - component: {fileID: 5972434427123541067}
   - component: {fileID: 5400984091071210330}
   m_Layer: 5
   m_Name: PanelShadow
@@ -77,21 +76,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5972434427123541067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272534570844538311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073449a0f62d2f14a82afe6e505ea840, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadow: {fileID: 0}
-  activity: {fileID: 0}
-  isFixed: 0
 --- !u!114 &5400984091071210330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   panelColor: {r: 0.9137255, g: 0.88235295, b: 1, a: 1}
+  grid: {fileID: 0}
   panel: {fileID: 665445286140538598}
   panelShadow: {fileID: 272534570844538311}
   lockIcon: {fileID: 1706280067016240343}

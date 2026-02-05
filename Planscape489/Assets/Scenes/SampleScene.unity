@@ -522,12 +522,12 @@ RectTransform:
   - {fileID: 1050245200}
   - {fileID: 1037241485}
   - {fileID: 1909189020}
+  - {fileID: 534839485}
   - {fileID: 1260631947}
   - {fileID: 729982823}
   - {fileID: 1192826336}
   - {fileID: 1530169003}
   - {fileID: 745311898}
-  - {fileID: 534839485}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -708,8 +708,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -394.2148, y: -70.97601}
-  m_SizeDelta: {x: 665.673, y: -180.049}
+  m_AnchoredPosition: {x: 114.31, y: -70.97601}
+  m_SizeDelta: {x: -351.38, y: -180.049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &534839486
 MonoBehaviour:
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Grid
   rows: 32
   columns: 7
+  collider: {fileID: 534839489}
 --- !u!114 &534839487
 MonoBehaviour:
   m_ObjectHideFlags: 0

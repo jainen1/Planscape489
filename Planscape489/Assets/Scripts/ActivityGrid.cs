@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class ActivityGrid : MonoBehaviour
 {
     [SerializeField] private int rows;
     [SerializeField] private int columns;
 
-    private BoxCollider2D collider;
+    [SerializeField] private BoxCollider2D collider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        //collider = gameObject.GetComponent<BoxCollider2D>();
 
 
         //gameObject.GetComponent<RectTransform>().rect.yMax = 0;

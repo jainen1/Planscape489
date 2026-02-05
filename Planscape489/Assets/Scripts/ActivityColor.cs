@@ -19,12 +19,12 @@ public class ActivityColor : MonoBehaviour
     [SerializeField] private bool isFixed;
 
     private void Awake() {
-        Grid gridComponent = FindFirstObjectByType<Grid>();
-        Debug.Log("Grid object is " + gridComponent);
+        ActivityGrid gridComponent = FindFirstObjectByType<ActivityGrid>();
         //Grid gridComponent = grid.GetComponent<Grid>();
         int cellLength = 5;
         Debug.Log("Old size is " + panel.GetComponent<RectTransform>().GetSize());
         panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
+        panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
         Debug.Log("New size is " + panel.GetComponent<RectTransform>().GetSize());
 
         panel.GetComponent<Image>().color = panelColor;
