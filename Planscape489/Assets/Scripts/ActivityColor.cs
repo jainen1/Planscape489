@@ -15,7 +15,7 @@ public class ActivityColor : MonoBehaviour
     [SerializeField] private GameObject lockIcon;
     [SerializeField] private GameObject textObject;
 
-    [SerializeField] private bool isFixed;
+    [SerializeField] public bool isFixed;
 
     private void Awake() {
         ActivityGrid gridComponent = FindFirstObjectByType<ActivityGrid>();
@@ -30,12 +30,16 @@ public class ActivityColor : MonoBehaviour
         //panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
         //panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
 
-        panel.GetComponent<Image>().color = new Color(activity.color.r, activity.color.g, activity.color.b, 1.0f);
-        panelShadow.GetComponent<Image>().color = new Color(activity.color.r, activity.color.g, activity.color.b, 0.7f);
-        textObject.GetComponent<TextMeshProUGUI>().color = new Color(activity.color.r * 0.35f, activity.color.g * 0.35f, activity.color.b * 0.35f, 1.0f);
+        Color activityColor = isFixed ? Color.gray9 : activity.color;
+        panel.GetComponent<Image>().color = new Color(activityColor.r, activityColor.g, activityColor.b, 1.0f);
+        panelShadow.GetComponent<Image>().color = new Color(activityColor.r, activityColor.g, activityColor.b, 0.7f);
+        textObject.GetComponent<TextMeshProUGUI>().color = new Color(activityColor.r * 0.35f, activityColor.g * 0.35f, activityColor.b * 0.35f, 1.0f);
         textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
 
         lockIcon.SetActive(isFixed);
+        //lockIcon.GetComponent<RectTransform>().SetSize(Vector3.one * (1 - 0.2f * (5 - activity.length)));
+        lockIcon.transform.localScale = Vector3.one * (1 - 0.2f * (5 - activity.length));
+        panel.GetComponent<Activity>().SetFixed(isFixed);
     }
 
     //temporary length randomizer

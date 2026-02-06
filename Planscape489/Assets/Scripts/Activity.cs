@@ -8,8 +8,7 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject shadow;
 
-    public bool isFixed;
-
+    private bool isFixed;
     private bool mouseDown;
 
     [SerializeField] private AudioClip pickUp;
@@ -46,5 +45,9 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         else {
             gameObject.transform.position = Vector3.Lerp(transform.position, shadow.transform.position, 5f * Time.deltaTime);
         }
+    }
+
+    public void SetFixed(bool x) {
+        isFixed = x;
     }
 }
