@@ -38,7 +38,7 @@ public class ActivityColor : MonoBehaviour
 
         lockIcon.SetActive(isFixed);
         //lockIcon.GetComponent<RectTransform>().SetSize(Vector3.one * (1 - 0.2f * (5 - activity.length)));
-        lockIcon.transform.localScale = Vector3.one * (1 - 0.2f * (5 - activity.length));
+        lockIcon.transform.localScale = Vector3.one * (1 - 0.2f * Mathf.Max(0, 5 - activity.length));
         panel.GetComponent<Activity>().SetFixed(isFixed);
     }
 
