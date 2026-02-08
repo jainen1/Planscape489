@@ -18,12 +18,18 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData) {
         //Debug.Log("clicked");
         mouseDown = true;
-        AudioSource.PlayClipAtPoint(pickUp, Vector3.zero, audioVolume);
+        if(isFixed) {
+            AudioSource.PlayClipAtPoint(pickUp, Vector3.zero, audioVolume);
+        } else {
+
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData) {
         mouseDown = false;
-        AudioSource.PlayClipAtPoint(putDown, Vector3.zero, audioVolume);
+        if(isFixed) {
+            AudioSource.PlayClipAtPoint(putDown, Vector3.zero, audioVolume);
+        }
     }
 
     void Start() {

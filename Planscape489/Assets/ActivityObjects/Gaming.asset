@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gaming
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
   title: Gaming
-  color: {r: 1, g: 0.7058824, b: 0.69411767, a: 1}
+  color: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   length: 6
