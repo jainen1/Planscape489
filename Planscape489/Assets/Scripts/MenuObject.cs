@@ -33,6 +33,10 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
             case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
 
+            //case MenuObjectType.FixedActivity: color = gameManager.menuTheme.fixedActivityColor; break;
+            case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
+            case MenuObjectType.ActivityText: color = gameManager.menuTheme.activityTextColor; isText = true; break;
+
             default: color = Color.red; break;
         };
 

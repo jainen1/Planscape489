@@ -20,4 +20,8 @@ public class MenuTheme : ScriptableObject
 
     public Color happinessColor;
     public Color moneyColor;
+
+    public Color fixedActivityColor;
+    public Color fixedActivityBorderColor;
+    public Color activityTextColor;
 }

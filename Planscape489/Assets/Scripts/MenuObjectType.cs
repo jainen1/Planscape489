@@ -17,5 +17,9 @@ public enum MenuObjectType
     BonusTaskText,
 
     Happiness,
-    Money
+    Money,
+
+    FixedActivity,
+    FixedActivityBorder,
+    ActivityText
 }

@@ -17,8 +17,6 @@ public class ActivityColor : MonoBehaviour
 
     [SerializeField] public bool isFixed;
 
-    [SerializeField] Dropdown dropdown;
-
     private ActivityGrid gridComponent;
 
     private void Awake() {

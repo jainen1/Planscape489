@@ -23,3 +23,6 @@ MonoBehaviour:
   bonusTaskTextColor: {r: 0, g: 0, b: 0, a: 1}
   happinessColor: {r: 1, g: 0.8618995, b: 0.31132078, a: 1}
   moneyColor: {r: 0.53152835, g: 0.9150943, b: 0.46618012, a: 1}
+  fixedActivityColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
+  activityTextColor: {r: 1, g: 1, b: 1, a: 1}
