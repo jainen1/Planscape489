@@ -8,6 +8,8 @@ public class GridCell : MonoBehaviour
     public int day;
     public int hour;
 
+    public Activity occupyingActivity;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {

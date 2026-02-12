@@ -52,27 +52,13 @@ public class PanelShadow : MonoBehaviour
             transform.position.z);*/
 
         transform.position = new Vector3(
-            RoundToNearestGridPoint2(Mathf.Clamp(targetPoint.x, v2[1].x, v2[2].x), gridComponent.getCellWidth()) + gridComponent.offsetX,
-            RoundToNearestGridPoint2(Mathf.Clamp(targetPoint.y, v2[0].y, v2[1].y), gridComponent.getCellHeight()) + gridComponent.offsetY,
+            RoundToNearestGridPoint(Mathf.Clamp(targetPoint.x, v2[1].x, v2[2].x), gridComponent.getCellWidth()) + gridComponent.offsetX,
+            RoundToNearestGridPoint(Mathf.Clamp(targetPoint.y, v2[0].y, v2[1].y), gridComponent.getCellHeight()) + gridComponent.offsetY,
             transform.position.z);
 
         Vector2 cell = new Vector2(transform.position.x / gridComponent.getCellWidth(), transform.position.y / gridComponent.getCellHeight());
     }
 
-    float RoundToNearestGridPoint2(float pos, float gridSize) {
-        float xDiff = pos % gridSize;
-        bool isPositive = pos > 0 ? true : false;
-        pos -= xDiff;
-        if(Mathf.Abs(xDiff) > (gridSize / 2)) {
-            if(isPositive) {
-                pos += gridSize;
-            }
-            else {
-                pos -= gridSize;
-            }
-        }
-        return pos;
-    }
 
     float RoundToNearestGridPoint(float pos, float gridSize) {
         float xDiff = pos % gridSize;

@@ -8,7 +8,8 @@ public class MenuObject : MonoBehaviour
     private GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    //void Awake()
+    void Update()
     {
         gameManager = FindFirstObjectByType<GameManager>();
 

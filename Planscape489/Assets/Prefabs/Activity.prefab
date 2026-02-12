@@ -182,11 +182,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a207bd3cdd83e264d9ee68962296e178, type: 3}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 0.7}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1.63, y: 1.1}
+  m_Size: {x: 1.63, y: 0.95}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   pickUp: {fileID: 8300000, guid: bf911544daea5d74cb78c36f0fcbd77b, type: 3}
   putDown: {fileID: 8300000, guid: c4b8754dc47ea724f9bb0386d27dbde6, type: 3}
   audioVolume: 0.5
-  yOffset: 0
+  yOffset: -0.25
   closestCell: {fileID: 0}
 --- !u!50 &8877096774782777869
 Rigidbody2D:
@@ -298,7 +298,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5136288827996116482}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -361,7 +361,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.63, y: 0.95}
   m_EdgeRadius: 0
 --- !u!1 &5582139611250620806
 GameObject:
@@ -443,11 +443,11 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: af8bca21c6488914c904c7a21ad5b31a, type: 3}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.495283, g: 0.495283, b: 0.495283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 1.63, y: 1.1}
+  m_Size: {x: 1.63, y: 0.95}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -584,7 +584,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.57995135, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -629,7 +629,7 @@ Transform:
   m_GameObject: {fileID: 9112307122686609335}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.50604, y: 1.63745, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9216e0cfbe0854daf7b11524970684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivityInitializer
-  activity: {fileID: 11400000, guid: 3d3f00454c04c654d807a7dbc10e32f6, type: 2}
+  activity: {fileID: 0}
   mainPanel: {fileID: 5136288827996116482}
   extendedPanel: {fileID: 5582139611250620806}
   shadowPanel: {fileID: 4574679196842494683}
@@ -660,4 +660,4 @@ MonoBehaviour:
   isFixed: 0
   cellWidth: 1.63
   cellHeight: 0.45
-  cellSpacing: 0.5
+  cellSpacing: 0.05

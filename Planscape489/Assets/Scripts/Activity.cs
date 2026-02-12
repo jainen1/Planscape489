@@ -17,6 +17,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public float yOffset;
 
+    private List<GameObject> collidingCells = new List<GameObject>();
     public GameObject closestCell = null;
 
     /*public void OnPointerDown(PointerEventData eventData) {
@@ -36,19 +37,24 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         }
     }*/
 
-    public void OnTriggerStay2D(Collider2D collision) {
-        GridCell cell = collision.GetComponent<GridCell>();
-        if(cell != null && cell.canBeUsed) {
-            Debug.Log("collided with grid cell " + cell.name);
-            if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
-                Debug.Log("grid cell is closest!");
-                closestCell = cell.gameObject;
-            }
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(CellIsAvailable(collision) && !collidingCells.Contains(collision.gameObject)) {
+            collidingCells.Add(collision.gameObject);
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision) {
+        if(collidingCells.Contains(collision.gameObject)) {
+            collidingCells.Remove(collision.gameObject);
+        }
+    }
+
+    private bool CellIsAvailable(Collider2D collision) {
+        GridCell cell = collision.GetComponent<GridCell>();
+        return cell != null && cell.canBeUsed && cell.occupyingActivity != this;
+    }
+
     public void OnMouseDown() {
-        //Debug.Log("clicked");
         mouseDown = true;
         if(isFixed) {
             AudioSource.PlayClipAtPoint(pickUp, transform.position, audioVolume);
@@ -72,11 +78,11 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     // Update is called once per frame
     void Update()
     {
-        /*if(Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject()) {
-            gameObject.transform.position = Input.mousePosition;
-        } else {
-            gameObject.transform.position = Vector3.Lerp(transform.position, shadow.transform.position, 5f * Time.deltaTime);
-        }*/
+        foreach(GameObject cell in collidingCells) {
+            if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
+                closestCell = cell;
+            }
+        }
 
         if(Input.GetMouseButton(0) && mouseDown && !isFixed) {
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

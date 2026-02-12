@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Taxes
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: Taxes!!
+  title: taxes
   color: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
-  length: 4
+  length: 2
