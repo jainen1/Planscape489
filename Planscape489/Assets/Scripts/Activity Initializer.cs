@@ -28,7 +28,7 @@ public class ActivityInitializer : MonoBehaviour
         extendedPanel.GetComponent<SpriteRenderer>().color = new Color(activityColor.r, activityColor.g, activityColor.b, 1.0f);
         shadowPanel.GetComponent<SpriteRenderer>().color = new Color(activityColor.r, activityColor.g, activityColor.b, 0.7f);
         //textObject.GetComponent<TextMeshProUGUI>().color = new Color(activityColor.r * 0.35f, activityColor.g * 0.35f, activityColor.b * 0.35f, 1.0f);   //moved to theme system
-        textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
+        textObject.GetComponent<TextMeshProUGUI>().text = "    " + activity.title;
     }
 
     // Update is called once per frame

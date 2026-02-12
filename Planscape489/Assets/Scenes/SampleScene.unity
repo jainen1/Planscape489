@@ -4124,7 +4124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9216e0cfbe0854daf7b11524970684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivityInitializer
-  activity: {fileID: 0}
+  activity: {fileID: 11400000, guid: 3d3f00454c04c654d807a7dbc10e32f6, type: 2}
+  mainPanel: {fileID: 8643931174894944157}
+  extendedPanel: {fileID: 1057844269}
+  shadowPanel: {fileID: 1017926079}
+  textObject: {fileID: 1241990286}
   isFixed: 0
 --- !u!4 &862123314
 Transform:
@@ -6038,7 +6042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '    shower'
+  m_text: Activity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
   m_sharedMaterial: {fileID: 3921516150665474298, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
