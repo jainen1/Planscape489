@@ -46,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 700
+  spriteBorder: {x: 700, y: 700, z: 700, w: 700}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -117,19 +117,195 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 2380
-        height: 2380
+        y: 1587
+        width: 793
+        height: 793
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 100, y: 100, z: 100, w: 100}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 975072cddcd728630800000000000000
+      spriteID: 9b5ac70c6040ad94ca3ff931434c0248
       internalID: 3927840148135806329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_1
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 1587
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa2c2a33452388046b82b053203e55d8
+      internalID: -1868416122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_2
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 1587
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d327db7a09b9674288533575e40325e
+      internalID: 249457358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 794
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6588ced73c71f7d43b33886e67d05b43
+      internalID: -317870286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_4
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 794
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e7313fb3649744f8592e99da833fc9
+      internalID: 793630868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_5
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 794
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a691d7b2c18b84092f4d34b113f64d
+      internalID: -281136810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10a32a8beadba014fbe7ed390382ebbe
+      internalID: 1383623439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_7
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 1
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e359380f8fdc9b4baa2e61fd110cb47
+      internalID: 1928197914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_square_1_8
+      rect:
+        serializedVersion: 2
+        x: 1586
+        y: 1
+        width: 793
+        height: 793
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adb64c2f5d07024aa6a68fa45c1a803
+      internalID: 391586982
       vertices: []
       indices: 
       edges: []
@@ -139,16 +315,26 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 478920bbf0a490d408055bc7c6b6da97
-    internalID: 0
+    internalID: 314461391
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":3.0},"gridSpriteSize":{"x":793.0,"y":793.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       white_square_1_0: 3927840148135806329
+      white_square_1_1: -1868416122
+      white_square_1_2: 249457358
+      white_square_1_3: -317870286
+      white_square_1_4: 793630868
+      white_square_1_5: -281136810
+      white_square_1_6: 1383623439
+      white_square_1_7: 1928197914
+      white_square_1_8: 391586982
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

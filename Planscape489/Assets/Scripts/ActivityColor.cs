@@ -17,18 +17,12 @@ public class ActivityColor : MonoBehaviour
 
     [SerializeField] public bool isFixed;
 
+    [SerializeField] Dropdown dropdown;
+
+    private ActivityGrid gridComponent;
+
     private void Awake() {
-        ActivityGrid gridComponent = FindFirstObjectByType<ActivityGrid>();
-        //Grid gridComponent = grid.GetComponent<Grid>();
-
-        Vector2 newSize = new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * activity.length);
-
-        gameObject.GetComponent<RectTransform>().SetSize(newSize);
-        panel.GetComponent<BoxCollider2D>().size = newSize;
-        textObject.GetComponent<RectTransform>().SetSize(newSize);
-
-        //panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
-        //panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
+        gridComponent = FindFirstObjectByType<ActivityGrid>();
 
         Color activityColor = isFixed ? Color.gray9 : activity.color;
         panel.GetComponent<Image>().color = new Color(activityColor.r, activityColor.g, activityColor.b, 1.0f);
@@ -40,6 +34,16 @@ public class ActivityColor : MonoBehaviour
         //lockIcon.GetComponent<RectTransform>().SetSize(Vector3.one * (1 - 0.2f * (5 - activity.length)));
         lockIcon.transform.localScale = Vector3.one * (1 - 0.2f * Mathf.Max(0, 5 - activity.length));
         panel.GetComponent<Activity>().SetFixed(isFixed);
+    }
+
+    private void Update() {
+        Vector2 newSize = new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * activity.length);
+        //panel.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
+        //panelShadow.GetComponent<RectTransform>().SetSize(new Vector2(gridComponent.getCellWidth(), gridComponent.getCellHeight() * cellLength));
+
+        gameObject.GetComponent<RectTransform>().SetSize(newSize);
+        panel.GetComponent<BoxCollider2D>().size = newSize;
+        textObject.GetComponent<RectTransform>().SetSize(newSize);
     }
 
     //temporary length randomizer
