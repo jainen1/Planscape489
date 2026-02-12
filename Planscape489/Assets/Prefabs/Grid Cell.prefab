@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2123108355473790915}
   - component: {fileID: 1632228224206554503}
   - component: {fileID: 8404886022861014893}
+  - component: {fileID: -7001611546980450847}
   m_Layer: 0
   m_Name: Grid Cell
   m_TagString: Untagged
@@ -104,3 +105,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
   type: 1
+--- !u!114 &-7001611546980450847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640321440834366388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b242a552aeec6c346a7cf576b7499723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridCell
+  canBeUsed: 1
+  day: 0
+  hour: 0
