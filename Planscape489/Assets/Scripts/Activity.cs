@@ -36,14 +36,13 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         }
     }*/
 
-    public void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("collided with something");
+    public void OnTriggerStay2D(Collider2D collision) {
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.canBeUsed) {
-            Debug.Log("collided with grid cell");
-            if(closestCell == null || Vector3.Distance(gameObject.transform.position, collision.transform.position) < Vector3.Distance(gameObject.transform.position, closestCell.transform.position)) {
+            Debug.Log("collided with grid cell " + cell.name);
+            if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
                 Debug.Log("grid cell is closest!");
-                closestCell = collision.gameObject;
+                closestCell = cell.gameObject;
             }
         }
     }
