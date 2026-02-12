@@ -17,7 +17,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public float yOffset;
 
-    public GameObject closestCell;
+    public GameObject closestCell = null;
 
     /*public void OnPointerDown(PointerEventData eventData) {
         //Debug.Log("clicked");
@@ -37,8 +37,12 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }*/
 
     public void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.GetComponent<GridCell>() != null) {
+        Debug.Log("collided with something");
+        GridCell cell = collision.GetComponent<GridCell>();
+        if(cell != null && cell.canBeUsed) {
+            Debug.Log("collided with grid cell");
             if(closestCell == null || Vector3.Distance(gameObject.transform.position, collision.transform.position) < Vector3.Distance(gameObject.transform.position, closestCell.transform.position)) {
+                Debug.Log("grid cell is closest!");
                 closestCell = collision.gameObject;
             }
         }
@@ -83,13 +87,12 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             Vector3 targetPosition = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
         }
-    }
 
-    void LateUpdate() {
         if(closestCell == null) {
             shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
-        } else {
-            shadowPanel.GetComponent<ShadowPanel>().targetPosition = closestCell.transform.position;
+        }
+        else {
+            shadowPanel.GetComponent<ShadowPanel>().targetPosition = new Vector3(closestCell.transform.position.x, closestCell.transform.position.y, closestCell.transform.position.z - 0.5f);
         }
     }
 
