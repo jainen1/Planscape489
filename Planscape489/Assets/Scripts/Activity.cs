@@ -13,12 +13,15 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] private AudioClip pickUp;
     [SerializeField] private AudioClip putDown;
+    [SerializeField] private AudioClip trashSound;
     [SerializeField] private float audioVolume;
 
     public float yOffset;
 
     private List<GameObject> collidingCells = new List<GameObject>();
     public GameObject closestCell = null;
+
+    [SerializeField] private bool isTouchingTrashCan = false;
 
     /*public void OnPointerDown(PointerEventData eventData) {
         //Debug.Log("clicked");
@@ -41,11 +44,19 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         if(CellIsAvailable(collision) && !collidingCells.Contains(collision.gameObject)) {
             collidingCells.Add(collision.gameObject);
         }
+
+        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
+            isTouchingTrashCan=true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if(collidingCells.Contains(collision.gameObject)) {
             collidingCells.Remove(collision.gameObject);
+        }
+
+        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
+            isTouchingTrashCan = false;
         }
     }
 
@@ -56,18 +67,20 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public void OnMouseDown() {
         mouseDown = true;
-        if(isFixed) {
-            AudioSource.PlayClipAtPoint(pickUp, transform.position, audioVolume);
-        }
-        else {
-
+        if(!isFixed) {
+            AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
         }
     }
 
     public void OnMouseUp() {
         mouseDown = false;
-        if(isFixed) {
-            AudioSource.PlayClipAtPoint(putDown, transform.position, audioVolume);
+        if(!isFixed) {
+            AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
+        }
+
+        if(isTouchingTrashCan) {
+            AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
+            Destroy(gameObject.transform.parent.gameObject);
         }
     }
 

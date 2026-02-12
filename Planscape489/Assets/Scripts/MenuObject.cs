@@ -8,8 +8,8 @@ public class MenuObject : MonoBehaviour
     private GameManager gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    //void Awake()
     void Update()
+    //void Update()
     {
         gameManager = FindFirstObjectByType<GameManager>();
 
@@ -34,7 +34,7 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
             case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
 
-            //case MenuObjectType.FixedActivity: color = gameManager.menuTheme.fixedActivityColor; break;
+            case MenuObjectType.FixedActivity: color = gameManager.menuTheme.fixedActivityColor; break;
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.ActivityText: color = gameManager.menuTheme.activityTextColor; isText = true; break;
 

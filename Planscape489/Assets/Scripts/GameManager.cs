@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void UpdateTheme() {
+
+    }
+
     public GridCell GridCellFromIndex(int day, int hour) {
         return cells[((day-1)*17)+(hour-6)];
         //Day 1, Cell 6 (index 0): ((1-1)*17)+(6-6) = 0

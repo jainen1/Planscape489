@@ -46,7 +46,7 @@ public class ActivityInitializer : MonoBehaviour
         //textObject.GetComponent<TextMeshProUGUI>().color = new Color(activityColor.r * 0.35f, activityColor.g * 0.35f, activityColor.b * 0.35f, 1.0f);   //moved to theme system
         float activityColorBrightness = (0.2126f * activityColor.r) + (0.7152f * activityColor.g) + (0.0722f * activityColor.b);
         textObject.GetComponent<TextMeshProUGUI>().color = activityColorBrightness >= 128 ? Color.black : Color.white;
-        textObject.GetComponent<TextMeshProUGUI>().text = "    " + activity.title;
+        textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
 
 
         //Sizing
