@@ -4,9 +4,9 @@ using UnityEngine;
 
 using UnityEngine.EventSystems;
 
-public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
-    [SerializeField] private GameObject shadow;
+    [SerializeField] private GameObject shadowPanel;
 
     private bool isFixed;
     private bool mouseDown;
@@ -15,11 +15,15 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField] private AudioClip putDown;
     [SerializeField] private float audioVolume;
 
-    public void OnPointerDown(PointerEventData eventData) {
+    public float yOffset;
+
+    public GameObject closestCell;
+
+    /*public void OnPointerDown(PointerEventData eventData) {
         //Debug.Log("clicked");
         mouseDown = true;
         if(isFixed) {
-            AudioSource.PlayClipAtPoint(pickUp, Vector3.zero, audioVolume);
+            AudioSource.PlayClipAtPoint(pickUp, transform.position, audioVolume);
         } else {
 
         }
@@ -28,7 +32,33 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData) {
         mouseDown = false;
         if(isFixed) {
-            AudioSource.PlayClipAtPoint(putDown, Vector3.zero, audioVolume);
+            AudioSource.PlayClipAtPoint(putDown, transform.position, audioVolume);
+        }
+    }*/
+
+    public void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.GetComponent<GridCell>() != null) {
+            if(closestCell == null || Vector3.Distance(gameObject.transform.position, collision.transform.position) < Vector3.Distance(gameObject.transform.position, closestCell.transform.position)) {
+                closestCell = collision.gameObject;
+            }
+        }
+    }
+
+    public void OnMouseDown() {
+        //Debug.Log("clicked");
+        mouseDown = true;
+        if(isFixed) {
+            AudioSource.PlayClipAtPoint(pickUp, transform.position, audioVolume);
+        }
+        else {
+
+        }
+    }
+
+    public void OnMouseUp() {
+        mouseDown = false;
+        if(isFixed) {
+            AudioSource.PlayClipAtPoint(putDown, transform.position, audioVolume);
         }
     }
 
@@ -37,7 +67,7 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         /*if(Input.GetMouseButton(0) && EventSystem.current.IsPointerOverGameObject()) {
             gameObject.transform.position = Input.mousePosition;
@@ -46,10 +76,20 @@ public class Activity : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }*/
 
         if(Input.GetMouseButton(0) && mouseDown && !isFixed) {
-            gameObject.transform.position = Input.mousePosition;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            worldPosition.z = -2f;
+            gameObject.transform.position = worldPosition;
+        } else {
+            Vector3 targetPosition = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y, -2f);
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
         }
-        else {
-            gameObject.transform.position = Vector3.Lerp(transform.position, shadow.transform.position, 5f * Time.deltaTime);
+    }
+
+    void LateUpdate() {
+        if(closestCell == null) {
+            shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
+        } else {
+            shadowPanel.GetComponent<ShadowPanel>().targetPosition = closestCell.transform.position;
         }
     }
 
