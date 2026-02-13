@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
         int endCellIndex = startCellIndex + activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity) {
+            if(endCellIndex > cells.Length-1 || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
                 return false;
             }
         } return true;
