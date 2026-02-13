@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
+    private GameManager gameManager;
+
     [SerializeField] private GameObject shadowPanel;
 
     private bool isFixed;
@@ -17,9 +19,11 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     [SerializeField] private float audioVolume;
 
     public float yOffset;
+    public int length = 1;
 
     private List<GameObject> collidingCells = new List<GameObject>();
-    public GameObject closestCell = null;
+    private GameObject closestCell = null;
+    private GameObject occupiedCell = null;
 
     [SerializeField] private bool isTouchingTrashCan = false;
 
@@ -62,7 +66,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     private bool CellIsAvailable(Collider2D collision) {
         GridCell cell = collision.GetComponent<GridCell>();
-        return cell != null && cell.canBeUsed && cell.occupyingActivity != this;
+        return cell != null && cell.canBeUsed && gameManager.GetCellStatus(this, cell) && (cell.hour + length < 24);
     }
 
     public void OnMouseDown() {
@@ -74,10 +78,15 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public void OnMouseUp() {
         if(closestCell != null) {
-            mouseDown = false;
             if(!isFixed) {
                 AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
             }
+
+            mouseDown = false;
+
+            gameManager.OccupyCells(this, closestCell.GetComponent<GridCell>());
+            if(occupiedCell != null) { gameManager.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
+            occupiedCell = closestCell;
         }
         if(isTouchingTrashCan) {
             AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
@@ -94,6 +103,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     void Start() {
+        gameManager = FindFirstObjectByType<GameManager>();
         mouseDown = false;
     }
 

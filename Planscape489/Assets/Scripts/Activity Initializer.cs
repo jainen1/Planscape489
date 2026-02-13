@@ -30,6 +30,7 @@ public class ActivityInitializer : MonoBehaviour
         Vector2 panelSize = new Vector2(cellWidth, (cellHeight * activity.length) + (cellSpacing * (activity.length - 1)));
         yOffset = (cellHeight / 2f) - (panelSize.y / 2); //(originalSize / 2.0) - (bigSize / 2.0);
         mainPanel.GetComponent<Activity>().yOffset = yOffset;
+        mainPanel.GetComponent<Activity>().length = activity.length;
 
         extendedPanel.GetComponent<SpriteRenderer>().size = panelSize;
         extendedShadowPanel.GetComponent<SpriteRenderer>().size = panelSize;
