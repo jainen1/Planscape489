@@ -7,21 +7,29 @@ public class MenuTheme : ScriptableObject
     public Color backgroundColor;
 
     public Color gridCellColor;
-    public Color gridHeaderTextColor;
 
     public Color dailyTaskListColor;
-    public Color dailyTaskTextColor;
-
     public Color weeklyTaskListColor;
-    public Color weeklyTaskTextColor;
-
     public Color bonusTaskListColor;
-    public Color bonusTaskTextColor;
 
     public Color happinessColor;
     public Color moneyColor;
 
+    public Color brightTextColor;
+    public Color darkTextColor;
+
+    public Color dailyTaskSmallColor;
+    public Color dailyTaskMediumColor;
+    public Color dailyTaskLargeColor;
+
+    public Color weeklyTaskSmallColor;
+    public Color weeklyTaskMediumColor;
+    public Color weeklyTaskLargeColor;
+
+    public Color bonusTaskSmallColor;
+    public Color bonusTaskMediumColor;
+    public Color bonusTaskLargeColor;
+
     public Color fixedActivityColor;
     public Color fixedActivityBorderColor;
-    public Color activityTextColor;
 }

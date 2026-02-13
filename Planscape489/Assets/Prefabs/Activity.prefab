@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3512171887992321016}
   - component: {fileID: 9102682046124667066}
+  - component: {fileID: 6712529661687102446}
   m_Layer: 0
   m_Name: ExtendedShadowPanel
   m_TagString: Untagged
@@ -192,6 +193,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6712529661687102446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094868863790455580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuObject
+  type: 12
 --- !u!1 &4574679196842494683
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6789664703797756007}
   - component: {fileID: 6713617123793288158}
+  - component: {fileID: 7756995275038856863}
   m_Layer: 0
   m_Name: ExtendedPanel
   m_TagString: Untagged
@@ -455,6 +470,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7756995275038856863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5582139611250620806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuObject
+  type: 11
 --- !u!1 &7915953787215132717
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +496,7 @@ GameObject:
   - component: {fileID: 2283626917685805367}
   - component: {fileID: 6549469543285467665}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Activity Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +582,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 8
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535

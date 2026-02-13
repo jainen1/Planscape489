@@ -4,8 +4,6 @@ using UnityEngine;
 public class ActivityObject : ScriptableObject
 {
     public string title;
-    public Color color;
     public int length;
-
-    //public bool isFixed;
+    public ActivityType type;
 }

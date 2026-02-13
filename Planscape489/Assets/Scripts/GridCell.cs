@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class GridCell : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class GridCell : MonoBehaviour
 
     public Activity occupyingActivity;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         if(canBeUsed) {
@@ -19,7 +17,6 @@ public class GridCell : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         

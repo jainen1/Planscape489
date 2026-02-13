@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public enum MenuObjectType
 {
     Background,
@@ -19,7 +17,11 @@ public enum MenuObjectType
     Happiness,
     Money,
 
+    ActivityPanel,
+    ActivityShadowPanel,
+    ActivityText,
+
     FixedActivity,
     FixedActivityBorder,
-    ActivityText
+    FixedActivityText
 }

@@ -1747,7 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 11
+  type: 14
 --- !u!212 &485124949
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3183,6 +3183,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aba4f9145e9ce92499edb400d74376cc, type: 2}
   - {fileID: 11400000, guid: 757327107f67c8e43a0b8536d9b02dec, type: 2}
   - {fileID: 11400000, guid: f0d499ac44ec24fffa54eb46912afd3a, type: 2}
+  - {fileID: 11400000, guid: b50d0b7459836a0418e8bd1d090957df, type: 2}
   clickSound: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
 --- !u!114 &734346792 stripped
 MonoBehaviour:
@@ -3581,6 +3582,7 @@ GameObject:
   - component: {fileID: 798348093}
   - component: {fileID: 798348095}
   - component: {fileID: 798348094}
+  - component: {fileID: 798348096}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3706,6 +3708,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798348092}
   m_CullTransparentMesh: 1
+--- !u!114 &798348096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798348092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuObject
+  type: 2
 --- !u!114 &801012036 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4367165840765400797, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -6970,7 +6985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 2
+  type: 4
 --- !u!114 &1734716641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7299,7 +7314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 2
+  type: 8
 --- !u!114 &1821405719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7676,7 +7691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 2
+  type: 4
 --- !u!114 &1899133816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7859,7 +7874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 2
+  type: 6
 --- !u!114 &1939255935
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Class1
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: ctin-489
-  color: {r: 0.9137255, g: 0.88235295, b: 1, a: 1}
+  title: CTIN-489
   length: 2
+  type: 1

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Lunch
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: lunch
-  color: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
+  title: Lunch
   length: 1
+  type: 0

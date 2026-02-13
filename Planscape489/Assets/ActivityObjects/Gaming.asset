@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Gaming
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: gaming
-  color: {r: 0.8862745, g: 0.6627451, b: 0.94509804, a: 1}
+  title: Gaming
   length: 3
+  type: 2
