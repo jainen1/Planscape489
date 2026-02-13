@@ -84,9 +84,9 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
             mouseDown = false;
 
-            gameManager.OccupyCells(this, closestCell.GetComponent<GridCell>());
             if(occupiedCell != null) { gameManager.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
             occupiedCell = closestCell;
+            gameManager.OccupyCells(this, closestCell.GetComponent<GridCell>());
         }
         if(isTouchingTrashCan) {
             AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
