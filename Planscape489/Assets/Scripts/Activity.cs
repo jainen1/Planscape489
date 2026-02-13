@@ -73,14 +73,23 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     public void OnMouseUp() {
-        mouseDown = false;
-        if(!isFixed) {
-            AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
+        if(closestCell != null) {
+            mouseDown = false;
+            if(!isFixed) {
+                AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
+            }
         }
-
         if(isTouchingTrashCan) {
             AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
             Destroy(gameObject.transform.parent.gameObject);
+        }
+    }
+
+    private void OnMouseDrag() {
+        foreach(GameObject cell in collidingCells) {
+            if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
+                closestCell = cell;
+            }
         }
     }
 
@@ -91,18 +100,14 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     // Update is called once per frame
     void Update()
     {
-        foreach(GameObject cell in collidingCells) {
-            if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
-                closestCell = cell;
-            }
-        }
-
+        Vector3 targetPosition;
         if(Input.GetMouseButton(0) && mouseDown && !isFixed) {
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldPosition.z = -2f;
-            gameObject.transform.position = worldPosition;
+            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPosition.z = -2f;
+            gameObject.transform.position = targetPosition;
+            //gameObject.transform.position = Vector3.Lerp(transform.position, worldPosition, 8f * Time.deltaTime);
         } else {
-            Vector3 targetPosition = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y, -2f);
+            targetPosition = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
         }
 

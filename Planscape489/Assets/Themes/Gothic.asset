@@ -20,7 +20,7 @@ MonoBehaviour:
   happinessColor: {r: 1, g: 0.8618995, b: 0.31132078, a: 1}
   moneyColor: {r: 0.53152835, g: 0.9150943, b: 0.46618012, a: 1}
   brightTextColor: {r: 1, g: 0.98937017, b: 0.8490566, a: 1}
-  darkTextColor: {r: 0, g: 0, b: 0, a: 1}
+  darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}
   dailyTaskSmallColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   dailyTaskMediumColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   dailyTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
