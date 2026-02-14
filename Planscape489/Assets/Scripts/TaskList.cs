@@ -16,6 +16,12 @@ public class TaskList : MonoBehaviour
         newActivity.GetComponent<ActivityInitializer>().activity = possibleObjects[Random.Range(0, possibleObjects.Length)];
         newActivity.GetComponent<ActivityInitializer>().Initialize();
         newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
+
+
+        MenuObject[] menuObjects = GetComponentsInChildren<MenuObject>();
+        foreach(MenuObject menuObject in menuObjects) {
+            menuObject.UpdateMenuObject();
+        }
     }
 
     public void OnMouseUp() {

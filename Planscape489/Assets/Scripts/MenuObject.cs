@@ -42,9 +42,9 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
             case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
 
-            case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponentInChildren<ActivityInitializer>()); break;
+            case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>()); break;
             case MenuObjectType.ActivityShadowPanel: {
-                Color temp = GetActivityPanelColor(gameObject.transform.parent.GetComponentInChildren<ActivityInitializer>());
+                Color temp = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>());
                 temp.a = 0.7f;
                 color = temp;
                 break;
@@ -75,29 +75,32 @@ public class MenuObject : MonoBehaviour
             if(activityInitializer.IsFixed()) {
                 return gameManager.menuTheme.fixedActivityColor;
             }
-            switch(activityInitializer.activity.length) {
-                case int n when n >= 4:
-                    switch(activityInitializer.activity.type) {
-                        case ActivityType.Daily: return gameManager.menuTheme.dailyTaskLargeColor;
-                        case ActivityType.Weekly: return gameManager.menuTheme.weeklyTaskLargeColor;
-                        case ActivityType.Bonus: return gameManager.menuTheme.bonusTaskLargeColor;
-                    }
-                    break;
-                case int n when n >= 2:
-                    switch(activityInitializer.activity.type) {
-                        case ActivityType.Daily: return gameManager.menuTheme.dailyTaskMediumColor;
-                        case ActivityType.Weekly: return gameManager.menuTheme.weeklyTaskMediumColor;
-                        case ActivityType.Bonus: return gameManager.menuTheme.bonusTaskMediumColor;
-                    }
-                    break;
-                default:
-                    switch(activityInitializer.activity.type) {
-                        case ActivityType.Daily: return gameManager.menuTheme.dailyTaskSmallColor;
-                        case ActivityType.Weekly: return gameManager.menuTheme.weeklyTaskSmallColor;
-                        case ActivityType.Bonus: return gameManager.menuTheme.bonusTaskSmallColor;
-                    }
-                    break;
+            if(activityInitializer.activity != null) {
+                switch(activityInitializer.activity.length) {
+                    case int n when n >= 4:
+                        switch(activityInitializer.activity.type) {
+                            case ActivityType.Daily: return gameManager.menuTheme.dailyTaskLargeColor;
+                            case ActivityType.Weekly: return gameManager.menuTheme.weeklyTaskLargeColor;
+                            case ActivityType.Bonus: return gameManager.menuTheme.bonusTaskLargeColor;
+                        }
+                        break;
+                    case int n when n >= 2:
+                        switch(activityInitializer.activity.type) {
+                            case ActivityType.Daily: return gameManager.menuTheme.dailyTaskMediumColor;
+                            case ActivityType.Weekly: return gameManager.menuTheme.weeklyTaskMediumColor;
+                            case ActivityType.Bonus: return gameManager.menuTheme.bonusTaskMediumColor;
+                        }
+                        break;
+                    default:
+                        switch(activityInitializer.activity.type) {
+                            case ActivityType.Daily: return gameManager.menuTheme.dailyTaskSmallColor;
+                            case ActivityType.Weekly: return gameManager.menuTheme.weeklyTaskSmallColor;
+                            case ActivityType.Bonus: return gameManager.menuTheme.bonusTaskSmallColor;
+                        }
+                        break;
+                }
             }
+            
         } return Color.yellow;
     }
 

@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
   type: 12
+  activityInitializer: {fileID: 2334115502543558890}
 --- !u!1 &4574679196842494683
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
   type: 14
+  activityInitializer: {fileID: 2334115502543558890}
 --- !u!1 &5136288827996116482
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
   type: 11
+  activityInitializer: {fileID: 2334115502543558890}
 --- !u!1 &7915953787215132717
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
   type: 13
+  activityInitializer: {fileID: 2334115502543558890}
 --- !u!1 &9112307122686609335
 GameObject:
   m_ObjectHideFlags: 0

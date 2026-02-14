@@ -3400,6 +3400,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
   - {fileID: 11400000, guid: 9ed1a68740a5b194ab6b29d690dae8b8, type: 2}
   - {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
+  - {fileID: 11400000, guid: bb6b2e49654f7b743bd1cc929d43d4f7, type: 2}
   fixedActivityTimes:
   - {x: 2, y: 16}
   - {x: 5, y: 16}
@@ -3409,6 +3410,7 @@ MonoBehaviour:
   - {x: 5, y: 12}
   - {x: 3, y: 8}
   - {x: 4, y: 11}
+  - {x: 1, y: 12}
 --- !u!114 &793190663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7241796824190954845, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
