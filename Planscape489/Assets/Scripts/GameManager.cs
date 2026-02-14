@@ -6,10 +6,17 @@ public class GameManager : MonoBehaviour
 
     public GridCell[] cells;
 
+    [SerializeField] private GameObject activityPrefab;
+
+    [SerializeField] private ActivityObject[] fixedActivities;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach(ActivityObject activity in fixedActivities) {
+            CreateNewFixedActivity(activity, 2, 16);
+            CreateNewFixedActivity(activity, 5, 16);
+        }
     }
 
     // Update is called once per frame
@@ -20,6 +27,15 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTheme() {
 
+    }
+
+    private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
+        GameObject fixedActivity = Instantiate(activityPrefab);
+        fixedActivity.GetComponent<ActivityInitializer>().activity = activity;
+        fixedActivity.GetComponent<ActivityInitializer>().Initialize();
+        fixedActivity.GetComponentInChildren<Activity>().isFixed = true;
+        fixedActivity.GetComponentInChildren<Activity>().SetTargetCell(cells[GetGridCellIndex(day, hour)]);
+        fixedActivity.GetComponentInChildren<Activity>().ClaimCells();
     }
 
     public bool GetCellStatus(Activity activity, GridCell startCell) {

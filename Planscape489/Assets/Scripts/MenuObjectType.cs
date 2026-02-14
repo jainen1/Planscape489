@@ -21,7 +21,5 @@ public enum MenuObjectType
     ActivityShadowPanel,
     ActivityText,
 
-    FixedActivity,
-    FixedActivityBorder,
-    FixedActivityText
+    FixedActivityBorder
 }

@@ -3390,6 +3390,9 @@ MonoBehaviour:
   - {fileID: 1350606491}
   - {fileID: 752036097}
   - {fileID: 131423508}
+  activityPrefab: {fileID: 9112307122686609335, guid: 4123c516eb0bd1c4f9bb1dfdc10de35b, type: 3}
+  fixedActivities:
+  - {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
 --- !u!114 &793190663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7241796824190954845, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}

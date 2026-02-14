@@ -10,8 +10,8 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] private GameObject shadowPanel;
 
-    private bool isFixed = false;
-    private bool isHeld = false;
+    public bool isFixed = false;
+    public bool isHeld = false;
 
     [SerializeField] private AudioClip pickUp;
     [SerializeField] private AudioClip fixedPickUp;
@@ -45,6 +45,10 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             AudioSource.PlayClipAtPoint(putDown, transform.position, audioVolume);
         }
     }*/
+
+    public void SetTargetCell(GridCell cell) {
+        closestCell = cell.gameObject;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
@@ -84,7 +88,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             if(closestCell == null) {
                 foreach(GridCell cell in gameManager.cells){
                     if(CellIsAvailable(cell)) {
-                        closestCell = cell.gameObject;
+                        SetTargetCell(cell);
                         break;
                     }
                 }
@@ -95,9 +99,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             } else {
                 isHeld = false;
 
-                if(occupiedCell != null) { gameManager.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
-                occupiedCell = closestCell;
-                gameManager.OccupyCells(this, closestCell.GetComponent<GridCell>());
+                ClaimCells();
                 if(isTouchingTrashCan) {
                     AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
                     Destroy(gameObject.transform.parent.gameObject);
@@ -111,6 +113,12 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     void Start() {
         gameManager = FindFirstObjectByType<GameManager>();
+    }
+
+    public void ClaimCells() {
+        if(occupiedCell != null) { gameManager.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
+        occupiedCell = closestCell;
+        gameManager.OccupyCells(this, closestCell.GetComponent<GridCell>());
     }
 
     // Update is called once per frame
@@ -141,13 +149,5 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         else {
             shadowPanel.GetComponent<ShadowPanel>().targetPosition = new Vector3(closestCell.transform.position.x, closestCell.transform.position.y, closestCell.transform.position.z - 0.5f);
         }
-    }
-
-    public void SetFixed(bool x) {
-        isFixed = x;
-    }
-
-    public void SetHeld(bool x) {
-        isHeld = x;
     }
 }

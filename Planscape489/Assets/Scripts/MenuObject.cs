@@ -52,11 +52,7 @@ public class MenuObject : MonoBehaviour
                 break;
             }
 
-            case MenuObjectType.FixedActivity: color = gameManager.menuTheme.fixedActivityColor; break;
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
-            //case MenuObjectType.FixedActivityText: color = gameManager.menuTheme.fixedActivityTextColor; isText = true; break;
-            case MenuObjectType.FixedActivityText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.fixedActivityColor, 240) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
-
             default: break;
         };
 
@@ -69,6 +65,9 @@ public class MenuObject : MonoBehaviour
 
     private Color GetActivityPanelColor(ActivityInitializer activityInitializer) {
         if(activityInitializer != null) {
+            if(activityInitializer.mainPanel.GetComponent<Activity>().isFixed) {
+                return gameManager.menuTheme.fixedActivityColor;
+            }
             switch(activityInitializer.activity.length) {
                 case int n when n >= 4:
                     switch(activityInitializer.activity.type) {

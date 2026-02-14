@@ -5,12 +5,12 @@ public class ActivityInitializer : MonoBehaviour
 {
     public ActivityObject activity;
 
-    [SerializeField] private GameObject mainPanel;
-    [SerializeField] private GameObject extendedPanel;
-    [SerializeField] private GameObject shadowPanel;
-    [SerializeField] private GameObject extendedShadowPanel;
+    [SerializeField] public GameObject mainPanel;
+    [SerializeField] public GameObject extendedPanel;
+    [SerializeField] public GameObject shadowPanel;
+    [SerializeField] public GameObject extendedShadowPanel;
 
-    [SerializeField] private GameObject textObject;
+    [SerializeField] public GameObject textObject;
 
     public bool isFixed;
 
