@@ -71,7 +71,7 @@ public class MenuObject : MonoBehaviour
 
     private Color GetActivityPanelColor(ActivityInitializer activityInitializer) {
         if(activityInitializer != null) {
-            if(activityInitializer.mainPanel.GetComponent<Activity>().isFixed) {
+            if(activityInitializer.mainPanel.GetComponent<Activity>().GetFixed()) {
                 return gameManager.menuTheme.fixedActivityColor;
             }
             switch(activityInitializer.activity.length) {

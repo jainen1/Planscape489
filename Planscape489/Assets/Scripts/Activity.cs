@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 using UnityEngine.EventSystems;
@@ -9,8 +10,9 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     private GameManager gameManager;
 
     [SerializeField] private GameObject shadowPanel;
+    [SerializeField] private GameObject fixedBorder;
 
-    public bool isFixed = false;
+    private bool isFixed = false;
     public bool isHeld = false;
 
     [SerializeField] private AudioClip pickUp;
@@ -57,7 +59,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             }
 
             if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-                isTouchingTrashCan=true;
+                isTouchingTrashCan = true;
             }
         }
     }
@@ -76,7 +78,16 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         return cell != null && cell.canBeUsed && gameManager.GetCellStatus(this, cell) && (cell.hour + length < 24);
     }
 
-    public void OnMouseDown() {
+    public void SetFixed(bool x) {
+        isFixed = x;
+        fixedBorder.SetActive(x);
+    }
+
+    public bool GetFixed() {
+        return isFixed;
+    }
+
+public void OnMouseDown() {
         if(!isFixed) {
             isHeld = true;
             AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
@@ -88,7 +99,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     public void OnMouseUp() {
         if(!isFixed) {
             if(closestCell == null) {
-                foreach(GridCell cell in gameManager.cells){
+                foreach(GridCell cell in gameManager.cells) {
                     if(CellIsAvailable(cell)) {
                         SetTargetCell(cell);
                         break;
@@ -124,8 +135,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if(isHeld) {
             foreach(GameObject cell in collidingCells) {
                 if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {

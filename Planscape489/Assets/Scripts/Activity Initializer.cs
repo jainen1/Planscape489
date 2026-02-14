@@ -7,6 +7,7 @@ public class ActivityInitializer : MonoBehaviour
 
     [SerializeField] public GameObject mainPanel;
     [SerializeField] public GameObject extendedPanel;
+    [SerializeField] public GameObject fixedBorder;
     [SerializeField] public GameObject shadowPanel;
     [SerializeField] public GameObject extendedShadowPanel;
 
@@ -22,7 +23,8 @@ public class ActivityInitializer : MonoBehaviour
 
     void Update()
     {
-        extendedPanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.2f);
+        extendedPanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.19f);
+        fixedBorder.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.18f);
         extendedShadowPanel.transform.position = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y + yOffset, shadowPanel.transform.position.z + 0.2f);
     }
 
@@ -34,6 +36,7 @@ public class ActivityInitializer : MonoBehaviour
 
         extendedPanel.GetComponent<SpriteRenderer>().size = panelSize;
         extendedShadowPanel.GetComponent<SpriteRenderer>().size = panelSize;
+        fixedBorder.GetComponent<SpriteRenderer>().size = panelSize;
         mainPanel.GetComponent<BoxCollider2D>().size = panelSize;
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         fixedActivity.GetComponent<ActivityInitializer>().activity = activity;
         fixedActivity.GetComponent<ActivityInitializer>().Initialize();
         fixedActivity.GetComponentInChildren<Activity>().SetTargetCell(cells[GetGridCellIndex(day, hour)]);
-        fixedActivity.GetComponentInChildren<Activity>().isFixed = true;
+        fixedActivity.GetComponentInChildren<Activity>().SetFixed(true);
         //fixedActivity.GetComponentInChildren<Activity>().ClaimCells();
     }
 
