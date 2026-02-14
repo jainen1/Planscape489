@@ -1,18 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-
-using UnityEngine.EventSystems;
 
 public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
     private GameManager gameManager;
+    [SerializeField] public ActivityInitializer initializer;
 
-    [SerializeField] private GameObject shadowPanel;
-    [SerializeField] private GameObject fixedBorder;
-
-    private bool isFixed = false;
     public bool isHeld = false;
 
     [SerializeField] private AudioClip pickUp;
@@ -21,9 +14,6 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     [SerializeField] private AudioClip putDown;
     [SerializeField] private AudioClip trashSound;
     [SerializeField] private float audioVolume;
-
-    public float yOffset;
-    public int length = 1;
 
     private List<GameObject> collidingCells = new List<GameObject>();
     private GameObject closestCell = null;
@@ -53,7 +43,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(!isFixed) {
+        if(!initializer.IsFixed()) {
             if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
                 collidingCells.Add(collision.gameObject);
             }
@@ -75,20 +65,11 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private bool CellIsAvailable(GridCell cell) {
-        return cell != null && cell.canBeUsed && gameManager.GetCellStatus(this, cell) && (cell.hour + length < 24);
-    }
-
-    public void SetFixed(bool x) {
-        isFixed = x;
-        fixedBorder.SetActive(x);
-    }
-
-    public bool GetFixed() {
-        return isFixed;
+        return cell != null && cell.canBeUsed && gameManager.GetCellStatus(this, cell) && (cell.hour + initializer.activity.length < 24);
     }
 
 public void OnMouseDown() {
-        if(!isFixed) {
+        if(!initializer.IsFixed()) {
             isHeld = true;
             AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
         } else {
@@ -97,7 +78,7 @@ public void OnMouseDown() {
     }
 
     public void OnMouseUp() {
-        if(!isFixed) {
+        if(!initializer.IsFixed()) {
             if(closestCell == null) {
                 foreach(GridCell cell in gameManager.cells) {
                     if(CellIsAvailable(cell)) {
@@ -129,9 +110,11 @@ public void OnMouseDown() {
     }
 
     public void ClaimCells() {
-        if(occupiedCell != null) { gameManager.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
+        GameManager gameManager2 = FindFirstObjectByType<GameManager>();
+
+        if(occupiedCell != null) { gameManager2.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
         occupiedCell = closestCell;
-        gameManager.OccupyCells(this, closestCell.GetComponent<GridCell>());
+        gameManager2.OccupyCells(this, closestCell.GetComponent<GridCell>());
     }
 
     // Update is called once per frame
@@ -145,21 +128,21 @@ public void OnMouseDown() {
         }
 
         Vector3 targetPosition;
-        if(isHeld && !isFixed) {
+        if(isHeld && !initializer.IsFixed()) {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = -2f;
             gameObject.transform.position = targetPosition;
             //gameObject.transform.position = Vector3.Lerp(transform.position, worldPosition, 8f * Time.deltaTime);
         } else {
-            targetPosition = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y, -2f);
+            targetPosition = new Vector3(initializer.shadowPanel.transform.position.x, initializer.shadowPanel.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
         }
 
         if(closestCell == null) {
-            shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
+            initializer.shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
         }
         else {
-            shadowPanel.GetComponent<ShadowPanel>().targetPosition = new Vector3(closestCell.transform.position.x, closestCell.transform.position.y, closestCell.transform.position.z - 0.5f);
+            initializer.shadowPanel.GetComponent<ShadowPanel>().targetPosition = new Vector3(closestCell.transform.position.x, closestCell.transform.position.y, closestCell.transform.position.z - 0.5f);
         }
     }
 }

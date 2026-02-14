@@ -10,10 +10,9 @@ public class ActivityInitializer : MonoBehaviour
     [SerializeField] public GameObject fixedBorder;
     [SerializeField] public GameObject shadowPanel;
     [SerializeField] public GameObject extendedShadowPanel;
-
     [SerializeField] public GameObject textObject;
 
-    public bool isFixed;
+    [SerializeField] private bool isFixed;
 
     [SerializeField] private float cellWidth;
     [SerializeField] private float cellHeight;
@@ -31,8 +30,6 @@ public class ActivityInitializer : MonoBehaviour
     public void Initialize() {
         Vector2 panelSize = new Vector2(cellWidth, (cellHeight * activity.length) + (cellSpacing * (activity.length - 1)));
         yOffset = (cellHeight / 2f) - (panelSize.y / 2); //(originalSize / 2.0) - (bigSize / 2.0);
-        mainPanel.GetComponent<Activity>().yOffset = yOffset;
-        mainPanel.GetComponent<Activity>().length = activity.length;
 
         extendedPanel.GetComponent<SpriteRenderer>().size = panelSize;
         extendedShadowPanel.GetComponent<SpriteRenderer>().size = panelSize;
@@ -41,5 +38,13 @@ public class ActivityInitializer : MonoBehaviour
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
         textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
+    }
+    public void SetFixed(bool x) {
+        isFixed = x;
+        fixedBorder.SetActive(x);
+    }
+
+    public bool IsFixed() {
+        return isFixed;
     }
 }

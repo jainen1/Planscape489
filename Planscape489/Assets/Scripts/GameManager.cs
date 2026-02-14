@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ActivityObject[] fixedActivities;
     [SerializeField] private Vector2[] fixedActivityTimes;
 
+    public delegate void UpdateTheme();
+    public static event UpdateTheme OnUpdateTheme;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +28,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateTheme() {
-
+    public void InUpdateTheme() {
+        OnUpdateTheme();
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
@@ -34,13 +37,13 @@ public class GameManager : MonoBehaviour
         fixedActivity.GetComponent<ActivityInitializer>().activity = activity;
         fixedActivity.GetComponent<ActivityInitializer>().Initialize();
         fixedActivity.GetComponentInChildren<Activity>().SetTargetCell(cells[GetGridCellIndex(day, hour)]);
-        fixedActivity.GetComponentInChildren<Activity>().SetFixed(true);
-        //fixedActivity.GetComponentInChildren<Activity>().ClaimCells();
+        fixedActivity.GetComponent<ActivityInitializer>().SetFixed(true);
+        fixedActivity.GetComponentInChildren<Activity>().ClaimCells();
     }
 
     public bool GetCellStatus(Activity activity, GridCell startCell) {
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = startCellIndex + activity.length - 1;
+        int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
             if(endCellIndex > cells.Length-1 || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
                 return false;
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public void OccupyCells(Activity activity, GridCell startCell) {
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = startCellIndex + activity.length - 1;
+        int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
             cells[i].occupyingActivity = activity;
         }
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void FreeCells(Activity activity, GridCell startCell) {
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = startCellIndex + activity.length - 1;
+        int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
             cells[i].occupyingActivity = null;
         }

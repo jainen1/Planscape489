@@ -14,15 +14,18 @@ public class ChangeTheme : MonoBehaviour
     {
         gameManager = FindFirstObjectByType<GameManager>();
         gameManager.menuTheme = menuThemes[index];
-        gameManager.UpdateTheme();
+        gameManager.InUpdateTheme();
     }
 
     public void OnMouseDown() {
         AudioSource.PlayClipAtPoint(clickSound, gameObject.transform.position, 1.0f);
+        CycleTheme();
+    }
 
-        if(index == menuThemes.Length-1) { index = 0; }
+    public void CycleTheme() {
+        if(index == menuThemes.Length - 1) { index = 0; }
         else { index++; }
         gameManager.menuTheme = menuThemes[index];
-        gameManager.UpdateTheme();
+        gameManager.InUpdateTheme();
     }
 }

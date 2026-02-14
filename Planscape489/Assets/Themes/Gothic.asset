@@ -23,10 +23,10 @@ MonoBehaviour:
   darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}
   dailyTaskSmallColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   dailyTaskMediumColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
-  dailyTaskLargeColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
-  weeklyTaskSmallColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
+  dailyTaskLargeColor: {r: 1, g: 0.6804322, b: 0.2980392, a: 1}
+  weeklyTaskSmallColor: {r: 0.6981132, g: 0.1251335, b: 0.31612682, a: 1}
   weeklyTaskMediumColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
-  weeklyTaskLargeColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
+  weeklyTaskLargeColor: {r: 0.7311321, g: 0.15519315, b: 0.166303, a: 1}
   bonusTaskSmallColor: {r: 0.40392157, g: 0.27058825, b: 0.60784316, a: 1}
   bonusTaskMediumColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   bonusTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}

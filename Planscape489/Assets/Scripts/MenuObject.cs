@@ -7,9 +7,10 @@ public class MenuObject : MonoBehaviour
 
     private GameManager gameManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Update()
-    {
+    void OnEnable() { GameManager.OnUpdateTheme += UpdateMenuObject; }
+    void OnDisable() { GameManager.OnUpdateTheme -= UpdateMenuObject; }
+
+    private void Awake() {
         UpdateMenuObject();
     }
 
@@ -71,7 +72,7 @@ public class MenuObject : MonoBehaviour
 
     private Color GetActivityPanelColor(ActivityInitializer activityInitializer) {
         if(activityInitializer != null) {
-            if(activityInitializer.mainPanel.GetComponent<Activity>().GetFixed()) {
+            if(activityInitializer.IsFixed()) {
                 return gameManager.menuTheme.fixedActivityColor;
             }
             switch(activityInitializer.activity.length) {
