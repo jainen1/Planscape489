@@ -300,11 +300,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Activity
   shadowPanel: {fileID: 4574679196842494683}
   pickUp: {fileID: 8300000, guid: c4b8754dc47ea724f9bb0386d27dbde6, type: 3}
+  fixedPickUp: {fileID: 8300000, guid: 055ac9c5cf266274681fee8894f1bf7b, type: 3}
+  failedPickUp: {fileID: 8300000, guid: 055ac9c5cf266274681fee8894f1bf7b, type: 3}
   putDown: {fileID: 8300000, guid: bf911544daea5d74cb78c36f0fcbd77b, type: 3}
   trashSound: {fileID: 8300000, guid: 27bcb4838ed18674babbb4567b507200, type: 3}
   audioVolume: 1
   yOffset: -0.25
-  closestCell: {fileID: 0}
+  length: 1
   isTouchingTrashCan: 0
 --- !u!50 &8877096774782777869
 Rigidbody2D:

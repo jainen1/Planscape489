@@ -7,12 +7,18 @@ public class TaskList : MonoBehaviour
 
     [SerializeField] private AudioClip clickSound;
 
+    private GameObject newActivity;
+
     public void OnMouseDown() {
         AudioSource.PlayClipAtPoint(clickSound, gameObject.transform.position, 1.0f);
 
-        GameObject newActivity = Instantiate(activity);
+        newActivity = Instantiate(activity);
         newActivity.GetComponent<ActivityInitializer>().activity = possibleObjects[Random.Range(0, possibleObjects.Length)];
         newActivity.GetComponent<ActivityInitializer>().Initialize();
-        newActivity.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
+    }
+
+    public void OnMouseUp() {
+        newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
     }
 }
