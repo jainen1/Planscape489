@@ -3393,6 +3393,22 @@ MonoBehaviour:
   activityPrefab: {fileID: 9112307122686609335, guid: 4123c516eb0bd1c4f9bb1dfdc10de35b, type: 3}
   fixedActivities:
   - {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
+  - {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
+  - {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
+  - {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
+  - {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
+  - {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
+  - {fileID: 11400000, guid: 9ed1a68740a5b194ab6b29d690dae8b8, type: 2}
+  - {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
+  fixedActivityTimes:
+  - {x: 2, y: 16}
+  - {x: 5, y: 16}
+  - {x: 3, y: 18}
+  - {x: 4, y: 18}
+  - {x: 3, y: 12}
+  - {x: 5, y: 12}
+  - {x: 3, y: 8}
+  - {x: 4, y: 11}
 --- !u!114 &793190663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7241796824190954845, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -7815,9 +7831,6 @@ MonoBehaviour:
   activity: {fileID: 9112307122686609335, guid: 4123c516eb0bd1c4f9bb1dfdc10de35b, type: 3}
   possibleObjects:
   - {fileID: 11400000, guid: 2c277ad369505a74c847bbd4a4cf3e1e, type: 2}
-  - {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-  - {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
-  - {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
   clickSound: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
 --- !u!61 &1887960889
 BoxCollider2D:

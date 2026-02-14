@@ -10,17 +10,21 @@ public class MenuObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Update()
     {
+        UpdateMenuObject();
+    }
+
+    public void UpdateMenuObject() {
         gameManager = FindFirstObjectByType<GameManager>();
 
         Color color = Color.red;
         bool isText = false;
-            
-        switch(type) { 
+
+        switch(type) {
             case MenuObjectType.Background: color = gameManager.menuTheme.backgroundColor; break;
 
             case MenuObjectType.GridCell: color = gameManager.menuTheme.gridCellColor; break;
             //case MenuObjectType.GridHeaderText: color = gameManager.menuTheme.gridHeaderTextColor; isText = true; break;
-            case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128)? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
+            case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;
             //case MenuObjectType.DailyTaskText: color = gameManager.menuTheme.dailyTaskTextColor; isText = true; break;
@@ -47,18 +51,20 @@ public class MenuObject : MonoBehaviour
 
             case MenuObjectType.ActivityText: {
                 bool brightOrDark = GetBrightOrDarkTextColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()), 230);
-                color = brightOrDark? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
+                color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
                 isText = true;
                 break;
             }
 
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
             default: break;
-        };
+        }
+        ;
 
         if(isText) {
             gameObject.GetComponent<TextMeshProUGUI>().color = color;
-        } else {
+        }
+        else {
             gameObject.GetComponent<SpriteRenderer>().color = color;
         }
     }

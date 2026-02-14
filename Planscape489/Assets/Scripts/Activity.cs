@@ -51,12 +51,14 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
-            collidingCells.Add(collision.gameObject);
-        }
+        if(!isFixed) {
+            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
+                collidingCells.Add(collision.gameObject);
+            }
 
-        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-            isTouchingTrashCan=true;
+            if(collision.gameObject.GetComponent<TaskDelete>() != null) {
+                isTouchingTrashCan=true;
+            }
         }
     }
 

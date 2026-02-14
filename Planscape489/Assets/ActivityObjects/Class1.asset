@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Class1
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
   title: CTIN-489
-  length: 2
+  length: 3
   type: 1

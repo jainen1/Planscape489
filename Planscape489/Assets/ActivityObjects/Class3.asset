@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
-  m_Name: Class2
+  m_Name: Class3
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: ECON-205
+  title: PHED-105
   length: 2
   type: 1
