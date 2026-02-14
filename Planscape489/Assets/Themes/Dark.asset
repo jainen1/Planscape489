@@ -16,19 +16,19 @@ MonoBehaviour:
   gridCellColor: {r: 0.08414637, g: 0.05807226, b: 0.14150941, a: 1}
   dailyTaskListColor: {r: 0.21875605, g: 0.15859735, b: 0.33962262, a: 1}
   weeklyTaskListColor: {r: 0.3461097, g: 0.24991101, b: 0.4528302, a: 1}
-  bonusTaskListColor: {r: 0, g: 0, b: 0, a: 1}
+  bonusTaskListColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
   happinessColor: {r: 0, g: 0, b: 0, a: 1}
   moneyColor: {r: 0, g: 0, b: 0, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
-  dailyTaskSmallColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  dailyTaskMediumColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  dailyTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  weeklyTaskSmallColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  weeklyTaskMediumColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  weeklyTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  bonusTaskSmallColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  bonusTaskMediumColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  bonusTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  fixedActivityColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
-  fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
+  dailyTaskSmallColor: {r: 0.21960784, g: 0.15686275, b: 0.34117648, a: 1}
+  dailyTaskMediumColor: {r: 0.21960784, g: 0.15686275, b: 0.34117648, a: 1}
+  dailyTaskLargeColor: {r: 0.21960784, g: 0.15686275, b: 0.34117648, a: 1}
+  weeklyTaskSmallColor: {r: 0.34509805, g: 0.2509804, b: 0.4509804, a: 1}
+  weeklyTaskMediumColor: {r: 0.34509805, g: 0.2509804, b: 0.4509804, a: 1}
+  weeklyTaskLargeColor: {r: 0.34509805, g: 0.2509804, b: 0.4509804, a: 1}
+  bonusTaskSmallColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
+  bonusTaskMediumColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
+  bonusTaskLargeColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
+  fixedActivityColor: {r: 0.29500705, g: 0.24363653, b: 0.3537736, a: 1}
+  fixedActivityBorderColor: {r: 0.21072897, g: 0.16981132, b: 0.25, a: 1}
