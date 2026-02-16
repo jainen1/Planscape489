@@ -58,6 +58,7 @@ public class MenuObject : MonoBehaviour
             }
 
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
+            case MenuObjectType.TimeHand: color = gameManager.menuTheme.timeHandColor; break;
             default: break;
         }
         ;

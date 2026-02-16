@@ -32,4 +32,6 @@ public class MenuTheme : ScriptableObject
 
     public Color fixedActivityColor;
     public Color fixedActivityBorderColor;
+
+    public Color timeHandColor;
 }
