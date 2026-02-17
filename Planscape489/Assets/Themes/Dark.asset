@@ -32,3 +32,4 @@ MonoBehaviour:
   bonusTaskLargeColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
   fixedActivityColor: {r: 0.29500705, g: 0.24363653, b: 0.3537736, a: 1}
   fixedActivityBorderColor: {r: 0.21072897, g: 0.16981132, b: 0.25, a: 1}
+  timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
