@@ -22,13 +22,13 @@ MonoBehaviour:
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
   dailyTaskSmallColor: {r: 0.79607844, g: 0.9098039, b: 0.23921569, a: 1}
-  dailyTaskMediumColor: {r: 0.79607844, g: 0.9098039, b: 0.23921569, a: 1}
-  dailyTaskLargeColor: {r: 0.79607844, g: 0.9098039, b: 0.23921569, a: 1}
+  dailyTaskMediumColor: {r: 0.54369885, g: 0.7735849, b: 0.31381276, a: 1}
+  dailyTaskLargeColor: {r: 0.3019608, g: 0.7176471, b: 0.2784314, a: 1}
   weeklyTaskSmallColor: {r: 0.38039216, g: 0.7019608, b: 0.47058824, a: 1}
-  weeklyTaskMediumColor: {r: 0.38039216, g: 0.7019608, b: 0.47058824, a: 1}
-  weeklyTaskLargeColor: {r: 0.38039216, g: 0.7019608, b: 0.47058824, a: 1}
+  weeklyTaskMediumColor: {r: 0.3058473, g: 0.745283, b: 0.42770758, a: 1}
+  weeklyTaskLargeColor: {r: 0.097187616, g: 0.735849, b: 0.3549591, a: 1}
   bonusTaskSmallColor: {r: 0.76862746, g: 0.6627451, b: 0.94509804, a: 1}
-  bonusTaskMediumColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
+  bonusTaskMediumColor: {r: 0.9764151, g: 0.6401967, b: 0.95583034, a: 1}
   bonusTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   fixedActivityColor: {r: 0.47939658, g: 0.6273585, b: 0.5083978, a: 1}
   fixedActivityBorderColor: {r: 0.26982465, g: 0.3160377, b: 0.28937417, a: 1}

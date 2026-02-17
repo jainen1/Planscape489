@@ -24,19 +24,15 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.Background: color = gameManager.menuTheme.backgroundColor; break;
 
             case MenuObjectType.GridCell: color = gameManager.menuTheme.gridCellColor; break;
-            //case MenuObjectType.GridHeaderText: color = gameManager.menuTheme.gridHeaderTextColor; isText = true; break;
             case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;
-            //case MenuObjectType.DailyTaskText: color = gameManager.menuTheme.dailyTaskTextColor; isText = true; break;
             case MenuObjectType.DailyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.dailyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.WeeklyTaskList: color = gameManager.menuTheme.weeklyTaskListColor; break;
-            //case MenuObjectType.WeeklyTaskText: color = gameManager.menuTheme.weeklyTaskTextColor; isText = true; break;
             case MenuObjectType.WeeklyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.weeklyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.BonusTaskList: color = gameManager.menuTheme.bonusTaskListColor; break;
-            //case MenuObjectType.BonusTaskText: color = gameManager.menuTheme.bonusTaskTextColor; isText = true; break;
             case MenuObjectType.BonusTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.bonusTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;

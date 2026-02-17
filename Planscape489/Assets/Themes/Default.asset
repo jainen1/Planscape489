@@ -27,9 +27,9 @@ MonoBehaviour:
   weeklyTaskSmallColor: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
   weeklyTaskMediumColor: {r: 0.3563546, g: 0.77615494, b: 0.8301887, a: 1}
   weeklyTaskLargeColor: {r: 0.4009434, g: 0.57849413, b: 1, a: 1}
-  bonusTaskSmallColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  bonusTaskMediumColor: {r: 0.8738559, g: 0.51998043, b: 0.9669811, a: 1}
-  bonusTaskLargeColor: {r: 0.9529412, g: 0.627451, b: 0.89411765, a: 1}
+  bonusTaskSmallColor: {r: 0.8862745, g: 0.6627451, b: 0.94509804, a: 1}
+  bonusTaskMediumColor: {r: 0.9529412, g: 0.627451, b: 0.89411765, a: 1}
+  bonusTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   fixedActivityColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
   timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
