@@ -47,7 +47,7 @@ public class MenuObject : MonoBehaviour
             }
 
             case MenuObjectType.ActivityText: {
-                bool brightOrDark = GetBrightOrDarkTextColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()), 230);
+                bool brightOrDark = GetBrightOrDarkTextColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()), 223);
                 color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
                 isText = true;
                 break;
@@ -55,6 +55,9 @@ public class MenuObject : MonoBehaviour
 
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.TimeHand: color = gameManager.menuTheme.timeHandColor; break;
+
+            case MenuObjectType.ActivityResource: color = GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()) * 1.2f; break;
+            case MenuObjectType.ActivityResourceText: color = GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()) * 1.2f; isText = true; break;
             default: break;
         }
         ;

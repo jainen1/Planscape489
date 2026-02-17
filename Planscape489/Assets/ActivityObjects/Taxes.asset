@@ -15,3 +15,5 @@ MonoBehaviour:
   title: Taxes
   length: 2
   type: 1
+  happiness: 0
+  money: -1000

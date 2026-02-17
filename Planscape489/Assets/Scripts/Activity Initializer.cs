@@ -10,7 +10,9 @@ public class ActivityInitializer : MonoBehaviour
     [SerializeField] public GameObject fixedBorder;
     [SerializeField] public GameObject shadowPanel;
     [SerializeField] public GameObject extendedShadowPanel;
-    [SerializeField] public GameObject textObject;
+    [SerializeField] public GameObject title;
+    [SerializeField] public GameObject happinessText;
+    [SerializeField] public GameObject moneyText;
 
     [SerializeField] private bool isFixed;
 
@@ -37,12 +39,16 @@ public class ActivityInitializer : MonoBehaviour
         mainPanel.GetComponent<BoxCollider2D>().size = panelSize;
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
-        textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
+        title.GetComponent<TextMeshProUGUI>().text = activity.title;
+        happinessText.GetComponent<TextMeshProUGUI>().text = (activity.happiness >= 0? "H+" : "H-") + Mathf.Abs(activity.happiness);
+        moneyText.GetComponent<TextMeshProUGUI>().text = (activity.money >= 0? "S+" : "S-") + Mathf.Abs(activity.money);
 
         extendedPanel.GetComponent<MenuObject>().UpdateMenuObject();
-        fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
         extendedShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
-        textObject.GetComponent<MenuObject>().UpdateMenuObject();
+        fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
+        title.GetComponent<MenuObject>().UpdateMenuObject();
+        happinessText.GetComponent<MenuObject>().UpdateMenuObject();
+        moneyText.GetComponent<MenuObject>().UpdateMenuObject();
     }
     public void SetFixed(bool x) {
         isFixed = x;
@@ -50,6 +56,9 @@ public class ActivityInitializer : MonoBehaviour
         extendedPanel.GetComponent<MenuObject>().UpdateMenuObject();
         extendedShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
         fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
+        title.GetComponent<MenuObject>().UpdateMenuObject();
+        happinessText.GetComponent<MenuObject>().UpdateMenuObject();
+        moneyText.GetComponent<MenuObject>().UpdateMenuObject();
     }
 
     public bool IsFixed() {

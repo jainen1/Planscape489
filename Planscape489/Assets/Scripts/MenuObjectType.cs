@@ -22,5 +22,8 @@ public enum MenuObjectType
     ActivityText,
 
     FixedActivityBorder,
-    TimeHand
+    TimeHand,
+
+    ActivityResource,
+    ActivityResourceText
 }
