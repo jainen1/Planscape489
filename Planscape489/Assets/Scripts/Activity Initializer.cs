@@ -38,10 +38,18 @@ public class ActivityInitializer : MonoBehaviour
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
         textObject.GetComponent<TextMeshProUGUI>().text = activity.title;
+
+        extendedPanel.GetComponent<MenuObject>().UpdateMenuObject();
+        fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
+        extendedShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
+        textObject.GetComponent<MenuObject>().UpdateMenuObject();
     }
     public void SetFixed(bool x) {
         isFixed = x;
         fixedBorder.SetActive(x);
+        extendedPanel.GetComponent<MenuObject>().UpdateMenuObject();
+        extendedShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
+        fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
     }
 
     public bool IsFixed() {
