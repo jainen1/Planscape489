@@ -56,11 +56,14 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.TimeHand: color = gameManager.menuTheme.timeHandColor; break;
 
-            case MenuObjectType.ActivityResource: color = GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>()) * 1.5f; break;
-            case MenuObjectType.ActivityResourceText: color = GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>()) * 1.5f; isText = true; break;
+            case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>())); break;
+            case MenuObjectType.ActivityResourceText: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>())); isText = true; break;
+
+            case MenuObjectType.HappinessText: color = gameManager.menuTheme.happinessColor; isText = true; break;
+            case MenuObjectType.MoneyText: color = gameManager.menuTheme.moneyColor; isText = true; break;
+
             default: break;
-        }
-        ;
+        };
 
         if(isText) {
             gameObject.GetComponent<TextMeshProUGUI>().color = color;
@@ -68,6 +71,16 @@ public class MenuObject : MonoBehaviour
         else {
             gameObject.GetComponent<SpriteRenderer>().color = color;
         }
+    }
+
+    private Color ActivityResourceColor(Color color) {
+        float change = GetBrightOrDarkTextColor(color, 200)? 0.4f : -0.4f;
+        float H;
+        float S;
+        float V;
+        Color.RGBToHSV(color, out H, out S, out V);
+
+        return Color.HSVToRGB(H, S, V + change);
     }
 
     private Color GetActivityPanelColor(ActivityInitializer activityInitializer) {

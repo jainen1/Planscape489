@@ -25,5 +25,8 @@ public enum MenuObjectType
     TimeHand,
 
     ActivityResource,
-    ActivityResourceText
+    ActivityResourceText,
+
+    HappinessText,
+    MoneyText
 }
