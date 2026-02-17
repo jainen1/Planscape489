@@ -14,9 +14,15 @@ public class GameManager : MonoBehaviour
     public delegate void UpdateTheme();
     public static event UpdateTheme OnUpdateTheme;
 
+    private int happiness;
+    private int money;
+
     // Start is called before the first frame update
     void Start()
     {
+        SetHappiness(70);
+        SetMoney(2000);
+
         for(int i = 0; i < fixedActivities.Length; i++) {
             CreateNewFixedActivity(fixedActivities[i], (int)fixedActivityTimes[i].x, (int)fixedActivityTimes[i].y);
         }
@@ -77,4 +83,10 @@ public class GameManager : MonoBehaviour
     public GridCell GridCellFromIndex(int day, int hour) {
         return cells[GetGridCellIndex(day, hour)];
     }
+
+    public void SetHappiness(int value) { happiness = value; }
+    public int GetHappiness() { return happiness; }
+
+    public void SetMoney(int value) { money = value; }
+    public int GetMoney() { return money; }
 }

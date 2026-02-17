@@ -17,8 +17,8 @@ MonoBehaviour:
   dailyTaskListColor: {r: 1, g: 0.84939355, b: 0.2971698, a: 1}
   weeklyTaskListColor: {r: 0.735849, g: 0.22908509, b: 0.25483176, a: 1}
   bonusTaskListColor: {r: 0.40197346, g: 0.26980242, b: 0.6084906, a: 1}
-  happinessColor: {r: 1, g: 0.8618995, b: 0.31132078, a: 1}
-  moneyColor: {r: 0.53152835, g: 0.9150943, b: 0.46618012, a: 1}
+  happinessColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
+  moneyColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   brightTextColor: {r: 1, g: 0.98937017, b: 0.8490566, a: 1}
   darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}
   dailyTaskSmallColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
