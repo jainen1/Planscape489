@@ -16,5 +16,5 @@ MonoBehaviour:
   length: 1
   fullStomachLength: 5
   type: 0
-  happiness: 0
-  money: 0
+  happiness: 10
+  money: -15

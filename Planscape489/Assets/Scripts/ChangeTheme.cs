@@ -18,8 +18,10 @@ public class ChangeTheme : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        AudioSource.PlayClipAtPoint(clickSound, gameObject.transform.position, 1.0f);
-        CycleTheme();
+        if(!gameManager.paused) {
+            AudioSource.PlayClipAtPoint(clickSound, gameObject.transform.position, 1.0f);
+            CycleTheme();
+        }
     }
 
     public void CycleTheme() {

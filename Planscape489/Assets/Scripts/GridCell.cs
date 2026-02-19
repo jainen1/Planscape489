@@ -8,13 +8,13 @@ public class GridCell : MonoBehaviour
     public int hour;
 
     public Activity occupyingActivity;
-    public bool occupiedByFood = false;
+    public Activity occupyingFoodActivity;
     public bool isFixed;
 
     void Awake()
     {
         occupyingActivity = null;
-        occupiedByFood = false;
+        occupyingFoodActivity = null;
 
         if(canBeUsed) {
             hour = int.Parse(gameObject.name.Substring(gameObject.name.Length - 2));

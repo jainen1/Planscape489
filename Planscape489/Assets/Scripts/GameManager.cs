@@ -15,29 +15,48 @@ public class GameManager : MonoBehaviour
     public static event UpdateTheme OnUpdateTheme;
     public static event UpdateTheme OnLateUpdateTheme;
 
+    public bool paused;
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
+
     private int happiness;
     private int money;
+
+    [SerializeField] private int startingHappiness = 70;
+    [SerializeField] private int startingMoney = 2000;
+
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioClip loseSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetHappiness(70);
-        SetMoney(2000);
+        SetHappiness(startingHappiness);
+        SetMoney(startingMoney);
 
         for(int i = 0; i < fixedActivities.Length; i++) {
             CreateNewFixedActivity(fixedActivities[i], (int)fixedActivityTimes[i].x, (int)fixedActivityTimes[i].y);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
     }
 
     public void InUpdateTheme() {
         OnUpdateTheme();
         OnLateUpdateTheme();
+    }
+
+    public void WinScene() {
+        AudioSource.PlayClipAtPoint(winSound, Vector3.zero, 1.0f);
+        paused = true;
+        winScreen.SetActive(true);
+    }
+
+    public void LoseScene() {
+        AudioSource.PlayClipAtPoint(loseSound, Vector3.zero, 1.0f);
+        paused = true;
+        loseScreen.SetActive(true);
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
@@ -63,7 +82,7 @@ public class GameManager : MonoBehaviour
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
         int endCellIndex = Mathf.Min(startCellIndex + activity.initializer.activity.fullStomachLength - 1, GetGridCellIndex(startCell.day, 22));
         for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(cells[i].occupiedByFood || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
+            if(endCellIndex > cells.Length - 1 || (cells[i].occupyingFoodActivity != null && cells[i].occupyingFoodActivity != activity)) {
                 return false;
             }
         }
@@ -80,7 +99,7 @@ public class GameManager : MonoBehaviour
             // if startCell.hour + activity.initializer.activity.fullStomachLength > 23, food panel will hang
             int foodEndCellIndex = Mathf.Min(startCellIndex + activity.initializer.activity.fullStomachLength - 1, GetGridCellIndex(startCell.day, 22));
             for(int i = startCellIndex; i <= foodEndCellIndex; i++) {
-                cells[i].occupiedByFood = free ? false : true;
+                cells[i].occupyingFoodActivity = free ? null : activity;
             }
         }
     }
@@ -101,4 +120,6 @@ public class GameManager : MonoBehaviour
 
     public void SetMoney(int value) { money = value; }
     public int GetMoney() { return money; }
+
+
 }

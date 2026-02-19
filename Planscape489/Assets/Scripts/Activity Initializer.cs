@@ -52,8 +52,8 @@ public class ActivityInitializer : MonoBehaviour
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
         title.GetComponent<TextMeshProUGUI>().text = activity.title;
-        happinessText.GetComponent<TextMeshProUGUI>().text = (activity.happiness >= 0? "H+" : "H-") + Mathf.Abs(activity.happiness);
-        moneyText.GetComponent<TextMeshProUGUI>().text = (activity.money >= 0? "S+" : "S-") + Mathf.Abs(activity.money);
+        happinessText.GetComponent<TextMeshProUGUI>().text = (activity.happiness >= 0? "H+" : "H-") + Mathf.Abs(activity.happiness * activity.length);
+        moneyText.GetComponent<TextMeshProUGUI>().text = (activity.money >= 0? "$+" : "$-") + Mathf.Abs(activity.money * activity.length);
 
         extendedPanel.GetComponent<MenuObject>().UpdateMenuObject();
         fullStomachPanel.GetComponent<MenuObject>().UpdateMenuObject();

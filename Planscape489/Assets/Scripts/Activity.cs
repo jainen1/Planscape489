@@ -65,43 +65,59 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private bool CellIsAvailable(GridCell cell) {
+
+        //Debug
+        /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
+        if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
+        if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
+        if(!gameManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
+        if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
+        if(!(initializer.activity.fullStomachLength > 0 ? gameManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
+        return true;*/
+
         return cell != null && cell.canBeUsed && !cell.isFixed && gameManager.GetCellStatus(this, cell)
             && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? gameManager.GetCellFoodStatus(this, cell) : true);
     }
 
 public void OnMouseDown() {
-        if(!initializer.IsFixed()) {
-            isHeld = true;
-            AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
-        } else {
-            AudioSource.PlayClipAtPoint(fixedPickUp, gameObject.transform.position, audioVolume);
+        if(!FindFirstObjectByType<GameManager>().paused) {
+            if(!initializer.IsFixed()) {
+                isHeld = true;
+                AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
+            }
+            else {
+                AudioSource.PlayClipAtPoint(fixedPickUp, gameObject.transform.position, audioVolume);
+            }
         }
     }
 
     public void OnMouseUp() {
-        if(!initializer.IsFixed()) {
-            if(closestCell == null) {
-                foreach(GridCell cell in gameManager.cells) {
-                    if(CellIsAvailable(cell)) {
-                        SetTargetCell(cell);
-                        break;
+        if(!FindFirstObjectByType<GameManager>().paused) {
+            if(!initializer.IsFixed()) {
+                if(closestCell == null) {
+                    foreach(GridCell cell in gameManager.cells) {
+                        if(CellIsAvailable(cell)) {
+                            SetTargetCell(cell);
+                            break;
+                        }
                     }
                 }
-            }
-            if(closestCell == null) {
-                AudioSource.PlayClipAtPoint(failedPickUp, gameObject.transform.position, audioVolume);
-                Destroy(gameObject.transform.parent.gameObject);
-            } else {
-                isHeld = false;
-
-                ClaimCells();
-                if(isTouchingTrashCan) {
-                    AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
-                    gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
+                if(closestCell == null) {
+                    AudioSource.PlayClipAtPoint(failedPickUp, gameObject.transform.position, audioVolume);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
-                    AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
+                    isHeld = false;
+
+                    ClaimCells();
+                    if(isTouchingTrashCan) {
+                        AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
+                        gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
+                        Destroy(gameObject.transform.parent.gameObject);
+                    }
+                    else {
+                        AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
+                    }
                 }
             }
         }
