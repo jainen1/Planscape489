@@ -56,7 +56,7 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
-
+                Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
                 timer = dailyPreparationTime;
