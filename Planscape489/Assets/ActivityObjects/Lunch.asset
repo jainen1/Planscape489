@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
   title: Lunch
   length: 1
+  fullStomachLength: 5
   type: 0
+  happiness: 0
+  money: 0

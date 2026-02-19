@@ -65,7 +65,8 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private bool CellIsAvailable(GridCell cell) {
-        return cell != null && cell.canBeUsed && gameManager.GetCellStatus(this, cell) && (cell.hour + initializer.activity.length < 24);
+        return cell != null && cell.canBeUsed && !cell.isFixed && gameManager.GetCellStatus(this, cell)
+            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? gameManager.GetCellFoodStatus(this, cell) : true);
     }
 
 public void OnMouseDown() {
@@ -96,6 +97,7 @@ public void OnMouseDown() {
                 ClaimCells();
                 if(isTouchingTrashCan) {
                     AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
+                    gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
@@ -112,9 +114,9 @@ public void OnMouseDown() {
     public void ClaimCells() {
         GameManager gameManager2 = FindFirstObjectByType<GameManager>();
 
-        if(occupiedCell != null) { gameManager2.FreeCells(this, occupiedCell.GetComponent<GridCell>()); }
+        if(occupiedCell != null) { gameManager2.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
         occupiedCell = closestCell;
-        gameManager2.OccupyCells(this, closestCell.GetComponent<GridCell>());
+        gameManager2.FreeOrOccupyCells(this, closestCell.GetComponent<GridCell>(), false);
     }
 
     // Update is called once per frame

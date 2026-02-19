@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
   title: CTIN-489
   length: 3
+  fullStomachLength: 5
   type: 1
+  happiness: 0
+  money: 0

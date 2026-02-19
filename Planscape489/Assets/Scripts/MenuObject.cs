@@ -23,17 +23,17 @@ public class MenuObject : MonoBehaviour
         switch(type) {
             case MenuObjectType.Background: color = gameManager.menuTheme.backgroundColor; break;
 
-            case MenuObjectType.GridCell: color = gameManager.menuTheme.gridCellColor; break;
-            case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
+            case MenuObjectType.GridCell: color = gameObject.GetComponent<GridCell>().isFixed? gameManager.menuTheme.fixedGridCellColor : gameManager.menuTheme.gridCellColor; break;
+            //case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;
-            case MenuObjectType.DailyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.dailyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
+            //case MenuObjectType.DailyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.dailyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.WeeklyTaskList: color = gameManager.menuTheme.weeklyTaskListColor; break;
-            case MenuObjectType.WeeklyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.weeklyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
+            //case MenuObjectType.WeeklyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.weeklyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.BonusTaskList: color = gameManager.menuTheme.bonusTaskListColor; break;
-            case MenuObjectType.BonusTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.bonusTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
+            //case MenuObjectType.BonusTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.bonusTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
             case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
@@ -46,12 +46,13 @@ public class MenuObject : MonoBehaviour
                 break;
             }
 
-            case MenuObjectType.ActivityText: {
+            /*case MenuObjectType.ActivityText: {
                 bool brightOrDark = GetBrightOrDarkTextColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()), 223);
                 color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
                 isText = true;
                 break;
-            }
+            }*/
+
 
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.TimeHand: color = gameManager.menuTheme.timeHandColor; break;
@@ -74,7 +75,7 @@ public class MenuObject : MonoBehaviour
     }
 
     private Color ActivityResourceColor(Color color) {
-        float change = GetBrightOrDarkTextColor(color, 200)? 0.4f : -0.4f;
+        float change = GetBrightOrDarkColor(color, 200)? 0.4f : -0.4f;
         float H;
         float S;
         float V;
@@ -117,7 +118,7 @@ public class MenuObject : MonoBehaviour
         } return Color.yellow;
     }
 
-    private bool GetBrightOrDarkTextColor(Color backgroundColor, int threshold) {
+    public static bool GetBrightOrDarkColor(Color backgroundColor, int threshold) {
         float backgroundColorBrightness = (0.2126f * (backgroundColor.r * 255)) + (0.7152f * (backgroundColor.g * 255)) + (0.0722f * (backgroundColor.b * 255));
         //Debug.Log(gameObject.name + "'s brightness is " + backgroundColorBrightness + ", compared to the threshold of " + threshold);
         return backgroundColorBrightness <= threshold; // 'true' means light, 'false' means dark

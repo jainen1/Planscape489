@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public delegate void UpdateTheme();
     public static event UpdateTheme OnUpdateTheme;
+    public static event UpdateTheme OnLateUpdateTheme;
 
     private int happiness;
     private int money;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void InUpdateTheme() {
         OnUpdateTheme();
+        OnLateUpdateTheme();
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
@@ -51,25 +53,35 @@ public class GameManager : MonoBehaviour
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
         int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(endCellIndex > cells.Length-1 || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
+            if(endCellIndex > cells.Length - 1 || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
                 return false;
             }
         } return true;
     }
 
-    public void OccupyCells(Activity activity, GridCell startCell) {
+    public bool GetCellFoodStatus(Activity activity, GridCell startCell) {
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
+        int endCellIndex = Mathf.Min(startCellIndex + activity.initializer.activity.fullStomachLength - 1, GetGridCellIndex(startCell.day, 22));
         for(int i = startCellIndex; i <= endCellIndex; i++) {
-            cells[i].occupyingActivity = activity;
+            if(cells[i].occupiedByFood || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
+                return false;
+            }
         }
+        return true;
     }
 
-    public void FreeCells(Activity activity, GridCell startCell) {
+    public void FreeOrOccupyCells(Activity activity, GridCell startCell, bool free) {
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
         int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
-            cells[i].occupyingActivity = null;
+            cells[i].occupyingActivity = free? null : activity;
+        }
+        if(activity.initializer.activity.fullStomachLength > 0) {
+            // if startCell.hour + activity.initializer.activity.fullStomachLength > 23, food panel will hang
+            int foodEndCellIndex = Mathf.Min(startCellIndex + activity.initializer.activity.fullStomachLength - 1, GetGridCellIndex(startCell.day, 22));
+            for(int i = startCellIndex; i <= foodEndCellIndex; i++) {
+                cells[i].occupiedByFood = free ? false : true;
+            }
         }
     }
 

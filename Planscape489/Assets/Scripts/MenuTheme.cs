@@ -7,6 +7,7 @@ public class MenuTheme : ScriptableObject
     public Color backgroundColor;
 
     public Color gridCellColor;
+    public Color fixedGridCellColor;
 
     public Color dailyTaskListColor;
     public Color weeklyTaskListColor;

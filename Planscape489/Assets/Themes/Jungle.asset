@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
   backgroundColor: {r: 0.94932765, g: 1, b: 0.9411765, a: 1}
   gridCellColor: {r: 0.8856598, g: 1, b: 0.8784314, a: 1}
+  fixedGridCellColor: {r: 0.87110555, g: 0.9198113, b: 0.86774653, a: 1}
   dailyTaskListColor: {r: 0.79607844, g: 0.9098039, b: 0.23921569, a: 1}
   weeklyTaskListColor: {r: 0.38039216, g: 0.7019608, b: 0.46908164, a: 1}
   bonusTaskListColor: {r: 0.76836234, g: 0.6627451, b: 0.94509804, a: 1}
@@ -32,4 +33,4 @@ MonoBehaviour:
   bonusTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   fixedActivityColor: {r: 0.47939658, g: 0.6273585, b: 0.5083978, a: 1}
   fixedActivityBorderColor: {r: 0.26982465, g: 0.3160377, b: 0.28937417, a: 1}
-  timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
+  timeHandColor: {r: 0.65882355, g: 0.4745319, b: 0, a: 1}

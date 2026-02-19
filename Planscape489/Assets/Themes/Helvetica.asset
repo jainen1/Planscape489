@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
-  m_Name: Default
+  m_Name: Helvetica
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
-  backgroundColor: {r: 1, g: 0.9843137, b: 0.9411765, a: 1}
-  gridCellColor: {r: 1, g: 0.94509804, b: 0.8784314, a: 1}
-  fixedGridCellColor: {r: 0.8915094, g: 0.866278, b: 0.84104663, a: 1}
+  backgroundColor: {r: 1, g: 0.8396226, b: 0.93609834, a: 1}
+  gridCellColor: {r: 0.9386792, g: 0.58003294, b: 0.7987198, a: 1}
+  fixedGridCellColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   dailyTaskListColor: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
   weeklyTaskListColor: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
   bonusTaskListColor: {r: 0.8862745, g: 0.6627451, b: 0.94509804, a: 1}
