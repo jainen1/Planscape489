@@ -1685,6 +1685,7 @@ GameObject:
   - component: {fileID: 485124948}
   - component: {fileID: 485124946}
   - component: {fileID: 485124951}
+  - component: {fileID: 485124952}
   m_Layer: 0
   m_Name: Delete
   m_TagString: Untagged
@@ -1730,7 +1731,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.93}
+    oldSize: {x: 3.9, y: 5}
     newSize: {x: 2, y: 1.9}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
@@ -1750,7 +1751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 11
+  type: 15
 --- !u!212 &485124949
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1798,7 +1799,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -855298285791758126, guid: 9ca9e7014024c419fb983820e43d0beb, type: 3}
+  m_Sprite: {fileID: -3848258366270558332, guid: 5a75f0f4d44254bb594227000b2bace6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1837,6 +1838,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617630b2380ec7243bd30e00b0704ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskDelete
+--- !u!114 &485124952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485124945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuObject
+  type: 0
 --- !u!114 &493399859 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3618742385390287311, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
