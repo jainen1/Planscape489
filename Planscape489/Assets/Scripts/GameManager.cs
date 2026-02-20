@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static event UpdateTheme OnLateUpdateTheme;
 
     public bool paused;
+    [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
 
@@ -45,6 +46,16 @@ public class GameManager : MonoBehaviour
     public void InUpdateTheme() {
         OnUpdateTheme();
         OnLateUpdateTheme();
+    }
+
+    public void PauseScene() {
+        paused = true;
+        pauseScreen.SetActive(true);
+    }
+
+    public void UnPauseScene() {
+        paused = false;
+        pauseScreen.SetActive(false);
     }
 
     public void WinScene() {
