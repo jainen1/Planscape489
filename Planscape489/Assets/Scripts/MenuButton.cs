@@ -33,6 +33,8 @@ public class MenuButton : MonoBehaviour
 
     public void Exit() {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        /*if(Application.isEditor) {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }*/
     }
 }
