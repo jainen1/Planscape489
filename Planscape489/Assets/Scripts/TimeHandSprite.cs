@@ -66,7 +66,7 @@ public class TimeHandSprite : MonoBehaviour
 
             if(cell.occupyingActivity != null) {
                 cell.occupyingActivity.initializer.SetFixed(true);
-                gameManager.SetHappiness(Mathf.Min(gameManager.GetHappiness() + cell.occupyingActivity.initializer.activity.happiness, 100));
+                gameManager.SetHappiness(Mathf.Min(gameManager.GetHappiness() + cell.occupyingActivity.initializer.activity.happiness, 200));
                 gameManager.SetMoney(gameManager.GetMoney() + cell.occupyingActivity.initializer.activity.money);
 
                 if(gameManager.GetHappiness() < 0 || gameManager.GetMoney() < 0) {

@@ -13,7 +13,12 @@ public class MenuTheme : ScriptableObject
     public Color weeklyTaskListColor;
     public Color bonusTaskListColor;
 
+    public Color happinessBackgroundColor;
     public Color happinessColor;
+    public Color happinessChangeColor;
+    public Color happinessOverflowColor;
+    public Color happinessOverflowChangeColor;
+
     public Color moneyColor;
 
     public Color brightTextColor;

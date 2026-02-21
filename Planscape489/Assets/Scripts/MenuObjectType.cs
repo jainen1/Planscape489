@@ -28,5 +28,11 @@ public enum MenuObjectType
     ActivityResourceText,
 
     HappinessText,
-    MoneyText
+    MoneyText,
+
+    HappinessBackground,
+    HappinessFill,
+    HappinessChange,
+    HappinessOverflow,
+    HappinessOverflowChange
 }

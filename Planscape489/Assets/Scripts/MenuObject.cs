@@ -63,6 +63,12 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.HappinessText: color = gameManager.menuTheme.happinessColor; isText = true; break;
             case MenuObjectType.MoneyText: color = gameManager.menuTheme.moneyColor; isText = true; break;
 
+            case MenuObjectType.HappinessBackground: color = gameManager.menuTheme.happinessBackgroundColor; break;
+            case MenuObjectType.HappinessFill: color = gameManager.menuTheme.happinessColor; break;
+            case MenuObjectType.HappinessChange: color = gameManager.menuTheme.happinessChangeColor; break;
+            case MenuObjectType.HappinessOverflow: color = gameManager.menuTheme.happinessOverflowColor; break;
+            case MenuObjectType.HappinessOverflowChange: color = gameManager.menuTheme.happinessOverflowChangeColor; break;
+
             default: break;
         };
 

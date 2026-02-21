@@ -141,6 +141,4 @@ public class LevelManager : MonoBehaviour
 
     public void SetMoney(int value) { money = value; }
     public int GetMoney() { return money; }
-
-
 }
