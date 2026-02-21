@@ -22,7 +22,7 @@ public class TaskList : MonoBehaviour
 
     public void OnMouseDown() {
         if(!gameManager.paused) {
-            AudioSource.PlayClipAtPoint(clickSound, gameObject.transform.position, 1.0f);
+            AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
 
             newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
 

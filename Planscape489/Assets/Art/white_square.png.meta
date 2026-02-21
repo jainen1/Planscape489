@@ -122,7 +122,7 @@ TextureImporter:
         height: 2380
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 400, y: 400, z: 400, w: 400}
+      border: {x: 1190, y: 1190, z: 1190, w: 1190}
       customData: 
       outline: []
       physicsShape: []

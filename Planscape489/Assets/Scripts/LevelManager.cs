@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class LevelManager : MonoBehaviour
 {
@@ -29,7 +30,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioClip loseSound;
     public AudioClip clickSound;
 
+    //private AudioSource clickSound;
+
     private float howPaused;
+
+    [SerializeField] private AudioMixer audioMixer;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +51,10 @@ public class LevelManager : MonoBehaviour
     }
 
     public void PlayClickSound() {
-        AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position);
+        float volume;
+        audioMixer.GetFloat("SFX Volume", out volume);
+        AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f + volume);
+        //clickSound.Play();
     }
 
     public void SendThemeUpdate() {
@@ -69,13 +77,13 @@ public class LevelManager : MonoBehaviour
 
 
     public void WinScene() {
-        AudioSource.PlayClipAtPoint(winSound, Vector3.zero, 1.0f);
+        AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         paused = true;
         winScreen.SetActive(true);
     }
 
     public void LoseScene() {
-        AudioSource.PlayClipAtPoint(loseSound, Vector3.zero, 1.0f);
+        AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
         paused = true;
         loseScreen.SetActive(true);
     }

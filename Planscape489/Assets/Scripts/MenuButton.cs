@@ -18,7 +18,11 @@ public class MenuButton : MonoBehaviour
     }
 
     public void PlayClickSound() {
-        AudioSource.PlayClipAtPoint(gameManager.clickSound, Camera.main.transform.position);
+        gameManager.PlayClickSound();
+    }
+
+    public void SkipTimer() {
+        FindFirstObjectByType<TimeHandSprite>().timer = 0;
     }
 
     public void Resume() {

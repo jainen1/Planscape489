@@ -83,10 +83,10 @@ public void OnMouseDown() {
         if(!FindFirstObjectByType<LevelManager>().paused) {
             if(!initializer.IsFixed()) {
                 isHeld = true;
-                AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
+                AudioSource.PlayClipAtPoint(pickUp, Camera.main.transform.position, audioVolume);
             }
             else {
-                AudioSource.PlayClipAtPoint(fixedPickUp, gameObject.transform.position, audioVolume);
+                AudioSource.PlayClipAtPoint(fixedPickUp, Camera.main.transform.position, audioVolume);
             }
         }
     }
@@ -103,7 +103,7 @@ public void OnMouseDown() {
                     }
                 }
                 if(closestCell == null) {
-                    AudioSource.PlayClipAtPoint(failedPickUp, gameObject.transform.position, audioVolume);
+                    AudioSource.PlayClipAtPoint(failedPickUp, Camera.main.transform.position, audioVolume);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
@@ -111,12 +111,12 @@ public void OnMouseDown() {
 
                     ClaimCells();
                     if(isTouchingTrashCan) {
-                        AudioSource.PlayClipAtPoint(trashSound, gameObject.transform.position, audioVolume);
+                        AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
                         gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
                         Destroy(gameObject.transform.parent.gameObject);
                     }
                     else {
-                        AudioSource.PlayClipAtPoint(putDown, gameObject.transform.position, audioVolume);
+                        AudioSource.PlayClipAtPoint(putDown, Camera.main.transform.position, audioVolume);
                     }
                 }
             }

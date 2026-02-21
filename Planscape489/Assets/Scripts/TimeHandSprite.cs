@@ -61,7 +61,7 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
 
         if(cell != null && cell.canBeUsed) {
-            AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], origin, 1.0f);
+            AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
             int finalHappiness = gameManager.GetHappiness();

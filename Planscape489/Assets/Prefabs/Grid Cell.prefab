@@ -121,6 +121,9 @@ MonoBehaviour:
   canBeUsed: 1
   day: 0
   hour: 0
+  occupyingActivity: {fileID: 0}
+  occupyingFoodActivity: {fileID: 0}
+  isFixed: 0
 --- !u!61 &2688896923453920768
 BoxCollider2D:
   m_ObjectHideFlags: 0

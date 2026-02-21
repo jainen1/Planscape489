@@ -3497,7 +3497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Money:'
+  m_text: 'money:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
   m_sharedMaterial: {fileID: 3921516150665474298, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
@@ -4781,8 +4781,8 @@ MonoBehaviour:
   m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.5943396, b: 0.5943396, a: 1}
+    m_PressedColor: {r: 1, g: 0.59607846, b: 0.59607846, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -7270,7 +7270,8 @@ GameObject:
   - component: {fileID: 1033505124}
   - component: {fileID: 1033505123}
   - component: {fileID: 1033505122}
-  - component: {fileID: 1033505126}
+  - component: {fileID: 1033505128}
+  - component: {fileID: 1033505127}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -7411,7 +7412,7 @@ Transform:
   - {fileID: 1792292453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1033505126
+--- !u!114 &1033505127
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7420,11 +7421,77 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033505121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b2a5bd99f83b1408783f37f0a1751a, type: 3}
+  m_Script: {fileID: 11500000, guid: de0f94239ee4dec4c983644e5648f8af, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimerButton
-  timeHand: {fileID: 1781459655}
-  clickSound: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButton
+--- !u!114 &1033505128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033505121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1033505127}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1033505127}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: SkipTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1036964742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4367165840765400797, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -15082,6 +15149,7 @@ MonoBehaviour:
   winSound: {fileID: 8300000, guid: 5e564108975afe342a41a982cace8539, type: 3}
   loseSound: {fileID: 8300000, guid: f1f3605d2366d1148b750b6fb034e88f, type: 3}
   clickSound: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
+  audioMixer: {fileID: 24100000, guid: befa488f80a0a4b40ba021041a9af3ca, type: 2}
 --- !u!4 &2129419105
 Transform:
   m_ObjectHideFlags: 0
