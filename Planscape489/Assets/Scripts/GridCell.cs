@@ -21,9 +21,4 @@ public class GridCell : MonoBehaviour
             day = int.Parse(gameObject.transform.parent.name.Substring(gameObject.transform.parent.name.Length - 1));
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

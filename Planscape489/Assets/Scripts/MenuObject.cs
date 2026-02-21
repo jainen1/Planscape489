@@ -1,11 +1,16 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuObject : MonoBehaviour
 {
     [SerializeField] private MenuObjectType type;
+    [SerializeField] private ThemeTarget target;
 
     private LevelManager gameManager;
+
+    [HideInInspector] public Color color = Color.red;
 
     void OnEnable() { LevelManager.OnUpdateTheme += UpdateMenuObject; }
     void OnDisable() { LevelManager.OnUpdateTheme -= UpdateMenuObject; }
@@ -17,9 +22,6 @@ public class MenuObject : MonoBehaviour
     public void UpdateMenuObject() {
         gameManager = FindFirstObjectByType<LevelManager>();
 
-        Color color = Color.red;
-        bool isText = false;
-
         switch(type) {
             case MenuObjectType.Background: color = gameManager.menuTheme.backgroundColor; break;
 
@@ -27,16 +29,8 @@ public class MenuObject : MonoBehaviour
             //case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;
-            //case MenuObjectType.DailyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.dailyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
-
             case MenuObjectType.WeeklyTaskList: color = gameManager.menuTheme.weeklyTaskListColor; break;
-            //case MenuObjectType.WeeklyTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.weeklyTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
-
             case MenuObjectType.BonusTaskList: color = gameManager.menuTheme.bonusTaskListColor; break;
-            //case MenuObjectType.BonusTaskText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.bonusTaskListColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
-
-            case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
-            case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
 
             case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>()); break;
             case MenuObjectType.ActivityShadowPanel: {
@@ -46,37 +40,27 @@ public class MenuObject : MonoBehaviour
                 break;
             }
 
-            /*case MenuObjectType.ActivityText: {
-                bool brightOrDark = GetBrightOrDarkTextColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.GetComponent<ActivityInitializer>()), 223);
-                color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
-                isText = true;
-                break;
-            }*/
-
-
             case MenuObjectType.FixedActivityBorder: color = gameManager.menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.TimeHand: color = gameManager.menuTheme.timeHandColor; break;
 
             case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>())); break;
-            case MenuObjectType.ActivityResourceText: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>())); isText = true; break;
-
-            case MenuObjectType.HappinessText: color = gameManager.menuTheme.happinessColor; isText = true; break;
-            case MenuObjectType.MoneyText: color = gameManager.menuTheme.moneyColor; isText = true; break;
 
             case MenuObjectType.HappinessBackground: color = gameManager.menuTheme.happinessBackgroundColor; break;
-            case MenuObjectType.HappinessFill: color = gameManager.menuTheme.happinessColor; break;
+            case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
             case MenuObjectType.HappinessChange: color = gameManager.menuTheme.happinessChangeColor; break;
             case MenuObjectType.HappinessOverflow: color = gameManager.menuTheme.happinessOverflowColor; break;
             case MenuObjectType.HappinessOverflowChange: color = gameManager.menuTheme.happinessOverflowChangeColor; break;
 
+            case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
+
             default: break;
         };
 
-        if(isText) {
-            gameObject.GetComponent<TextMeshProUGUI>().color = color;
-        }
-        else {
-            gameObject.GetComponent<SpriteRenderer>().color = color;
+        switch(target) {
+            case ThemeTarget.SpriteRenderer: gameObject.GetComponent<SpriteRenderer>().color = color; break;
+            case ThemeTarget.Image: gameObject.GetComponent<Image>().color = color; break;
+            case ThemeTarget.TextMeshPro: gameObject.GetComponent<TextMeshProUGUI>().color = color; break;
+            default : break;
         }
     }
 
@@ -128,5 +112,37 @@ public class MenuObject : MonoBehaviour
         float backgroundColorBrightness = (0.2126f * (backgroundColor.r * 255)) + (0.7152f * (backgroundColor.g * 255)) + (0.0722f * (backgroundColor.b * 255));
         //Debug.Log(gameObject.name + "'s brightness is " + backgroundColorBrightness + ", compared to the threshold of " + threshold);
         return backgroundColorBrightness <= threshold; // 'true' means light, 'false' means dark
+    }
+
+    private enum ThemeTarget {
+        SpriteRenderer,
+        Image,
+        TextMeshPro
+    }
+
+    public enum MenuObjectType {
+        Background,
+
+        GridCell,
+        GridHeaderText,
+
+        DailyTaskList,
+        WeeklyTaskList,
+        BonusTaskList,
+
+        ActivityPanel,
+        ActivityShadowPanel,
+        ActivityResource,
+        FixedActivityBorder,
+
+        TimeHand,
+
+        HappinessBackground,
+        Happiness,
+        HappinessChange,
+        HappinessOverflow,
+        HappinessOverflowChange,
+
+        Money
     }
 }

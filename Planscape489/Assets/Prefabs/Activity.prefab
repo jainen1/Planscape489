@@ -207,7 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 12
+  type: 7
+  target: 0
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4407230440191932524
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,8 +278,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: +5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
-  m_sharedMaterial: {fileID: 3921516150665474298, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
+  m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -307,7 +309,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 8
+  m_fontStyle: 9
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -357,7 +359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 17
+  type: 8
+  target: 2
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4574679196842494683
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 14
+  type: 9
+  target: 0
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5136288827996116482
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 11
+  type: 6
+  target: 0
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5582139611250620806
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +851,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 11
+  type: 6
+  target: 0
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5820877917449216057
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,8 +922,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: +5
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
-  m_sharedMaterial: {fileID: 3921516150665474298, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
+  m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -943,7 +953,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 8
+  m_fontStyle: 9
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -993,7 +1003,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 17
+  type: 8
+  target: 2
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7915953787215132717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,8 +1074,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Activity
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
-  m_sharedMaterial: {fileID: 3921516150665474298, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
+  m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1093,7 +1105,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 8
+  m_fontStyle: 9
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1209,3 +1221,4 @@ MonoBehaviour:
   cellWidth: 1.63
   cellHeight: 0.45
   cellSpacing: 0.05
+  shouldDisplayFixedBorder: 0

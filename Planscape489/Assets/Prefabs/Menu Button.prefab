@@ -71,8 +71,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: menu button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
-  m_sharedMaterial: {fileID: 3921516150665474298, guid: 2d6609131c139234b899d2fe2876f748, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
+  m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

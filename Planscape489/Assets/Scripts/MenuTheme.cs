@@ -9,20 +9,12 @@ public class MenuTheme : ScriptableObject
     public Color gridCellColor;
     public Color fixedGridCellColor;
 
+    public Color brightTextColor;
+    public Color darkTextColor;
+
     public Color dailyTaskListColor;
     public Color weeklyTaskListColor;
     public Color bonusTaskListColor;
-
-    public Color happinessBackgroundColor;
-    public Color happinessColor;
-    public Color happinessChangeColor;
-    public Color happinessOverflowColor;
-    public Color happinessOverflowChangeColor;
-
-    public Color moneyColor;
-
-    public Color brightTextColor;
-    public Color darkTextColor;
 
     public Color dailyTaskSmallColor;
     public Color dailyTaskMediumColor;
@@ -40,4 +32,12 @@ public class MenuTheme : ScriptableObject
     public Color fixedActivityBorderColor;
 
     public Color timeHandColor;
+
+    public Color happinessBackgroundColor;
+    public Color happinessColor;
+    public Color happinessChangeColor;
+    public Color happinessOverflowColor;
+    public Color happinessOverflowChangeColor;
+
+    public Color moneyColor;
 }
