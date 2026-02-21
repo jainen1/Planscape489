@@ -5,17 +5,17 @@ public class MenuObject : MonoBehaviour
 {
     [SerializeField] private MenuObjectType type;
 
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
-    void OnEnable() { GameManager.OnUpdateTheme += UpdateMenuObject; }
-    void OnDisable() { GameManager.OnUpdateTheme -= UpdateMenuObject; }
+    void OnEnable() { LevelManager.OnUpdateTheme += UpdateMenuObject; }
+    void OnDisable() { LevelManager.OnUpdateTheme -= UpdateMenuObject; }
 
     private void Awake() {
         UpdateMenuObject();
     }
 
     public void UpdateMenuObject() {
-        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager = FindFirstObjectByType<LevelManager>();
 
         Color color = Color.red;
         bool isText = false;

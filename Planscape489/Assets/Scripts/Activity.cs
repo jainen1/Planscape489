@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
-    private GameManager gameManager;
+    private LevelManager gameManager;
     [SerializeField] public ActivityInitializer initializer;
 
     public bool isHeld = false;
@@ -80,7 +80,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
 public void OnMouseDown() {
-        if(!FindFirstObjectByType<GameManager>().paused) {
+        if(!FindFirstObjectByType<LevelManager>().paused) {
             if(!initializer.IsFixed()) {
                 isHeld = true;
                 AudioSource.PlayClipAtPoint(pickUp, gameObject.transform.position, audioVolume);
@@ -92,7 +92,7 @@ public void OnMouseDown() {
     }
 
     public void OnMouseUp() {
-        if(!FindFirstObjectByType<GameManager>().paused) {
+        if(!FindFirstObjectByType<LevelManager>().paused) {
             if(!initializer.IsFixed()) {
                 if(closestCell == null) {
                     foreach(GridCell cell in gameManager.cells) {
@@ -124,11 +124,11 @@ public void OnMouseDown() {
     }
 
     void Start() {
-        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager = FindFirstObjectByType<LevelManager>();
     }
 
     public void ClaimCells() {
-        GameManager gameManager2 = FindFirstObjectByType<GameManager>();
+        LevelManager gameManager2 = FindFirstObjectByType<LevelManager>();
 
         if(occupiedCell != null) { gameManager2.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
         occupiedCell = closestCell;

@@ -4,14 +4,14 @@ using TMPro;
 public class MoneyBar : MonoBehaviour
 {
     private TextMeshProUGUI text;
-    private GameManager gameManager;
+    private LevelManager gameManager;
     string origin;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         text = gameObject.GetComponent<TextMeshProUGUI>();
-        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager = FindFirstObjectByType<LevelManager>();
         origin = text.text;
     }
 

@@ -3,7 +3,7 @@ using TMPro;
 
 public class TimeHandSprite : MonoBehaviour
 {
-    private GameManager gameManager;
+    private LevelManager gameManager;
     [SerializeField] Vector3 origin;
     [SerializeField] float speed;
     [HideInInspector] public float timer;
@@ -16,7 +16,7 @@ public class TimeHandSprite : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager = FindFirstObjectByType<LevelManager>();
         //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
         timer = firstPreparationTime;

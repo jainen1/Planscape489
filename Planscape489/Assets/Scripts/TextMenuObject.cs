@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class TextMenuObject : MonoBehaviour
 {
-    private GameManager gameManager;
+    private LevelManager gameManager;
     [SerializeField] private GameObject backgroundObject;
     [SerializeField] private int threshold = 128;
 
-    void OnEnable() { GameManager.OnLateUpdateTheme += UpdateMenuObject; }
-    void OnDisable() { GameManager.OnLateUpdateTheme -= UpdateMenuObject; }
+    void OnEnable() { LevelManager.OnLateUpdateTheme += UpdateMenuObject; }
+    void OnDisable() { LevelManager.OnLateUpdateTheme -= UpdateMenuObject; }
 
     private void Awake() {
         UpdateMenuObject();
     }
 
     public void UpdateMenuObject() {
-        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager = FindFirstObjectByType<LevelManager>();
         Color color = Color.red;
 
         bool brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<SpriteRenderer>().color, threshold);

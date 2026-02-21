@@ -3,10 +3,9 @@ using static UnityEngine.UI.Image;
 
 public class TaskList : MonoBehaviour
 {
-    private GameManager gameManager;
+    private LevelManager gameManager;
 
     [SerializeField] private GameObject activity;
-    [SerializeField] private ActivityObject[] possibleObjects;
 
     [SerializeField] private AudioClip clickSound;
 
@@ -14,8 +13,10 @@ public class TaskList : MonoBehaviour
 
     private int index;
 
+    [SerializeField] private ActivityType type;
+
     private void Awake() {
-        gameManager = FindFirstObjectByType<GameManager>();
+        gameManager = FindFirstObjectByType<LevelManager>();
         index = 0;
     }
 
@@ -24,8 +25,17 @@ public class TaskList : MonoBehaviour
             AudioSource.PlayClipAtPoint(clickSound, gameObject.transform.position, 1.0f);
 
             newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            newActivity.GetComponent<ActivityInitializer>().activity = possibleObjects[index];
-            index = (index > possibleObjects.Length - 2) ? 0 : index + 1;
+
+            ActivityWithCount[] activities;
+            switch(type) {
+                case ActivityType.Daily: activities = gameManager.week.dailyTasks; break;
+                case ActivityType.Weekly: activities = gameManager.week.weeklyTasks; break;
+                case ActivityType.Bonus: activities = gameManager.week.bonusTasks; break;
+                default: activities = new ActivityWithCount[0]; break;
+            }
+
+            newActivity.GetComponent<ActivityInitializer>().activity = activities[index].activity;
+            index = (index > activities.Length - 2) ? 0 : index + 1;
             newActivity.GetComponent<ActivityInitializer>().Initialize();
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
         }

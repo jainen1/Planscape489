@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public MenuTheme menuTheme;
 
@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject activityPrefab;
 
-    [SerializeField] private ActivityObject[] fixedActivities;
-    [SerializeField] private Vector2[] fixedActivityTimes;
+    [SerializeField] public Week week;
 
     public delegate void UpdateTheme();
     public static event UpdateTheme OnUpdateTheme;
@@ -28,6 +27,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
+    public AudioClip clickSound;
+
+    private float howPaused;
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +37,16 @@ public class GameManager : MonoBehaviour
         SetHappiness(startingHappiness);
         SetMoney(startingMoney);
 
-        for(int i = 0; i < fixedActivities.Length; i++) {
-            CreateNewFixedActivity(fixedActivities[i], (int)fixedActivityTimes[i].x, (int)fixedActivityTimes[i].y);
+        for(int i = 0; i < week.fixedActivities.Length; i++) {
+            CreateNewFixedActivity(week.fixedActivities[i].activity, (int) week.fixedActivities[i].time.x, (int) week.fixedActivities[i].time.y);
         }
 
         winScreen.SetActive(false);
         loseScreen.SetActive(false);
+    }
+
+    public void PlayClickSound() {
+        AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position);
     }
 
     public void InUpdateTheme() {
@@ -48,15 +54,19 @@ public class GameManager : MonoBehaviour
         OnLateUpdateTheme();
     }
 
-    public void PauseScene() {
-        paused = true;
-        pauseScreen.SetActive(true);
+    public void PauseScene() { SetPauseScene(true); }
+    public void UnPauseScene() { SetPauseScene(false); }
+    public void TogglePause() { SetPauseScene(!paused); }
+    public void SetPauseScene(bool x) {
+        paused = x;
+        pauseScreen.SetActive(x);
+
+        /*pauseScreen.GetComponent<CanvasGroup>().interactable = x;
+        pauseScreen.GetComponent<CanvasGroup>().alpha = x? 1f : 0f;
+        Color pauseScreenColor = pauseScreen.GetComponent<SpriteRenderer>().color;
+        pauseScreen.GetComponent<SpriteRenderer>().color = new Color(pauseScreenColor.r, pauseScreenColor.g, pauseScreenColor.b, x? 0.89f : 0f);*/
     }
 
-    public void UnPauseScene() {
-        paused = false;
-        pauseScreen.SetActive(false);
-    }
 
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Vector3.zero, 1.0f);
