@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position);
     }
 
-    public void InUpdateTheme() {
+    public void SendThemeUpdate() {
         OnUpdateTheme();
         OnLateUpdateTheme();
     }

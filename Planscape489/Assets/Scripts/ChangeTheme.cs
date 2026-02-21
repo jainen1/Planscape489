@@ -16,7 +16,7 @@ public class ChangeTheme : MonoBehaviour
 
         gameManager = FindFirstObjectByType<LevelManager>();
         gameManager.menuTheme = menuThemes[index];
-        gameManager.InUpdateTheme();
+        gameManager.SendThemeUpdate();
     }
 
     public void OnMouseDown() {
@@ -28,6 +28,6 @@ public class ChangeTheme : MonoBehaviour
         if(index == menuThemes.Length - 1) { index = 0; }
         else { index++; }
         gameManager.menuTheme = menuThemes[index];
-        gameManager.InUpdateTheme();
+        gameManager.SendThemeUpdate();
     }
 }

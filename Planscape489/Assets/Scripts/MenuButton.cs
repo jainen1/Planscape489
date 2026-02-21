@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,10 +6,15 @@ public class MenuButton : MonoBehaviour
 {
     private LevelManager gameManager;
 
+    private MenuTheme[] menuThemes;
+    private int index = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameManager = FindFirstObjectByType<LevelManager>();
+        menuThemes = Resources.LoadAll<MenuTheme>("Themes");
+        Themes();
     }
 
     public void PlayClickSound() {
@@ -28,7 +34,10 @@ public class MenuButton : MonoBehaviour
     }
 
     public void Themes() {
-
+        if(index == menuThemes.Length - 1) { index = 0; }
+        else { index++; }
+        gameManager.menuTheme = menuThemes[index];
+        gameManager.SendThemeUpdate();
     }
 
     public void Exit() {
