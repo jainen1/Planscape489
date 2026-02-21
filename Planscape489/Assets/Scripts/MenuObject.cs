@@ -25,7 +25,7 @@ public class MenuObject : MonoBehaviour
         switch(type) {
             case MenuObjectType.Background: color = gameManager.menuTheme.backgroundColor; break;
 
-            case MenuObjectType.GridCell: color = gameObject.GetComponent<GridCell>().isFixed? gameManager.menuTheme.fixedGridCellColor : gameManager.menuTheme.gridCellColor; break;
+            case MenuObjectType.GridCell: color = gameObject.GetComponent<GridCell>().isFixed ? gameManager.menuTheme.fixedGridCellColor : gameManager.menuTheme.gridCellColor; break;
             //case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;

@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: af8bca21c6488914c904c7a21ad5b31a, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
   type: 1
+  target: 0
+  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &-7001611546980450847
 MonoBehaviour:
   m_ObjectHideFlags: 0
