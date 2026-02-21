@@ -18,7 +18,11 @@ MonoBehaviour:
   dailyTaskListColor: {r: 1, g: 0.84939355, b: 0.2971698, a: 1}
   weeklyTaskListColor: {r: 0.735849, g: 0.22908509, b: 0.25483176, a: 1}
   bonusTaskListColor: {r: 0.40197346, g: 0.26980242, b: 0.6084906, a: 1}
+  happinessBackgroundColor: {r: 0.33333334, g: 0.09411765, b: 0.078431375, a: 1}
   happinessColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
+  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  happinessOverflowColor: {r: 0.40392157, g: 0.27058825, b: 0.60784316, a: 1}
+  happinessOverflowChangeColor: {r: 1, g: 0.68235296, b: 0.29803923, a: 1}
   moneyColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   brightTextColor: {r: 1, g: 0.98937017, b: 0.8490566, a: 1}
   darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}

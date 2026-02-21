@@ -156,6 +156,11 @@ public void OnMouseDown() {
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
         }
 
+        if(closestCell != null && closestCell.GetComponent<GridCell>() != null && closestCell.GetComponent<GridCell>().isFixed && !initializer.IsFixed()) {
+            collidingCells.Remove(closestCell);
+            closestCell = null;
+        }
+
         if(closestCell == null) {
             initializer.shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
         }

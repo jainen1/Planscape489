@@ -64,15 +64,26 @@ public class TimeHandSprite : MonoBehaviour
             AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], origin, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
+            int finalHappiness = gameManager.GetHappiness();
+            int finalMoney = gameManager.GetMoney();
+
             if(cell.occupyingActivity != null) {
                 cell.occupyingActivity.initializer.SetFixed(true);
-                gameManager.SetHappiness(Mathf.Min(gameManager.GetHappiness() + cell.occupyingActivity.initializer.activity.happiness, 200));
-                gameManager.SetMoney(gameManager.GetMoney() + cell.occupyingActivity.initializer.activity.money);
 
-                if(gameManager.GetHappiness() < 0 || gameManager.GetMoney() < 0) {
-                    gameManager.LoseScene();
-                }
+                finalHappiness += cell.occupyingActivity.initializer.activity.happiness;
+                finalMoney += cell.occupyingActivity.initializer.activity.money;
             }
+
+            if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
+            else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
+
+            gameManager.SetHappiness(Mathf.Min(finalHappiness, 200));
+            gameManager.SetMoney(finalMoney);
+
+            if(gameManager.GetHappiness() < 0 || gameManager.GetMoney() < 0) {
+                gameManager.LoseScene();
+            }
+
             cell.isFixed = true;
             cell.GetComponent<MenuObject>().UpdateMenuObject();
         }

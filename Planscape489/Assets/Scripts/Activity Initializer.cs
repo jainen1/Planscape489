@@ -26,6 +26,8 @@ public class ActivityInitializer : MonoBehaviour
     private float yOffset;
     private float yOffsetStomach;
 
+    public bool shouldDisplayFixedBorder = false;
+
     void Update()
     {
         extendedPanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.19f);
@@ -65,7 +67,7 @@ public class ActivityInitializer : MonoBehaviour
     }
     public void SetFixed(bool x) {
         isFixed = x;
-        fixedBorder.SetActive(x);
+        fixedBorder.SetActive(x && shouldDisplayFixedBorder);
         extendedPanel.GetComponent<MenuObject>().UpdateMenuObject();
         fullStomachPanel.GetComponent<MenuObject>().UpdateMenuObject();
         extendedShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
