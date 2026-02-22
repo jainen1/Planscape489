@@ -48,6 +48,8 @@ public class LevelManager : MonoBehaviour
 
         winScreen.SetActive(false);
         loseScreen.SetActive(false);
+
+        SetPauseScene(false);
     }
 
     public void PlayClickSound() {
@@ -67,7 +69,11 @@ public class LevelManager : MonoBehaviour
     public void TogglePause() { SetPauseScene(!paused); }
     public void SetPauseScene(bool x) {
         paused = x;
-        pauseScreen.SetActive(x);
+        if(x) {
+            pauseScreen.transform.localScale = Vector3.one;
+        } else {
+            pauseScreen.transform.localScale = Vector3.zero;
+        }
 
         /*pauseScreen.GetComponent<CanvasGroup>().interactable = x;
         pauseScreen.GetComponent<CanvasGroup>().alpha = x? 1f : 0f;
