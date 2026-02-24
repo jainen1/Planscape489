@@ -8,11 +8,14 @@ public class HappinessBar : MonoBehaviour
     [SerializeField] private GameObject background;
 
     private LevelManager gameManager;
-    private string origin;
+
+    [SerializeField] ResourceType resourceType;
 
     private float resourceAmount;
     private float displayedAmount;
 
+    [SerializeField] private string prefix;
+    [SerializeField] private string suffix;
 
     [SerializeField] private ResourceBarWithOverflow[] resourceBars;
 
@@ -21,10 +24,9 @@ public class HappinessBar : MonoBehaviour
     void Awake()
     {
         gameManager = FindFirstObjectByType<LevelManager>();
-        origin = text.text;
 
 
-        displayedAmount = gameManager.GetHappiness();
+        displayedAmount = resourceAmount;
 
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
     }
@@ -32,21 +34,25 @@ public class HappinessBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch(resourceType) {
+            case ResourceType.Happiness: resourceAmount = gameManager.GetHappiness(); break;
+            case ResourceType.Money: resourceAmount = gameManager.GetMoney(); break;
+        }
 
-        displayedAmount = Mathf.Lerp(displayedAmount, gameManager.GetHappiness(), 3f * Time.deltaTime);
-        text.text = origin + " " + gameManager.GetHappiness() + "%";
+        displayedAmount = Mathf.Lerp(displayedAmount, resourceAmount, 3f * Time.deltaTime);
+        text.text = prefix + resourceAmount + suffix;
 
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
 
-        if(gameManager.GetHappiness() > displayedAmount) { //if happiness > current fill amount, set change to happiness and lerp fill to change
+        if(resourceAmount > displayedAmount) { //if happiness > current fill amount, set change to happiness and lerp fill to change
             foreach(ResourceBarWithOverflow resourceBar in resourceBars) {
                 AdjustPositionAndSize(resourceBar.fill, Mathf.Clamp((displayedAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
-                AdjustPositionAndSize(resourceBar.change, Mathf.Clamp((gameManager.GetHappiness() - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
+                AdjustPositionAndSize(resourceBar.change, Mathf.Clamp((resourceAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
 
             }
         } else { //otherwise, set fill to happiness and lerp change to fill
             foreach(ResourceBarWithOverflow resourceBar in resourceBars) {
-                AdjustPositionAndSize(resourceBar.fill, Mathf.Clamp((gameManager.GetHappiness() - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
+                AdjustPositionAndSize(resourceBar.fill, Mathf.Clamp((resourceAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
                 AdjustPositionAndSize(resourceBar.change, Mathf.Clamp((displayedAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
             }
         }
@@ -65,4 +71,9 @@ public class ResourceBarWithOverflow {
     public GameObject change;
     public float min;
     public float max;
+}
+
+public enum ResourceType {
+    Happiness,
+    Money
 }

@@ -3914,7 +3914,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 9
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -9662,7 +9662,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HappinessBar
   text: {fileID: 594369099}
   background: {fileID: 1269849769}
-  trackedValue: 0
+  resourceType: 1
+  prefix: 'Money: $'
+  suffix: 
   resourceBars:
   - fill: {fileID: 222259231}
     change: {fileID: 1689592499}
@@ -9728,7 +9730,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HappinessBar
   text: {fileID: 1651772509}
   background: {fileID: 793252775}
-  trackedValue: 0
+  resourceType: 0
+  prefix: 'Happiness: '
+  suffix: '%'
   resourceBars:
   - fill: {fileID: 794692812}
     change: {fileID: 2058400742}
@@ -11373,7 +11377,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 9
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
