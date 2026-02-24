@@ -39,5 +39,11 @@ public class MenuTheme : ScriptableObject
     public Color happinessOverflowColor;
     public Color happinessOverflowChangeColor;
 
+    public Color moneyBackgroundColor;
     public Color moneyColor;
+    public Color moneyChangeColor;
+    public Color moneyOverflowColor;
+    public Color moneyOverflowChangeColor;
+    public Color moneyOverflow2Color;
+    public Color moneyOverflow2ChangeColor;
 }

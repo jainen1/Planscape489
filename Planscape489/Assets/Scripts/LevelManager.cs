@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -36,6 +38,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private AudioMixer audioMixer;
 
+    private MenuTheme[] menuThemes;
+    private int index = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +55,9 @@ public class LevelManager : MonoBehaviour
         loseScreen.SetActive(false);
 
         SetPauseScene(false);
+
+        menuThemes = Resources.LoadAll<MenuTheme>("Themes");
+        Themes();
     }
 
     public void PlayClickSound() {
@@ -79,6 +87,32 @@ public class LevelManager : MonoBehaviour
         pauseScreen.GetComponent<CanvasGroup>().alpha = x? 1f : 0f;
         Color pauseScreenColor = pauseScreen.GetComponent<SpriteRenderer>().color;
         pauseScreen.GetComponent<SpriteRenderer>().color = new Color(pauseScreenColor.r, pauseScreenColor.g, pauseScreenColor.b, x? 0.89f : 0f);*/
+    }
+
+    public void SkipTimer() {
+        FindFirstObjectByType<TimeHandSprite>().timer = 0;
+    }
+
+    public void RestartWeek() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Options() {
+
+    }
+
+    public void Themes() {
+        if(index == menuThemes.Length - 1) { index = 0; }
+        else { index++; }
+        menuTheme = menuThemes[index];
+        SendThemeUpdate();
+    }
+
+    public void Exit() {
+        Application.Quit();
+        /*if(Application.isEditor) {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }*/
     }
 
 

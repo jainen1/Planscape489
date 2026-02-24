@@ -51,7 +51,13 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.HappinessOverflow: color = gameManager.menuTheme.happinessOverflowColor; break;
             case MenuObjectType.HappinessOverflowChange: color = gameManager.menuTheme.happinessOverflowChangeColor; break;
 
+            case MenuObjectType.MoneyBackground: color = gameManager.menuTheme.moneyBackgroundColor; break;
             case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
+            case MenuObjectType.MoneyChange: color = gameManager.menuTheme.moneyChangeColor; break;
+            case MenuObjectType.MoneyOverflow: color = gameManager.menuTheme.moneyOverflowColor; break;
+            case MenuObjectType.MoneyOverflowChange: color = gameManager.menuTheme.moneyOverflowChangeColor; break;
+            case MenuObjectType.MoneyOverflow2: color = gameManager.menuTheme.moneyOverflow2Color; break;
+            case MenuObjectType.MoneyOverflow2Change: color = gameManager.menuTheme.moneyOverflow2ChangeColor; break;
 
             default: break;
         };
@@ -143,6 +149,12 @@ public class MenuObject : MonoBehaviour
         HappinessOverflow,
         HappinessOverflowChange,
 
-        Money
+        MoneyBackground,
+        Money,
+        MoneyChange,
+        MoneyOverflow,
+        MoneyOverflowChange,
+        MoneyOverflow2,
+        MoneyOverflow2Change
     }
 }
