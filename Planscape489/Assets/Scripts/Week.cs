@@ -3,6 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Week", menuName = "Scriptable Objects/Week")]
 public class Week : ScriptableObject {
+    public int number;
     public ActivityWithTime[] fixedActivities;
 
     [Header("Task Lists")]
