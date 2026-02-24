@@ -10,9 +10,8 @@ public class HappinessBar : MonoBehaviour
     private LevelManager gameManager;
     private string origin;
 
+    private float resourceAmount;
     private float displayedAmount;
-
-    [SerializeField] public Action <float> trackedValue;
 
 
     [SerializeField] private ResourceBarWithOverflow[] resourceBars;
@@ -23,9 +22,9 @@ public class HappinessBar : MonoBehaviour
     {
         gameManager = FindFirstObjectByType<LevelManager>();
         origin = text.text;
-        //displayedAmount = gameManager.GetHappiness();
 
-        trackedValue.Invoke(displayedAmount);
+
+        displayedAmount = gameManager.GetHappiness();
 
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
     }
@@ -33,6 +32,8 @@ public class HappinessBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        displayedAmount = Mathf.Lerp(displayedAmount, gameManager.GetHappiness(), 3f * Time.deltaTime);
         text.text = origin + " " + gameManager.GetHappiness() + "%";
 
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
@@ -50,7 +51,6 @@ public class HappinessBar : MonoBehaviour
             }
         }
 
-        displayedAmount = Mathf.Lerp(displayedAmount, gameManager.GetHappiness(), 3f * Time.deltaTime);
     }
 
     private void AdjustPositionAndSize(GameObject bar, float progress, Vector2 spriteSize) {
