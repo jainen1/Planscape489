@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7140027245899990701}
   - component: {fileID: -1890495521898800942}
   - component: {fileID: 2334032804117250743}
-  - component: {fileID: -248580969179441943}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -229,19 +228,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2067338389391331445}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -248580969179441943}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!95 &2334032804117250743
 Animator:
   serializedVersion: 7
@@ -264,15 +251,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-248580969179441943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4369206390448810831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0f94239ee4dec4c983644e5648f8af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuButton
