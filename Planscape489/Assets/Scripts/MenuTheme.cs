@@ -13,8 +13,11 @@ public class MenuTheme : ScriptableObject
     public Color darkTextColor;
 
     public Color dailyTaskListColor;
+    public Color dailyTaskListSecondaryColor;
     public Color weeklyTaskListColor;
+    public Color weeklyTaskListSecondaryColor;
     public Color bonusTaskListColor;
+    public Color bonusTaskListSecondaryColor;
 
     public Color dailyTaskSmallColor;
     public Color dailyTaskMediumColor;

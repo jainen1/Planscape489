@@ -29,8 +29,11 @@ public class MenuObject : MonoBehaviour
             //case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;
+            case MenuObjectType.DailyTaskListSecondary: color = gameManager.menuTheme.dailyTaskListSecondaryColor; break;
             case MenuObjectType.WeeklyTaskList: color = gameManager.menuTheme.weeklyTaskListColor; break;
+            case MenuObjectType.WeeklyTaskListSecondary: color = gameManager.menuTheme.weeklyTaskListSecondaryColor; break;
             case MenuObjectType.BonusTaskList: color = gameManager.menuTheme.bonusTaskListColor; break;
+            case MenuObjectType.BonusTaskListSecondary: color = gameManager.menuTheme.bonusTaskListSecondaryColor; break;
 
             case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>()); break;
             case MenuObjectType.ActivityShadowPanel: {
@@ -155,6 +158,10 @@ public class MenuObject : MonoBehaviour
         MoneyOverflow,
         MoneyOverflowChange,
         MoneyOverflow2,
-        MoneyOverflow2Change
+        MoneyOverflow2Change,
+
+        DailyTaskListSecondary,
+        WeeklyTaskListSecondary,
+        BonusTaskListSecondary,
     }
 }
