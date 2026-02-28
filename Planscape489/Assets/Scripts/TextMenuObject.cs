@@ -9,6 +9,8 @@ public class TextMenuObject : MonoBehaviour
 
     private float fontSize;
 
+    [SerializeField] TextType textType = TextType.Basic;
+
     void OnEnable() { LevelManager.OnLateUpdateTheme += UpdateMenuObject; }
     void OnDisable() { LevelManager.OnLateUpdateTheme -= UpdateMenuObject; }
 
@@ -25,7 +27,34 @@ public class TextMenuObject : MonoBehaviour
         bool brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<MenuObject>().color, threshold);
         color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
         textComponent.color = color;
-        textComponent.font = gameManager.menuTheme.mainFont;
-        textComponent.fontSize = fontSize * gameManager.menuTheme.mainFontSizeScale;
+
+        TMP_FontAsset font;
+        float fontSizeScale;
+
+        switch(textType) {
+            case TextType.Basic: {
+                font = gameManager.menuTheme.mainFont;
+                fontSizeScale = gameManager.menuTheme.mainFontSizeScale;
+                break;
+            }
+            case TextType.Timer: {
+                font = gameManager.menuTheme.timerFont;
+                fontSizeScale = gameManager.menuTheme.timerFontSizeScale;
+                break;
+            }
+            default: {
+                font = gameManager.menuTheme.mainFont;
+                fontSizeScale = gameManager.menuTheme.mainFontSizeScale;
+                break;
+            }
+        }
+
+        textComponent.font = font;
+        textComponent.fontSize = fontSize * fontSizeScale;
     }
+}
+
+public enum TextType {
+    Basic,
+    Timer
 }

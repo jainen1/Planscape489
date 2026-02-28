@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1531830172}
   threshold: 128
+  textType: 0
 --- !u!114 &95689445 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7459885984225510274, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -566,6 +567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1615775866}
   threshold: 128
+  textType: 0
 --- !u!114 &107414271 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7001827490565820800, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -1433,6 +1435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 405915397}
   threshold: 128
+  textType: 0
 --- !u!114 &243012418 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1193527647943562140, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -3382,6 +3385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 821860920}
   threshold: 128
+  textType: 0
 --- !u!114 &568094625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,6 +3760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1342633079}
   threshold: 128
+  textType: 0
 --- !u!114 &593263511 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3737681304980482686, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -5344,6 +5349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1740231679}
   threshold: 128
+  textType: 0
 --- !u!1 &797352674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6640321440834366388, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
@@ -5500,6 +5506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1949857195}
   threshold: 128
+  textType: 0
 --- !u!1 &800937982
 GameObject:
   m_ObjectHideFlags: 0
@@ -6042,6 +6049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1453483791}
   threshold: 128
+  textType: 0
 --- !u!1 &851989422
 GameObject:
   m_ObjectHideFlags: 0
@@ -6436,6 +6444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 485124945}
   threshold: 128
+  textType: 0
 --- !u!114 &865331121 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2260837043461078310, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -6716,6 +6725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 321639194}
   threshold: 128
+  textType: 0
 --- !u!114 &917027013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2906164703133577915, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -7164,6 +7174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 957960696}
   threshold: 128
+  textType: 0
 --- !u!1 &1009014760
 GameObject:
   m_ObjectHideFlags: 0
@@ -7315,6 +7326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1105769907}
   threshold: 128
+  textType: 0
 --- !u!114 &1036964742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4367165840765400797, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -8001,6 +8013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1746438763}
   threshold: 128
+  textType: 0
 --- !u!114 &1208211543 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1193527647943562140, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -8484,6 +8497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 905949911}
   threshold: 128
+  textType: 0
 --- !u!1 &1319892369
 GameObject:
   m_ObjectHideFlags: 0
@@ -8741,6 +8755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 540667313}
   threshold: 128
+  textType: 0
 --- !u!114 &1333118233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2906164703133577915, guid: b98783f95b049114c8c0d6f6d397404f, type: 3}
@@ -9004,6 +9019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 226059999}
   threshold: 128
+  textType: 1
 --- !u!114 &1375189306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9426,6 +9442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1949857195}
   threshold: 128
+  textType: 0
 --- !u!1 &1412051276
 GameObject:
   m_ObjectHideFlags: 0
@@ -9968,6 +9985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 797352674}
   threshold: 128
+  textType: 0
 --- !u!1 &1531830172 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6640321440834366388, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
@@ -10956,6 +10974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 794692812}
   threshold: 128
+  textType: 0
 --- !u!1 &1679148646
 GameObject:
   m_ObjectHideFlags: 0
@@ -12348,6 +12367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 358840358}
   threshold: 128
+  textType: 0
 --- !u!114 &1834972503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13758,6 +13778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 2051400802}
   threshold: 128
+  textType: 0
 --- !u!1 &2094908884
 GameObject:
   m_ObjectHideFlags: 0
@@ -13909,6 +13930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 826199286}
   threshold: 128
+  textType: 0
 --- !u!1 &2108412593
 GameObject:
   m_ObjectHideFlags: 0
@@ -14405,6 +14427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1379746219}
   threshold: 128
+  textType: 0
 --- !u!1001 &123105946390568455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16365,6 +16388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 1450464367}
   threshold: 128
+  textType: 0
 --- !u!1001 &9040506468746664261
 PrefabInstance:
   m_ObjectHideFlags: 0
