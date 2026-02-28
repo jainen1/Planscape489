@@ -46,21 +46,24 @@ public class HappinessBar : MonoBehaviour
 
         if(resourceAmount > displayedAmount) { //if happiness > current fill amount, set change to happiness and lerp fill to change
             foreach(ResourceBarWithOverflow resourceBar in resourceBars) {
-                AdjustPositionAndSize(resourceBar.fill, Mathf.Clamp((displayedAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
-                AdjustPositionAndSize(resourceBar.change, Mathf.Clamp((resourceAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
+                AdjustPositionAndSize(resourceBar.fill, resourceBar, displayedAmount, fullSize);
+                AdjustPositionAndSize(resourceBar.change, resourceBar, resourceAmount, fullSize);
 
             }
-        } else { //otherwise, set fill to happiness and lerp change to fill
+        }
+        else { //otherwise, set fill to happiness and lerp change to fill
             foreach(ResourceBarWithOverflow resourceBar in resourceBars) {
-                AdjustPositionAndSize(resourceBar.fill, Mathf.Clamp((resourceAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
-                AdjustPositionAndSize(resourceBar.change, Mathf.Clamp((displayedAmount - resourceBar.min) / resourceBar.max, 0f, 1f), fullSize);
+                AdjustPositionAndSize(resourceBar.fill, resourceBar, resourceAmount, fullSize);
+                AdjustPositionAndSize(resourceBar.change, resourceBar, displayedAmount, fullSize);
             }
         }
 
     }
 
-    private void AdjustPositionAndSize(GameObject bar, float progress, Vector2 spriteSize) {
-        bar.transform.position = new Vector3(background.transform.position.x - ((spriteSize.x / 2f) * (1- progress)), bar.transform.position.y, bar.transform.position.z);
+    private void AdjustPositionAndSize(GameObject bar, ResourceBarWithOverflow resourceBar, float resource, Vector2 spriteSize) {
+        float progress = Mathf.Clamp((resource - resourceBar.min) / (resourceBar.max - resourceBar.min), 0f, 1f);
+
+        bar.transform.position = new Vector3(background.transform.position.x - ((spriteSize.x / 2f) * (1 - progress)), bar.transform.position.y, bar.transform.position.z);
         bar.GetComponent<SpriteRenderer>().size = new Vector2((spriteSize.x) * progress, spriteSize.y);
     }
 }

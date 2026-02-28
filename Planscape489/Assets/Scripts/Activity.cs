@@ -149,8 +149,8 @@ public void OnMouseDown() {
         if(isHeld && !initializer.IsFixed()) {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = -2f;
-            gameObject.transform.position = targetPosition;
-            //gameObject.transform.position = Vector3.Lerp(transform.position, worldPosition, 8f * Time.deltaTime);
+            //gameObject.transform.position = targetPosition;
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 10f * Time.deltaTime);
         } else {
             targetPosition = new Vector3(initializer.shadowPanel.transform.position.x, initializer.shadowPanel.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);

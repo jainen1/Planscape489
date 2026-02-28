@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
   m_Name: Ocean
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
+  mainFont: {fileID: 0}
+  mainFontSizeScale: 1
+  timerFont: {fileID: 0}
+  timerFontSizeScale: 1
   backgroundColor: {r: 0.9411765, g: 1, b: 0.9944321, a: 1}
   gridCellColor: {r: 0.8784314, g: 0.9511358, b: 1, a: 1}
   fixedGridCellColor: {r: 0.876691, g: 0.91179276, b: 0.9339623, a: 1}
-  dailyTaskListColor: {r: 0.34901965, g: 0.58960384, b: 1, a: 1}
-  weeklyTaskListColor: {r: 0.38039216, g: 0.43315306, b: 0.7019608, a: 1}
-  bonusTaskListColor: {r: 0.6730911, g: 0.6627451, b: 0.94509804, a: 1}
-  happinessBackgroundColor: {r: 0.8784314, g: 0.9529412, b: 1, a: 1}
-  happinessColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
-  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  happinessOverflowColor: {r: 0.38039216, g: 0.43137255, b: 0.7019608, a: 1}
-  happinessOverflowChangeColor: {r: 0.21176471, g: 0.30588236, b: 0.9254902, a: 1}
-  moneyColor: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
+  dailyTaskListColor: {r: 0.34901965, g: 0.58960384, b: 1, a: 1}
+  dailyTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  weeklyTaskListColor: {r: 0.38039216, g: 0.43315306, b: 0.7019608, a: 1}
+  weeklyTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  bonusTaskListColor: {r: 0.6730911, g: 0.6627451, b: 0.94509804, a: 1}
+  bonusTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
   dailyTaskSmallColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
   dailyTaskMediumColor: {r: 0.27367392, g: 0.4342211, b: 0.9669811, a: 1}
   dailyTaskLargeColor: {r: 0.21368816, g: 0.30557021, b: 0.9245283, a: 1}
@@ -38,3 +39,14 @@ MonoBehaviour:
   fixedActivityColor: {r: 0.6161668, g: 0.6842391, b: 0.7216981, a: 1}
   fixedActivityBorderColor: {r: 0.30838376, g: 0.35774925, b: 0.3962264, a: 1}
   timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
+  resourceBarBackgroundColor: {r: 0.8784314, g: 0.9529412, b: 1, a: 1}
+  happinessColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
+  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  happinessOverflowColor: {r: 0.38039216, g: 0.43137255, b: 0.7019608, a: 1}
+  happinessOverflowChangeColor: {r: 0.21176471, g: 0.30588236, b: 0.9254902, a: 1}
+  moneyColor: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+  moneyChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  moneyOverflowColor: {r: 0, g: 0, b: 0, a: 0}
+  moneyOverflowChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  moneyOverflow2Color: {r: 0, g: 0, b: 0, a: 0}
+  moneyOverflow2ChangeColor: {r: 1, g: 1, b: 1, a: 1}

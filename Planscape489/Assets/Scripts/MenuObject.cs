@@ -48,13 +48,14 @@ public class MenuObject : MonoBehaviour
 
             case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>())); break;
 
-            case MenuObjectType.HappinessBackground: color = gameManager.menuTheme.happinessBackgroundColor; break;
+            case MenuObjectType.HappinessBackground: color = gameManager.menuTheme.resourceBarBackgroundColor; break;
+            case MenuObjectType.MoneyBackground: color = gameManager.menuTheme.resourceBarBackgroundColor; break;
+
             case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
             case MenuObjectType.HappinessChange: color = gameManager.menuTheme.happinessChangeColor; break;
             case MenuObjectType.HappinessOverflow: color = gameManager.menuTheme.happinessOverflowColor; break;
             case MenuObjectType.HappinessOverflowChange: color = gameManager.menuTheme.happinessOverflowChangeColor; break;
 
-            case MenuObjectType.MoneyBackground: color = gameManager.menuTheme.moneyBackgroundColor; break;
             case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
             case MenuObjectType.MoneyChange: color = gameManager.menuTheme.moneyChangeColor; break;
             case MenuObjectType.MoneyOverflow: color = gameManager.menuTheme.moneyOverflowColor; break;

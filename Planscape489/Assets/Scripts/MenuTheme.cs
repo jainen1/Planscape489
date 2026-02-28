@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MenuTheme : ScriptableObject
 {
+    public TMPro.TMP_FontAsset mainFont;
+    public float mainFontSizeScale = 1;
+
+    public TMPro.TMP_FontAsset timerFont;
+    public float timerFontSizeScale = 1;
+
     public Color backgroundColor;
 
     public Color gridCellColor;
@@ -36,13 +42,13 @@ public class MenuTheme : ScriptableObject
 
     public Color timeHandColor;
 
-    public Color happinessBackgroundColor;
+    public Color resourceBarBackgroundColor;
+
     public Color happinessColor;
     public Color happinessChangeColor;
     public Color happinessOverflowColor;
     public Color happinessOverflowChangeColor;
 
-    public Color moneyBackgroundColor;
     public Color moneyColor;
     public Color moneyChangeColor;
     public Color moneyOverflowColor;

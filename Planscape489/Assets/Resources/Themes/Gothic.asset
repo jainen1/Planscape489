@@ -15,17 +15,14 @@ MonoBehaviour:
   backgroundColor: {r: 0.1745283, g: 0.078199185, b: 0.06997597, a: 1}
   gridCellColor: {r: 0.33490568, g: 0.092456594, b: 0.078987196, a: 1}
   fixedGridCellColor: {r: 0.504717, g: 0.30187792, b: 0.16665184, a: 1}
-  dailyTaskListColor: {r: 1, g: 0.84939355, b: 0.2971698, a: 1}
-  weeklyTaskListColor: {r: 0.735849, g: 0.22908509, b: 0.25483176, a: 1}
-  bonusTaskListColor: {r: 0.40197346, g: 0.26980242, b: 0.6084906, a: 1}
-  happinessBackgroundColor: {r: 0.33333334, g: 0.09411765, b: 0.078431375, a: 1}
-  happinessColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
-  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  happinessOverflowColor: {r: 0.40392157, g: 0.27058825, b: 0.60784316, a: 1}
-  happinessOverflowChangeColor: {r: 1, g: 0.68235296, b: 0.29803923, a: 1}
-  moneyColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   brightTextColor: {r: 1, g: 0.98937017, b: 0.8490566, a: 1}
   darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}
+  dailyTaskListColor: {r: 1, g: 0.84939355, b: 0.2971698, a: 1}
+  dailyTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  weeklyTaskListColor: {r: 0.735849, g: 0.22908509, b: 0.25483176, a: 1}
+  weeklyTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  bonusTaskListColor: {r: 0.40197346, g: 0.26980242, b: 0.6084906, a: 1}
+  bonusTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
   dailyTaskSmallColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   dailyTaskMediumColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   dailyTaskLargeColor: {r: 1, g: 0.6804322, b: 0.2980392, a: 1}
@@ -38,3 +35,16 @@ MonoBehaviour:
   fixedActivityColor: {r: 0.45755434, g: 0.37079477, b: 0.4764151, a: 1}
   fixedActivityBorderColor: {r: 0.23360825, g: 0.1882353, b: 0.23921569, a: 1}
   timeHandColor: {r: 1, g: 0.6936373, b: 0.4669811, a: 1}
+  resourceBarBackgroundColor: {r: 0.33333334, g: 0.09411766, b: 0.078431375, a: 1}
+  happinessBackgroundColor: {r: 0.33333334, g: 0.09411765, b: 0.078431375, a: 1}
+  happinessColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
+  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  happinessOverflowColor: {r: 0.40392157, g: 0.27058825, b: 0.60784316, a: 1}
+  happinessOverflowChangeColor: {r: 1, g: 0.68235296, b: 0.29803923, a: 1}
+  moneyBackgroundColor: {r: 0.33333334, g: 0.09411765, b: 0.078431375, a: 1}
+  moneyColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
+  moneyChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  moneyOverflowColor: {r: 0, g: 0, b: 0, a: 0}
+  moneyOverflowChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  moneyOverflow2Color: {r: 0, g: 0, b: 0, a: 0}
+  moneyOverflow2ChangeColor: {r: 1, g: 1, b: 1, a: 1}
