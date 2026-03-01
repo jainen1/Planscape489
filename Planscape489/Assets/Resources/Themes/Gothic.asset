@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
   m_Name: Gothic
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
+  mainFont: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
+  mainFontSizeScale: 1
+  timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
+  timerFontSizeScale: 1
   backgroundColor: {r: 0.1745283, g: 0.078199185, b: 0.06997597, a: 1}
   gridCellColor: {r: 0.33490568, g: 0.092456594, b: 0.078987196, a: 1}
   fixedGridCellColor: {r: 0.504717, g: 0.30187792, b: 0.16665184, a: 1}
@@ -36,15 +40,25 @@ MonoBehaviour:
   fixedActivityBorderColor: {r: 0.23360825, g: 0.1882353, b: 0.23921569, a: 1}
   timeHandColor: {r: 1, g: 0.6936373, b: 0.4669811, a: 1}
   resourceBarBackgroundColor: {r: 0.33333334, g: 0.09411766, b: 0.078431375, a: 1}
-  happinessBackgroundColor: {r: 0.33333334, g: 0.09411765, b: 0.078431375, a: 1}
-  happinessColor: {r: 0.7372549, g: 0.22745098, b: 0.25490198, a: 1}
-  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  happinessOverflowColor: {r: 0.40392157, g: 0.27058825, b: 0.60784316, a: 1}
-  happinessOverflowChangeColor: {r: 1, g: 0.68235296, b: 0.29803923, a: 1}
-  moneyBackgroundColor: {r: 0.33333334, g: 0.09411765, b: 0.078431375, a: 1}
-  moneyColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
-  moneyChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  moneyOverflowColor: {r: 0, g: 0, b: 0, a: 0}
-  moneyOverflowChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  moneyOverflow2Color: {r: 0, g: 0, b: 0, a: 0}
-  moneyOverflow2ChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  happinessBars:
+  - fill: {r: 0.7372549, g: 0.227451, b: 0.25490198, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 100
+  - fill: {r: 0.4039216, g: 0.27058825, b: 0.60784316, a: 1}
+    change: {r: 1, g: 0.68235296, b: 0.29803923, a: 1}
+    min: 100
+    max: 200
+  moneyBars:
+  - fill: {r: 1, g: 0.85098046, b: 0.29803923, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 1400
+  - fill: {r: 1, g: 0.85098046, b: 0.29803923, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 1400
+    max: 4200
+  - fill: {r: 1, g: 0.85098046, b: 0.29803923, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 4200
+    max: 12600

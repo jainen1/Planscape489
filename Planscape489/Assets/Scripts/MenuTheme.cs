@@ -1,15 +1,18 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")]
 
 public class MenuTheme : ScriptableObject
 {
+    [Header("Fonts")]
     public TMPro.TMP_FontAsset mainFont;
     public float mainFontSizeScale = 1;
 
     public TMPro.TMP_FontAsset timerFont;
     public float timerFontSizeScale = 1;
 
+    [Header("Colors")]
     public Color backgroundColor;
 
     public Color gridCellColor;
@@ -42,17 +45,19 @@ public class MenuTheme : ScriptableObject
 
     public Color timeHandColor;
 
+    public Color pauseButtonColor;
+    public Color helpButtonColor;
+
     public Color resourceBarBackgroundColor;
 
-    public Color happinessColor;
-    public Color happinessChangeColor;
-    public Color happinessOverflowColor;
-    public Color happinessOverflowChangeColor;
+    public ResourceBarColors[] happinessBars = new ResourceBarColors[2];
+    public ResourceBarColors[] moneyBars = new ResourceBarColors[3];
+}
 
-    public Color moneyColor;
-    public Color moneyChangeColor;
-    public Color moneyOverflowColor;
-    public Color moneyOverflowChangeColor;
-    public Color moneyOverflow2Color;
-    public Color moneyOverflow2ChangeColor;
+[Serializable]
+public class ResourceBarColors {
+    public Color fill;
+    public Color change = Color.white;
+    public float min;
+    public float max;
 }

@@ -24,7 +24,13 @@ public class TextMenuObject : MonoBehaviour
         TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
         Color color = Color.red;
-        bool brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<MenuObject>().color, threshold);
+
+        bool brightOrDark;
+        MenuObject menuObject = backgroundObject.GetComponent<MenuObject>();
+
+        if(menuObject != null) { brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<MenuObject>().color, threshold); }
+        else { brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<SpriteRenderer>().color, threshold); }
+
         color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
         textComponent.color = color;
 

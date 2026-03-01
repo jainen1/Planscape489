@@ -40,13 +40,27 @@ MonoBehaviour:
   fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
   timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
   resourceBarBackgroundColor: {r: 1, g: 0.9450981, b: 0.87843144, a: 1}
-  happinessColor: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
-  happinessChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  happinessOverflowColor: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
-  happinessOverflowChangeColor: {r: 0.8666667, g: 0.92941177, b: 0.30588236, a: 1}
-  moneyColor: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
-  moneyChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  moneyOverflowColor: {r: 0.8666667, g: 0.92941177, b: 0.30588233, a: 1}
-  moneyOverflowChangeColor: {r: 1, g: 1, b: 1, a: 1}
-  moneyOverflow2Color: {r: 1, g: 0.8549177, b: 0.23113209, a: 1}
-  moneyOverflow2ChangeColor: {r: 1, g: 1, b: 1, a: 1}
+  happinessBars:
+  - fill: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 100
+  - fill: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
+    change: {r: 0.86666673, g: 0.9294118, b: 0.30588236, a: 1}
+    min: 100
+    max: 200
+  moneyBars:
+  - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 1400
+  - fill: {r: 0.86666673, g: 0.9294118, b: 0.30588236, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 1400
+    max: 4200
+  - fill: {r: 1, g: 0.854902, b: 0.23137257, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 4200
+    max: 12600
+  pauseButtonColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
+  helpButtonColor: {r: 0.35686275, g: 0.7764706, b: 0.83137256, a: 1}

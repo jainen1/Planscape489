@@ -26,7 +26,6 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.Background: color = gameManager.menuTheme.backgroundColor; break;
 
             case MenuObjectType.GridCell: color = gameObject.GetComponent<GridCell>().isFixed ? gameManager.menuTheme.fixedGridCellColor : gameManager.menuTheme.gridCellColor; break;
-            //case MenuObjectType.GridHeaderText: color = GetBrightOrDarkTextColor(gameManager.menuTheme.gridCellColor, 128) ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor; isText = true; break;
 
             case MenuObjectType.DailyTaskList: color = gameManager.menuTheme.dailyTaskListColor; break;
             case MenuObjectType.DailyTaskListSecondary: color = gameManager.menuTheme.dailyTaskListSecondaryColor; break;
@@ -48,20 +47,11 @@ public class MenuObject : MonoBehaviour
 
             case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>())); break;
 
-            case MenuObjectType.HappinessBackground: color = gameManager.menuTheme.resourceBarBackgroundColor; break;
-            case MenuObjectType.MoneyBackground: color = gameManager.menuTheme.resourceBarBackgroundColor; break;
+            case MenuObjectType.BrightText: color = gameManager.menuTheme.brightTextColor; break;
+            case MenuObjectType.DarkText: color = gameManager.menuTheme.darkTextColor; break;
 
-            case MenuObjectType.Happiness: color = gameManager.menuTheme.happinessColor; break;
-            case MenuObjectType.HappinessChange: color = gameManager.menuTheme.happinessChangeColor; break;
-            case MenuObjectType.HappinessOverflow: color = gameManager.menuTheme.happinessOverflowColor; break;
-            case MenuObjectType.HappinessOverflowChange: color = gameManager.menuTheme.happinessOverflowChangeColor; break;
-
-            case MenuObjectType.Money: color = gameManager.menuTheme.moneyColor; break;
-            case MenuObjectType.MoneyChange: color = gameManager.menuTheme.moneyChangeColor; break;
-            case MenuObjectType.MoneyOverflow: color = gameManager.menuTheme.moneyOverflowColor; break;
-            case MenuObjectType.MoneyOverflowChange: color = gameManager.menuTheme.moneyOverflowChangeColor; break;
-            case MenuObjectType.MoneyOverflow2: color = gameManager.menuTheme.moneyOverflow2Color; break;
-            case MenuObjectType.MoneyOverflow2Change: color = gameManager.menuTheme.moneyOverflow2ChangeColor; break;
+            case MenuObjectType.PauseButton: color = gameManager.menuTheme.pauseButtonColor; break;
+            case MenuObjectType.HelpButton: color = gameManager.menuTheme.helpButtonColor; break;
 
             default: break;
         };
@@ -120,8 +110,9 @@ public class MenuObject : MonoBehaviour
 
     public static bool GetBrightOrDarkColor(Color backgroundColor, int threshold) {
         float backgroundColorBrightness = (0.2126f * (backgroundColor.r * 255)) + (0.7152f * (backgroundColor.g * 255)) + (0.0722f * (backgroundColor.b * 255));
-        //Debug.Log(gameObject.name + "'s brightness is " + backgroundColorBrightness + ", compared to the threshold of " + threshold);
-        return backgroundColorBrightness <= threshold; // 'true' means light, 'false' means dark
+        bool brighter = (backgroundColorBrightness <= threshold);
+        Debug.Log("This object's brightness is " + backgroundColorBrightness + ", which is " + (brighter? "brighter" : "darker")  + " than the threshold of " + threshold + ".");
+        return brighter; // 'true' means light, 'false' means dark
     }
 
     private enum ThemeTarget {
@@ -164,5 +155,11 @@ public class MenuObject : MonoBehaviour
         DailyTaskListSecondary,
         WeeklyTaskListSecondary,
         BonusTaskListSecondary,
+
+        BrightText,
+        DarkText,
+
+        PauseButton,
+        HelpButton
     }
 }
