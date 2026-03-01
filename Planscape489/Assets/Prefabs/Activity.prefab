@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 9102682046124667066}
   - component: {fileID: 6712529661687102446}
   m_Layer: 0
-  m_Name: ExtendedShadowPanel
+  m_Name: VisibleShadowPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,7 +760,7 @@ GameObject:
   - component: {fileID: 6713617123793288158}
   - component: {fileID: 7756995275038856863}
   m_Layer: 0
-  m_Name: ExtendedPanel
+  m_Name: VisiblePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
   backgroundObject: {fileID: 5582139611250620806}
   threshold: 213
+  textType: 0
 --- !u!1 &9112307122686609335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,11 +1210,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivityInitializer
   activity: {fileID: 0}
   mainPanel: {fileID: 5136288827996116482}
-  extendedPanel: {fileID: 5582139611250620806}
+  visiblePanel: {fileID: 5582139611250620806}
   fullStomachPanel: {fileID: 5224201112010507313}
   fixedBorder: {fileID: 4998347914057086724}
   shadowPanel: {fileID: 4574679196842494683}
-  extendedShadowPanel: {fileID: 3094868863790455580}
+  visibleShadowPanel: {fileID: 3094868863790455580}
   title: {fileID: 7915953787215132717}
   happinessText: {fileID: 4407230440191932524}
   moneyText: {fileID: 5820877917449216057}
@@ -1221,4 +1222,4 @@ MonoBehaviour:
   cellWidth: 1.63
   cellHeight: 0.45
   cellSpacing: 0.05
-  shouldDisplayFixedBorder: 0
+  displayFixedBorder: 0

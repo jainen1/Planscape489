@@ -131,7 +131,7 @@ public class LevelManager : MonoBehaviour
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
         GameObject fixedActivity = Instantiate(activityPrefab);
         fixedActivity.GetComponent<ActivityInitializer>().activity = activity;
-        fixedActivity.GetComponent<ActivityInitializer>().shouldDisplayFixedBorder = true;
+        fixedActivity.GetComponent<ActivityInitializer>().displayFixedBorder = true;
         fixedActivity.GetComponent<ActivityInitializer>().Initialize();
         fixedActivity.GetComponentInChildren<Activity>().SetTargetCell(cells[GetGridCellIndex(day, hour)]);
         fixedActivity.GetComponent<ActivityInitializer>().SetFixed(true);
