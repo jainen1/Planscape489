@@ -5,10 +5,7 @@ public class TimeHandSprite : MonoBehaviour
 {
     private LevelManager gameManager;
     [SerializeField] Vector3 origin;
-    [SerializeField] float speed;
     [HideInInspector] public float timer;
-    [SerializeField] private float firstPreparationTime = 20;
-    [SerializeField] private float dailyPreparationTime = 10;
     [SerializeField] private GameObject timerObject;
     [SerializeField] private AudioClip[] clockTicking;
     private int clockTickIndex;
@@ -19,7 +16,7 @@ public class TimeHandSprite : MonoBehaviour
         gameManager = FindFirstObjectByType<LevelManager>();
         //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
-        timer = firstPreparationTime;
+        timer = gameManager.week.firstPreparationTime;
         clockTickIndex = 0;
     }
 
@@ -29,7 +26,7 @@ public class TimeHandSprite : MonoBehaviour
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (speed * Time.deltaTime), gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (gameManager.week.timeHandSpeed * Time.deltaTime), gameObject.transform.position.z);
             }
         }
     }
@@ -97,7 +94,7 @@ public class TimeHandSprite : MonoBehaviour
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
-                timer = dailyPreparationTime;
+                timer = gameManager.week.dailyPreparationTime;
             }
         }
     }
