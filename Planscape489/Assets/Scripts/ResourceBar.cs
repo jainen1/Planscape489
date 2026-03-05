@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class ResourceBar : MonoBehaviour
 {
+    private LevelManager gameManager;
     [SerializeField] private TextMeshProUGUI text;
     public GameObject background;
-
-    private LevelManager gameManager;
 
     [SerializeField] ResourceType resourceType;
 
@@ -21,23 +20,19 @@ public class ResourceBar : MonoBehaviour
     [SerializeField] private GameObject resourcePiecePrefab;
     [SerializeField] private List<ResourcePiece> resourcePieces = new List<ResourcePiece>();
 
-    void OnEnable() { LevelManager.OnUpdateTheme += UpdateMenuObject; }
-    void OnDisable() { LevelManager.OnUpdateTheme -= UpdateMenuObject; }
+    void OnEnable() { GlobalGameManager.OnUpdateTheme += UpdateMenuObject; }
+    void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
-    {
+    private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
-
-
-        displayedAmount = resourceAmount;
-
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
-        UpdateMenuObject();
+        //UpdateMenuObject();
     }
 
     public void UpdateMenuObject() {
-        background.GetComponent<SpriteRenderer>().color = gameManager.menuTheme.resourceBarBackgroundColor;
+        MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
+
+        background.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
 
         ResourceBarColors[] resourceBarColors;
 
@@ -46,14 +41,14 @@ public class ResourceBar : MonoBehaviour
 
 
         switch(resourceType) {
-            case ResourceType.Happiness: resourceBarColors = gameManager.menuTheme.happinessBars; break;
-            case ResourceType.Money: resourceBarColors = gameManager.menuTheme.moneyBars; break;
-            default: resourceBarColors = gameManager.menuTheme.happinessBars; break;
+            case ResourceType.Happiness: resourceBarColors = menuTheme.happinessBars; break;
+            case ResourceType.Money: resourceBarColors = menuTheme.moneyBars; break;
+            default: resourceBarColors = menuTheme.happinessBars; break;
         }
 
         for(int i = 0; i < resourceBarColors.Length; i++) {
             GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
-            newResourcePiece.transform.parent = gameObject.transform;
+            newResourcePiece.transform.parent = background.transform;
             ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
 
             newResourcePieceComponent.min = resourceBarColors[i].min;
@@ -84,7 +79,11 @@ public class ResourceBar : MonoBehaviour
         //if happiness > current fill amount, set change to happiness and lerp fill to change
         //otherwise, set fill to happiness and lerp change to fill
         bool resourceBigger = resourceAmount > displayedAmount;
-        foreach(ResourcePiece resourceBar in resourcePieces) {
+        for(int i = 0; i < resourcePieces.Count; i++) {
+            ResourcePiece resourceBar = resourcePieces[i];
+
+            resourceBar.transform.position = new Vector3(background.transform.position.x, background.transform.position.y, -1f -(0.3f * (i + 1)));
+
             AdjustPositionAndSize(resourceBar.fill, GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar), fullSize);
             AdjustPositionAndSize(resourceBar.change, GetProgress(resourceBigger ? resourceAmount : displayedAmount, resourceBar), fullSize);
             resourceBar.text.GetComponent<TextMeshProUGUI>().text = prefix + resourceAmount + suffix;
@@ -97,7 +96,7 @@ public class ResourceBar : MonoBehaviour
     }
 
     private void AdjustPositionAndSize(GameObject bar, float progress, Vector2 spriteSize) {
-        bar.transform.position = new Vector3(background.transform.position.x - ((spriteSize.x / 2f) * (1 - progress)), bar.transform.position.y, bar.transform.position.z);
+        bar.transform.position = new Vector3(background.transform.position.x - ((spriteSize.x / 2f) * (1 - progress)), gameObject.transform.position.y, bar.transform.position.z);
         bar.GetComponent<SpriteRenderer>().size = new Vector2((spriteSize.x) * progress, spriteSize.y);
     }
 }

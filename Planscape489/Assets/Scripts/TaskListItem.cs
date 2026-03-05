@@ -20,6 +20,7 @@ public class TaskListItem : MonoBehaviour
 
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
+
         //isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
     }
 

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TextMenuObject : MonoBehaviour
 {
-    private LevelManager gameManager;
     [SerializeField] private GameObject backgroundObject;
     [SerializeField] private int threshold = 128;
 
@@ -11,16 +10,15 @@ public class TextMenuObject : MonoBehaviour
 
     [SerializeField] TextType textType = TextType.Basic;
 
-    void OnEnable() { LevelManager.OnLateUpdateTheme += UpdateMenuObject; }
-    void OnDisable() { LevelManager.OnLateUpdateTheme -= UpdateMenuObject; }
+    void OnEnable() { GlobalGameManager.OnUpdateThemeText += UpdateMenuObject; }
+    void OnDisable() { GlobalGameManager.OnUpdateThemeText -= UpdateMenuObject; }
 
     private void Awake() {
         fontSize = gameObject.GetComponent<TextMeshProUGUI>().fontSize;
-        UpdateMenuObject();
     }
 
     public void UpdateMenuObject() {
-        gameManager = FindFirstObjectByType<LevelManager>();
+        MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
         TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
         Color color = Color.red;
@@ -31,7 +29,7 @@ public class TextMenuObject : MonoBehaviour
         if(menuObject != null) { brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<MenuObject>().color, threshold); }
         else { brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<SpriteRenderer>().color, threshold); }
 
-        color = brightOrDark ? gameManager.menuTheme.brightTextColor : gameManager.menuTheme.darkTextColor;
+        color = brightOrDark ? menuTheme.brightTextColor : menuTheme.darkTextColor;
         textComponent.color = color;
 
         TMP_FontAsset font;
@@ -39,18 +37,18 @@ public class TextMenuObject : MonoBehaviour
 
         switch(textType) {
             case TextType.Basic: {
-                font = gameManager.menuTheme.mainFont;
-                fontSizeScale = gameManager.menuTheme.mainFontSizeScale;
+                font = menuTheme.mainFont;
+                fontSizeScale = menuTheme.mainFontSizeScale;
                 break;
             }
             case TextType.Timer: {
-                font = gameManager.menuTheme.timerFont;
-                fontSizeScale = gameManager.menuTheme.timerFontSizeScale;
+                font = menuTheme.timerFont;
+                fontSizeScale = menuTheme.timerFontSizeScale;
                 break;
             }
             default: {
-                font = gameManager.menuTheme.mainFont;
-                fontSizeScale = gameManager.menuTheme.mainFontSizeScale;
+                font = menuTheme.mainFont;
+                fontSizeScale = menuTheme.mainFontSizeScale;
                 break;
             }
         }

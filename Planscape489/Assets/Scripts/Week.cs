@@ -10,12 +10,17 @@ public class Week : ScriptableObject {
     public float firstPreparationTime = 60f;
     public float dailyPreparationTime = 15f;
 
+    public float startingHappiness = 70;
+    public float startingMoney = 2000;
+
     public ActivityWithTime[] fixedActivities;
 
     [Header("Task Lists")]
     public ActivityWithCount[] dailyTasks;
     public ActivityWithCount[] weeklyTasks;
     public ActivityWithCount[] bonusTasks;
+
+    public float randomEventChance;
 }
 
 [Serializable]

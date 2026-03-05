@@ -15,15 +15,18 @@ public class TaskList : MonoBehaviour
 
     private void Awake() {
         itemList = new List<GameObject>();
-        gameManager = FindFirstObjectByType<LevelManager>();
 
         ActivityWithCount[] activities;
+
+        gameManager = FindFirstObjectByType<LevelManager>();
+
         switch(type) {
             case ActivityType.Daily: activities = gameManager.week.dailyTasks; break;
             case ActivityType.Weekly: activities = gameManager.week.weeklyTasks; break;
             case ActivityType.Bonus: activities = gameManager.week.bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
         }
+
         OnItemCreate(activities);
     }
 
@@ -38,7 +41,10 @@ public class TaskList : MonoBehaviour
 
         // generate _countitem 
         if(activities.Length > 0) {
-            firstItem.SetActive(true);// the first item instance has been placed in the first position of the list and directly activate 
+            firstItem.SetActive(true);// the first item instance has been placed in the first position of the list and directly activate
+            firstItem.GetComponent<TaskListItem>().activityWithCount = activities[0];
+            firstItem.GetComponent<TaskListItem>().Initialize();
+
             itemList.Add(firstItem);
             int i = 1;
             while(i < activities.Length) {

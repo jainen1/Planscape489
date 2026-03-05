@@ -22,11 +22,11 @@ MonoBehaviour:
   brightTextColor: {r: 1, g: 0.98937017, b: 0.8490566, a: 1}
   darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}
   dailyTaskListColor: {r: 1, g: 0.84939355, b: 0.2971698, a: 1}
-  dailyTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  dailyTaskListSecondaryColor: {r: 1, g: 0.9274371, b: 0.6650944, a: 1}
   weeklyTaskListColor: {r: 0.735849, g: 0.22908509, b: 0.25483176, a: 1}
-  weeklyTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  weeklyTaskListSecondaryColor: {r: 0.9198113, g: 0.4685831, b: 0.49345395, a: 1}
   bonusTaskListColor: {r: 0.40197346, g: 0.26980242, b: 0.6084906, a: 1}
-  bonusTaskListSecondaryColor: {r: 0, g: 0, b: 0, a: 0}
+  bonusTaskListSecondaryColor: {r: 0.6256912, g: 0.5164872, b: 0.7877358, a: 1}
   dailyTaskSmallColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   dailyTaskMediumColor: {r: 1, g: 0.8509804, b: 0.29803923, a: 1}
   dailyTaskLargeColor: {r: 1, g: 0.6804322, b: 0.2980392, a: 1}
@@ -39,6 +39,8 @@ MonoBehaviour:
   fixedActivityColor: {r: 0.45755434, g: 0.37079477, b: 0.4764151, a: 1}
   fixedActivityBorderColor: {r: 0.23360825, g: 0.1882353, b: 0.23921569, a: 1}
   timeHandColor: {r: 1, g: 0.6936373, b: 0.4669811, a: 1}
+  pauseButtonColor: {r: 0.7372549, g: 0.227451, b: 0.25490198, a: 1}
+  helpButtonColor: {r: 0.4039216, g: 0.27058825, b: 0.60784316, a: 1}
   resourceBarBackgroundColor: {r: 0.33333334, g: 0.09411766, b: 0.078431375, a: 1}
   happinessBars:
   - fill: {r: 0.7372549, g: 0.227451, b: 0.25490198, a: 1}

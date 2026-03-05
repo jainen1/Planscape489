@@ -61,8 +61,8 @@ public class TimeHandSprite : MonoBehaviour
             AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
-            int finalHappiness = gameManager.GetHappiness();
-            int finalMoney = gameManager.GetMoney();
+            float finalHappiness = gameManager.GetHappiness();
+            float finalMoney = gameManager.GetMoney();
 
             if(cell.occupyingActivity != null) {
                 cell.occupyingActivity.initializer.SetFixed(true);

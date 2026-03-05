@@ -123,7 +123,7 @@ public void OnMouseDown() {
         }
     }
 
-    void Start() {
+    void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
     }
 
