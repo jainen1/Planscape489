@@ -11,6 +11,10 @@ public class TextMenuObject : MonoBehaviour
     void OnDisable() { LevelManager.OnLateUpdateTheme -= UpdateMenuObject; }
 
     private void Awake() {
+<<<<<<< Updated upstream
+=======
+        fontSize = gameObject.GetComponent<TextMeshProUGUI>().fontSize;
+>>>>>>> Stashed changes
         UpdateMenuObject();
     }
 

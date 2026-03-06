@@ -19,6 +19,14 @@ public class MenuObject : MonoBehaviour
         UpdateMenuObject();
     }
 
+    private void Awake() {
+        UpdateMenuObject();
+    }
+
+    private void Awake() {
+        UpdateMenuObject();
+    }
+
     public void UpdateMenuObject() {
         gameManager = FindFirstObjectByType<LevelManager>();
 
