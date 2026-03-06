@@ -3,13 +3,28 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Week", menuName = "Scriptable Objects/Week")]
 public class Week : ScriptableObject {
+<<<<<<< Updated upstream
     public int number;
+=======
+    public int weekNumber;
+
+    public float timeHandSpeed = 0.48f;
+
+    public float firstPreparationTime = 60f;
+    public float dailyPreparationTime = 15f;
+
+    public float startingHappiness = 70;
+    public float startingMoney = 2000;
+
+>>>>>>> Stashed changes
     public ActivityWithTime[] fixedActivities;
 
     [Header("Task Lists")]
     public ActivityWithCount[] dailyTasks;
     public ActivityWithCount[] weeklyTasks;
     public ActivityWithCount[] bonusTasks;
+
+    public float randomEventChance;
 }
 
 [Serializable]

@@ -26,6 +26,15 @@ MonoBehaviour:
   moneyColor: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
+<<<<<<< Updated upstream
+=======
+  dailyTaskListColor: {r: 0.34901965, g: 0.58960384, b: 1, a: 1}
+  dailyTaskListSecondaryColor: {r: 0.514151, g: 0.6926859, b: 1, a: 1}
+  weeklyTaskListColor: {r: 0.38039216, g: 0.43315306, b: 0.7019608, a: 1}
+  weeklyTaskListSecondaryColor: {r: 0.5286579, g: 0.57646155, b: 0.8301887, a: 1}
+  bonusTaskListColor: {r: 0.6730911, g: 0.6627451, b: 0.94509804, a: 1}
+  bonusTaskListSecondaryColor: {r: 0.79658014, g: 0.7877358, b: 1, a: 1}
+>>>>>>> Stashed changes
   dailyTaskSmallColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
   dailyTaskMediumColor: {r: 0.27367392, g: 0.4342211, b: 0.9669811, a: 1}
   dailyTaskLargeColor: {r: 0.21368816, g: 0.30557021, b: 0.9245283, a: 1}
@@ -38,3 +47,31 @@ MonoBehaviour:
   fixedActivityColor: {r: 0.6161668, g: 0.6842391, b: 0.7216981, a: 1}
   fixedActivityBorderColor: {r: 0.30838376, g: 0.35774925, b: 0.3962264, a: 1}
   timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
+<<<<<<< Updated upstream
+=======
+  pauseButtonColor: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
+  helpButtonColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
+  resourceBarBackgroundColor: {r: 0.8784314, g: 0.9529412, b: 1, a: 1}
+  happinessBars:
+  - fill: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 100
+  - fill: {r: 0.3803922, g: 0.43137258, b: 0.7019608, a: 1}
+    change: {r: 0.21176472, g: 0.30588236, b: 0.92549026, a: 1}
+    min: 100
+    max: 200
+  moneyBars:
+  - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 1400
+  - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 1400
+    max: 4200
+  - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 4200
+    max: 12600
+>>>>>>> Stashed changes

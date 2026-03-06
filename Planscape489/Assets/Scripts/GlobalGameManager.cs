@@ -18,17 +18,29 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     //[SerializeField] private AudioMixer audioMixer;
 
     protected override void OnInitialize() {
+<<<<<<< Updated upstream
         Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         Instance.menuThemes = Resources.Load<ThemeList>("Themes/ThemeList");
         Instance.currentTheme = menuThemes.themes[0];
         Instance.SendThemeUpdate();
 
         Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
+=======
+        campaign = Resources.Load<Campaign>("Campaigns/Planscape");
+        menuThemes = Resources.Load<ThemeList>("Themes/ThemeList");
+        currentTheme = menuThemes.themes[0];
+
+        clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
+>>>>>>> Stashed changes
 
         //clickSound = 
 
         //audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
 
+<<<<<<< Updated upstream
+=======
+        Instance.SendThemeUpdate();
+>>>>>>> Stashed changes
     }
 
     public Week GetCurrentWeek() {

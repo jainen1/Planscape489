@@ -26,7 +26,7 @@ public class ResourceBar : MonoBehaviour
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
-        UpdateMenuObject();
+        //UpdateMenuObject();
     }
 
     public void UpdateMenuObject() {

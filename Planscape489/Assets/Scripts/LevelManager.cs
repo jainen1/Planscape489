@@ -3,44 +3,47 @@ using UnityEngine.Audio;
 
 public class LevelManager : MonoBehaviour
 {
-    public MenuTheme menuTheme;
+    //public static new LevelManager Instance;
 
     public GridCell[] cells;
 
     [SerializeField] private GameObject activityPrefab;
 
-    [SerializeField] public Week week;
-
-    public delegate void UpdateTheme();
-    public static event UpdateTheme OnUpdateTheme;
-    public static event UpdateTheme OnLateUpdateTheme;
+    [HideInInspector] public Week week;
 
     public bool paused;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
 
-    private int happiness;
-    private int money;
-
-    [SerializeField] private int startingHappiness = 70;
-    [SerializeField] private int startingMoney = 2000;
+    private float happiness;
+    private float money;
 
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
-    public AudioClip clickSound;
-
-    //private AudioSource clickSound;
 
     private float howPaused;
 
-    [SerializeField] private AudioMixer audioMixer;
+    private void Awake() {
+        /*if(Instance == null) {
+            Instance = this;
+        }
+        else {
+            Destroy(gameObject);
+        }*/
 
+<<<<<<< Updated upstream
     // Start is called before the first frame update
     void Start()
     {
         SetHappiness(startingHappiness);
         SetMoney(startingMoney);
+=======
+        week = GlobalGameManager.Instance.GetCurrentWeek();
+
+        SetHappiness(week.startingHappiness);
+        SetMoney(week.startingMoney);
+>>>>>>> Stashed changes
 
         for(int i = 0; i < week.fixedActivities.Length; i++) {
             CreateNewFixedActivity(week.fixedActivities[i].activity, (int) week.fixedActivities[i].time.x, (int) week.fixedActivities[i].time.y);
@@ -50,6 +53,7 @@ public class LevelManager : MonoBehaviour
         loseScreen.SetActive(false);
 
         SetPauseScene(false);
+<<<<<<< Updated upstream
     }
 
     public void PlayClickSound() {
@@ -62,6 +66,8 @@ public class LevelManager : MonoBehaviour
     public void SendThemeUpdate() {
         OnUpdateTheme();
         OnLateUpdateTheme();
+=======
+>>>>>>> Stashed changes
     }
 
     public void PauseScene() { SetPauseScene(true); }
@@ -81,6 +87,12 @@ public class LevelManager : MonoBehaviour
         pauseScreen.GetComponent<SpriteRenderer>().color = new Color(pauseScreenColor.r, pauseScreenColor.g, pauseScreenColor.b, x? 0.89f : 0f);*/
     }
 
+<<<<<<< Updated upstream
+=======
+    public void SkipTimer() {
+        FindFirstObjectByType<TimeHandSprite>().timer = 0;
+    }
+>>>>>>> Stashed changes
 
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
@@ -140,7 +152,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public int GetGridCellIndex(int day, int hour) {
+    public static int GetGridCellIndex(int day, int hour) {
         return ((day - 1) * 17) + (hour - 6);
         //Day 1, Cell 6 (index 0): ((1-1)*17)+(6-6) = 0
         //Day 2, Cell 21 (index 32): ((2-1)*17)+(21-6) = 32
@@ -151,9 +163,9 @@ public class LevelManager : MonoBehaviour
         return cells[GetGridCellIndex(day, hour)];
     }
 
-    public void SetHappiness(int value) { happiness = value; }
-    public int GetHappiness() { return happiness; }
+    public void SetHappiness(float value) { happiness = value; }
+    public float GetHappiness() { return happiness; }
 
-    public void SetMoney(int value) { money = value; }
-    public int GetMoney() { return money; }
+    public void SetMoney(float value) { money = value; }
+    public float GetMoney() { return money; }
 }
