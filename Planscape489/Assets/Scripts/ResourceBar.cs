@@ -43,6 +43,7 @@ public class ResourceBar : MonoBehaviour
         switch(resourceType) {
             case ResourceType.Happiness: resourceBarColors = menuTheme.happinessBars; break;
             case ResourceType.Money: resourceBarColors = menuTheme.moneyBars; break;
+            case ResourceType.Weeks: resourceBarColors = menuTheme.weekBars; break;
             default: resourceBarColors = menuTheme.happinessBars; break;
         }
 
@@ -69,6 +70,7 @@ public class ResourceBar : MonoBehaviour
         switch(resourceType) {
             case ResourceType.Happiness: resourceAmount = gameManager.GetHappiness(); break;
             case ResourceType.Money: resourceAmount = gameManager.GetMoney(); break;
+            case ResourceType.Weeks: resourceAmount = GlobalGameManager.Instance.GetCurrentWeekIndex() + 1; break;
         }
 
         displayedAmount = Mathf.Lerp(displayedAmount, resourceAmount, 3f * Time.deltaTime);
@@ -103,5 +105,6 @@ public class ResourceBar : MonoBehaviour
 
 public enum ResourceType {
     Happiness,
-    Money
+    Money,
+    Weeks
 }
