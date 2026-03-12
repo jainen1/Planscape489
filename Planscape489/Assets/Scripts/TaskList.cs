@@ -46,21 +46,26 @@ public class TaskList : MonoBehaviour
             firstItem.GetComponent<TaskListItem>().Initialize();
 
             itemList.Add(firstItem);
-            int i = 1;
-            while(i < activities.Length) {
+
+            for(int i = 1; i < activities.Length; i++) {
                 GameObject listItemClone = Instantiate(firstItem);
                 listItemClone.transform.SetParent(content.transform); // sub object set to content 
                 itemList.Add(listItemClone);
                 RectTransform t = itemList[i - 1].GetComponent<RectTransform>();// get the location of the previous item 
-                listItemClone.GetComponent<RectTransform>().localPosition = new Vector3(t.localPosition.x, t.localPosition.y - t.rect.height - 0.05f, t.localPosition.z); // place the current item below the previous item 
+                listItemClone.GetComponent<RectTransform>().localPosition = new Vector3(t.localPosition.x, t.localPosition.y - t.rect.height - 0.05f, t.localPosition.z); // place the current item below the previous item
                 listItemClone.GetComponent<RectTransform>().localScale = Vector3.one;
 
                 listItemClone.GetComponent<TaskListItem>().activityWithCount = activities[i];
                 listItemClone.GetComponent<TaskListItem>().Initialize();
-                i++;
             }
+
             // update the content height 
             content.GetComponent<RectTransform>().sizeDelta = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * 0.45f) + ((itemList.Count-1) * 0.05f));
+            //content.GetComponent<RectTransform>().localPosition = ;
+            for(int k = 0; k < itemList.Count; k++) {
+                RectTransform transform = itemList[k].GetComponent<RectTransform>();
+                itemList[k].GetComponent<RectTransform>().localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + (((transform.rect.height + 0.05f) * 0.5f) * (itemList.Count - 1)), transform.localPosition.z);
+            }
         }
         else {
             firstItem.SetActive(false);
