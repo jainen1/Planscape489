@@ -71,6 +71,9 @@ public class TimeHandSprite : MonoBehaviour
                 finalMoney += cell.occupyingActivity.initializer.activity.money;
             }
 
+            //Debug.Log("Final Stuff being evaluated");
+
+
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
 
@@ -90,6 +93,7 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
+                Debug.Log("Day 7, you win");
                 gameManager.WinScene();
                 Destroy(gameObject);
             } else {
