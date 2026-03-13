@@ -951,7 +951,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8178351805192367048}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99791527
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -989,6 +989,8 @@ GameObject:
   - component: {fileID: 6427236327109855169}
   - component: {fileID: 2525274522503980396}
   - component: {fileID: 3621072741830019967}
+  - component: {fileID: 6139844932358112535}
+  - component: {fileID: 3840564657250388777}
   m_Layer: 0
   m_Name: Task List
   m_TagString: Untagged
@@ -1086,6 +1088,64 @@ MonoBehaviour:
   type: 3
   target: 0
   color: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &6139844932358112535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918625815566729472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617630b2380ec7243bd30e00b0704ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskDelete
+--- !u!61 &3840564657250388777
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918625815566729472}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 1, y: 1, z: 1, w: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.3999999, y: 3.3999999}
+    newSize: {x: 2, y: 1.9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2, y: 1.9}
+  m_EdgeRadius: 0
 --- !u!1 &4920034213460512490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00040069714}
+  m_AnchoredPosition: {x: 0, y: 0.00027757324}
   m_SizeDelta: {x: 1.9, y: 1.23}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &689619532938457356

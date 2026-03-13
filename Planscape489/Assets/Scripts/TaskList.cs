@@ -27,10 +27,10 @@ public class TaskList : MonoBehaviour
             default: activities = new ActivityWithCount[0]; break;
         }
 
-        OnItemCreate(activities);
+        CreateList(activities);
     }
 
-    public void OnItemCreate(ActivityWithCount[] activities) {
+    public void CreateList(ActivityWithCount[] activities) {
         GameObject content = gameObject;
 
         // destroys the previously generated item and clears the list 
@@ -46,29 +46,45 @@ public class TaskList : MonoBehaviour
             firstItem.GetComponent<TaskListItem>().Initialize();
 
             itemList.Add(firstItem);
-
             for(int i = 1; i < activities.Length; i++) {
-                GameObject listItemClone = Instantiate(firstItem);
-                listItemClone.transform.SetParent(content.transform); // sub object set to content 
-                itemList.Add(listItemClone);
-                RectTransform t = itemList[i - 1].GetComponent<RectTransform>();// get the location of the previous item 
-                listItemClone.GetComponent<RectTransform>().localPosition = new Vector3(t.localPosition.x, t.localPosition.y - t.rect.height - 0.05f, t.localPosition.z); // place the current item below the previous item
-                listItemClone.GetComponent<RectTransform>().localScale = Vector3.one;
-
-                listItemClone.GetComponent<TaskListItem>().activityWithCount = activities[i];
-                listItemClone.GetComponent<TaskListItem>().Initialize();
+                AddTaskListItem(activities[i]);
             }
 
-            // update the content height 
-            content.GetComponent<RectTransform>().sizeDelta = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * 0.45f) + ((itemList.Count-1) * 0.05f));
-            //content.GetComponent<RectTransform>().localPosition = ;
-            for(int k = 0; k < itemList.Count; k++) {
-                RectTransform transform = itemList[k].GetComponent<RectTransform>();
-                itemList[k].GetComponent<RectTransform>().localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + (((transform.rect.height + 0.05f) * 0.5f) * (itemList.Count - 1)), transform.localPosition.z);
+            float taskItemHeight = 0.45f;
+            float taskItemDistance = 0.05f;
+
+            content.GetComponent<RectTransform>().sizeDelta = new Vector2(content.GetComponent<RectTransform>().sizeDelta.x, (activities.Length * taskItemHeight) + ((activities.Length - 1) * taskItemDistance)); // update the content height
+
+            for(int i = 1; i < activities.Length; i++) {
+                Vector3 previousPosition = itemList[Mathf.Max(0, i - 1)].GetComponent<RectTransform>().localPosition;// get the location of the previous item 
+                itemList[i].GetComponent<RectTransform>().localPosition = new Vector3(previousPosition.x, previousPosition.y - (taskItemHeight + taskItemDistance), previousPosition.z); // place the current item below the previous item
+            }
+
+            for(int i = 0; i < activities.Length; i++) {
+                Vector3 currentPosition = itemList[i].GetComponent<RectTransform>().localPosition;
+                itemList[i].GetComponent<RectTransform>().localPosition = new Vector3(currentPosition.x, currentPosition.y + (((taskItemHeight + taskItemDistance) * 0.5f) * (activities.Length - 1)), currentPosition.z);
             }
         }
         else {
             firstItem.SetActive(false);
         }
+    }
+
+    public void AddTaskListItem(ActivityWithCount activity) {
+        GameObject listItemClone = Instantiate(firstItem);
+        listItemClone.transform.SetParent(gameObject.transform); // sub object set to content
+        itemList.Add(listItemClone);
+
+        listItemClone.GetComponent<TaskListItem>().activityWithCount = activity;
+        listItemClone.GetComponent<TaskListItem>().Initialize();
+
+        //AdjustTaskListSize();
+    }
+
+    public void AdjustTaskListSize() {
+        float taskItemHeight = 0.45f;
+        float taskItemDistance = 0.05f;
+
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * taskItemHeight) + ((itemList.Count - 1) * taskItemDistance)); // update the content height
     }
 }

@@ -21,6 +21,9 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] private bool isTouchingTrashCan = false;
 
+    [SerializeField] private float mouseLerp = 100f;
+    [SerializeField] private float targetLerp = 5f;
+
     /*public void OnPointerDown(PointerEventData eventData) {
         //Debug.Log("clicked");
         mouseDown = true;
@@ -79,7 +82,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? gameManager.GetCellFoodStatus(this, cell) : true);
     }
 
-public void OnMouseDown() {
+    public void OnMouseDown() {
         if(!FindFirstObjectByType<LevelManager>().paused) {
             if(!initializer.IsFixed()) {
                 isHeld = true;
@@ -92,32 +95,30 @@ public void OnMouseDown() {
     }
 
     public void OnMouseUp() {
-        if(!FindFirstObjectByType<LevelManager>().paused) {
-            if(!initializer.IsFixed()) {
-                if(closestCell == null) {
-                    foreach(GridCell cell in gameManager.cells) {
-                        if(CellIsAvailable(cell)) {
-                            SetTargetCell(cell);
-                            break;
-                        }
+        if(!initializer.IsFixed()) {
+            if(closestCell == null) {
+                foreach(GridCell cell in gameManager.cells) {
+                    if(CellIsAvailable(cell)) {
+                        SetTargetCell(cell);
+                        break;
                     }
                 }
-                if(closestCell == null) {
-                    AudioSource.PlayClipAtPoint(failedPickUp, Camera.main.transform.position, audioVolume);
+            }
+            if(closestCell == null) {
+                AudioSource.PlayClipAtPoint(failedPickUp, Camera.main.transform.position, audioVolume);
+                Destroy(gameObject.transform.parent.gameObject);
+            }
+            else {
+                isHeld = false;
+
+                ClaimCells();
+                if(isTouchingTrashCan) {
+                    AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
+                    gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
-                    isHeld = false;
-
-                    ClaimCells();
-                    if(isTouchingTrashCan) {
-                        AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
-                        gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
-                        Destroy(gameObject.transform.parent.gameObject);
-                    }
-                    else {
-                        AudioSource.PlayClipAtPoint(putDown, Camera.main.transform.position, audioVolume);
-                    }
+                    AudioSource.PlayClipAtPoint(putDown, Camera.main.transform.position, audioVolume);
                 }
             }
         }
@@ -149,11 +150,11 @@ public void OnMouseDown() {
         if(isHeld && !initializer.IsFixed()) {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = -2f;
-            //gameObject.transform.position = targetPosition;
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 10f * Time.deltaTime);
+            //gameObject.transform.position = targetPosition; //teleport to mouse position
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
         } else {
             targetPosition = new Vector3(initializer.shadowPanel.transform.position.x, initializer.shadowPanel.transform.position.y, -2f);
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, 5f * Time.deltaTime);
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, targetLerp * Time.deltaTime);
         }
 
         if(closestCell != null && closestCell.GetComponent<GridCell>() != null && closestCell.GetComponent<GridCell>().isFixed && !initializer.IsFixed()) {
