@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,12 @@ public class TaskList : MonoBehaviour
             case ActivityType.Daily: activities = gameManager.week.dailyTasks; break;
             case ActivityType.Weekly: activities = gameManager.week.weeklyTasks; break;
             case ActivityType.Bonus: activities = gameManager.week.bonusTasks; break;
+            case ActivityType.Required: {
+                List<ActivityWithCount> combinedList = new List<ActivityWithCount>();
+                combinedList.AddRange(gameManager.week.dailyTasks);
+                combinedList.AddRange(gameManager.week.weeklyTasks);
+                activities = combinedList.ToArray(); break;
+            }
             default: activities = new ActivityWithCount[0]; break;
         }
 
