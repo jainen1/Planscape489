@@ -39,6 +39,8 @@ MonoBehaviour:
   fixedActivityColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
   timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
+  pauseButtonColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
+  helpButtonColor: {r: 0.35686275, g: 0.7764706, b: 0.83137256, a: 1}
   resourceBarBackgroundColor: {r: 1, g: 0.9450981, b: 0.87843144, a: 1}
   happinessBars:
   - fill: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
@@ -62,5 +64,8 @@ MonoBehaviour:
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 4200
     max: 12600
-  pauseButtonColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  helpButtonColor: {r: 0.35686275, g: 0.7764706, b: 0.83137256, a: 1}
+  weekBars:
+  - fill: {r: 0.35686275, g: 0.7764706, b: 0.83137256, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 16

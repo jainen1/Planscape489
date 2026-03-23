@@ -64,3 +64,8 @@ MonoBehaviour:
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 4200
     max: 12600
+  weekBars:
+  - fill: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 16

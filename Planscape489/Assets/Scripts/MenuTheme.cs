@@ -52,6 +52,7 @@ public class MenuTheme : ScriptableObject
 
     public ResourceBarColors[] happinessBars = new ResourceBarColors[2];
     public ResourceBarColors[] moneyBars = new ResourceBarColors[3];
+    public ResourceBarColors[] weekBars = new ResourceBarColors[1];
 }
 
 [Serializable]

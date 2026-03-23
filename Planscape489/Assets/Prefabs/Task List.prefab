@@ -578,8 +578,8 @@ GameObject:
   - component: {fileID: 2505866771418549370}
   - component: {fileID: 7965449465276127479}
   - component: {fileID: 7588228311565083774}
-  - component: {fileID: 4676248350685260690}
   - component: {fileID: 2693740807683505070}
+  - component: {fileID: 8340466306746269600}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -647,36 +647,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4676248350685260690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2589605471502842497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
-  m_Content: {fileID: 31133246339550651}
-  m_Horizontal: 0
-  m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: 0.05
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 0.05
-  m_Viewport: {fileID: 6762583170911281346}
-  m_HorizontalScrollbar: {fileID: 7314832538913967006}
-  m_VerticalScrollbar: {fileID: 3685324985905338770}
-  m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: 0
-  m_VerticalScrollbarSpacing: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &2693740807683505070
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -723,6 +693,36 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1.33}
   m_EdgeRadius: 0
+--- !u!114 &8340466306746269600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589605471502842497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce29a8ee49401344870e8b25a40015d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NoDragScrollRect
+  m_Content: {fileID: 31133246339550651}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 0
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 0.05
+  m_Viewport: {fileID: 6762583170911281346}
+  m_HorizontalScrollbar: {fileID: 7314832538913967006}
+  m_VerticalScrollbar: {fileID: 3685324985905338770}
+  m_HorizontalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 2
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4056928105007695393
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8178351805192367048}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99791527
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -989,6 +989,8 @@ GameObject:
   - component: {fileID: 6427236327109855169}
   - component: {fileID: 2525274522503980396}
   - component: {fileID: 3621072741830019967}
+  - component: {fileID: 6139844932358112535}
+  - component: {fileID: 3840564657250388777}
   m_Layer: 0
   m_Name: Task List
   m_TagString: Untagged
@@ -1086,6 +1088,64 @@ MonoBehaviour:
   type: 3
   target: 0
   color: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &6139844932358112535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918625815566729472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617630b2380ec7243bd30e00b0704ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskDelete
+--- !u!61 &3840564657250388777
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918625815566729472}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 1, y: 1, z: 1, w: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.3999999, y: 3.3999999}
+    newSize: {x: 2, y: 1.9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2, y: 1.9}
+  m_EdgeRadius: 0
 --- !u!1 &4920034213460512490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00040069714}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1.9, y: 1.23}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &689619532938457356

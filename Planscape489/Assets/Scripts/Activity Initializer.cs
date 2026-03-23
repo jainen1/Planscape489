@@ -13,8 +13,7 @@ public class ActivityInitializer : MonoBehaviour
     [SerializeField] public GameObject shadowPanel;
     [SerializeField] public GameObject visibleShadowPanel;
     [SerializeField] public GameObject title;
-    [SerializeField] public GameObject happinessText;
-    [SerializeField] public GameObject moneyText;
+    [SerializeField] public GameObject resourceTextComponent;
 
     [SerializeField] private bool isFixed;
 
@@ -54,16 +53,19 @@ public class ActivityInitializer : MonoBehaviour
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
         title.GetComponent<TextMeshProUGUI>().text = activity.title;
-        happinessText.GetComponent<TextMeshProUGUI>().text = (activity.happiness >= 0? "H+" : "H-") + Mathf.Abs(activity.happiness * activity.length);
-        moneyText.GetComponent<TextMeshProUGUI>().text = (activity.money >= 0? "$+" : "$-") + Mathf.Abs(activity.money * activity.length);
+
+
+        string resourceText = string.Empty;
+        if(activity.happiness != 0) { resourceText += (activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activity.happiness * activity.length); }
+        if(activity.happiness != 0) { resourceText += "\n" + (activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activity.money * activity.length); }
+        resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
 
         visiblePanel.GetComponent<MenuObject>().UpdateMenuObject();
         fullStomachPanel.GetComponent<MenuObject>().UpdateMenuObject();
         visibleShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
         fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
         title.GetComponent<TextMenuObject>().UpdateMenuObject();
-        happinessText.GetComponent<MenuObject>().UpdateMenuObject();
-        moneyText.GetComponent<MenuObject>().UpdateMenuObject();
+        resourceTextComponent.GetComponent<MenuObject>().UpdateMenuObject();
     }
     public void SetFixed(bool x) {
         isFixed = x;
@@ -73,8 +75,7 @@ public class ActivityInitializer : MonoBehaviour
         visibleShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
         fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
         title.GetComponent<TextMenuObject>().UpdateMenuObject();
-        happinessText.GetComponent<MenuObject>().UpdateMenuObject();
-        moneyText.GetComponent<MenuObject>().UpdateMenuObject();
+        resourceTextComponent.GetComponent<MenuObject>().UpdateMenuObject();
     }
 
     public bool IsFixed() {

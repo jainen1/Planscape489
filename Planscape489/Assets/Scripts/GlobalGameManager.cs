@@ -35,6 +35,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         return Instance.campaign.weeks[currentWeek];
     }
 
+    public int GetCurrentWeekIndex() {
+        return currentWeek;
+    }
+
     public void AdvanceWeek() {
         Instance.currentWeek = Mathf.Min(Instance.currentWeek + 1, Instance.campaign.weeks.Length);
         RestartWeek();

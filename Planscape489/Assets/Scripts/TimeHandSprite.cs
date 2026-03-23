@@ -3,7 +3,7 @@ using TMPro;
 
 public class TimeHandSprite : MonoBehaviour
 {
-    private LevelManager gameManager;
+    private LevelManager levelManager;
     [SerializeField] Vector3 origin;
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
@@ -13,20 +13,20 @@ public class TimeHandSprite : MonoBehaviour
 
     void Start()
     {
-        gameManager = FindFirstObjectByType<LevelManager>();
+        levelManager = FindFirstObjectByType<LevelManager>();
         //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
-        timer = gameManager.week.firstPreparationTime;
+        timer = levelManager.week.firstPreparationTime;
         clockTickIndex = 0;
     }
 
     private void Update() {
         timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
-        if(!gameManager.paused) {
+        if(!levelManager.paused) {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (gameManager.week.timeHandSpeed * Time.deltaTime), gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (levelManager.week.timeHandSpeed * Time.deltaTime), gameObject.transform.position.z);
             }
         }
     }
@@ -61,8 +61,8 @@ public class TimeHandSprite : MonoBehaviour
             AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
-            float finalHappiness = gameManager.GetHappiness();
-            float finalMoney = gameManager.GetMoney();
+            float finalHappiness = levelManager.GetHappiness();
+            float finalMoney = levelManager.GetMoney();
 
             if(cell.occupyingActivity != null) {
                 cell.occupyingActivity.initializer.SetFixed(true);
@@ -77,11 +77,11 @@ public class TimeHandSprite : MonoBehaviour
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
 
-            gameManager.SetHappiness(Mathf.Min(finalHappiness, 200));
-            gameManager.SetMoney(finalMoney);
+            levelManager.SetHappiness(Mathf.Min(finalHappiness, 200));
+            levelManager.SetMoney(finalMoney);
 
-            if(gameManager.GetHappiness() < 0 || gameManager.GetMoney() < 0) {
-                gameManager.LoseScene();
+            if(levelManager.GetHappiness() < 0 || levelManager.GetMoney() < 0) {
+                levelManager.LoseScene();
             }
 
             cell.isFixed = true;
@@ -93,12 +93,11 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
-                Debug.Log("Day 7, you win");
-                gameManager.WinScene();
+                levelManager.WinScene();
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
-                timer = gameManager.week.dailyPreparationTime;
+                timer = levelManager.week.dailyPreparationTime;
             }
         }
     }

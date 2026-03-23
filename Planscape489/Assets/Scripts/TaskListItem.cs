@@ -12,8 +12,7 @@ public class TaskListItem : MonoBehaviour
     [HideInInspector] public ActivityWithCount activityWithCount;
 
     [SerializeField] private GameObject title;
-    [SerializeField] private GameObject happinessText;
-    [SerializeField] private GameObject moneyText;
+    [SerializeField] private GameObject resourceTextComponent;
 
     [SerializeField] private GameObject viewport;
     private bool isVisible;
@@ -45,8 +44,11 @@ public class TaskListItem : MonoBehaviour
 
     public void Initialize() {
         title.GetComponent<TextMeshProUGUI>().text = activityWithCount.activity.title;
-        happinessText.GetComponent<TextMeshProUGUI>().text = (activityWithCount.activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activityWithCount.activity.happiness * activityWithCount.activity.length);
-        moneyText.GetComponent<TextMeshProUGUI>().text = (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length);
+
+        string resourceText = string.Empty;
+        if(activityWithCount.activity.happiness != 0) { resourceText += (activityWithCount.activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activityWithCount.activity.happiness * activityWithCount.activity.length); }
+        if(activityWithCount.activity.happiness != 0) { resourceText += "\n" + (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length); }
+        resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
