@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
-  m_Name: Pay Rent
+  m_Name: Spring Break Flight
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: Rent Due
+  title: Spring Break Flight
   length: 1
   fullStomachLength: 0
-  type: 1
-  happiness: -20
-  money: -1400
+  type: 3
+  happiness: 120
+  money: -400

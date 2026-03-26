@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: Week4
   m_EditorClassIdentifier: Assembly-CSharp::Week
+  weekNumber: 0
+  timeHandSpeed: 0.54
+  firstPreparationTime: 60
+  dailyPreparationTime: 15
+  startingHappiness: 70
+  startingMoney: 2000
   fixedActivities:
   - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
     time: {x: 2, y: 16}
@@ -58,3 +64,4 @@ MonoBehaviour:
     count: 1
   - activity: {fileID: 11400000, guid: 92ee374a7b701405aa65dd7442f8db49, type: 2}
     count: 1
+  randomEventChance: 0

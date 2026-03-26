@@ -29,6 +29,8 @@ MonoBehaviour:
     time: {x: 3, y: 12}
   - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
     time: {x: 3, y: 12}
+  - activity: {fileID: 11400000, guid: 97866eeb93065415585f264eda85da78, type: 2}
+    time: {x: 7, y: 12}
   dailyTasks:
   - activity: {fileID: 11400000, guid: ebb98cd5121b05f43bd9e9e26ce3e722, type: 2}
     count: 7

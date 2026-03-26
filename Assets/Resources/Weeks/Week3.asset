@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Week3
   m_EditorClassIdentifier: Assembly-CSharp::Week
   weekNumber: 0
-  timeHandSpeed: 0.44
+  timeHandSpeed: 0.52
   firstPreparationTime: 60
   dailyPreparationTime: 15
   startingHappiness: 70
