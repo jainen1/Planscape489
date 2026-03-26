@@ -6,9 +6,13 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject visibleWhileTutorial;
     [SerializeField] List<GameObject> screens;
 
-    private int activeScreenIndex;
+    [SerializeField] private int activeScreenIndex;
+
+    private LevelManager levelManager;
 
     public void InitializeTutorial() {
+        levelManager = FindFirstObjectByType<LevelManager>();
+        levelManager.menuPaused = true;
         activeScreenIndex = 0;
         foreach(GameObject screen in screens) {
             screen.transform.localScale = Vector3.zero;
@@ -19,8 +23,9 @@ public class Tutorial : MonoBehaviour
     public void AdvanceTutorialOrEnd() {
         activeScreenIndex++;
         screens[activeScreenIndex - 1].transform.localScale = Vector3.zero;
-        if(screens.Count < activeScreenIndex) { //end tutorial
+        if(activeScreenIndex >= screens.Count) { //end tutorial
             transform.localScale = Vector3.zero;
+            levelManager.menuPaused = false;
         } else {
             screens[activeScreenIndex].transform.localScale = Vector3.one;
         }

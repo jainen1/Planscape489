@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     [HideInInspector] public Week week;
 
     private bool playerPaused;
-    private bool menuPaused;
+    public bool menuPaused;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
