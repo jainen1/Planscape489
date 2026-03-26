@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Week3
   m_EditorClassIdentifier: Assembly-CSharp::Week
   weekNumber: 0
-  timeHandSpeed: 0.52
+  timeHandSpeed: 0.6
   firstPreparationTime: 60
   dailyPreparationTime: 15
   startingHappiness: 70
@@ -30,7 +30,7 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
     time: {x: 3, y: 19}
   - activity: {fileID: 11400000, guid: 3305934d250864c21809e036efac5017, type: 2}
-    time: {x: 4, y: 19}
+    time: {x: 7, y: 22}
   dailyTasks:
   - activity: {fileID: 11400000, guid: ebb98cd5121b05f43bd9e9e26ce3e722, type: 2}
     count: 7
