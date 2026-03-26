@@ -215,7 +215,5 @@ namespace USCG.Core.Telemetry
             return bArePrintAndResetKeyCodesPressed;
         }
     }
-    //to see the path in the Unity Console
-    Debug.Log("Telemetry saved to: " + filePath);
-    
+
 }
