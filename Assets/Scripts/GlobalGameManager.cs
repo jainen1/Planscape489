@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -89,12 +90,25 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void NewGame() {
         SceneManager.LoadScene(1);
     }
-
+    
     public void ExitToMenu() {
         SceneManager.LoadScene(0);
     }
 
     public void ExitGame() {
         Application.Quit();
+    }
+
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
+        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+        if(levelManager != null) { levelManager.StartLevel(); }
+    }
+
+    void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

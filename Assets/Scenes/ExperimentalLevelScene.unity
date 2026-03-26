@@ -7022,7 +7022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31133246339550651, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0004386285
+      value: 0.00000009803607
       objectReference: {fileID: 0}
     - target: {fileID: 689619532938457356, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: type
@@ -7720,7 +7720,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Pay attention to how many activities of each kind you have left- it's okay
-    to have leftover Bonus Tasks, but not leftover Weekly Tasks!
+    to have leftover Could Do tasks, but not leftover Must Do tasks!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
@@ -9987,8 +9987,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Activities in the "Weekly Tasks" list MUST be done by the end of the week.
-    "Bonus Tasks" don't have to, though!
+  m_text: Activities in the "Must Do" list MUST be done by the end of the week. "Could
+    Do" don't have to, though!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
@@ -18859,10 +18859,6 @@ MonoBehaviour:
   menuPauseTutorialColor: {r: 0.08323694, g: 0.43934113, b: 0.6084906, a: 0.8901961}
   winSound: {fileID: 8300000, guid: 5e564108975afe342a41a982cace8539, type: 3}
   loseSound: {fileID: 8300000, guid: f1f3605d2366d1148b750b6fb034e88f, type: 3}
-  doWeekMetric: 0
-  doCurrentCellMetric: 1
-  doHappinessMetric: 1
-  doMoneyMetric: 1
   doPlannerMetric: 1
 --- !u!4 &2129419105
 Transform:
@@ -19608,7 +19604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31133246339550651, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00043865552
+      value: 0.00000008313558
       objectReference: {fileID: 0}
     - target: {fileID: 689619532938457356, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: type

@@ -38,9 +38,9 @@ public class LevelManager : MonoBehaviour
     private float howPaused;
 
     [Header("Telemetry")]
-    [SerializeField] bool doPlannerMetric = true;
+    [SerializeField] bool doPlannerMetric = true;   
 
-    private void Awake() {
+    public void StartLevel() {
         /*if(Instance == null) {
             Instance = this;
         }
