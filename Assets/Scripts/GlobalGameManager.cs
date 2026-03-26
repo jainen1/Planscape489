@@ -40,8 +40,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void AdvanceWeek() {
-        Instance.currentWeek = Mathf.Min(Instance.currentWeek + 1, Instance.campaign.weeks.Length);
-        RestartWeek();
+        Instance.currentWeek++;
+        Continue();
     }
 
     public void RestartWeek() {
@@ -49,7 +49,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void PlayClickSound() {
-        float volume;
+        //float volume;
         //audioMixer.GetFloat("SFX Volume", out volume);
         AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/clickSound"), Camera.main.transform.position, 1.0f + 0);
     }
@@ -81,7 +81,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         GlobalGameManager.Instance.CycleTheme();
     }
 
-    public void PlayGame() {
+    public void Continue() {
+        currentWeek = 0;
+        SceneManager.LoadScene(1);
+    }
+
+    public void NewGame() {
         SceneManager.LoadScene(1);
     }
 
