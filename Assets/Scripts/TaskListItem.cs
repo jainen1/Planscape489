@@ -13,6 +13,7 @@ public class TaskListItem : MonoBehaviour
 
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject resourceTextComponent;
+    [SerializeField] private GameObject countComponent;
 
     [SerializeField] private GameObject viewport;
     private bool isVisible;
@@ -20,11 +21,11 @@ public class TaskListItem : MonoBehaviour
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
 
-        //isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
+        isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
     }
 
     public void OnMouseDown() {
-        if(!gameManager.paused && isVisible) {
+        if(!gameManager.isPaused() && isVisible) {
             AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
 
             //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
@@ -37,7 +38,7 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseUp() {
-        if(!gameManager.paused && isVisible) {
+        if(!gameManager.isPaused() && isVisible) {
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
         }
     }
@@ -49,6 +50,7 @@ public class TaskListItem : MonoBehaviour
         if(activityWithCount.activity.happiness != 0) { resourceText += (activityWithCount.activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activityWithCount.activity.happiness * activityWithCount.activity.length); }
         if(activityWithCount.activity.happiness != 0) { resourceText += "\n" + (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length); }
         resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
+        countComponent.GetComponent<TextMeshProUGUI>().text = activityWithCount.count.ToString("##");
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {

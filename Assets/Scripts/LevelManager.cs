@@ -12,10 +12,21 @@ public class LevelManager : MonoBehaviour
 
     [HideInInspector] public Week week;
 
-    public bool paused;
+    private bool playerPaused;
+    private bool menuPaused;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
+    [SerializeField] private GameObject eventScreen;
+    [SerializeField] private GameObject tutorialWindow;
+
+    [SerializeField] private GameObject menuPauseBackground;
+    [SerializeField] private Color menuPauseDefaultColor;
+    [SerializeField] private Color menuPauseWinColor;
+    [SerializeField] private Color menuPauseLoseColor;
+    [SerializeField] private Color menuPauseCampaignVictoryColor;
+    [SerializeField] private Color menuPauseEventColor;
+    [SerializeField] private Color menuPauseTutorialColor;
 
     private float happiness;
     private float money;
@@ -46,13 +57,18 @@ public class LevelManager : MonoBehaviour
         loseScreen.SetActive(false);
 
         SetPauseScene(false);
+        tutorialWindow.transform.localScale = Vector3.zero;
+    }
+
+    public bool isPaused() {
+        return playerPaused || menuPaused;
     }
 
     public void PauseScene() { SetPauseScene(true); }
     public void UnPauseScene() { SetPauseScene(false); }
-    public void TogglePause() { SetPauseScene(!paused); }
+    public void TogglePause() { SetPauseScene(!playerPaused); }
     public void SetPauseScene(bool x) {
-        paused = x;
+        playerPaused = x;
         if(x) {
             pauseScreen.transform.localScale = Vector3.one;
         } else {
@@ -65,19 +81,28 @@ public class LevelManager : MonoBehaviour
         pauseScreen.GetComponent<SpriteRenderer>().color = new Color(pauseScreenColor.r, pauseScreenColor.g, pauseScreenColor.b, x? 0.89f : 0f);*/
     }
 
+    public void InitiateTutorial() {
+        tutorialWindow.transform.localScale = Vector3.one;
+        tutorialWindow.GetComponent<Tutorial>().InitializeTutorial();
+    }
+
+    public void ReturnTaskToList(ActivityObject activity) {
+
+    }
+
     public void SkipTimer() {
         FindFirstObjectByType<TimeHandSprite>().timer = 0;
     }
 
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
-        paused = true;
+        menuPaused = true;
         winScreen.SetActive(true);
     }
 
     public void LoseScene() {
         AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
-        paused = true;
+        menuPaused = true;
         loseScreen.SetActive(true);
     }
 

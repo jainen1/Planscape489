@@ -27,6 +27,7 @@ MonoBehaviour:
   weeklyTaskListSecondaryColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
   bonusTaskListColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
   bonusTaskListSecondaryColor: {r: 0.6313726, g: 0.759, b: 0.86666673, a: 1}
+  taskListCounterColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
   dailyTaskSmallColor: {r: 0.21960784, g: 0.15686275, b: 0.34117648, a: 1}
   dailyTaskMediumColor: {r: 0.21960784, g: 0.15686275, b: 0.34117648, a: 1}
   dailyTaskLargeColor: {r: 0.21960784, g: 0.15686275, b: 0.34117648, a: 1}

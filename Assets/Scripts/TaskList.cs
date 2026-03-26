@@ -85,7 +85,7 @@ public class TaskList : MonoBehaviour
         listItemClone.GetComponent<TaskListItem>().activityWithCount = activity;
         listItemClone.GetComponent<TaskListItem>().Initialize();
 
-        //AdjustTaskListSize();
+        AdjustTaskListSize();
     }
 
     public void AdjustTaskListSize() {

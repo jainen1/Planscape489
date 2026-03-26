@@ -28,6 +28,8 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.BonusTaskList: color = menuTheme.bonusTaskListColor; break;
             case MenuObjectType.BonusTaskListSecondary: color = menuTheme.bonusTaskListSecondaryColor; break;
 
+            case MenuObjectType.TaskListCounter: color = menuTheme.taskListCounterColor; break;
+
             case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme); break;
             case MenuObjectType.ActivityShadowPanel: {
                 Color temp = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme);
@@ -154,6 +156,7 @@ public class MenuObject : MonoBehaviour
         DarkText,
 
         PauseButton,
-        HelpButton
+        HelpButton,
+        TaskListCounter
     }
 }

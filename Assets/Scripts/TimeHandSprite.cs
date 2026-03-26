@@ -22,7 +22,7 @@ public class TimeHandSprite : MonoBehaviour
 
     private void Update() {
         timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
-        if(!levelManager.paused) {
+        if(!levelManager.isPaused()) {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {

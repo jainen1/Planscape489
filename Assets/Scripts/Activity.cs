@@ -83,7 +83,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     public void OnMouseDown() {
-        if(!FindFirstObjectByType<LevelManager>().paused) {
+        if(!FindFirstObjectByType<LevelManager>().isPaused()) {
             if(!initializer.IsFixed()) {
                 isHeld = true;
                 AudioSource.PlayClipAtPoint(pickUp, Camera.main.transform.position, audioVolume);
@@ -115,6 +115,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 if(isTouchingTrashCan) {
                     AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
                     gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
+                    gameManager.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
