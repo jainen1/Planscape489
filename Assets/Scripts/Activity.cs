@@ -154,7 +154,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             //gameObject.transform.position = targetPosition; //teleport to mouse position
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
         } else {
-            targetPosition = new Vector3(initializer.shadowPanel.transform.position.x, initializer.shadowPanel.transform.position.y, -2f);
+            targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, targetLerp * Time.deltaTime);
         }
 
@@ -163,7 +163,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             closestCell = null;
         }
 
-        if(closestCell == null) {
+        if(closestCell == null || initializer.IsFixed()) {
             initializer.shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
         }
         else {

@@ -37,6 +37,9 @@ public class LevelManager : MonoBehaviour
 
     private float howPaused;
 
+    [Header("Telemetry")]
+    [SerializeField] bool doPlannerMetric = true;
+
     private void Awake() {
         /*if(Instance == null) {
             Instance = this;
@@ -172,34 +175,24 @@ public class LevelManager : MonoBehaviour
 
     //Telemetry
 
-    private MetricId _weekMetric;
-    private MetricId _currentCellMetric = default;
-    private MetricId _happinessMetric = default;
-    private MetricId _moneyMetric = default;
     private MetricId _plannerMetric = default;
 
     private void Start() {
-        _weekMetric = TelemetryManager.instance.CreateSampledMetric<int>("WeekMetric");
-        _currentCellMetric = TelemetryManager.instance.CreateSampledMetric<int>("CurrentCellMetric");
-        _happinessMetric = TelemetryManager.instance.CreateSampledMetric<float>("HappinessMetric");
-        _moneyMetric = TelemetryManager.instance.CreateSampledMetric<float>("MoneyMetric");
         //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
         _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
     }
 
-    public void SamplePlannerMetric(int cellIndex) {
-        TelemetryManager.instance.AddMetricSample(_weekMetric, GlobalGameManager.Instance.GetCurrentWeek());
-        TelemetryManager.instance.AddMetricSample(_currentCellMetric, cellIndex);
-        TelemetryManager.instance.AddMetricSample(_happinessMetric, GetHappiness());
-        TelemetryManager.instance.AddMetricSample(_moneyMetric, GetMoney());
+    public void SamplePlannerMetric(int day, int hour) {
+        if(doPlannerMetric) {
+            string plannerData = "\nWeek " + week.weekNumber + " Day " + day + " Hour " + hour + "; Happiness = " + GetHappiness() + " Money = " + GetMoney() + "\n";
+            for(int i = 0; i < cells.Length; i++) {
+                string occupyingActivity = "";
+                if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }
+                plannerData += "cell_" + i.ToString("000") + ": " + occupyingActivity + ", ";
+            }
 
-        string plannerData = "";
-        foreach(GridCell cell in cells) {
-            plannerData += cell.ToString();
+            TelemetryManager.instance.AddMetricSample(_plannerMetric, plannerData);
         }
-
-        TelemetryManager.instance.AddMetricSample(_plannerMetric, plannerData);
-
         //TelemetryManager.instance.AccumulateMetric(_spaceBarMetric, 1);
     }
 }
