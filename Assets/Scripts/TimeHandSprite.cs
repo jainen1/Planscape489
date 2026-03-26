@@ -86,6 +86,8 @@ public class TimeHandSprite : MonoBehaviour
 
             cell.isFixed = true;
             cell.GetComponent<MenuObject>().UpdateMenuObject();
+
+            levelManager.SamplePlannerMetric(LevelManager.GetGridCellIndex(cell.day, cell.hour));
         }
     }
 

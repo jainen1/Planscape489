@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using USCG.Core.Telemetry;
 
 public class LevelManager : MonoBehaviour
 {
@@ -168,4 +169,37 @@ public class LevelManager : MonoBehaviour
 
     public void SetMoney(float value) { money = value; }
     public float GetMoney() { return money; }
+
+    //Telemetry
+
+    private MetricId _weekMetric;
+    private MetricId _currentCellMetric = default;
+    private MetricId _happinessMetric = default;
+    private MetricId _moneyMetric = default;
+    private MetricId _plannerMetric = default;
+
+    private void Start() {
+        _weekMetric = TelemetryManager.instance.CreateSampledMetric<int>("WeekMetric");
+        _currentCellMetric = TelemetryManager.instance.CreateSampledMetric<int>("CurrentCellMetric");
+        _happinessMetric = TelemetryManager.instance.CreateSampledMetric<float>("HappinessMetric");
+        _moneyMetric = TelemetryManager.instance.CreateSampledMetric<float>("MoneyMetric");
+        //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
+        _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
+    }
+
+    public void SamplePlannerMetric(int cellIndex) {
+        TelemetryManager.instance.AddMetricSample(_weekMetric, GlobalGameManager.Instance.GetCurrentWeek());
+        TelemetryManager.instance.AddMetricSample(_currentCellMetric, cellIndex);
+        TelemetryManager.instance.AddMetricSample(_happinessMetric, GetHappiness());
+        TelemetryManager.instance.AddMetricSample(_moneyMetric, GetMoney());
+
+        string plannerData = "";
+        foreach(GridCell cell in cells) {
+            plannerData += cell.ToString();
+        }
+
+        TelemetryManager.instance.AddMetricSample(_plannerMetric, plannerData);
+
+        //TelemetryManager.instance.AccumulateMetric(_spaceBarMetric, 1);
+    }
 }
