@@ -78,6 +78,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     }
 
+    public void Credits() {
+
+    }
+
     public void Themes() {
         GlobalGameManager.Instance.CycleTheme();
     }

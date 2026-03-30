@@ -22,15 +22,8 @@ public class TaskList : MonoBehaviour
         gameManager = FindFirstObjectByType<LevelManager>();
 
         switch(type) {
-            case ActivityType.Daily: activities = gameManager.week.dailyTasks; break;
-            case ActivityType.Weekly: activities = gameManager.week.weeklyTasks; break;
+            case ActivityType.Required: activities = gameManager.week.requiredTasks; break;
             case ActivityType.Bonus: activities = gameManager.week.bonusTasks; break;
-            case ActivityType.Required: {
-                List<ActivityWithCount> combinedList = new List<ActivityWithCount>();
-                combinedList.AddRange(gameManager.week.dailyTasks);
-                combinedList.AddRange(gameManager.week.weeklyTasks);
-                activities = combinedList.ToArray(); break;
-            }
             default: activities = new ActivityWithCount[0]; break;
         }
 
@@ -92,6 +85,6 @@ public class TaskList : MonoBehaviour
         float taskItemHeight = 0.45f;
         float taskItemDistance = 0.05f;
 
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * taskItemHeight) + ((itemList.Count - 1) * taskItemDistance)); // update the content height
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * taskItemHeight) + ((itemList.Count - 1) * taskItemDistance) + taskItemHeight); // update the content height
     }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Buy Textbooks
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: Buy Textbooks
-  length: 1
+  title: Buy Books
+  length: 2
   fullStomachLength: 0
   type: 3
   happiness: 0

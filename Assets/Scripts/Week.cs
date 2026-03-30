@@ -16,8 +16,7 @@ public class Week : ScriptableObject {
     public ActivityWithTime[] fixedActivities;
 
     [Header("Task Lists")]
-    public ActivityWithCount[] dailyTasks;
-    public ActivityWithCount[] weeklyTasks;
+    public ActivityWithCount[] requiredTasks;
     public ActivityWithCount[] bonusTasks;
 
     public float randomEventChance;

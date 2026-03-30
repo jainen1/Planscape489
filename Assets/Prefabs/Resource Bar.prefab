@@ -169,6 +169,7 @@ MonoBehaviour:
   prefix: 'Happiness: '
   suffix: '%'
   resourcePiecePrefab: {fileID: 8176388341703230015, guid: e82d83e7ac63f4d4c858034d70cf6278, type: 3}
+  resourcePieces: []
 --- !u!1 &4595841692576636945
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +249,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: af8bca21c6488914c904c7a21ad5b31a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
