@@ -80,7 +80,7 @@ public class TimeHandSprite : MonoBehaviour
             levelManager.SetHappiness(Mathf.Min(finalHappiness, 200));
             levelManager.SetMoney(finalMoney);
 
-            if(levelManager.GetHappiness() < 0 || levelManager.GetMoney() < 0) {
+            if(levelManager.GetHappiness() <= 0 || levelManager.GetMoney() < 0) {
                 levelManager.LoseScene();
             }
 

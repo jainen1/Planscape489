@@ -21,14 +21,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject eventScreen;
     [SerializeField] private GameObject tutorialWindow;
 
-    [SerializeField] private GameObject menuPauseBackground;
-    [SerializeField] private Color menuPauseDefaultColor;
-    [SerializeField] private Color menuPauseWinColor;
-    [SerializeField] private Color menuPauseLoseColor;
-    [SerializeField] private Color menuPauseCampaignVictoryColor;
-    [SerializeField] private Color menuPauseEventColor;
-    [SerializeField] private Color menuPauseTutorialColor;
-
     private float happiness;
     private float money;
 
@@ -57,8 +49,8 @@ public class LevelManager : MonoBehaviour
             CreateNewFixedActivity(week.fixedActivities[i].activity, (int) week.fixedActivities[i].time.x, (int) week.fixedActivities[i].time.y);
         }
 
-        winScreen.SetActive(false);
-        loseScreen.SetActive(false);
+        winScreen.transform.localScale = Vector3.zero;
+        loseScreen.transform.localScale = Vector3.zero;
 
         SetPauseScene(false);
         tutorialWindow.transform.localScale = Vector3.zero;
@@ -72,11 +64,13 @@ public class LevelManager : MonoBehaviour
     public void UnPauseScene() { SetPauseScene(false); }
     public void TogglePause() { SetPauseScene(!playerPaused); }
     public void SetPauseScene(bool x) {
-        playerPaused = x;
-        if(x) {
-            pauseScreen.transform.localScale = Vector3.one;
-        } else {
-            pauseScreen.transform.localScale = Vector3.zero;
+        if(!menuPaused) {
+            playerPaused = x;
+            if(x) {
+                pauseScreen.transform.localScale = Vector3.one;
+            } else {
+                pauseScreen.transform.localScale = Vector3.zero;
+            }
         }
 
         /*pauseScreen.GetComponent<CanvasGroup>().interactable = x;
@@ -101,13 +95,13 @@ public class LevelManager : MonoBehaviour
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         menuPaused = true;
-        winScreen.SetActive(true);
+        winScreen.transform.localScale = Vector3.one;
     }
 
     public void LoseScene() {
         AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
         menuPaused = true;
-        loseScreen.SetActive(true);
+        loseScreen.transform.localScale = Vector3.one;
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
