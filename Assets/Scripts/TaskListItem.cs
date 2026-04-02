@@ -18,6 +18,8 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private GameObject viewport;
     private bool isVisible;
 
+    [SerializeField] TaskList taskList;
+
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
 
@@ -32,6 +34,7 @@ public class TaskListItem : MonoBehaviour
             newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
 
             newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
+            newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
             newActivity.GetComponent<ActivityInitializer>().Initialize();
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
         }

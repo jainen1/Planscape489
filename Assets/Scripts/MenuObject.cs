@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +18,12 @@ public class MenuObject : MonoBehaviour
         switch(type) {
             case MenuObjectType.Background: color = menuTheme.backgroundColor; break;
 
-            case MenuObjectType.GridCell: color = gameObject.GetComponent<GridCell>().isFixed ? menuTheme.fixedGridCellColor : menuTheme.gridCellColor; break;
+            case MenuObjectType.GridCell: {
+                color = menuTheme.gridCellColor;
+                GridCell gridCell = gameObject.GetComponent<GridCell>();
+                if(gridCell != null && gridCell.isFixed) { color = menuTheme.fixedGridCellColor; }
+                break;
+            }
 
             case MenuObjectType.DailyTaskList: color = menuTheme.dailyTaskListColor; break;
             case MenuObjectType.DailyTaskListSecondary: color = menuTheme.dailyTaskListSecondaryColor; break;
@@ -76,31 +80,25 @@ public class MenuObject : MonoBehaviour
                 return menuTheme.fixedActivityColor;
             }
             if(activityInitializer.activity != null) {
-                switch(activityInitializer.activity.length) {
-                    case int n when n >= 4:
-                        switch(activityInitializer.activity.type) {
-                            case ActivityType.Daily: return menuTheme.dailyTaskLargeColor;
-                            case ActivityType.Weekly: return menuTheme.weeklyTaskLargeColor;
-                            case ActivityType.Bonus: return menuTheme.bonusTaskLargeColor;
+                switch(activityInitializer.activityType) {
+                    case ActivityType.Required: {
+                        switch(activityInitializer.activity.length) {
+                            case int n when n >= 4: return menuTheme.requiredTask4Color;
+                            case int n when n >= 3: return menuTheme.requiredTask3Color;
+                            case int n when n >= 2: return menuTheme.requiredTask2Color;
+                            default: return menuTheme.requiredTask1Color;
                         }
-                        break;
-                    case int n when n >= 2:
-                        switch(activityInitializer.activity.type) {
-                            case ActivityType.Daily: return menuTheme.dailyTaskMediumColor;
-                            case ActivityType.Weekly: return menuTheme.weeklyTaskMediumColor;
-                            case ActivityType.Bonus: return menuTheme.bonusTaskMediumColor;
+                    }
+                    case ActivityType.Bonus: {
+                        switch(activityInitializer.activity.length) {
+                            case int n when n >= 4: return menuTheme.bonusTask4Color;
+                            case int n when n >= 3: return menuTheme.bonusTask3Color;
+                            case int n when n >= 2: return menuTheme.bonusTask2Color;
+                            default: return menuTheme.bonusTask1Color;
                         }
-                        break;
-                    default:
-                        switch(activityInitializer.activity.type) {
-                            case ActivityType.Daily: return menuTheme.dailyTaskSmallColor;
-                            case ActivityType.Weekly: return menuTheme.weeklyTaskSmallColor;
-                            case ActivityType.Bonus: return menuTheme.bonusTaskSmallColor;
-                        }
-                        break;
+                    }
                 }
             }
-            
         } return Color.yellow;
     }
 
@@ -157,6 +155,7 @@ public class MenuObject : MonoBehaviour
 
         PauseButton,
         HelpButton,
-        TaskListCounter
+        TaskListCounter,
+        Scrollbar
     }
 }

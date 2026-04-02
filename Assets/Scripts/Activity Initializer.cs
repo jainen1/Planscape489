@@ -4,6 +4,7 @@ using UnityEngine;
 public class ActivityInitializer : MonoBehaviour
 {
     [HideInInspector] public ActivityObject activity;
+    [HideInInspector] public ActivityType activityType;
 
     [Header("Panels")]
     [SerializeField] public GameObject mainPanel;

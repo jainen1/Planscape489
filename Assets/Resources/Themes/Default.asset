@@ -27,16 +27,16 @@ MonoBehaviour:
   weeklyTaskListSecondaryColor: {r: 0.69981045, g: 0.9056604, b: 0.66642934, a: 1}
   bonusTaskListColor: {r: 0.8862745, g: 0.6627451, b: 0.94509804, a: 1}
   bonusTaskListSecondaryColor: {r: 0.94496113, g: 0.8433606, b: 0.9716981, a: 1}
+  taskListScrollbarColor: {r: 1, g: 1, b: 1, a: 1}
   taskListCounterColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  dailyTaskSmallColor: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
-  dailyTaskMediumColor: {r: 1, g: 0.8235294, b: 0.16078432, a: 1}
-  dailyTaskLargeColor: {r: 0.86772716, g: 0.9292453, b: 0.3068263, a: 1}
-  weeklyTaskSmallColor: {r: 0.42352942, g: 0.7019608, b: 0.38039216, a: 1}
-  weeklyTaskMediumColor: {r: 0.3563546, g: 0.77615494, b: 0.8301887, a: 1}
-  weeklyTaskLargeColor: {r: 0.4009434, g: 0.57849413, b: 1, a: 1}
-  bonusTaskSmallColor: {r: 0.8862745, g: 0.6627451, b: 0.94509804, a: 1}
-  bonusTaskMediumColor: {r: 0.9529412, g: 0.627451, b: 0.89411765, a: 1}
-  bonusTaskLargeColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
+  requiredTask1Color: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
+  requiredTask2Color: {r: 1, g: 0.8235295, b: 0.16078432, a: 1}
+  requiredTask3Color: {r: 0.5389338, g: 0.8632076, b: 0.2850214, a: 1}
+  requiredTask4Color: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
+  bonusTask1Color: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
+  bonusTask2Color: {r: 0.40000004, g: 0.5803922, b: 1, a: 1}
+  bonusTask3Color: {r: 0.8862746, g: 0.6627451, b: 0.9450981, a: 1}
+  bonusTask4Color: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
   fixedActivityColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
   timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}

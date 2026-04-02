@@ -70,3 +70,12 @@ MonoBehaviour:
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 0
     max: 16
+  taskListScrollbarColor: {r: 1, g: 1, b: 1, a: 1}
+  requiredTask1Color: {r: 1, g: 0.85098046, b: 0.29803923, a: 1}
+  requiredTask2Color: {r: 1, g: 0.68235296, b: 0.29803923, a: 1}
+  requiredTask3Color: {r: 0.7294118, g: 0.15686275, b: 0.16470589, a: 1}
+  requiredTask4Color: {r: 0.7372549, g: 0.227451, b: 0.25490198, a: 1}
+  bonusTask1Color: {r: 0.4039216, g: 0.27058825, b: 0.60784316, a: 1}
+  bonusTask2Color: {r: 0.4039216, g: 0.27058825, b: 0.60784316, a: 1}
+  bonusTask3Color: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+  bonusTask4Color: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}

@@ -27,20 +27,19 @@ public class MenuTheme : ScriptableObject
     public Color weeklyTaskListSecondaryColor;
     public Color bonusTaskListColor;
     public Color bonusTaskListSecondaryColor;
+    public Color taskListScrollbarColor;
 
     public Color taskListCounterColor;
 
-    public Color dailyTaskSmallColor;
-    public Color dailyTaskMediumColor;
-    public Color dailyTaskLargeColor;
+    public Color requiredTask1Color;
+    public Color requiredTask2Color;
+    public Color requiredTask3Color;
+    public Color requiredTask4Color;
 
-    public Color weeklyTaskSmallColor;
-    public Color weeklyTaskMediumColor;
-    public Color weeklyTaskLargeColor;
-
-    public Color bonusTaskSmallColor;
-    public Color bonusTaskMediumColor;
-    public Color bonusTaskLargeColor;
+    public Color bonusTask1Color;
+    public Color bonusTask2Color;
+    public Color bonusTask3Color;
+    public Color bonusTask4Color;
 
     public Color fixedActivityColor;
     public Color fixedActivityBorderColor;

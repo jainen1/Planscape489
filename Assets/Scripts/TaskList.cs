@@ -12,7 +12,7 @@ public class TaskList : MonoBehaviour
 
     private List<GameObject> itemList;
 
-    [SerializeField] private ActivityType type;
+    [SerializeField] private ActivityType activityType;
 
     private void Awake() {
         itemList = new List<GameObject>();
@@ -21,7 +21,7 @@ public class TaskList : MonoBehaviour
 
         gameManager = FindFirstObjectByType<LevelManager>();
 
-        switch(type) {
+        switch(activityType) {
             case ActivityType.Required: activities = gameManager.week.requiredTasks; break;
             case ActivityType.Bonus: activities = gameManager.week.bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
@@ -29,6 +29,9 @@ public class TaskList : MonoBehaviour
 
         CreateList(activities);
     }
+
+    public ActivityType GetActivityType() { return activityType; }
+    public void SetActivityType(ActivityType type) { activityType = type; }
 
     public void CreateList(ActivityWithCount[] activities) {
         GameObject content = gameObject;

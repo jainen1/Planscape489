@@ -1,7 +1,5 @@
 public enum ActivityType
 {
-    Daily,
-    Weekly,
-    Bonus,
-    Required
+    Required,
+    Bonus
 }
