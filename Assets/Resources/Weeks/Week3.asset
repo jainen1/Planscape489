@@ -17,7 +17,7 @@ MonoBehaviour:
   firstPreparationTime: 60
   dailyPreparationTime: 15
   startingHappiness: 70
-  startingMoney: 2000
+  startingMoney: 400
   fixedActivities:
   - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
     time: {x: 2, y: 16}
