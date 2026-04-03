@@ -47,12 +47,13 @@ public class TaskListItem : MonoBehaviour
                 SetCount(count - 1);
             } else {
                 AudioSource.PlayClipAtPoint(rejectSound, Camera.main.transform.position, 1.0f);
+                newActivity = null;
             }
         }
     }
 
     public void OnMouseUp() {
-        if(!gameManager.isPaused() && isVisible) {
+        if(!gameManager.isPaused() && isVisible && newActivity != null) {
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
         }
     }
