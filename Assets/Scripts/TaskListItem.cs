@@ -14,11 +14,15 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject resourceTextComponent;
     [SerializeField] private GameObject countComponent;
+    [SerializeField] private GameObject countComponentBackground;
+
 
     [SerializeField] private GameObject viewport;
-    private bool isVisible;
 
     [SerializeField] TaskList taskList;
+
+    [SerializeField] private bool isVisible;
+    [SerializeField] private int count;
 
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
@@ -27,7 +31,7 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        if(!gameManager.isPaused() && isVisible) {
+        if(!gameManager.isPaused() && isVisible && count > 0) {
             AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
 
             //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
@@ -37,6 +41,8 @@ public class TaskListItem : MonoBehaviour
             newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
             newActivity.GetComponent<ActivityInitializer>().Initialize();
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
+
+            SetCount(count - 1);
         }
     }
 
@@ -53,7 +59,27 @@ public class TaskListItem : MonoBehaviour
         if(activityWithCount.activity.happiness != 0) { resourceText += (activityWithCount.activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activityWithCount.activity.happiness * activityWithCount.activity.length); }
         if(activityWithCount.activity.happiness != 0) { resourceText += "\n" + (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length); }
         resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
-        countComponent.GetComponent<TextMeshProUGUI>().text = activityWithCount.count.ToString("##");
+
+        SetCount(activityWithCount.count);
+    }
+
+    public int GetCount() {
+        return count;
+    }
+
+    public void SetCount(int newCount) {
+        count = newCount;
+
+        if(count <= 0) {
+            countComponentBackground.transform.localScale = Vector3.zero;
+
+        } else {
+            countComponentBackground.transform.localScale = Vector3.one;
+        }
+
+        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+
+        countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {

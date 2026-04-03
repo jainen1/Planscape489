@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
-    private LevelManager gameManager;
+    private LevelManager levelManager;
     [SerializeField] public ActivityInitializer initializer;
 
     public bool isHeld = false;
@@ -73,13 +73,13 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
         if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
         if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
-        if(!gameManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
+        if(!levelManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
         if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
-        if(!(initializer.activity.fullStomachLength > 0 ? gameManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
+        if(!(initializer.activity.fullStomachLength > 0 ? levelManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
         return true;*/
 
-        return cell != null && cell.canBeUsed && !cell.isFixed && gameManager.GetCellStatus(this, cell)
-            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? gameManager.GetCellFoodStatus(this, cell) : true);
+        return cell != null && cell.canBeUsed && !cell.isFixed && levelManager.GetCellStatus(this, cell)
+            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? levelManager.GetCellFoodStatus(this, cell) : true);
     }
 
     public void OnMouseDown() {
@@ -97,7 +97,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     public void OnMouseUp() {
         if(!initializer.IsFixed()) {
             if(closestCell == null) {
-                foreach(GridCell cell in gameManager.cells) {
+                foreach(GridCell cell in levelManager.cells) {
                     if(CellIsAvailable(cell)) {
                         SetTargetCell(cell);
                         break;
@@ -114,8 +114,8 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 ClaimCells();
                 if(isTouchingTrashCan) {
                     AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
-                    gameManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
-                    gameManager.ReturnTaskToList(initializer.activity);
+                    levelManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
+                    levelManager.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
@@ -126,7 +126,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     void Awake() {
-        gameManager = FindFirstObjectByType<LevelManager>();
+        levelManager = FindFirstObjectByType<LevelManager>();
     }
 
     public void ClaimCells() {

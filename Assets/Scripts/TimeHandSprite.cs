@@ -45,11 +45,11 @@ public class TimeHandSprite : MonoBehaviour
             cell.isFixed = true;
             cell.GetComponent<MenuObject>().UpdateMenuObject();
         } else if(activity != null) {
-            gameManager.SetHappiness(Mathf.Min(gameManager.GetHappiness() + activity.initializer.activity.happiness, 100));
-            gameManager.SetMoney(gameManager.GetMoney() + activity.initializer.activity.money);
+            levelManager.SetHappiness(Mathf.Min(levelManager.GetHappiness() + activity.initializer.activity.happiness, 100));
+            levelManager.SetMoney(levelManager.GetMoney() + activity.initializer.activity.money);
 
-            if(gameManager.GetHappiness() < 0 || gameManager.GetMoney() < 0) {
-                gameManager.LoseScene();
+            if(levelManager.GetHappiness() < 0 || levelManager.GetMoney() < 0) {
+                levelManager.LoseScene();
             }
         }
     }*/

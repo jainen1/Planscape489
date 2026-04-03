@@ -26,7 +26,12 @@ public class MenuObject : MonoBehaviour
             }
 
             case MenuObjectType.DailyTaskList: color = menuTheme.dailyTaskListColor; break;
-            case MenuObjectType.DailyTaskListSecondary: color = menuTheme.dailyTaskListSecondaryColor; break;
+            case MenuObjectType.DailyTaskListSecondary: {
+                color = menuTheme.dailyTaskListSecondaryColor;
+                TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+                if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+                break;
+            }
             case MenuObjectType.WeeklyTaskList: color = menuTheme.weeklyTaskListColor; break;
             case MenuObjectType.WeeklyTaskListSecondary: color = menuTheme.weeklyTaskListSecondaryColor; break;
             case MenuObjectType.BonusTaskList: color = menuTheme.bonusTaskListColor; break;
