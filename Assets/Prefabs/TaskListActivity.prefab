@@ -66,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaskList
   activity: {fileID: 9112307122686609335, guid: 4123c516eb0bd1c4f9bb1dfdc10de35b, type: 3}
   clickSound: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
+  rejectSound: {fileID: 8300000, guid: 055ac9c5cf266274681fee8894f1bf7b, type: 3}
   activityWithCount:
     activity: {fileID: 0}
     count: 0

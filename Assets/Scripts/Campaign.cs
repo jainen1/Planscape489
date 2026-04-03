@@ -5,5 +5,5 @@ public class Campaign : ScriptableObject
 {
     public Week[] weeks;
 
-    public Event[] randomEvents;
+    public EventObject[] randomEvents;
 }

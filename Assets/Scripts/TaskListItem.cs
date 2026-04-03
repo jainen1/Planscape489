@@ -6,6 +6,7 @@ public class TaskListItem : MonoBehaviour
     private LevelManager gameManager;
     [SerializeField] private GameObject activity;
     [SerializeField] private AudioClip clickSound;
+    [SerializeField] private AudioClip rejectSound;
 
     private GameObject newActivity;
 
@@ -31,18 +32,22 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        if(!gameManager.isPaused() && isVisible && count > 0) {
-            AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
+        if(!gameManager.isPaused() && isVisible) {
+            if(count > 0) {
+                AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
 
-            //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
+                //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
 
-            newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
-            newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
-            newActivity.GetComponent<ActivityInitializer>().Initialize();
-            newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
+                newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
+                newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
+                newActivity.GetComponent<ActivityInitializer>().Initialize();
+                newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
 
-            SetCount(count - 1);
+                SetCount(count - 1);
+            } else {
+                AudioSource.PlayClipAtPoint(rejectSound, Camera.main.transform.position, 1.0f);
+            }
         }
     }
 
