@@ -12,6 +12,10 @@ public class MenuTheme : ScriptableObject
     public TMPro.TMP_FontAsset timerFont;
     public float timerFontSizeScale = 1;
 
+    [Header("Background")]
+    public Texture2D background;
+    public bool stretchToFit;
+
     [Header("Colors")]
     public Color backgroundColor;
 
