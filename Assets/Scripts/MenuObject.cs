@@ -47,6 +47,7 @@ public class MenuObject : MonoBehaviour
                 break;
             }
 
+            case MenuObjectType.TaskListScrollbar: color = menuTheme.taskListScrollbarColor; break;
             case MenuObjectType.TaskListCounter: color = menuTheme.taskListCounterColor; break;
 
             case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme); break;
@@ -171,6 +172,6 @@ public class MenuObject : MonoBehaviour
         PauseButton,
         HelpButton,
         TaskListCounter,
-        Scrollbar
+        TaskListScrollbar
     }
 }

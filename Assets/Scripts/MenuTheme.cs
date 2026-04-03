@@ -31,8 +31,8 @@ public class MenuTheme : ScriptableObject
     public Color weeklyTaskListSecondaryColor;
     public Color bonusTaskListColor;
     public Color bonusTaskListSecondaryColor;
-    public Color taskListScrollbarColor;
 
+    public Color taskListScrollbarColor;
     public Color taskListCounterColor;
 
     public Color requiredTask1Color;
