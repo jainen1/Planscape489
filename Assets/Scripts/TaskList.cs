@@ -10,7 +10,7 @@ public class TaskList : MonoBehaviour
 
     [SerializeField] private GameObject firstItem;
 
-    private List<GameObject> itemList;
+    [SerializeField] private List<GameObject> itemList;
 
     [SerializeField] private ActivityType activityType;
 
@@ -28,6 +28,18 @@ public class TaskList : MonoBehaviour
         }
 
         CreateList(activities);
+    }
+
+    public bool ReturnTaskToList(ActivityObject activity) {
+        foreach(GameObject item in itemList) {
+            if(item != null) {
+                TaskListItem script = item.GetComponent<TaskListItem>();
+                if(script != null && script.activityWithCount.activity == activity) {
+                    script.SetCount(script.GetCount()+1);
+                    return true;
+                }
+            }
+        } return false;
     }
 
     public ActivityType GetActivityType() { return activityType; }

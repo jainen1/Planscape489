@@ -26,12 +26,28 @@ public class MenuObject : MonoBehaviour
             }
 
             case MenuObjectType.DailyTaskList: color = menuTheme.dailyTaskListColor; break;
-            case MenuObjectType.DailyTaskListSecondary: color = menuTheme.dailyTaskListSecondaryColor; break;
+            case MenuObjectType.DailyTaskListSecondary: {
+                color = menuTheme.dailyTaskListSecondaryColor;
+                TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+                if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+                break;
+            }
             case MenuObjectType.WeeklyTaskList: color = menuTheme.weeklyTaskListColor; break;
-            case MenuObjectType.WeeklyTaskListSecondary: color = menuTheme.weeklyTaskListSecondaryColor; break;
+            case MenuObjectType.WeeklyTaskListSecondary: {
+                color = menuTheme.weeklyTaskListSecondaryColor;
+                TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+                if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+                break;
+            }
             case MenuObjectType.BonusTaskList: color = menuTheme.bonusTaskListColor; break;
-            case MenuObjectType.BonusTaskListSecondary: color = menuTheme.bonusTaskListSecondaryColor; break;
+            case MenuObjectType.BonusTaskListSecondary: {
+                color = menuTheme.bonusTaskListSecondaryColor;
+                TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+                if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+                break;
+            }
 
+            case MenuObjectType.TaskListScrollbar: color = menuTheme.taskListScrollbarColor; break;
             case MenuObjectType.TaskListCounter: color = menuTheme.taskListCounterColor; break;
 
             case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme); break;
@@ -156,6 +172,6 @@ public class MenuObject : MonoBehaviour
         PauseButton,
         HelpButton,
         TaskListCounter,
-        Scrollbar
+        TaskListScrollbar
     }
 }

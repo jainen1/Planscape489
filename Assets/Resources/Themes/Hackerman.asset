@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
+  m_Name: Hackerman
+  m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
+  mainFont: {fileID: 11400000, guid: dbfc122bffd37814a97d802c9cce9b58, type: 2}
+  mainFontSizeScale: 1
+  timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
+  timerFontSizeScale: 1
+  background: {fileID: 0}
+  stretchToFit: 0
+  backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  gridCellColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  fixedGridCellColor: {r: 0.09803922, g: 0, b: 0, a: 1}
+  brightTextColor: {r: 0.78431374, g: 1, b: 0.5019608, a: 1}
+  darkTextColor: {r: 0, g: 0, b: 0, a: 1}
+  dailyTaskListColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  dailyTaskListSecondaryColor: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  weeklyTaskListColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  weeklyTaskListSecondaryColor: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  bonusTaskListColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  bonusTaskListSecondaryColor: {r: 0.18431373, g: 0.654902, b: 0.5411765, a: 1}
+  taskListScrollbarColor: {r: 1, g: 1, b: 1, a: 1}
+  taskListCounterColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+  requiredTask1Color: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  requiredTask2Color: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  requiredTask3Color: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  requiredTask4Color: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  bonusTask1Color: {r: 0.18247153, g: 0.6556604, b: 0.54154056, a: 1}
+  bonusTask2Color: {r: 0.18431373, g: 0.654902, b: 0.5411765, a: 1}
+  bonusTask3Color: {r: 0.18431373, g: 0.654902, b: 0.5411765, a: 1}
+  bonusTask4Color: {r: 0.18431373, g: 0.654902, b: 0.5411765, a: 1}
+  fixedActivityColor: {r: 0.2509804, g: 0.078431375, b: 0.078431375, a: 1}
+  fixedActivityBorderColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+  timeHandColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+  pauseButtonColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+  helpButtonColor: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
+  resourceBarBackgroundColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}
+  happinessBars:
+  - fill: {r: 0.078431375, g: 0.5019608, b: 0.078431375, a: 1}
+    change: {r: 0.2509804, g: 0.078431375, b: 0.078431375, a: 1}
+    min: 0
+    max: 100
+  - fill: {r: 0.18431373, g: 0.654902, b: 0.5411765, a: 1}
+    change: {r: 0, g: 0, b: 0, a: 1}
+    min: 100
+    max: 200
+  moneyBars:
+  - fill: {r: 0.078431375, g: 0.5019608, b: 0.078431375, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 1400
+  - fill: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 1400
+    max: 4200
+  - fill: {r: 0.078431375, g: 0.5019608, b: 0.078431375, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 4200
+    max: 12600
+  weekBars:
+  - fill: {r: 0.18431373, g: 0.654902, b: 0.5411765, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
+    min: 0
+    max: 16

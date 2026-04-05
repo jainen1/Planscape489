@@ -6,6 +6,7 @@ public class TaskListItem : MonoBehaviour
     private LevelManager gameManager;
     [SerializeField] private GameObject activity;
     [SerializeField] private AudioClip clickSound;
+    [SerializeField] private AudioClip rejectSound;
 
     private GameObject newActivity;
 
@@ -14,11 +15,15 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject resourceTextComponent;
     [SerializeField] private GameObject countComponent;
+    [SerializeField] private GameObject countComponentBackground;
+
 
     [SerializeField] private GameObject viewport;
-    private bool isVisible;
 
     [SerializeField] TaskList taskList;
+
+    [SerializeField] private bool isVisible;
+    [SerializeField] private int count;
 
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
@@ -28,20 +33,27 @@ public class TaskListItem : MonoBehaviour
 
     public void OnMouseDown() {
         if(!gameManager.isPaused() && isVisible) {
-            AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
+            if(count > 0) {
+                AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
 
-            //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
+                //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+                newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
 
-            newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
-            newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
-            newActivity.GetComponent<ActivityInitializer>().Initialize();
-            newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
+                newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
+                newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
+                newActivity.GetComponent<ActivityInitializer>().Initialize();
+                newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseDown", SendMessageOptions.RequireReceiver);
+
+                SetCount(count - 1);
+            } else {
+                AudioSource.PlayClipAtPoint(rejectSound, Camera.main.transform.position, 1.0f);
+                newActivity = null;
+            }
         }
     }
 
     public void OnMouseUp() {
-        if(!gameManager.isPaused() && isVisible) {
+        if(!gameManager.isPaused() && isVisible && newActivity != null) {
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
         }
     }
@@ -53,7 +65,27 @@ public class TaskListItem : MonoBehaviour
         if(activityWithCount.activity.happiness != 0) { resourceText += (activityWithCount.activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activityWithCount.activity.happiness * activityWithCount.activity.length); }
         if(activityWithCount.activity.happiness != 0) { resourceText += "\n" + (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length); }
         resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
-        countComponent.GetComponent<TextMeshProUGUI>().text = activityWithCount.count.ToString("##");
+
+        SetCount(activityWithCount.count);
+    }
+
+    public int GetCount() {
+        return count;
+    }
+
+    public void SetCount(int newCount) {
+        count = newCount;
+
+        if(count <= 0) {
+            countComponentBackground.transform.localScale = Vector3.zero;
+
+        } else {
+            countComponentBackground.transform.localScale = Vector3.one;
+        }
+
+        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+
+        countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {

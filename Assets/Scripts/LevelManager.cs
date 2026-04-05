@@ -29,6 +29,9 @@ public class LevelManager : MonoBehaviour
 
     private float howPaused;
 
+    [SerializeField] private TaskList requiredTaskList;
+    [SerializeField] private TaskList bonusTaskList;
+
     [Header("Telemetry")]
     [SerializeField] bool doPlannerMetric = true;   
 
@@ -85,7 +88,9 @@ public class LevelManager : MonoBehaviour
     }
 
     public void ReturnTaskToList(ActivityObject activity) {
-
+        if(!requiredTaskList.ReturnTaskToList(activity)) {
+            bonusTaskList.ReturnTaskToList(activity);
+        }
     }
 
     public void SkipTimer() {

@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 23
+  type: 31
   target: 1
   color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &354984560124939061
@@ -845,7 +845,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8178351805192367048}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9829068
+  m_Size: 0.9797728
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1254,7 +1254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000020540736}
+  m_AnchoredPosition: {x: 0, y: 0.0008883667}
   m_SizeDelta: {x: 1.9, y: 1.23}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &689619532938457356
@@ -1271,6 +1271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaskList
   listItem: {fileID: 1048671215189803577, guid: 8a9ac654395e5694299dd16cf08fe408, type: 3}
   firstItem: {fileID: 6021054031573210908}
+  itemList: []
   activityType: 0
 --- !u!1001 &6702117484034135333
 PrefabInstance:
