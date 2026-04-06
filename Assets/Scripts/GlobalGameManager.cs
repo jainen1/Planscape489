@@ -99,7 +99,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void NewGame() {
-        SceneManager.LoadScene("CampaignSelectScene");
+        SceneManager.LoadScene("CampaignSelectScene", LoadSceneMode.Additive);
     }
     
     public void ExitToMenu() {
