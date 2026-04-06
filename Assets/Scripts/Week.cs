@@ -5,6 +5,8 @@ using UnityEngine;
 public class Week : ScriptableObject {
     public int weekNumber;
 
+    public AudioClip music;
+
     public float timeHandSpeed = 0.48f;
 
     public float firstPreparationTime = 60f;
