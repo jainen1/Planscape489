@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6725d998131e54db00f777e61c736b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalGameManager
-  campaign: {fileID: 11400000, guid: 9658f7959acd8054fb6955b72e4a063b, type: 2}
+  campaign: {fileID: 0}
   currentWeek: 0
-  defaultTheme: {fileID: 11400000, guid: 202a9f53f20a08244b3380196e4ff991, type: 2}
+  currentTheme: {fileID: 0}
+  clickSound: {fileID: 0}

@@ -8,7 +8,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     [SerializeField] private Campaign campaign;
     [SerializeField] private int currentWeek = 0;
 
-    private ThemeList menuThemes;
+    private ThemeList themeList;
     [SerializeField] private MenuTheme currentTheme;
 
     public delegate void UpdateTheme();
@@ -19,13 +19,11 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     //[SerializeField] private AudioMixer audioMixer;
 
     protected override void OnInitialize() {
-        campaign = Resources.Load<Campaign>("Campaigns/Planscape");
-        menuThemes = Resources.Load<ThemeList>("Themes/ThemeList");
-        currentTheme = menuThemes.themes[0];
+        //campaign = Resources.Load<Campaign>("Campaigns/Planscape");
+        themeList = Resources.Load<ThemeList>("Themes/ThemeList");
+        Instance.currentTheme = themeList.themes[0];
 
-        clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
-
-        //clickSound = 
+        Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
 
         //audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
 
@@ -52,16 +50,16 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void PlayClickSound() {
         //float volume;
         //audioMixer.GetFloat("SFX Volume", out volume);
-        AudioSource.PlayClipAtPoint(Resources.Load<AudioClip>("Sounds/clickSound"), Camera.main.transform.position, 1.0f + 0);
+        AudioSource.PlayClipAtPoint(Instance.clickSound, Camera.main.transform.position, 1.0f + 0);
     }
 
     public void CycleTheme() {
-        int currentThemeIndex = Instance.menuThemes.themes.IndexOf(Instance.currentTheme);
+        int currentThemeIndex = Instance.themeList.themes.IndexOf(Instance.currentTheme);
 
-        if(currentThemeIndex == Instance.menuThemes.themes.Count - 1) { currentThemeIndex = 0; }
+        if(currentThemeIndex == Instance.themeList.themes.Count - 1) { currentThemeIndex = 0; }
         else { currentThemeIndex++; }
 
-        Instance.currentTheme = Instance.menuThemes.themes[currentThemeIndex];
+        Instance.currentTheme = Instance.themeList.themes[currentThemeIndex];
         Instance.SendThemeUpdate();
     }
 
@@ -86,17 +84,26 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         GlobalGameManager.Instance.CycleTheme();
     }
 
-    public void Continue() {
+    public void SetCampaignAndPlay() {
+        campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         currentWeek = 0;
-        SceneManager.LoadScene(1);
+        Continue();
+    }
+
+    public void Continue() {
+        if(campaign != null) {
+            SceneManager.LoadScene("LevelScene");
+        } else {
+            NewGame();
+        }
     }
 
     public void NewGame() {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("CampaignSelectScene");
     }
     
     public void ExitToMenu() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void ExitGame() {
