@@ -63,7 +63,7 @@ public class TaskListItem : MonoBehaviour
 
         string resourceText = string.Empty;
         if(activityWithCount.activity.happiness != 0) { resourceText += (activityWithCount.activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activityWithCount.activity.happiness * activityWithCount.activity.length); }
-        if(activityWithCount.activity.happiness != 0) { resourceText += "\n" + (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length); }
+        if(activityWithCount.activity.money != 0) { resourceText += "\n" + (activityWithCount.activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activityWithCount.activity.money * activityWithCount.activity.length); }
         resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
 
         SetCount(activityWithCount.count);
