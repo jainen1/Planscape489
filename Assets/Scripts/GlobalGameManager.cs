@@ -85,13 +85,13 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void SetCampaignAndPlay() {
-        campaign = Resources.Load<Campaign>("Campaigns/Planscape");
-        currentWeek = 0;
+        Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
+        Instance.currentWeek = 0;
         Continue();
     }
 
     public void Continue() {
-        if(campaign != null) {
+        if(Instance.campaign != null) {
             SceneManager.LoadScene("LevelScene");
         } else {
             NewGame();

@@ -47,4 +47,4 @@ MonoBehaviour:
   campaign: {fileID: 0}
   currentWeek: 0
   currentTheme: {fileID: 0}
-  clickSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
