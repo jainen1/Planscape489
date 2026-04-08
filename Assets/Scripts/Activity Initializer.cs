@@ -58,7 +58,7 @@ public class ActivityInitializer : MonoBehaviour
 
         string resourceText = string.Empty;
         if(activity.happiness != 0) { resourceText += (activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activity.happiness * activity.length); }
-        if(activity.happiness != 0) { resourceText += "\n" + (activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activity.money * activity.length); }
+        if(activity.money != 0) { resourceText += "\n" + (activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activity.money * activity.length); }
         resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
 
         visiblePanel.GetComponent<MenuObject>().UpdateMenuObject();

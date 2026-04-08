@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Hackerman
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
   mainFont: {fileID: 11400000, guid: dbfc122bffd37814a97d802c9cce9b58, type: 2}
-  mainFontSizeScale: 1
+  mainFontSizeScale: 0.95
+  mainCharacterSpacingScale: 1
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
+  timerCharacterSpacingScale: 1
   background: {fileID: 0}
   stretchToFit: 0
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}

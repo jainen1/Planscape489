@@ -7,6 +7,7 @@ public class TextMenuObject : MonoBehaviour
     [SerializeField] private int threshold = 128;
 
     private float fontSize;
+    private float characterSpacing;
 
     [SerializeField] TextType textType = TextType.Basic;
 
@@ -15,6 +16,7 @@ public class TextMenuObject : MonoBehaviour
 
     private void Awake() {
         fontSize = gameObject.GetComponent<TextMeshProUGUI>().fontSize;
+        characterSpacing = gameObject.GetComponent <TextMeshProUGUI>().characterSpacing;
     }
 
     public void UpdateMenuObject() {
@@ -34,27 +36,32 @@ public class TextMenuObject : MonoBehaviour
 
         TMP_FontAsset font;
         float fontSizeScale;
+        float characterSpacingScale;
 
         switch(textType) {
             case TextType.Basic: {
                 font = menuTheme.mainFont;
                 fontSizeScale = menuTheme.mainFontSizeScale;
+                characterSpacingScale = menuTheme.mainCharacterSpacingScale;
                 break;
             }
             case TextType.Timer: {
                 font = menuTheme.timerFont;
                 fontSizeScale = menuTheme.timerFontSizeScale;
+                characterSpacingScale = menuTheme.timerCharacterSpacingScale;
                 break;
             }
             default: {
                 font = menuTheme.mainFont;
                 fontSizeScale = menuTheme.mainFontSizeScale;
+                characterSpacingScale = menuTheme.mainCharacterSpacingScale;
                 break;
             }
         }
 
         textComponent.font = font;
         textComponent.fontSize = fontSize * fontSizeScale;
+        textComponent.characterSpacing = characterSpacing * characterSpacingScale;
     }
 }
 

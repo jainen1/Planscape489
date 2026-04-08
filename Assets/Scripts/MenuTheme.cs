@@ -8,9 +8,11 @@ public class MenuTheme : ScriptableObject
     [Header("Fonts")]
     public TMPro.TMP_FontAsset mainFont;
     public float mainFontSizeScale = 1;
+    public float mainCharacterSpacingScale = 1;
 
     public TMPro.TMP_FontAsset timerFont;
     public float timerFontSizeScale = 1;
+    public float timerCharacterSpacingScale = 1;
 
     [Header("Background")]
     public Texture2D background;

@@ -183,6 +183,7 @@ public class LevelManager : MonoBehaviour
 
     public void SamplePlannerMetric(int day, int hour) {
         if(doPlannerMetric) {
+            //Debug.Log("Creating planner sample...");
             string plannerData = "\nWeek " + week.weekNumber + " Day " + day + " Hour " + hour + "; Happiness = " + GetHappiness() + " Money = " + GetMoney() + "\n";
             for(int i = 0; i < cells.Length; i++) {
                 string occupyingActivity = "";
