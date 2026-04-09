@@ -8,16 +8,14 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] public Slider musicSlider;
     [SerializeField] public Slider sfxSlider;
 
-    public void SetMusicVolume()
+    public void SetMusicVolume(float value) 
     {
-        float volume = musicSlider.value;
-        // Formula: Convert 0-1 linear to -80dB to 0dB
-        myMixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
+        myMixer.SetFloat("Music Volume", Mathf.Log10(value) * 20);
     }
 
     public void SetSFXVolume()
     {
         float volume = sfxSlider.value;
-        myMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
+        myMixer.SetFloat("SFX Volume", Mathf.Log10(volume) * 20);
     }
 }
