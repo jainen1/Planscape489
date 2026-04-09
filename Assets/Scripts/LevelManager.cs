@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 using USCG.Core.Telemetry;
 
 public class LevelManager : MonoBehaviour
@@ -16,8 +14,6 @@ public class LevelManager : MonoBehaviour
     private bool playerPaused;
     public bool menuPaused;
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject winScreen;
-    [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject eventScreen;
     [SerializeField] private GameObject tutorialWindow;
 
@@ -51,9 +47,6 @@ public class LevelManager : MonoBehaviour
         for(int i = 0; i < week.fixedActivities.Length; i++) {
             CreateNewFixedActivity(week.fixedActivities[i].activity, (int) week.fixedActivities[i].time.x, (int) week.fixedActivities[i].time.y);
         }
-
-        winScreen.transform.localScale = Vector3.zero;
-        loseScreen.transform.localScale = Vector3.zero;
 
         SetPauseScene(false);
         tutorialWindow.transform.localScale = Vector3.zero;
@@ -100,13 +93,13 @@ public class LevelManager : MonoBehaviour
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         menuPaused = true;
-        winScreen.transform.localScale = Vector3.one;
+        GlobalGameManager.Instance.OpenLoseScene();
     }
 
     public void LoseScene() {
         AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
         menuPaused = true;
-        loseScreen.transform.localScale = Vector3.one;
+        GlobalGameManager.Instance.OpenLoseScene();
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {

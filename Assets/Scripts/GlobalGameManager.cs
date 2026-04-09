@@ -42,11 +42,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     public void AdvanceWeek() {
         Instance.currentWeek++;
-        Continue();
-    }
-
-    public void RestartWeek() {
-        SceneManager.LoadScene(1);
     }
 
     public void PlayClickSound() {
@@ -89,10 +84,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void SetCampaignAndPlay() {
         Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         Instance.currentWeek = 0;
-        Continue();
+        StartWeek();
     }
 
-    public void Continue() {
+    public void StartWeek() {
         if(Instance.campaign != null) {
             SceneManager.LoadScene("LevelScene");
         } else {
@@ -108,12 +103,24 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.LoadScene("MainMenuScene");
     }
 
+    public void OpenWinScene() {
+        SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
+    }
+
+    public void OpenLoseScene() {
+        SceneManager.LoadScene("LoseScene", LoadSceneMode.Additive);
+    }
+
     /*public void CloseScene() {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }*/
 
     public void CloseOptionsScene() {
         SceneManager.UnloadSceneAsync("OptionsMenu");
+    }
+
+    public void CloseThemesScene() {
+        SceneManager.UnloadSceneAsync("ThemesMenu");
     }
 
     public void ExitGame() {
