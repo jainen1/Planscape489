@@ -73,7 +73,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void Options() {
-
+        SceneManager.LoadScene("OptionsMenu");
     }
 
     public void Credits() {
