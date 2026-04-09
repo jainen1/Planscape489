@@ -23,7 +23,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     protected override void OnInitialize() {
         //campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         themeList = Resources.Load<ThemeList>("Themes/ThemeList");
+
         Instance.currentTheme = themeList.themes[0];
+        Debug.Log("theme being initialized to: " + Instance.currentTheme);
+
 
         Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
 
