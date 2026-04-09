@@ -18,6 +18,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     [SerializeField] private AudioClip clickSound;
     //[SerializeField] private AudioMixer audioMixer;
 
+    [SerializeField] private Scene activeMenuScene;
+
     protected override void OnInitialize() {
         //campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         themeList = Resources.Load<ThemeList>("Themes/ThemeList");
@@ -73,7 +75,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void Options() {
-        SceneManager.LoadScene("OptionsMenu");
+        SceneManager.LoadScene("OptionsMenu", LoadSceneMode.Additive);
     }
 
     public void Credits() {
@@ -104,6 +106,14 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     
     public void ExitToMenu() {
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    /*public void CloseScene() {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+    }*/
+
+    public void CloseOptionsScene() {
+        SceneManager.UnloadSceneAsync("OptionsMenu");
     }
 
     public void ExitGame() {
