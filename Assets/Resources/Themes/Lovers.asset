@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
   mainFont: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   mainFontSizeScale: 1
+  mainCharacterSpacingScale: 1
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
+  timerCharacterSpacingScale: 1
+  background: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
+  stretchToFit: 0
   backgroundColor: {r: 1, g: 0.8396226, b: 0.93609834, a: 1}
   gridCellColor: {r: 0.9386792, g: 0.58003294, b: 0.7987198, a: 1}
   fixedGridCellColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}

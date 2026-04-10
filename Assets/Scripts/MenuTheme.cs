@@ -15,7 +15,7 @@ public class MenuTheme : ScriptableObject
     public float timerCharacterSpacingScale = 1;
 
     [Header("Background")]
-    public Texture2D background;
+    public Sprite background;
     public bool stretchToFit;
 
     [Header("Colors")]

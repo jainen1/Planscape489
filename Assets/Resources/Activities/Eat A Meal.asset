@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Eat A Meal
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: Eat A Meal
+  title: Eat Food
   length: 1
   fullStomachLength: 5
-  type: 0
-  happiness: 10
+  happiness: 5
   money: -20
