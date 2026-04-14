@@ -16,7 +16,6 @@ public class MenuTheme : ScriptableObject
 
     [Header("Background")]
     public Sprite background;
-    public bool stretchToFit;
 
     [Header("Colors")]
     public Color backgroundColor;
