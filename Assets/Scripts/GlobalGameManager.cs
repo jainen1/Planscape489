@@ -54,6 +54,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void CycleTheme() {
+        Debug.Log("cycling theme from: " + Instance.currentTheme.name);
+
         int currentThemeIndex = Instance.themeList.themes.IndexOf(Instance.currentTheme);
 
         if(currentThemeIndex == Instance.themeList.themes.Count - 1) { currentThemeIndex = 0; }
@@ -66,7 +68,15 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void SendThemeUpdate() {
         OnUpdateTheme();
         OnUpdateThemeText();
+        
     }
+// for testing purposes, allows you to set the theme directly 
+    public void SetThemeManual(MenuTheme newTheme)
+    {
+        Instance.currentTheme = newTheme;
+        Instance.SendThemeUpdate(); 
+    }
+//
 
     public MenuTheme GetMenuTheme() {
         return Instance.currentTheme;
@@ -77,7 +87,11 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void Credits() {
-
+        SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
+    }
+    
+    public void ThemesMenuScene() {
+        SceneManager.LoadScene("ThemeMenu", LoadSceneMode.Additive);
     }
 
     public void Themes() {

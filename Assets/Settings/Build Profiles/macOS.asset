@@ -28,11 +28,14 @@ MonoBehaviour:
     m_path: Assets/Scenes/MainMenuScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/LevelScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/ThemeMenu.unity
   m_ScriptingDefines:
   - OptionsMenu
   - CampaignSelect
   - LevelScene
   - MainMenuScene
+  - ThemeMenu
   m_PlayerSettingsYaml:
     m_Settings: []
   references:
