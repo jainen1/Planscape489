@@ -90,10 +90,16 @@ public class LevelManager : MonoBehaviour
         FindFirstObjectByType<TimeHandSprite>().timer = 0;
     }
 
+    public void VictoryScene() {
+        AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
+        menuPaused = true;
+        GlobalGameManager.Instance.OpenWinScene();
+    }
+
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         menuPaused = true;
-        GlobalGameManager.Instance.OpenLoseScene();
+        GlobalGameManager.Instance.OpenWinScene();
     }
 
     public void LoseScene() {

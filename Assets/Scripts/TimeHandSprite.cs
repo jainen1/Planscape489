@@ -95,7 +95,11 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
-                levelManager.WinScene();
+                if(GlobalGameManager.Instance.GetCurrentWeekIndex() == 15) { //replace with a "GlobalGameManager.Instance.GetLastWeekIndex()
+                    levelManager.WinScene();
+                } else {
+                    levelManager.VictoryScene();
+                }
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
