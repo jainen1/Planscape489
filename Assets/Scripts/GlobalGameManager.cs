@@ -68,8 +68,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void SendThemeUpdate() {
         OnUpdateTheme();
         OnUpdateThemeText();
-        
     }
+
 // for testing purposes, allows you to set the theme directly 
     public void SetThemeManual(MenuTheme newTheme)
     {
@@ -86,12 +86,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.LoadScene("OptionsMenu", LoadSceneMode.Additive);
     }
 
-    public void Credits() {
-        SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
-    }
-    
     public void ThemesMenuScene() {
         SceneManager.LoadScene("ThemeMenu", LoadSceneMode.Additive);
+    }
+
+    public void Credits() {
+        SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
     }
 
     public void Themes() {
@@ -118,6 +118,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     
     public void ExitToMenu() {
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void OpenTutorialScene() {
+        SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive);
     }
 
     public void OpenWinScene() {
