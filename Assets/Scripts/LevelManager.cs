@@ -90,6 +90,18 @@ public class LevelManager : MonoBehaviour
         FindFirstObjectByType<TimeHandSprite>().timer = 0;
     }
 
+    public void FastForwardTimeHand() {
+        FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(true);
+    }
+
+    public void NormalSpeedTimeHand() {
+        FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(false);
+    }
+
+    public void ToggleSpeedTimeHand() {
+        FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(!FindFirstObjectByType<TimeHandSprite>().IsFast());
+    }
+
     public void TutorialScene() {
         menuPaused = true;
         GlobalGameManager.Instance.OpenTutorialScene();

@@ -11,6 +11,10 @@ public class TimeHandSprite : MonoBehaviour
     private int clockTickIndex;
     [SerializeField] private Vector3[] dayStartPositions;
 
+    [Header("Fast Forward")]
+    [SerializeField] private bool isFast = false;
+    [SerializeField] private float fastSpeedModifier = 1.5f;
+
     void Start()
     {
         levelManager = FindFirstObjectByType<LevelManager>();
@@ -26,9 +30,17 @@ public class TimeHandSprite : MonoBehaviour
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (levelManager.week.timeHandSpeed * Time.deltaTime), gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (levelManager.week.timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
             }
         }
+    }
+
+    public bool IsFast() {
+        return isFast;
+    }
+
+    public void IsBecomeFast(bool yes) {
+        isFast = yes;
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision) {
