@@ -28,6 +28,25 @@ public class TaskListItem : MonoBehaviour
     private void Awake() {
         gameManager = FindFirstObjectByType<LevelManager>();
 
+        if (viewport == null) {
+            Debug.LogError("Viewport reference is missing, auto assigning");
+
+            var scrollRect = GetComponentInParent<UnityEngine.UI.ScrollRect>();
+            if (scrollRect != null) {
+                viewport = scrollRect.viewport.gameObject;
+        }
+        }
+
+        if (viewport != null) {
+            Debug.Log("viewport not null");
+            isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
+        }
+
+        else {
+            isVisible = true; // Default to true if viewport is not found, to avoid blocking interactions
+            Debug.LogError($"TaskListItem on {gameObject.name} couldn't find a viewport defaulting to always visible");
+        }
+
         isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
     }
 
