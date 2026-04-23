@@ -3,19 +3,13 @@ using USCG.Core.Telemetry;
 
 public class LevelManager : MonoBehaviour
 {
-    //public static new LevelManager Instance;
-
     public GridCell[] cells;
 
     [SerializeField] private GameObject activityPrefab;
 
     [HideInInspector] public Week week;
 
-    private bool playerPaused;
-    public bool menuPaused;
-    [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject eventScreen;
-    [SerializeField] private GameObject tutorialWindow;
 
     private float happiness;
     private float money;
@@ -23,22 +17,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
 
-    private float howPaused;
-
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
 
     [Header("Telemetry")]
-    [SerializeField] bool doPlannerMetric = true;   
+    [SerializeField] bool doPlannerMetric = true;
+
+    public bool pauseMenuInteractible = true;
+    public bool levelIsActive = true;
 
     public void StartLevel() {
-        /*if(Instance == null) {
-            Instance = this;
-        }
-        else {
-            Destroy(gameObject);
-        }*/
-
         week = GlobalGameManager.Instance.GetCurrentWeek();
 
         SetHappiness(week.startingHappiness);
@@ -47,32 +35,26 @@ public class LevelManager : MonoBehaviour
         for(int i = 0; i < week.fixedActivities.Length; i++) {
             CreateNewFixedActivity(week.fixedActivities[i].activity, (int) week.fixedActivities[i].time.x, (int) week.fixedActivities[i].time.y);
         }
-
-        SetPauseScene(false);
-        tutorialWindow.transform.localScale = Vector3.zero;
     }
 
-    public bool isPaused() {
-        return playerPaused || menuPaused;
+    public void PauseScene() {
+        GlobalGameManager.Instance.OpenPauseMenuScene();
+        levelIsActive = false;
     }
 
-    public void PauseScene() { SetPauseScene(true); }
-    public void UnPauseScene() { SetPauseScene(false); }
-    public void TogglePause() { SetPauseScene(!playerPaused); }
-    public void SetPauseScene(bool x) {
-        if(!menuPaused) {
-            playerPaused = x;
-            if(x) {
-                pauseScreen.transform.localScale = Vector3.one;
+    public void UnPauseScene() {
+        GlobalGameManager.Instance.ClosePauseMenuScene();
+        levelIsActive = true;
+    }
+
+    public void TogglePause() {
+        if(pauseMenuInteractible) {
+            if(levelIsActive) {
+                PauseScene();
             } else {
-                pauseScreen.transform.localScale = Vector3.zero;
+                UnPauseScene();
             }
         }
-
-        /*pauseScreen.GetComponent<CanvasGroup>().interactable = x;
-        pauseScreen.GetComponent<CanvasGroup>().alpha = x? 1f : 0f;
-        Color pauseScreenColor = pauseScreen.GetComponent<SpriteRenderer>().color;
-        pauseScreen.GetComponent<SpriteRenderer>().color = new Color(pauseScreenColor.r, pauseScreenColor.g, pauseScreenColor.b, x? 0.89f : 0f);*/
     }
 
     public void ReturnTaskToList(ActivityObject activity) {
@@ -82,41 +64,47 @@ public class LevelManager : MonoBehaviour
     }
 
     public void SkipTimer() {
-        FindFirstObjectByType<TimeHandSprite>().timer = 0;
+        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().timer = 0; }
     }
 
     public void FastForwardTimeHand() {
-        FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(true);
+        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(true); }
     }
 
     public void NormalSpeedTimeHand() {
-        FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(false);
+        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(false); }
     }
 
     public void ToggleSpeedTimeHand() {
-        FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(!FindFirstObjectByType<TimeHandSprite>().IsFast());
+        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(!FindFirstObjectByType<TimeHandSprite>().IsFast()); }
     }
 
     public void TutorialScene() {
-        menuPaused = true;
-        GlobalGameManager.Instance.OpenTutorialScene();
+        if(levelIsActive) {
+            GlobalGameManager.Instance.OpenTutorialScene();
+            pauseMenuInteractible = false;
+            levelIsActive = false;
+        }
     }
 
     public void VictoryScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
-        menuPaused = true;
+        pauseMenuInteractible = false;
+        levelIsActive = false;
         GlobalGameManager.Instance.OpenWinScene();
     }
 
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
-        menuPaused = true;
+        pauseMenuInteractible = false;
+        levelIsActive = false;
         GlobalGameManager.Instance.OpenWinScene();
     }
 
     public void LoseScene() {
         AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
-        menuPaused = true;
+        pauseMenuInteractible = false;
+        levelIsActive = false;
         GlobalGameManager.Instance.OpenLoseScene();
     }
 

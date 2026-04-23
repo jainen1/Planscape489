@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TaskListItem : MonoBehaviour
 {
-    private LevelManager gameManager;
+    private LevelManager levelManager;
     [SerializeField] private GameObject activity;
     [SerializeField] private AudioClip clickSound;
     [SerializeField] private AudioClip rejectSound;
@@ -26,7 +26,7 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private int count;
 
     private void Awake() {
-        gameManager = FindFirstObjectByType<LevelManager>();
+        levelManager = FindFirstObjectByType<LevelManager>();
 
         if (viewport == null) {
             Debug.LogError("Viewport reference is missing, auto assigning");
@@ -51,7 +51,7 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        if(!gameManager.isPaused() && isVisible) {
+        if(levelManager.levelIsActive && isVisible) {
             if(count > 0) {
                 AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
 
@@ -72,7 +72,7 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseUp() {
-        if(!gameManager.isPaused() && isVisible && newActivity != null) {
+        if(levelManager.levelIsActive && isVisible && newActivity != null) {
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
         }
     }

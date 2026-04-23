@@ -83,7 +83,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     public void OnMouseDown() {
-        if(!FindFirstObjectByType<LevelManager>().isPaused()) {
+        if(FindFirstObjectByType<LevelManager>().levelIsActive) {
             if(!initializer.IsFixed()) {
                 isHeld = true;
                 AudioSource.PlayClipAtPoint(pickUp, Camera.main.transform.position, audioVolume);

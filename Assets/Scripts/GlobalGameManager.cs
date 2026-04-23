@@ -20,8 +20,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     [SerializeField] private Scene activeMenuScene;
 
-    private bool shouldSeeTutorialOnNextBootup = false;
-
     protected override void OnInitialize() {
         //campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         themeList = Resources.Load<ThemeList>("Themes/ThemeList");
@@ -78,10 +76,21 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         Instance.currentTheme = newTheme;
         Instance.SendThemeUpdate(); 
     }
-//
 
     public MenuTheme GetMenuTheme() {
         return Instance.currentTheme;
+    }
+
+    public void OpenPauseMenuScene() {
+        SceneManager.LoadScene("PauseMenuScene", LoadSceneMode.Additive);
+    }
+
+    public void ClosePauseMenuScene() {
+        SceneManager.UnloadSceneAsync("PauseMenuScene");
+    }
+
+    public void UnPauseLevel() {
+        FindFirstObjectByType<LevelManager>().levelIsActive = true;
     }
 
     public void Options() {
@@ -143,10 +152,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void OpenLoseScene() {
         SceneManager.LoadScene("LoseScene", LoadSceneMode.Additive);
     }
-
-    /*public void CloseScene() {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-    }*/
 
     public void CloseOptionsScene() {
         SceneManager.UnloadSceneAsync("OptionsMenu");
