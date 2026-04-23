@@ -89,6 +89,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.UnloadSceneAsync("PauseMenuScene");
     }
 
+    public void PauseLevel() {
+        FindFirstObjectByType<LevelManager>().levelIsActive = false;
+    }
+
     public void UnPauseLevel() {
         FindFirstObjectByType<LevelManager>().levelIsActive = true;
     }
