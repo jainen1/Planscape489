@@ -75,11 +75,6 @@ public class LevelManager : MonoBehaviour
         pauseScreen.GetComponent<SpriteRenderer>().color = new Color(pauseScreenColor.r, pauseScreenColor.g, pauseScreenColor.b, x? 0.89f : 0f);*/
     }
 
-    public void InitiateTutorial() {
-        menuPaused = true;
-        GlobalGameManager.Instance.OpenTutorialScene();
-    }
-
     public void ReturnTaskToList(ActivityObject activity) {
         if(!requiredTaskList.ReturnTaskToList(activity)) {
             bonusTaskList.ReturnTaskToList(activity);

@@ -20,6 +20,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     [SerializeField] private Scene activeMenuScene;
 
+    private bool shouldSeeTutorialOnNextBootup = false;
+
     protected override void OnInitialize() {
         //campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         themeList = Resources.Load<ThemeList>("Themes/ThemeList");
@@ -94,14 +96,20 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
     }
 
-    public void Themes() {
-        GlobalGameManager.Instance.CycleTheme();
-    }
-
     public void SetCampaignAndPlay() {
         Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         Instance.currentWeek = 0;
-        StartWeek();
+        StartWeekWithTutorial();
+    }
+
+    public void StartWeekWithTutorial() {
+        if(Instance.campaign != null) {
+            SceneManager.LoadScene("LevelScene");
+            OpenTutorialScene();
+        }
+        else {
+            NewGame();
+        }
     }
 
     public void StartWeek() {
