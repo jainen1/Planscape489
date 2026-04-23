@@ -124,6 +124,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive);
     }
 
+    public void CloseTutorialScene() {
+        SceneManager.UnloadSceneAsync("TutorialScene");
+    }
+
     public void OpenWinScene() {
         SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
     }

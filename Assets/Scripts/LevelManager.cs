@@ -76,8 +76,8 @@ public class LevelManager : MonoBehaviour
     }
 
     public void InitiateTutorial() {
-        tutorialWindow.transform.localScale = Vector3.one;
-        tutorialWindow.GetComponent<Tutorial>().InitializeTutorial();
+        menuPaused = true;
+        GlobalGameManager.Instance.OpenTutorialScene();
     }
 
     public void ReturnTaskToList(ActivityObject activity) {

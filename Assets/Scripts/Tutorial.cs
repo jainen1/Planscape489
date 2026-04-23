@@ -10,7 +10,7 @@ public class Tutorial : MonoBehaviour
 
     private LevelManager levelManager;
 
-    public void InitializeTutorial() {
+    public void Awake() {
         levelManager = FindFirstObjectByType<LevelManager>();
         levelManager.menuPaused = true;
         activeScreenIndex = 0;
@@ -26,6 +26,7 @@ public class Tutorial : MonoBehaviour
         if(activeScreenIndex >= screens.Count) { //end tutorial
             transform.localScale = Vector3.zero;
             levelManager.menuPaused = false;
+            GlobalGameManager.Instance.CloseTutorialScene();
         } else {
             screens[activeScreenIndex].transform.localScale = Vector3.one;
         }
