@@ -352,7 +352,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 6604925413005977269, guid: 1b98a71b904729e4892a137197425247, type: 3}
         m_TargetAssemblyTypeName: GlobalGameManager, Assembly-CSharp
-        m_MethodName: CloseOptionsScene
+        m_MethodName: CloseCreditsScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

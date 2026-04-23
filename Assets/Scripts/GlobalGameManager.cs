@@ -153,7 +153,11 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void CloseThemesScene() {
-        SceneManager.UnloadSceneAsync("ThemesMenu");
+        SceneManager.UnloadSceneAsync("ThemeMenu");
+    }
+
+    public void CloseCreditsScene() {
+        SceneManager.UnloadSceneAsync("CreditsScene");
     }
 
     public void ExitGame() {
