@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
-  m_Name: Interview
+  m_Name: Homework
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
-  title: Interview
+  title: Homework
   length: 2
   fullStomachLength: 0
-  happiness: -5
+  happiness: -10
   money: 0
