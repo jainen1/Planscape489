@@ -70,11 +70,15 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         OnUpdateThemeText();
     }
 
-// for testing purposes, allows you to set the theme directly 
     public void SetThemeManual(MenuTheme newTheme)
     {
         Instance.currentTheme = newTheme;
         Instance.SendThemeUpdate(); 
+    }
+
+    public void SetThemeByIndex(int i) {
+        Instance.currentTheme = themeList.themes[i];
+        Instance.SendThemeUpdate();
     }
 
     public MenuTheme GetMenuTheme() {

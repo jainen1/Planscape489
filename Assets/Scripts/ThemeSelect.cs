@@ -18,11 +18,11 @@ public class ThemeSelect : MonoBehaviour
 
     public void SetThemeByIndex(int index)
     {
-        if (index >= 0 && index < allThemes.themes.Count)
-        {
-            MenuTheme selected = allThemes.themes[index];
-            ApplyTheme(selected);
-        }
+        //if (index >= 0 && index < allThemes.themes.Count)
+        //{
+            //MenuTheme selected = allThemes.themes[index];
+            GlobalGameManager.Instance.SetThemeByIndex(index);
+        //}
     }
 
     public void ApplyTheme(MenuTheme theme) {

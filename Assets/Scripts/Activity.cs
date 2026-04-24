@@ -24,22 +24,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     [SerializeField] private float mouseLerp = 100f;
     [SerializeField] private float targetLerp = 5f;
 
-    /*public void OnPointerDown(PointerEventData eventData) {
-        //Debug.Log("clicked");
-        mouseDown = true;
-        if(isFixed) {
-            AudioSource.PlayClipAtPoint(pickUp, transform.position, audioVolume);
-        } else {
-
-        }
-    }
-
-    public void OnPointerUp(PointerEventData eventData) {
-        mouseDown = false;
-        if(isFixed) {
-            AudioSource.PlayClipAtPoint(putDown, transform.position, audioVolume);
-        }
-    }*/
+    [SerializeField] public ActivityType activityType;
 
     public void SetTargetCell(GridCell cell) {
         closestCell = cell.gameObject;

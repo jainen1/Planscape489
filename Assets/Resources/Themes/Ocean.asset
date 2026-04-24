@@ -21,7 +21,7 @@ MonoBehaviour:
   background: {fileID: -1939312270735109476, guid: 52847ed31af8c2b448d5589465ae0d08, type: 3}
   backgroundColor: {r: 0.9411765, g: 1, b: 0.9944321, a: 1}
   gridCellColor: {r: 0.8784314, g: 0.9511358, b: 1, a: 0.88235295}
-  fixedGridCellColor: {r: 0.876691, g: 0.91179276, b: 0.9339623, a: 0.88235295}
+  fixedGridCellColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 0.23529412}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
   dailyTaskListColor: {r: 0.34901965, g: 0.58960384, b: 1, a: 1}

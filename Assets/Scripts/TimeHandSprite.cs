@@ -111,6 +111,7 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
+
                 if(GlobalGameManager.Instance.GetCurrentWeekIndex() == 15) { //replace with a "GlobalGameManager.Instance.GetLastWeekIndex()
                     levelManager.WinScene();
                 } else {
