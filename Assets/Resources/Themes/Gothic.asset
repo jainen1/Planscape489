@@ -19,10 +19,9 @@ MonoBehaviour:
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
   background: {fileID: 21300000, guid: beeed2acda05cb949b78345ff4ebc113, type: 3}
-  stretchToFit: 0
   backgroundColor: {r: 1, g: 0.46278825, b: 0.4198113, a: 1}
-  gridCellColor: {r: 0.33490568, g: 0.092456594, b: 0.078987196, a: 1}
-  fixedGridCellColor: {r: 0.504717, g: 0.30187792, b: 0.16665184, a: 1}
+  gridCellColor: {r: 0.33490568, g: 0.092456594, b: 0.078987196, a: 0.88235295}
+  fixedGridCellColor: {r: 0.504717, g: 0.30187792, b: 0.16665184, a: 0.88235295}
   brightTextColor: {r: 1, g: 0.98937017, b: 0.8490566, a: 1}
   darkTextColor: {r: 0.23113209, g: 0.017120894, b: 0, a: 1}
   dailyTaskListColor: {r: 1, g: 0.84939355, b: 0.2971698, a: 1}

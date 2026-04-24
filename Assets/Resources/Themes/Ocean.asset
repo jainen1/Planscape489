@@ -18,11 +18,10 @@ MonoBehaviour:
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
-  background: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
-  stretchToFit: 0
+  background: {fileID: -1939312270735109476, guid: 52847ed31af8c2b448d5589465ae0d08, type: 3}
   backgroundColor: {r: 0.9411765, g: 1, b: 0.9944321, a: 1}
-  gridCellColor: {r: 0.8784314, g: 0.9511358, b: 1, a: 1}
-  fixedGridCellColor: {r: 0.876691, g: 0.91179276, b: 0.9339623, a: 1}
+  gridCellColor: {r: 0.8784314, g: 0.9511358, b: 1, a: 0.88235295}
+  fixedGridCellColor: {r: 0.876691, g: 0.91179276, b: 0.9339623, a: 0.88235295}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
   dailyTaskListColor: {r: 0.34901965, g: 0.58960384, b: 1, a: 1}
@@ -43,7 +42,7 @@ MonoBehaviour:
   bonusTask4Color: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
   fixedActivityColor: {r: 0.6161668, g: 0.6842391, b: 0.7216981, a: 1}
   fixedActivityBorderColor: {r: 0.30838376, g: 0.35774925, b: 0.3962264, a: 1}
-  timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
+  timeHandColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
   pauseButtonColor: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
   helpButtonColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
   resourceBarBackgroundColor: {r: 0.8784314, g: 0.9529412, b: 1, a: 1}
@@ -53,7 +52,7 @@ MonoBehaviour:
     min: 0
     max: 100
   - fill: {r: 0.3803922, g: 0.43137258, b: 0.7019608, a: 1}
-    change: {r: 0.21176472, g: 0.30588236, b: 0.92549026, a: 1}
+    change: {r: 1, g: 1, b: 1, a: 1}
     min: 100
     max: 200
   moneyBars:
@@ -61,11 +60,11 @@ MonoBehaviour:
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 0
     max: 1400
-  - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+  - fill: {r: 0.6745098, g: 0.6627451, b: 0.9450981, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 1400
     max: 4200
-  - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+  - fill: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 4200
     max: 12600
