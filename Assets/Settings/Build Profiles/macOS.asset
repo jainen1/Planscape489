@@ -21,15 +21,31 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/OptionsMenu.unity
+    m_path: Assets/Scenes/MainMenuScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/CampaignSelectScene.unity
   - m_enabled: 1
-    m_path: Assets/Scenes/MainMenuScene.unity
+    m_path: Assets/Scenes/OptionsMenu.unity
   - m_enabled: 1
     m_path: Assets/Scenes/LevelScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/ThemeMenu.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/CreditsScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/EventScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/IPThemeMenu.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/LoseScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/PauseMenuScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/TutorialScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/VictoryScene.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/WinScene.unity
   m_ScriptingDefines:
   - OptionsMenu
   - CampaignSelect
