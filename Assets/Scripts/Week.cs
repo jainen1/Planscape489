@@ -5,6 +5,7 @@ using UnityEngine;
 public class Week : ScriptableObject {
     public AudioClip music;
 
+    [Header("Details")]
     public float timeHandSpeed = 0.48f;
 
     public float firstPreparationTime = 60f;
@@ -13,13 +14,14 @@ public class Week : ScriptableObject {
     public float startingHappiness = 70;
     public float startingMoney = 2000;
 
+    [Header("Activities")]
     public ActivityWithTime[] fixedActivities;
-
-    [Header("Task Lists")]
     public ActivityWithCount[] requiredTasks;
     public ActivityWithCount[] bonusTasks;
 
-    public float randomEventChance;
+    [Header("Events")]
+    //public float randomEventChance;
+    public EventWithTime[] fixedEvents;
 }
 
 [Serializable]
@@ -32,4 +34,10 @@ public class ActivityWithTime {
 public class ActivityWithCount {
     public ActivityObject activity;
     public int count;
+}
+
+[Serializable]
+public class EventWithTime {
+    public EventObject eventObject;
+    public Vector2 time;
 }

@@ -11,7 +11,7 @@ public class WeekDisplay : MonoBehaviour
 
     void Start()
     {
-     Debug.Log("counter start fn");   
+        Debug.Log("counter start fn");   
         UpdateDisplay();
     }
 

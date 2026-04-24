@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: Week1
   m_EditorClassIdentifier: Assembly-CSharp::Week
-  weekNumber: 0
   music: {fileID: 0}
   timeHandSpeed: 0.48
   firstPreparationTime: 60
@@ -54,4 +53,4 @@ MonoBehaviour:
     count: 1
   - activity: {fileID: 11400000, guid: f705dd4a6377b4c34ad0b95586472798, type: 2}
     count: 1
-  randomEventChance: 0
+  fixedEvents: []

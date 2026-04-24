@@ -76,6 +76,10 @@ public class TimeHandSprite : MonoBehaviour
             float finalHappiness = levelManager.GetHappiness();
             float finalMoney = levelManager.GetMoney();
 
+            if(cell.occupyingEvent != null) {
+                Debug.Log(cell.occupyingEvent.title + ": " + cell.occupyingEvent.description);
+            }
+
             if(cell.occupyingActivity != null) {
                 cell.occupyingActivity.initializer.SetFixed(true);
 

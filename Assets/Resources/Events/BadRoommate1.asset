@@ -15,3 +15,11 @@ MonoBehaviour:
   title: Laundry Disaster!
   description: Your roommate washed her red clothes with your whites, and now everything
     is pink! Oh no! I don't know what else to put here.
+  choices:
+  - description: 
+    result:
+      happinessChange: 0
+      moneyChange: 0
+      addFixedActivities: []
+      addActivities: []
+      addEvents: []

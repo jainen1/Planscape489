@@ -30,8 +30,18 @@ public class LevelManager : MonoBehaviour
         SetHappiness(currentWeek.startingHappiness);
         SetMoney(currentWeek.startingMoney);
 
-        for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
-            CreateNewFixedActivity(currentWeek.fixedActivities[i].activity, (int) currentWeek.fixedActivities[i].time.x, (int) currentWeek.fixedActivities[i].time.y);
+        if(currentWeek.fixedEvents.Length > 0) {
+            for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
+                EventWithTime activeEvent = currentWeek.fixedEvents[i];
+                cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)].occupyingEvent = activeEvent.eventObject;
+            }
+        }
+
+        if(currentWeek.fixedActivities.Length > 0) {
+            for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
+                ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
+                CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
+            }
         }
     }
 

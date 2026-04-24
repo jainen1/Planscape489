@@ -11,6 +11,8 @@ public class GridCell : MonoBehaviour
     public Activity occupyingFoodActivity;
     public bool isFixed;
 
+    public EventObject occupyingEvent;
+
     void Awake()
     {
         occupyingActivity = null;
