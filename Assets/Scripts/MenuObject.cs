@@ -14,7 +14,7 @@ public class MenuObject : MonoBehaviour
 
     public void UpdateMenuObject() {
         MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
-        Debug.Log("theme is: " + menuTheme.name); 
+       // Debug.Log("theme is: " + menuTheme.name); 
 
         switch(type) {
             case MenuObjectType.Background: {
