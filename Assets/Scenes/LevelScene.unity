@@ -3047,7 +3047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31133246339550651, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0044084224
+      value: 0.000051862437
       objectReference: {fileID: 0}
     - target: {fileID: 689619532938457356, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: type
@@ -4012,7 +4012,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2x >>
+  m_text: 3x >>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
@@ -8211,7 +8211,7 @@ MonoBehaviour:
   - {x: 3.85, y: 3.65, z: -2}
   - {x: 5.53, y: 3.65, z: -2}
   isFast: 0
-  fastSpeedModifier: 2
+  fastSpeedModifier: 3
 --- !u!61 &1781459656
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10265,7 +10265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31133246339550651, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000121216275
+      value: 0.000052087817
       objectReference: {fileID: 0}
     - target: {fileID: 689619532938457356, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: type
