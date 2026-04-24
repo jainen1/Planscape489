@@ -3047,7 +3047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31133246339550651, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000082525
+      value: 0.0044084224
       objectReference: {fileID: 0}
     - target: {fileID: 689619532938457356, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: type
@@ -3144,10 +3144,6 @@ PrefabInstance:
     - target: {fileID: 3964878932716714260, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_SizeDelta.y
       value: 2.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3966847582398439521, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
-      propertyPath: type
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3966847582398439521, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_Enabled
@@ -3304,10 +3300,6 @@ PrefabInstance:
     - target: {fileID: 8465983921265198916, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8645432768826148460, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
-      propertyPath: type
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8876887342544996501, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_Camera
@@ -9682,15 +9674,13 @@ MonoBehaviour:
   - {fileID: 752036097}
   - {fileID: 131423508}
   activityPrefab: {fileID: 9112307122686609335, guid: 4123c516eb0bd1c4f9bb1dfdc10de35b, type: 3}
-  week: {fileID: 11400000, guid: a981aab9998815142b2dbbb4c81519e4, type: 2}
   eventScreen: {fileID: 0}
   winSound: {fileID: 8300000, guid: 5e564108975afe342a41a982cace8539, type: 3}
   loseSound: {fileID: 8300000, guid: f1f3605d2366d1148b750b6fb034e88f, type: 3}
   requiredTaskList: {fileID: 2249609483852887290}
   bonusTaskList: {fileID: 700046396}
   doPlannerMetric: 1
-  canOpenPauseMenu: 1
-  canOpenTutorial: 1
+  pauseMenuInteractible: 1
   levelIsActive: 1
 --- !u!4 &2129419105
 Transform:
@@ -10275,7 +10265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 31133246339550651, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000082878905
+      value: 0.000121216275
       objectReference: {fileID: 0}
     - target: {fileID: 689619532938457356, guid: 89fe83cba62bbab45b4d52d8e50f39cb, type: 3}
       propertyPath: type
