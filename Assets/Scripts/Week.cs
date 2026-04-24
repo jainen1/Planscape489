@@ -3,8 +3,6 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Week", menuName = "Scriptable Objects/Week")]
 public class Week : ScriptableObject {
-    public int weekNumber;
-
     public AudioClip music;
 
     public float timeHandSpeed = 0.48f;

@@ -7,8 +7,6 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject activityPrefab;
 
-    [HideInInspector] public Week week;
-
     [SerializeField] private GameObject eventScreen;
 
     private float happiness;
@@ -27,13 +25,13 @@ public class LevelManager : MonoBehaviour
     public bool levelIsActive = true;
 
     public void StartLevel() {
-        week = GlobalGameManager.Instance.GetCurrentWeek();
+        Week currentWeek = GlobalGameManager.Instance.GetCurrentWeek();
 
-        SetHappiness(week.startingHappiness);
-        SetMoney(week.startingMoney);
+        SetHappiness(currentWeek.startingHappiness);
+        SetMoney(currentWeek.startingMoney);
 
-        for(int i = 0; i < week.fixedActivities.Length; i++) {
-            CreateNewFixedActivity(week.fixedActivities[i].activity, (int) week.fixedActivities[i].time.x, (int) week.fixedActivities[i].time.y);
+        for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
+            CreateNewFixedActivity(currentWeek.fixedActivities[i].activity, (int) currentWeek.fixedActivities[i].time.x, (int) currentWeek.fixedActivities[i].time.y);
         }
     }
 
@@ -183,7 +181,7 @@ public class LevelManager : MonoBehaviour
     public void SamplePlannerMetric(int day, int hour) {
         if(doPlannerMetric) {
             //Debug.Log("Creating planner sample...");
-            string plannerData = "\nWeek " + week.weekNumber + " Day " + day + " Hour " + hour + "; Happiness = " + GetHappiness() + " Money = " + GetMoney() + "\n";
+            string plannerData = "\nWeek " + GlobalGameManager.Instance.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetHappiness() + " Money = " + GetMoney() + "\n";
             for(int i = 0; i < cells.Length; i++) {
                 string occupyingActivity = "";
                 if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }

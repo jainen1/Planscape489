@@ -4,7 +4,6 @@ using TMPro;
 public class WeekDisplay : MonoBehaviour
 {
     [Header("References")]
-    public Week currentWeek; 
     public TextMeshProUGUI weekText; 
 
     [Header("Settings")]
@@ -16,16 +15,11 @@ public class WeekDisplay : MonoBehaviour
         UpdateDisplay();
     }
 
-//when new week starts
+//when new currentWeek starts
     public void UpdateDisplay()
     {
         Debug.Log("updatedisplay fn");   
 
-        if (currentWeek != null && weekText != null)
-        {
-            Debug.Log("updatedisplay if passed");  
-            Debug.Log (currentWeek); 
-            weekText.text = prefix + currentWeek.weekNumber.ToString();
-        }
+        if (weekText != null) { weekText.text = prefix + GlobalGameManager.Instance.GetCurrentWeekIndex().ToString(); }
     }
 }

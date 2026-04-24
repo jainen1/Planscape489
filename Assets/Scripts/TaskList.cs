@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TaskList : MonoBehaviour
 {
-    private LevelManager gameManager;
 
     [SerializeField] private GameObject listItem;
 
@@ -19,11 +18,9 @@ public class TaskList : MonoBehaviour
 
         ActivityWithCount[] activities;
 
-        gameManager = FindFirstObjectByType<LevelManager>();
-
         switch(activityType) {
-            case ActivityType.Required: activities = gameManager.week.requiredTasks; break;
-            case ActivityType.Bonus: activities = gameManager.week.bonusTasks; break;
+            case ActivityType.Required: activities = GlobalGameManager.Instance.GetCurrentWeek().requiredTasks; break;
+            case ActivityType.Bonus: activities = GlobalGameManager.Instance.GetCurrentWeek().bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
         }
 

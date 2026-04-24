@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlaceholderWeek
   m_EditorClassIdentifier: Assembly-CSharp::Week
   weekNumber: 0
+  music: {fileID: 0}
   timeHandSpeed: 0.48
   firstPreparationTime: 60
   dailyPreparationTime: 15
@@ -46,6 +47,8 @@ MonoBehaviour:
     count: 21
   - activity: {fileID: 11400000, guid: 44149b073160e40de9cb4a8a479533c6, type: 2}
     count: 7
+  - activity: {fileID: 11400000, guid: 882caa7b0f6cc8145814fa6aff23fd69, type: 2}
+    count: 3
   bonusTasks:
   - activity: {fileID: 11400000, guid: 9898ea11159794ee783076e2456d27f6, type: 2}
     count: 1

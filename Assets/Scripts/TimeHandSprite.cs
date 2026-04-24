@@ -20,7 +20,7 @@ public class TimeHandSprite : MonoBehaviour
         levelManager = FindFirstObjectByType<LevelManager>();
         //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
-        timer = levelManager.week.firstPreparationTime;
+        timer = GlobalGameManager.Instance.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
     }
 
@@ -30,7 +30,7 @@ public class TimeHandSprite : MonoBehaviour
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (levelManager.week.timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.Instance.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
             }
         }
     }
@@ -115,7 +115,7 @@ public class TimeHandSprite : MonoBehaviour
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
-                timer = levelManager.week.dailyPreparationTime;
+                timer = GlobalGameManager.Instance.GetCurrentWeek().dailyPreparationTime;
             }
         }
     }

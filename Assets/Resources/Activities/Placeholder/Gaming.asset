@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
   title: Gaming
   length: 3
-  type: 2
+  fullStomachLength: 0
+  happiness: 10
+  money: 0
