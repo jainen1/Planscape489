@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: Week4
   m_EditorClassIdentifier: Assembly-CSharp::Week
-  weekNumber: 0
   music: {fileID: 0}
   timeHandSpeed: 0.66
   firstPreparationTime: 60
@@ -38,7 +37,7 @@ MonoBehaviour:
     time: {x: 7, y: 22}
   requiredTasks:
   - activity: {fileID: 11400000, guid: 398c8ba604615614a91852d4cd558f01, type: 2}
-    count: 21
+    count: 18
   - activity: {fileID: 11400000, guid: 44149b073160e40de9cb4a8a479533c6, type: 2}
     count: 7
   - activity: {fileID: 11400000, guid: 9898ea11159794ee783076e2456d27f6, type: 2}
@@ -48,10 +47,12 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
     count: 4
   bonusTasks:
+  - activity: {fileID: 11400000, guid: a755967bf7151154f8612f05b4e380ea, type: 2}
+    count: 3
   - activity: {fileID: 11400000, guid: f3b52c204d1524efca976dc71b5dfd8c, type: 2}
     count: 1
   - activity: {fileID: 11400000, guid: 6cd3af989e3f448128886587bb4288be, type: 2}
     count: 1
   - activity: {fileID: 11400000, guid: 92ee374a7b701405aa65dd7442f8db49, type: 2}
     count: 1
-  randomEventChance: 0
+  fixedEvents: []

@@ -33,7 +33,7 @@ MonoBehaviour:
     time: {x: 7, y: 21}
   requiredTasks:
   - activity: {fileID: 11400000, guid: 398c8ba604615614a91852d4cd558f01, type: 2}
-    count: 21
+    count: 18
   - activity: {fileID: 11400000, guid: 44149b073160e40de9cb4a8a479533c6, type: 2}
     count: 7
   - activity: {fileID: 11400000, guid: 9898ea11159794ee783076e2456d27f6, type: 2}
@@ -43,6 +43,8 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
     count: 1
   bonusTasks:
+  - activity: {fileID: 11400000, guid: a755967bf7151154f8612f05b4e380ea, type: 2}
+    count: 3
   - activity: {fileID: 11400000, guid: 1aa4e66de5e22447d99f0eda57d198ad, type: 2}
     count: 1
   - activity: {fileID: 11400000, guid: 6cd3af989e3f448128886587bb4288be, type: 2}
