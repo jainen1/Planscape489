@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
+  m_Name: PlanscapeD
+  m_EditorClassIdentifier: Assembly-CSharp::Campaign
+  weeks:
+  - {fileID: 11400000, guid: 1ae9b8f61db0a4f5daf2fe84ad089d99, type: 2}
+  - {fileID: 11400000, guid: ea616a213ae6241819f10dccb6fcd530, type: 2}
+  - {fileID: 11400000, guid: ec96ec1730dfa4d009481672e389541b, type: 2}
+  - {fileID: 11400000, guid: 192cee5eb68834f04997546b9899af0d, type: 2}
+  - {fileID: 11400000, guid: 8fe9ca519976f425ea87e030312ef0de, type: 2}
+  - {fileID: 11400000, guid: 469462877b2a048ecac671e9f7547ba0, type: 2}
+  - {fileID: 11400000, guid: d6a6da0c1be0a476ea8ee8c0af7977b1, type: 2}
+  - {fileID: 11400000, guid: c6e95315532c54a4f86161d4b5f75506, type: 2}
+  - {fileID: 11400000, guid: 7520fc08d1cac4ab9a29b3784ebda252, type: 2}
+  - {fileID: 11400000, guid: 02fd115e58b3342468b78a5d837656c3, type: 2}
+  - {fileID: 11400000, guid: 5784f38e475314ddb9d8d14f85507a1d, type: 2}
+  - {fileID: 11400000, guid: b087acd7ebdb14c25b31fb987a0081d2, type: 2}
+  - {fileID: 11400000, guid: fb6848e5cf5cb4b91ba12103e0ee2f00, type: 2}
+  - {fileID: 11400000, guid: dad33391b1b234a078c06aee056872cb, type: 2}
+  - {fileID: 11400000, guid: 49c13e8aef57f4a34ac0f2a277574bfe, type: 2}
+  - {fileID: 11400000, guid: 0f0ca4a4ac94a46908ee0d28625528c0, type: 2}
+  - {fileID: 11400000, guid: 03bc0f26718504575bb53ebb09428337, type: 2}
+  randomEvents: []

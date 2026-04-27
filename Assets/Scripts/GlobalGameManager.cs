@@ -113,8 +113,9 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
     }
 
-    public void SetCampaignAndPlay() {
-        Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
+    public void SetCampaignAndPlay(Campaign campaign) {
+        //Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
+        Instance.campaign = campaign;
         Instance.currentWeek = 0;
         StartWeekWithTutorial();
     }
