@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Week17
   m_EditorClassIdentifier: Assembly-CSharp::Week
   music: {fileID: 0}
-  timeHandSpeed: 0.66
+  timeHandSpeed: 0.52
   firstPreparationTime: 60
   dailyPreparationTime: 15
   startingHappiness: 70
