@@ -19,24 +19,10 @@ MonoBehaviour:
   startingHappiness: 70
   startingMoney: 400
   fixedActivities:
-  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-    time: {x: 2, y: 16}
-  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-    time: {x: 5, y: 16}
-  - activity: {fileID: 11400000, guid: 9ed1a68740a5b194ab6b29d690dae8b8, type: 2}
-    time: {x: 3, y: 8}
-  - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
-    time: {x: 3, y: 12}
-  - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
-    time: {x: 3, y: 19}
-  - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
-    time: {x: 4, y: 19}
-  - activity: {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
-    time: {x: 4, y: 11}
-  - activity: {fileID: 11400000, guid: 2ca272c6661a7474aad0eec1031ab64b, type: 2}
-    time: {x: 7, y: 22}
   - activity: {fileID: 11400000, guid: a553057f609de4800bde3eaabc63f23e, type: 2}
     time: {x: 6, y: 11}
+  - activity: {fileID: 11400000, guid: 32c92d72c6ccc44628999052841fee6d, type: 2}
+    time: {x: 2, y: 11}
   requiredTasks:
   - activity: {fileID: 11400000, guid: 398c8ba604615614a91852d4cd558f01, type: 2}
     count: 18
@@ -46,8 +32,6 @@ MonoBehaviour:
     count: 1
   - activity: {fileID: 11400000, guid: ba43a378f62f342ea8321250dcc9e9c7, type: 2}
     count: 1
-  - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
-    count: 4
   bonusTasks:
   - activity: {fileID: 11400000, guid: a755967bf7151154f8612f05b4e380ea, type: 2}
     count: 3
