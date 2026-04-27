@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
+  m_Name: Week13A
+  m_EditorClassIdentifier: Assembly-CSharp::Week
+  music: {fileID: 0}
+  timeHandSpeed: 0.66
+  firstPreparationTime: 60
+  dailyPreparationTime: 15
+  startingHappiness: 70
+  startingMoney: 400
+  fixedActivities:
+  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
+    time: {x: 2, y: 16}
+  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
+    time: {x: 5, y: 16}
+  - activity: {fileID: 11400000, guid: 9ed1a68740a5b194ab6b29d690dae8b8, type: 2}
+    time: {x: 3, y: 8}
+  - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
+    time: {x: 3, y: 12}
+  - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
+    time: {x: 3, y: 19}
+  - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
+    time: {x: 4, y: 19}
+  - activity: {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
+    time: {x: 4, y: 11}
+  - activity: {fileID: 11400000, guid: 89bb9f0775f634b6abce760303ee17a2, type: 2}
+    time: {x: 7, y: 22}
+  requiredTasks:
+  - activity: {fileID: 11400000, guid: 398c8ba604615614a91852d4cd558f01, type: 2}
+    count: 18
+  - activity: {fileID: 11400000, guid: 44149b073160e40de9cb4a8a479533c6, type: 2}
+    count: 7
+  - activity: {fileID: 11400000, guid: 9898ea11159794ee783076e2456d27f6, type: 2}
+    count: 1
+  - activity: {fileID: 11400000, guid: ba43a378f62f342ea8321250dcc9e9c7, type: 2}
+    count: 1
+  - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
+    count: 4
+  bonusTasks:
+  - activity: {fileID: 11400000, guid: a755967bf7151154f8612f05b4e380ea, type: 2}
+    count: 3
+  - activity: {fileID: 11400000, guid: f3b52c204d1524efca976dc71b5dfd8c, type: 2}
+    count: 1
+  - activity: {fileID: 11400000, guid: 6cd3af989e3f448128886587bb4288be, type: 2}
+    count: 1
+  - activity: {fileID: 11400000, guid: 92ee374a7b701405aa65dd7442f8db49, type: 2}
+    count: 1
+  fixedEvents: []
