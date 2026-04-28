@@ -27,8 +27,8 @@ MonoBehaviour:
     time: {x: 3, y: 8}
   - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
     time: {x: 3, y: 12}
-  - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
-    time: {x: 3, y: 19}
+  - activity: {fileID: 11400000, guid: c9b745a729fa3466c9a1258ebac472d9, type: 2}
+    time: {x: 2, y: 20}
   - activity: {fileID: 11400000, guid: 4cc47a629e4b54827b0d1d07050f7ab4, type: 2}
     time: {x: 7, y: 22}
   requiredTasks:
@@ -42,8 +42,6 @@ MonoBehaviour:
     count: 1
   - activity: {fileID: 11400000, guid: 4cc354aa2936c445caa3ca50dac1e8ca, type: 2}
     count: 1
-  - activity: {fileID: 11400000, guid: 44149b073160e40de9cb4a8a479533c6, type: 2}
-    count: 7
   - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
     count: 2
   bonusTasks:

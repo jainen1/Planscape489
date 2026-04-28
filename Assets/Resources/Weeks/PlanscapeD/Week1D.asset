@@ -19,17 +19,17 @@ MonoBehaviour:
   startingHappiness: 70
   startingMoney: 400
   fixedActivities:
-  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-    time: {x: 2, y: 16}
-  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-    time: {x: 5, y: 16}
-  - activity: {fileID: 11400000, guid: 9ed1a68740a5b194ab6b29d690dae8b8, type: 2}
-    time: {x: 3, y: 8}
-  - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
-    time: {x: 3, y: 12}
-  - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
-    time: {x: 3, y: 12}
-  - activity: {fileID: 11400000, guid: 97866eeb93065415585f264eda85da78, type: 2}
+  - activity: {fileID: 11400000, guid: 29db176abec1247e0b8cf468ffb7bed1, type: 2}
+    time: {x: 3, y: 9}
+  - activity: {fileID: 11400000, guid: ec4dfa303c8d74ac981283412aaa06a0, type: 2}
+    time: {x: 3, y: 13}
+  - activity: {fileID: 11400000, guid: da018beb9e162455e822293f29a71686, type: 2}
+    time: {x: 4, y: 14}
+  - activity: {fileID: 11400000, guid: 8af6fd4b3eed04caa81844fc1d58c9d7, type: 2}
+    time: {x: 5, y: 18}
+  - activity: {fileID: 11400000, guid: d972889d7c9e5404aa86b52a77cbd970, type: 2}
+    time: {x: 2, y: 10}
+  - activity: {fileID: 11400000, guid: be8b741cd855a4493b9af97a1888d65b, type: 2}
     time: {x: 7, y: 21}
   requiredTasks:
   - activity: {fileID: 11400000, guid: 398c8ba604615614a91852d4cd558f01, type: 2}
@@ -41,10 +41,12 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: ba43a378f62f342ea8321250dcc9e9c7, type: 2}
     count: 1
   - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
+    count: 2
+  - activity: {fileID: 11400000, guid: 4e7312e2ecc5048eebbdcf6691c0d802, type: 2}
     count: 1
   bonusTasks:
   - activity: {fileID: 11400000, guid: a755967bf7151154f8612f05b4e380ea, type: 2}
-    count: 3
+    count: 2
   - activity: {fileID: 11400000, guid: 1aa4e66de5e22447d99f0eda57d198ad, type: 2}
     count: 1
   - activity: {fileID: 11400000, guid: 6cd3af989e3f448128886587bb4288be, type: 2}

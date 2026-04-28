@@ -27,8 +27,8 @@ MonoBehaviour:
     time: {x: 3, y: 8}
   - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
     time: {x: 3, y: 12}
-  - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
-    time: {x: 3, y: 19}
+  - activity: {fileID: 11400000, guid: c9b745a729fa3466c9a1258ebac472d9, type: 2}
+    time: {x: 2, y: 20}
   - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
     time: {x: 4, y: 19}
   - activity: {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
