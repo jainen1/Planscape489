@@ -796,6 +796,14 @@ PrefabInstance:
       propertyPath: m_text
       value: hellscape
       objectReference: {fileID: 0}
+    - target: {fileID: 2405418073981551091, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_fontSize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2405418073981551091, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -858,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.5
+      value: 8.93
       objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -898,7 +906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8545574316836763300, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Name
-      value: Campaign Container (2)
+      value: Campaign Container
       objectReference: {fileID: 0}
     - target: {fileID: 8545574316836763300, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_IsActive
@@ -1219,7 +1227,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 248296316}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9865518
+  m_Size: 0.98694813
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1337,7 +1345,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00014735683}
+  m_AnchoredPosition: {x: 0, y: 0.0000004705523}
   m_SizeDelta: {x: 1.9, y: 1.23}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1600064460
