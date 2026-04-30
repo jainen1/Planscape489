@@ -19,20 +19,20 @@ MonoBehaviour:
   startingHappiness: 70
   startingMoney: 400
   fixedActivities:
-  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-    time: {x: 2, y: 16}
-  - activity: {fileID: 11400000, guid: a8187e5d163db5643bde615a00320941, type: 2}
-    time: {x: 5, y: 16}
-  - activity: {fileID: 11400000, guid: 9ed1a68740a5b194ab6b29d690dae8b8, type: 2}
-    time: {x: 3, y: 8}
-  - activity: {fileID: 11400000, guid: aae0fd966b5fde54885997ec60b65201, type: 2}
-    time: {x: 3, y: 12}
+  - activity: {fileID: 11400000, guid: 29db176abec1247e0b8cf468ffb7bed1, type: 2}
+    time: {x: 3, y: 9}
+  - activity: {fileID: 11400000, guid: ec4dfa303c8d74ac981283412aaa06a0, type: 2}
+    time: {x: 3, y: 13}
+  - activity: {fileID: 11400000, guid: da018beb9e162455e822293f29a71686, type: 2}
+    time: {x: 4, y: 14}
+  - activity: {fileID: 11400000, guid: 8af6fd4b3eed04caa81844fc1d58c9d7, type: 2}
+    time: {x: 5, y: 18}
+  - activity: {fileID: 11400000, guid: d972889d7c9e5404aa86b52a77cbd970, type: 2}
+    time: {x: 2, y: 10}
   - activity: {fileID: 11400000, guid: c9b745a729fa3466c9a1258ebac472d9, type: 2}
     time: {x: 2, y: 20}
   - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
     time: {x: 4, y: 19}
-  - activity: {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
-    time: {x: 4, y: 11}
   - activity: {fileID: 11400000, guid: 4cc47a629e4b54827b0d1d07050f7ab4, type: 2}
     time: {x: 7, y: 22}
   requiredTasks:
