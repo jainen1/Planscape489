@@ -18,8 +18,9 @@ MonoBehaviour:
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
-  background: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
-  stretchToFit: 0
+  menuBackground: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
+  levelBackground: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
+  menuBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   gridCellColor: {r: 0.08414637, g: 0.05807226, b: 0.14150941, a: 1}
   fixedGridCellColor: {r: 0.16842544, g: 0.13768244, b: 0.24528301, a: 1}

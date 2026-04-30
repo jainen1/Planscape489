@@ -18,8 +18,13 @@ public class MenuObject : MonoBehaviour
 
         switch(type) {
             case MenuObjectType.Background: {
-                gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.background;
+                gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.levelBackground;
                 color = menuTheme.backgroundColor; break;
+            }
+
+            case MenuObjectType.MenuBackground: {
+                gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.levelBackground;
+                color = menuTheme.menuBackgroundColor; break;
             }
 
             case MenuObjectType.GridCell: {
@@ -176,6 +181,8 @@ public class MenuObject : MonoBehaviour
         PauseButton,
         HelpButton,
         TaskListCounter,
-        TaskListScrollbar
+        TaskListScrollbar,
+
+        MenuBackground
     }
 }

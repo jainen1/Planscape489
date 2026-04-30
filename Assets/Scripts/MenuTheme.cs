@@ -15,9 +15,11 @@ public class MenuTheme : ScriptableObject
     public float timerCharacterSpacingScale = 1;
 
     [Header("Background")]
-    public Sprite background;
+    public Sprite menuBackground;
+    public Sprite levelBackground;
 
     [Header("Colors")]
+    public Color menuBackgroundColor;
     public Color backgroundColor;
 
     public Color gridCellColor;

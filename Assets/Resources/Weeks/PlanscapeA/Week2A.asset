@@ -52,8 +52,6 @@ MonoBehaviour:
     count: 1
   - activity: {fileID: 11400000, guid: 4cc354aa2936c445caa3ca50dac1e8ca, type: 2}
     count: 1
-  - activity: {fileID: 11400000, guid: 44149b073160e40de9cb4a8a479533c6, type: 2}
-    count: 7
   - activity: {fileID: 11400000, guid: 5dd076776c1be42cc8f61d343220cb18, type: 2}
     count: 2
   bonusTasks:
