@@ -39,6 +39,18 @@ public class TaskList : MonoBehaviour
         } return false;
     }
 
+    public bool TaskListIsEmpty() {
+        foreach(GameObject item in itemList) {
+            if(item != null) {
+                TaskListItem script = item.GetComponent<TaskListItem>();
+                if(script != null && script.GetCount() > 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public ActivityType GetActivityType() { return activityType; }
     public void SetActivityType(ActivityType type) { activityType = type; }
 

@@ -98,6 +98,7 @@ public class TimeHandSprite : MonoBehaviour
 
             if(levelManager.GetHappiness() <= 0 || levelManager.GetMoney() < 0) {
                 levelManager.LoseScene();
+                Destroy(gameObject);
             }
 
             cell.isFixed = true;
@@ -111,12 +112,13 @@ public class TimeHandSprite : MonoBehaviour
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
-
-                if(GlobalGameManager.Instance.GetCurrentWeekIndex() == 15) { //replace with a "GlobalGameManager.Instance.GetLastWeekIndex()
-                    levelManager.WinScene();
-                } else {
-                    levelManager.VictoryScene();
-                }
+                if(levelManager.RequiredTaskListIsEmpty()) {
+                    if(GlobalGameManager.Instance.GetCurrentWeekIndex() == GlobalGameManager.Instance.GetLastWeekIndex() - 1) {
+                        levelManager.VictoryScene();
+                    } else {
+                        levelManager.WinScene();
+                    }
+                } else { levelManager.LoseScene(); }
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];

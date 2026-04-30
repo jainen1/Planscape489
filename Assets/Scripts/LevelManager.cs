@@ -65,6 +65,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public bool RequiredTaskListIsEmpty() {
+        return requiredTaskList.TaskListIsEmpty();
+    }
+
     public void ReturnTaskToList(ActivityObject activity) {
         if(!requiredTaskList.ReturnTaskToList(activity)) {
             bonusTaskList.ReturnTaskToList(activity);

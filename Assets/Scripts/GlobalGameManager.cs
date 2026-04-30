@@ -43,6 +43,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         return currentWeek;
     }
 
+    public int GetLastWeekIndex() {
+        return campaign.weeks.Length;
+    }
+
     public void AdvanceWeek() {
         Instance.currentWeek++;
     }
