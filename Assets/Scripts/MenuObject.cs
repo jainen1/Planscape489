@@ -23,7 +23,7 @@ public class MenuObject : MonoBehaviour
             }
 
             case MenuObjectType.MenuBackground: {
-                gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.levelBackground;
+                gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.menuBackground;
                 color = menuTheme.menuBackgroundColor; break;
             }
 

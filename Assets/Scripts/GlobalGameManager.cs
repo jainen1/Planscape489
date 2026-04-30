@@ -138,45 +138,27 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         }
     }
 
-    public void NewGame() {
-        SceneManager.LoadScene("CampaignSelectScene", LoadSceneMode.Additive);
-    }
+    public void NewGame() { SceneManager.LoadScene("CampaignSelectScene", LoadSceneMode.Additive); }
+
+    public void CloseCampaignSelectScene() { SceneManager.UnloadSceneAsync("CampaignSelectScene"); }
     
-    public void ExitToMenu() {
-        SceneManager.LoadScene("MainMenuScene");
-    }
+    public void ExitToMenu() { SceneManager.LoadScene("MainMenuScene"); }
 
-    public void OpenTutorialScene() {
-        SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive);
-    }
+    public void OpenTutorialScene() { SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive); }
 
-    public void CloseTutorialScene() {
-        SceneManager.UnloadSceneAsync("TutorialScene");
-    }
+    public void CloseTutorialScene() { SceneManager.UnloadSceneAsync("TutorialScene"); }
 
-    public void OpenWinScene() {
-        SceneManager.LoadScene("WinScene", LoadSceneMode.Additive);
-    }
+    public void OpenWinScene() { SceneManager.LoadScene("WinScene", LoadSceneMode.Additive); }
 
-    public void OpenLoseScene() {
-        SceneManager.LoadScene("LoseScene", LoadSceneMode.Additive);
-    }
+    public void OpenLoseScene() { SceneManager.LoadScene("LoseScene", LoadSceneMode.Additive); }
 
-    public void CloseOptionsScene() {
-        SceneManager.UnloadSceneAsync("OptionsMenu");
-    }
+    public void CloseOptionsScene() { SceneManager.UnloadSceneAsync("OptionsMenu"); }
 
-    public void CloseThemesScene() {
-        SceneManager.UnloadSceneAsync("ThemeMenu");
-    }
+    public void CloseThemesScene() { SceneManager.UnloadSceneAsync("ThemeMenu"); }
 
-    public void CloseCreditsScene() {
-        SceneManager.UnloadSceneAsync("CreditsScene");
-    }
+    public void CloseCreditsScene() { SceneManager.UnloadSceneAsync("CreditsScene"); }
 
-    public void ExitGame() {
-        Application.Quit();
-    }
+    public void ExitGame() { Application.Quit(); }
 
     void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;

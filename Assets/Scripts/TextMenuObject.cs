@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextMenuObject : MonoBehaviour
 {
@@ -23,16 +24,16 @@ public class TextMenuObject : MonoBehaviour
         MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
         TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
-        Color color = Color.red;
+        MenuObject backgroundMenuObject = backgroundObject.GetComponent<MenuObject>();
+        SpriteRenderer backgroundSpriteRenderer = backgroundObject.GetComponent<SpriteRenderer>();
+        Image backgroundImage = backgroundObject.GetComponent<Image>();
 
-        bool brightOrDark;
-        MenuObject menuObject = backgroundObject.GetComponent<MenuObject>();
+        Color backgroundColor = Color.white;
+        if(backgroundMenuObject != null) { backgroundColor = backgroundMenuObject.color; }
+        else if(backgroundSpriteRenderer != null) { backgroundColor = backgroundSpriteRenderer.color; }
+        else if(backgroundImage != null) { backgroundColor = backgroundImage.color; }
 
-        if(menuObject != null) { brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<MenuObject>().color, threshold); }
-        else { brightOrDark = MenuObject.GetBrightOrDarkColor(backgroundObject.GetComponent<SpriteRenderer>().color, threshold); }
-
-        color = brightOrDark ? menuTheme.brightTextColor : menuTheme.darkTextColor;
-        textComponent.color = color;
+        textComponent.color = MenuObject.GetBrightOrDarkColor(backgroundColor, threshold) ? menuTheme.brightTextColor : menuTheme.darkTextColor;
 
         TMP_FontAsset font;
         float fontSizeScale;
