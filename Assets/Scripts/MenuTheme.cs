@@ -52,6 +52,7 @@ public class MenuTheme : ScriptableObject
     public Color fixedActivityBorderColor;
 
     public Color timeHandColor;
+    public Color timeHandFastColor;
 
     public Color pauseButtonColor;
     public Color helpButtonColor;

@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
 
+    public TimeHandSprite timeHand;
+
     [Header("Telemetry")]
     [SerializeField] bool doPlannerMetric = true;
 

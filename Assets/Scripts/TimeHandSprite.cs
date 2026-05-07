@@ -41,6 +41,7 @@ public class TimeHandSprite : MonoBehaviour
 
     public void IsBecomeFast(bool yes) {
         isFast = yes;
+        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
     }
 
     /*private void OnTriggerEnter2D(Collider2D collision) {

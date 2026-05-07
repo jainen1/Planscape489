@@ -68,7 +68,12 @@ public class MenuObject : MonoBehaviour
             }
 
             case MenuObjectType.FixedActivityBorder: color = menuTheme.fixedActivityBorderColor; break;
-            case MenuObjectType.TimeHand: color = menuTheme.timeHandColor; break;
+            case MenuObjectType.TimeHand: {
+                TimeHandSprite timeHandSprite = gameObject.GetComponent<TimeHandSprite>();
+                if(timeHandSprite != null && timeHandSprite.IsFast()) { color = menuTheme.timeHandFastColor; } 
+                else { color = menuTheme.timeHandColor;}
+                break;
+            }
 
             case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>(), menuTheme)); break;
 

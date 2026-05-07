@@ -45,6 +45,7 @@ MonoBehaviour:
   fixedActivityColor: {r: 0.2509804, g: 0.078431375, b: 0.078431375, a: 1}
   fixedActivityBorderColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
   timeHandColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
+  timeHandFastColor: {r: 0.740566, g: 0.2305536, b: 0.3412161, a: 1}
   pauseButtonColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
   helpButtonColor: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
   resourceBarBackgroundColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 1}

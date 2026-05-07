@@ -32,8 +32,6 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: 97866eeb93065415585f264eda85da78, type: 2}
     time: {x: 7, y: 21}
   - activity: {fileID: 11400000, guid: 67b6d41b8c377954d83bdbabd928d2f1, type: 2}
-    time: {x: 4, y: 14}
-  - activity: {fileID: 11400000, guid: 67b6d41b8c377954d83bdbabd928d2f1, type: 2}
     time: {x: 5, y: 11}
   - activity: {fileID: 11400000, guid: cb5af26353f9c4149bc14d441019ed6b, type: 2}
     time: {x: 3, y: 15}
