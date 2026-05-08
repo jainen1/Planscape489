@@ -372,7 +372,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4706923964322045320}
-  - component: {fileID: 8347658466561419002}
   m_Layer: 0
   m_Name: ShadowPanel
   m_TagString: Untagged
@@ -395,19 +394,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7620080873447905562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8347658466561419002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4574679196842494683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb56c306d756004c8cc40411fadb470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShadowPanel
-  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4998347914057086724
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +558,7 @@ MonoBehaviour:
   isTouchingTrashCan: 0
   mouseLerp: 100
   targetLerp: 5
+  activityType: 0
 --- !u!50 &8877096774782777869
 Rigidbody2D:
   serializedVersion: 5
@@ -1060,6 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivityInitializer
   activity: {fileID: 0}
+  activityType: 0
   mainPanel: {fileID: 5136288827996116482}
   visiblePanel: {fileID: 5582139611250620806}
   fullStomachPanel: {fileID: 5224201112010507313}

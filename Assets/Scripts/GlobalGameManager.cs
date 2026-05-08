@@ -8,7 +8,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     [SerializeField] private Campaign campaign;
     [SerializeField] private int currentWeek = 0;
 
-    private ThemeList themeList;
     [SerializeField] private MenuTheme currentTheme;
 
     public delegate void UpdateTheme();
@@ -20,11 +19,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     [SerializeField] private Scene activeMenuScene;
 
-    protected override void OnInitialize() {
-        //campaign = Resources.Load<Campaign>("Campaigns/Planscape");
-        themeList = Resources.Load<ThemeList>("Themes/ThemeList");
+    [SerializeField] private MenuTheme[] themeList; //temporary
 
-        Instance.currentTheme = themeList.themes[0];
+    protected override void OnInitialize() {
+        themeList = Resources.LoadAll<MenuTheme>("Themes");
+
+        Instance.currentTheme = themeList[0];
         Debug.Log("theme being initialized to: " + Instance.currentTheme);
 
 
@@ -51,6 +51,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         Instance.currentWeek++;
     }
 
+    public MenuTheme[] GetThemeList() {
+        return themeList;
+    }
+
     public void PlayClickSound() {
         //float volume;
         //audioMixer.GetFloat("SFX Volume", out volume);
@@ -60,12 +64,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public void CycleTheme() {
         Debug.Log("cycling theme from: " + Instance.currentTheme.name);
 
-        int currentThemeIndex = Instance.themeList.themes.IndexOf(Instance.currentTheme);
+        int currentThemeIndex = Array.IndexOf(Instance.themeList, Instance.currentTheme);
 
-        if(currentThemeIndex == Instance.themeList.themes.Count - 1) { currentThemeIndex = 0; }
+        if(currentThemeIndex == Instance.themeList.Length - 1) { currentThemeIndex = 0; }
         else { currentThemeIndex++; }
 
-        Instance.currentTheme = Instance.themeList.themes[currentThemeIndex];
+        Instance.currentTheme = Instance.themeList[currentThemeIndex];
         Instance.SendThemeUpdate();
     }
 
@@ -81,20 +85,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public void SetThemeByIndex(int i) {
-        Instance.currentTheme = themeList.themes[i];
+        Instance.currentTheme = themeList[i];
         Instance.SendThemeUpdate();
     }
 
     public MenuTheme GetMenuTheme() {
         return Instance.currentTheme;
-    }
-
-    public void OpenPauseMenuScene() {
-        SceneManager.LoadScene("PauseMenuScene", LoadSceneMode.Additive);
-    }
-
-    public void ClosePauseMenuScene() {
-        SceneManager.UnloadSceneAsync("PauseMenuScene");
     }
 
     public void PauseLevel() {
@@ -105,62 +101,49 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         FindFirstObjectByType<LevelManager>().levelIsActive = true;
     }
 
-    public void Options() {
-        SceneManager.LoadScene("OptionsMenu", LoadSceneMode.Additive);
-    }
-
-    public void ThemesMenuScene() {
-        SceneManager.LoadScene("ThemeMenu", LoadSceneMode.Additive);
-    }
-
-    public void Credits() {
-        SceneManager.LoadScene("CreditsScene", LoadSceneMode.Additive);
-    }
-
     public void SetCampaignAndPlay(Campaign campaign) {
         //Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         Instance.campaign = campaign;
         Instance.currentWeek = 0;
-        StartWeekWithTutorial();
+        Instance.StartWeekWithTutorial();
     }
 
     public void StartWeekWithTutorial() {
         if(Instance.campaign != null) {
-            SceneManager.LoadScene("LevelScene");
-            OpenTutorialScene();
+            MoveToScene("LevelScene");
+            AddScene("Tutorial");
         }
         else {
-            NewGame();
+            AddScene("CampaignSelect");
         }
     }
 
     public void StartWeek() {
         if(Instance.campaign != null) {
-            SceneManager.LoadScene("LevelScene");
-        } else {
-            NewGame();
+            MoveToScene("LevelScene");
+        }
+        else {
+            AddScene("CampaignSelect");
         }
     }
-
-    public void NewGame() { SceneManager.LoadScene("CampaignSelectScene", LoadSceneMode.Additive); }
-
-    public void CloseCampaignSelectScene() { SceneManager.UnloadSceneAsync("CampaignSelectScene"); }
     
-    public void ExitToMenu() { SceneManager.LoadScene("MainMenuScene"); }
+    public void MoveToScene(string scene) {
+        SceneManager.LoadScene(scene);
+    }
 
-    public void OpenTutorialScene() { SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive); }
+    public void AddScene(string scene) {
+        SceneManager.LoadScene(scene, LoadSceneMode.Additive);
+    }
 
-    public void CloseTutorialScene() { SceneManager.UnloadSceneAsync("TutorialScene"); }
+    public void CloseScene(string scene) {
+        SceneManager.UnloadSceneAsync(scene);
+    }
 
-    public void OpenWinScene() { SceneManager.LoadScene("WinScene", LoadSceneMode.Additive); }
-
-    public void OpenLoseScene() { SceneManager.LoadScene("LoseScene", LoadSceneMode.Additive); }
-
-    public void CloseOptionsScene() { SceneManager.UnloadSceneAsync("OptionsMenu"); }
-
-    public void CloseThemesScene() { SceneManager.UnloadSceneAsync("ThemeMenu"); }
-
-    public void CloseCreditsScene() { SceneManager.UnloadSceneAsync("CreditsScene"); }
+    public void OpenPauseScreenIfInLevel() {
+        if(FindAnyObjectByType<LevelManager>()) {
+            AddScene("PauseMenu");
+        }
+    }
 
     public void ExitGame() { Application.Quit(); }
 
@@ -168,9 +151,11 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
-        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
-        if(levelManager != null) { levelManager.StartLevel(); }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+        if(scene.name == "LevelScene") {
+            LevelManager levelManager = FindFirstObjectByType<LevelManager>();
+            if(levelManager != null) { levelManager.StartLevel(); }
+        }
     }
 
     void OnDisable() {

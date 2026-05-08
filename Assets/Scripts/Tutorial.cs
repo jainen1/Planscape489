@@ -29,7 +29,7 @@ public class Tutorial : MonoBehaviour
             transform.localScale = Vector3.zero;
             levelManager.pauseMenuInteractible = true;
             levelManager.levelIsActive = true;
-            GlobalGameManager.Instance.CloseTutorialScene();
+            GlobalGameManager.Instance.CloseScene("Tutorial");
         } else {
             screens[activeScreenIndex].transform.localScale = Vector3.one;
         }

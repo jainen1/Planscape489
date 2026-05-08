@@ -2,37 +2,24 @@ using UnityEngine;
 
 public class ThemeSelect : MonoBehaviour
 {
-    public ThemeList allThemes;
-
     void Start() {
-
-        if (allThemes.themes.Count==0) {
+        MenuTheme[] themes = GlobalGameManager.Instance.GetThemeList();
+        if (themes.Length==0) {
             Debug.Log("zero themes");
-        }
-        else {
+        } else {
             Debug.Log("printing themes");
-            allThemes.PrintThemes();
+            for(int i = 0; i < themes.Length; i++) {
+                Debug.Log("Theme No. " + i + ": " + themes[i].name);
+            }
         }
-        
     }
 
-    public void SetThemeByIndex(int index)
-    {
-        //if (index >= 0 && index < allThemes.themes.Count)
-        //{
-            //MenuTheme selected = allThemes.themes[index];
-            GlobalGameManager.Instance.SetThemeByIndex(index);
-        //}
+    public void SetThemeByIndex(int index) {
+        GlobalGameManager.Instance.SetThemeByIndex(index);
     }
 
     public void ApplyTheme(MenuTheme theme) {
-    
-       
-
-       Debug.Log("applying theme" + theme.name);
-
-        //switch to theme 
-
-
+        Debug.Log("applying theme" + theme.name);
+        //switch to theme
     }
 }

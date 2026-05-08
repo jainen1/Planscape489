@@ -44,29 +44,6 @@ public class TimeHandSprite : MonoBehaviour
         gameObject.GetComponent<MenuObject>().UpdateMenuObject();
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision) {
-        GridCell cell = collision.GetComponent<GridCell>();
-        Activity activity = collision.GetComponent<Activity>();
-
-        if(cell != null && cell.canBeUsed) {
-            AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], origin, 1.0f);
-            clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
-
-            if(cell.occupyingActivity != null) {
-                cell.occupyingActivity.initializer.SetFixed(true);
-            }
-            cell.isFixed = true;
-            cell.GetComponent<MenuObject>().UpdateMenuObject();
-        } else if(activity != null) {
-            levelManager.SetHappiness(Mathf.Min(levelManager.GetHappiness() + activity.initializer.activity.happiness, 100));
-            levelManager.SetMoney(levelManager.GetMoney() + activity.initializer.activity.money);
-
-            if(levelManager.GetHappiness() < 0 || levelManager.GetMoney() < 0) {
-                levelManager.LoseScene();
-            }
-        }
-    }*/
-
     private void OnTriggerEnter2D(Collider2D collision) {
         GridCell cell = collision.GetComponent<GridCell>();
 
@@ -89,7 +66,6 @@ public class TimeHandSprite : MonoBehaviour
             }
 
             //Debug.Log("Final Stuff being evaluated");
-
 
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }

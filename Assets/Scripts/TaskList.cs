@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class TaskList : MonoBehaviour
 {
-
-    [SerializeField] private GameObject listItem;
-
     [SerializeField] private GameObject firstItem;
-
     [SerializeField] private List<GameObject> itemList;
-
     [SerializeField] private ActivityType activityType;
 
     private void Awake() {

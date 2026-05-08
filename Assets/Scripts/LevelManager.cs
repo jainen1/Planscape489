@@ -48,12 +48,12 @@ public class LevelManager : MonoBehaviour
     }
 
     public void PauseScene() {
-        GlobalGameManager.Instance.OpenPauseMenuScene();
+        GlobalGameManager.Instance.AddScene("PauseMenu");
         levelIsActive = false;
     }
 
     public void UnPauseScene() {
-        GlobalGameManager.Instance.ClosePauseMenuScene();
+        GlobalGameManager.Instance.CloseScene("PauseMenu");
         levelIsActive = true;
     }
 
@@ -95,7 +95,7 @@ public class LevelManager : MonoBehaviour
 
     public void TutorialScene() {
         if(levelIsActive) {
-            GlobalGameManager.Instance.OpenTutorialScene();
+            GlobalGameManager.Instance.AddScene("Tutorial");
             pauseMenuInteractible = false;
             levelIsActive = false;
         }
@@ -105,21 +105,21 @@ public class LevelManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.Instance.OpenWinScene();
+        GlobalGameManager.Instance.AddScene("VictoryScene");
     }
 
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.Instance.OpenWinScene();
+        GlobalGameManager.Instance.AddScene("WinScene");
     }
 
     public void LoseScene() {
         AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.Instance.OpenLoseScene();
+        GlobalGameManager.Instance.AddScene("LoseScene");
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {

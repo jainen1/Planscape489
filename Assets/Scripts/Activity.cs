@@ -26,45 +26,37 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] public ActivityType activityType;
 
-    public void SetTargetCell(GridCell cell) {
-        closestCell = cell.gameObject;
+    void Awake() {
+        levelManager = FindFirstObjectByType<LevelManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if(!initializer.IsFixed()) {
-            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
-                collidingCells.Add(collision.gameObject);
-            }
-
-            if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-                isTouchingTrashCan = true;
+    void Update() {
+        if(isHeld) {
+            foreach(GameObject cell in collidingCells) {
+                if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
+                    closestCell = cell;
+                }
             }
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision) {
-        if(collidingCells.Contains(collision.gameObject)) {
-            collidingCells.Remove(collision.gameObject);
+        Vector3 targetPosition;
+        if(isHeld && !initializer.IsFixed()) {
+            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPosition.z = -2f;
+            //gameObject.transform.position = targetPosition; //teleport to mouse position
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
+        }
+        else {
+            targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
+            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, targetLerp * Time.deltaTime);
         }
 
-        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-            isTouchingTrashCan = false;
+        if(closestCell != null && closestCell.GetComponent<GridCell>() != null && closestCell.GetComponent<GridCell>().isFixed && !initializer.IsFixed()) {
+            collidingCells.Remove(closestCell);
+            closestCell = null;
         }
-    }
 
-    private bool CellIsAvailable(GridCell cell) {
-
-        //Debug
-        /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
-        if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
-        if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
-        if(!levelManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
-        if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
-        if(!(initializer.activity.fullStomachLength > 0 ? levelManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
-        return true;*/
-
-        return cell != null && cell.canBeUsed && !cell.isFixed && levelManager.GetCellStatus(this, cell)
-            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? levelManager.GetCellFoodStatus(this, cell) : true);
+        initializer.shadowPanel.transform.position = (closestCell == null || initializer.IsFixed()) ? gameObject.transform.position : new Vector3(closestCell.transform.position.x, closestCell.transform.position.y, closestCell.transform.position.z - 0.5f);
     }
 
     public void OnMouseDown() {
@@ -110,8 +102,45 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         }
     }
 
-    void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(!initializer.IsFixed()) {
+            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
+                collidingCells.Add(collision.gameObject);
+            }
+
+            if(collision.gameObject.GetComponent<TaskDelete>() != null) {
+                isTouchingTrashCan = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if(collidingCells.Contains(collision.gameObject)) {
+            collidingCells.Remove(collision.gameObject);
+        }
+
+        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
+            isTouchingTrashCan = false;
+        }
+    }
+
+    public void SetTargetCell(GridCell cell) {
+        closestCell = cell.gameObject;
+    }
+
+    private bool CellIsAvailable(GridCell cell) {
+
+        //Debug
+        /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
+        if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
+        if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
+        if(!levelManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
+        if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
+        if(!(initializer.activity.fullStomachLength > 0 ? levelManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
+        return true;*/
+
+        return cell != null && cell.canBeUsed && !cell.isFixed && levelManager.GetCellStatus(this, cell)
+            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? levelManager.GetCellFoodStatus(this, cell) : true);
     }
 
     public void ClaimCells() {
@@ -120,39 +149,5 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         if(occupiedCell != null) { gameManager2.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
         occupiedCell = closestCell;
         gameManager2.FreeOrOccupyCells(this, closestCell.GetComponent<GridCell>(), false);
-    }
-
-    // Update is called once per frame
-    void Update() {
-        if(isHeld) {
-            foreach(GameObject cell in collidingCells) {
-                if(closestCell == null || Vector2.Distance(gameObject.transform.position, cell.transform.position) < Vector2.Distance(gameObject.transform.position, closestCell.transform.position)) {
-                    closestCell = cell;
-                }
-            }
-        }
-
-        Vector3 targetPosition;
-        if(isHeld && !initializer.IsFixed()) {
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = -2f;
-            //gameObject.transform.position = targetPosition; //teleport to mouse position
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
-        } else {
-            targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, targetLerp * Time.deltaTime);
-        }
-
-        if(closestCell != null && closestCell.GetComponent<GridCell>() != null && closestCell.GetComponent<GridCell>().isFixed && !initializer.IsFixed()) {
-            collidingCells.Remove(closestCell);
-            closestCell = null;
-        }
-
-        if(closestCell == null || initializer.IsFixed()) {
-            initializer.shadowPanel.GetComponent<ShadowPanel>().targetPosition = gameObject.transform.position;
-        }
-        else {
-            initializer.shadowPanel.GetComponent<ShadowPanel>().targetPosition = new Vector3(closestCell.transform.position.x, closestCell.transform.position.y, closestCell.transform.position.z - 0.5f);
-        }
     }
 }
