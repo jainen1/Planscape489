@@ -2,15 +2,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        GlobalGameManager.Instance.SendThemeUpdate();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Start() {
+        GlobalGameManager.Instance.SendThemeUpdate(); //removing this single line of code prevents the theme system AND GlobalGameManager from loading at the start of a game. I have tried to migrate it. I have failed.
     }
 }
