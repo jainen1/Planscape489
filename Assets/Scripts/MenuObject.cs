@@ -13,7 +13,7 @@ public class MenuObject : MonoBehaviour
     void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
 
     public void UpdateMenuObject() {
-        MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
+        MenuTheme menuTheme = GlobalGameManager.Instance.GetCurrentMenuTheme();
        // Debug.Log("theme is: " + menuTheme.name); 
 
         switch(type) {
@@ -69,8 +69,8 @@ public class MenuObject : MonoBehaviour
 
             case MenuObjectType.FixedActivityBorder: color = menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.TimeHand: {
-                TimeHandSprite timeHandSprite = gameObject.GetComponent<TimeHandSprite>();
-                if(timeHandSprite != null && timeHandSprite.IsFast()) { color = menuTheme.timeHandFastColor; } 
+                TimeHand timeHand = gameObject.GetComponent<TimeHand>();
+                if(timeHand != null && timeHand.IsFast()) { color = menuTheme.timeHandFastColor; } 
                 else { color = menuTheme.timeHandColor;}
                 break;
             }

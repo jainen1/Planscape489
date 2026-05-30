@@ -30,7 +30,7 @@ public class ResourceBar : MonoBehaviour
     }
 
     public void UpdateMenuObject() {
-        MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
+        MenuTheme menuTheme = GlobalGameManager.Instance.GetCurrentMenuTheme();
 
         background.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
 

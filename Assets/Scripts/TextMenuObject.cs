@@ -21,7 +21,7 @@ public class TextMenuObject : MonoBehaviour
     }
 
     public void UpdateMenuObject() {
-        MenuTheme menuTheme = GlobalGameManager.Instance.GetMenuTheme();
+        MenuTheme menuTheme = GlobalGameManager.Instance.GetCurrentMenuTheme();
         TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
         MenuObject backgroundMenuObject = backgroundObject.GetComponent<MenuObject>();

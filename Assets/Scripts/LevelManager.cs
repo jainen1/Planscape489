@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
 
-    public TimeHandSprite timeHand;
+    public TimeHand timeHand;
 
     [Header("Telemetry")]
     [SerializeField] bool doPlannerMetric = true;
@@ -78,19 +78,19 @@ public class LevelManager : MonoBehaviour
     }
 
     public void SkipTimer() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().timer = 0; }
+        if(levelIsActive) { FindFirstObjectByType<TimeHand>().timer = 0; }
     }
 
     public void FastForwardTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(true); }
+        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(true); }
     }
 
     public void NormalSpeedTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(false); }
+        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(false); }
     }
 
     public void ToggleSpeedTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHandSprite>().IsBecomeFast(!FindFirstObjectByType<TimeHandSprite>().IsFast()); }
+        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(!FindFirstObjectByType<TimeHand>().IsFast()); }
     }
 
     public void TutorialScene() {

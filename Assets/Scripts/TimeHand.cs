@@ -1,83 +1,105 @@
 using UnityEngine;
-using System;
+using TMPro;
 
-public class TimeHand : MonoBehaviour
-{
-    [Header("Manual Calibration")]
-    public float topY = -156.1f;
-    public float totalHeight = 899.1f;
-    public float firstColumnX = 383f;
-    public float columnWidth = 179.2f;
-    [Header("Hours")]
-    public float startHour = 6f;
-    public float endHour = 22f;
+public class TimeHand : MonoBehaviour {
+    private LevelManager levelManager;
+    [SerializeField] Vector3 origin;
+    [HideInInspector] public float timer;
+    [SerializeField] private GameObject timerObject;
+    [SerializeField] private AudioClip[] clockTicking;
+    private int clockTickIndex;
+    [SerializeField] private Vector3[] dayStartPositions;
 
-    // [Header("Vertical Movement (Time)")]
-    // public float topY = -156.1f;          // Pos Y at 6 AM
-    // public float totalHeight = 899.1f; 
-    // public int startHour = 6;
-    // public int endHour = 22;
-
-    // [Header("Horizontal Movement (Days)")]
-    // public float firstColumnX = 381.8f;  // Pos X for Sunday
-    // public float columnWidth = 179.2f; // Distance between columns
-
-    private RectTransform rect;
+    [Header("Fast Forward")]
+    [SerializeField] private bool isFast = false;
+    [SerializeField] private float fastSpeedModifier = 1.5f;
 
     void Start()
     {
-        rect = GetComponent<RectTransform>();
+        levelManager = FindFirstObjectByType<LevelManager>();
+        //origin = gameObject.transform.position;
+        gameObject.transform.position = dayStartPositions[0];
+        timer = GlobalGameManager.Instance.GetCurrentWeek().firstPreparationTime;
+        clockTickIndex = 0;
     }
 
-    void Update()
-    {
-        DateTime now = DateTime.Now;
-
-        // 1. Calculate EXACT minutes passed today
-        // This gives us a number like 10.33 for 10:20 AM
-        float currentHourDecimal = now.Hour + (now.Minute / 60f) + (now.Second / 3600f);
-        
-        // 2. Calculate the progress between 6 and 22 (10 PM)
-        float ratio = (currentHourDecimal - startHour) / (endHour - startHour);
-        
-        // 3. Keep it within the bounds
-        ratio = Mathf.Clamp01(ratio);
-
-        // 4. Calculate Vertical (Y)
-        float newY = topY - (ratio * totalHeight);
-
-        // 5. Calculate Horizontal (X) - DayOfWeek: Sunday=0, Monday=1, etc.
-        int dayIndex = (int)now.DayOfWeek; 
-        float newX = firstColumnX + (dayIndex * columnWidth);
-
-        // 6. Apply to the UI
-        rect.anchoredPosition = new Vector2(newX, newY);
-
-        //debug:
-        if (Time.frameCount % 60 == 0) // Only logs once per second
-        {
-            Debug.Log($"Time: {currentHourDecimal} | Ratio: {ratio} | NewY: {newY}");
+    private void Update() {
+        timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
+        if(levelManager.levelIsActive) {
+            if(timer > 0) {
+                timer = Mathf.Max(0, timer - Time.deltaTime);
+            } else {
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.Instance.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
+            }
         }
     }
 
-    // void Update()
-    // {
-    //     DateTime now = DateTime.Now;
+    public bool IsFast() {
+        return isFast;
+    }
 
-    //     // --- 1. Calculate Vertical (Y) Position ---
-    //     float currentMin = (now.Hour * 60) + now.Minute + (now.Second / 60f);
-    //     float startMin = startHour * 60;
-    //     float endMin = endHour * 60;
-        
-    //     float vRatio = Mathf.Clamp01((currentMin - startMin) / (endMin - startMin));
-    //     float newY = topY - (vRatio * totalHeight);
+    public void IsBecomeFast(bool yes) {
+        isFast = yes;
+        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+    }
 
-    //     // --- 2. Calculate Horizontal (X) Position ---
-    //     // DayOfWeek returns 0 for Sunday, 1 for Monday, etc.
-    //     int dayIndex = (int)now.DayOfWeek; 
-    //     float newX = firstColumnX + (dayIndex * columnWidth);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        GridCell cell = collision.GetComponent<GridCell>();
 
-    //     // --- 3. Apply ---
-    //     rect.anchoredPosition = new Vector2(newX, newY);
-    // }
+        if(cell != null && cell.canBeUsed) {
+            AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
+            clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
+
+            float finalHappiness = levelManager.GetHappiness();
+            float finalMoney = levelManager.GetMoney();
+
+            if(cell.occupyingEvent != null) {
+                Debug.Log(cell.occupyingEvent.title + ": " + cell.occupyingEvent.description);
+            }
+
+            if(cell.occupyingActivity != null) {
+                cell.occupyingActivity.initializer.SetFixed(true);
+
+                finalHappiness += cell.occupyingActivity.initializer.activity.happiness;
+                finalMoney += cell.occupyingActivity.initializer.activity.money;
+            }
+
+            //Debug.Log("Final Stuff being evaluated");
+
+            if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
+            else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
+
+            levelManager.SetHappiness(Mathf.Min(finalHappiness, 200));
+            levelManager.SetMoney(finalMoney);
+
+            if(levelManager.GetHappiness() <= 0 || levelManager.GetMoney() < 0) {
+                levelManager.LoseScene();
+                Destroy(gameObject);
+            }
+
+            cell.isFixed = true;
+            cell.GetComponent<MenuObject>().UpdateMenuObject();
+
+            levelManager.SamplePlannerMetric(cell.day, cell.hour);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        GridCell cell = collision.GetComponent<GridCell>();
+        if(cell != null && cell.hour == 22) {
+            if(cell.day == 7) {
+                if(levelManager.RequiredTaskListIsEmpty()) {
+                    if(GlobalGameManager.Instance.GetCurrentWeekIndex() == GlobalGameManager.Instance.GetLastWeekIndex() - 1) {
+                        levelManager.VictoryScene();
+                    } else {
+                        levelManager.WinScene();
+                    }
+                } else { levelManager.LoseScene(); }
+                Destroy(gameObject);
+            } else {
+                gameObject.transform.position = dayStartPositions[cell.day];
+                timer = GlobalGameManager.Instance.GetCurrentWeek().dailyPreparationTime;
+            }
+        }
+    }
 }
