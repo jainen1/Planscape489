@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -22,10 +24,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     [SerializeField] private MenuTheme[] activeThemes; //temporary
 
     protected override void OnInitialize() {
-        activeThemes = Resources.LoadAll<MenuTheme>("Themes");
-
-        Instance.currentTheme = activeThemes[0];
-        Debug.Log("Theme initialized to " + Instance.currentTheme);
+        SaveAllThemesToJson();
+        LoadActiveThemes();
 
         Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
         audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
@@ -78,6 +78,36 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     public MenuTheme GetCurrentMenuTheme() { return Instance.currentTheme; }
     public MenuTheme[] GetActiveMenuThemes() { return activeThemes; }
+
+    public void SaveAllThemesToJson() {
+        MenuTheme[] resourcesThemes = Resources.LoadAll<MenuTheme>("Themes");
+        string themesFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Themes");
+        Debug.Log("Writing theme data to " + themesFolder);
+        foreach(MenuTheme menuTheme in resourcesThemes) {
+            if(!Directory.Exists(themesFolder)) { Directory.CreateDirectory(themesFolder); }
+            SaveThemeToJson(themesFolder, menuTheme);
+        }
+    }
+
+    public void SaveThemeToJson(string path, MenuTheme menuTheme) {
+
+        File.WriteAllText(Path.Combine(path, menuTheme.name.ToLower() + ".theme.json"), JsonUtility.ToJson(menuTheme, true));
+    }
+
+    public void LoadActiveThemes() {
+        //AssetDatabase.Refresh();
+        int themeFileIndex = 0;
+        foreach(var file in Directory.EnumerateFiles(Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Themes"), "theme.json")) {
+            string json = File.ReadAllText(file);
+            JsonUtility.FromJsonOverwrite(json, Instance.activeThemes[themeFileIndex]);
+            Debug.Log("Read theme data from file " + file);
+        }
+
+        /*if(Instance.GetCurrentMenuTheme() == Instance.GetActiveMenuThemes()[0]) { }*/
+
+        Instance.currentTheme = activeThemes[0];
+        Debug.Log("Theme initialized to " + Instance.currentTheme);
+    }
 
     public void PrintThemes() {
         MenuTheme[] themes = Instance.GetActiveMenuThemes();

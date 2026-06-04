@@ -9,8 +9,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject eventScreen;
 
-    private float happiness;
-    private float money;
+    private float[] resources;
 
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
@@ -29,8 +28,8 @@ public class LevelManager : MonoBehaviour
     public void StartLevel() {
         Week currentWeek = GlobalGameManager.Instance.GetCurrentWeek();
 
-        SetHappiness(currentWeek.startingHappiness);
-        SetMoney(currentWeek.startingMoney);
+        SetResource(1, currentWeek.startingHappiness);
+        SetResource(2, currentWeek.startingMoney);
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
@@ -81,17 +80,9 @@ public class LevelManager : MonoBehaviour
         if(levelIsActive) { FindFirstObjectByType<TimeHand>().timer = 0; }
     }
 
-    public void FastForwardTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(true); }
-    }
-
-    public void NormalSpeedTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(false); }
-    }
-
-    public void ToggleSpeedTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(!FindFirstObjectByType<TimeHand>().IsFast()); }
-    }
+    public void FastForwardTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(true); } }
+    public void NormalSpeedTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(false); } }
+    public void ToggleSpeedTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(!FindFirstObjectByType<TimeHand>().IsFast()); } }
 
     public void TutorialScene() {
         if(levelIsActive) {
@@ -179,11 +170,8 @@ public class LevelManager : MonoBehaviour
         return cells[GetGridCellIndex(day, hour)];
     }
 
-    public void SetHappiness(float value) { happiness = value; }
-    public float GetHappiness() { return happiness; }
-
-    public void SetMoney(float value) { money = value; }
-    public float GetMoney() { return money; }
+    public void SetResource(int index, float value) { resources[index] = value; }
+    public float GetResource(int index) { return resources[index]; }
 
     //Telemetry
 
@@ -197,7 +185,7 @@ public class LevelManager : MonoBehaviour
     public void SamplePlannerMetric(int day, int hour) {
         if(doPlannerMetric) {
             //Debug.Log("Creating planner sample...");
-            string plannerData = "\nWeek " + GlobalGameManager.Instance.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetHappiness() + " Money = " + GetMoney() + "\n";
+            string plannerData = "\nWeek " + GlobalGameManager.Instance.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
             for(int i = 0; i < cells.Length; i++) {
                 string occupyingActivity = "";
                 if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }

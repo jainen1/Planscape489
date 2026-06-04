@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")]
-
+[CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")] [Serializable]
 public class MenuTheme : ScriptableObject
 {
     [Header("Fonts")]
@@ -62,11 +61,18 @@ public class MenuTheme : ScriptableObject
     public ResourceBarColors[] happinessBars = new ResourceBarColors[2];
     public ResourceBarColors[] moneyBars = new ResourceBarColors[3];
     public ResourceBarColors[] weekBars = new ResourceBarColors[1];
+
+    public ResourceBarColorsCollection[] resourceBarColors = new ResourceBarColorsCollection[0];
+}
+
+[Serializable]
+public class ResourceBarColorsCollection {
+    public ResourceBarColors[] resourceBars = new ResourceBarColors[0];
 }
 
 [Serializable]
 public class ResourceBarColors {
-    public Color fill;
+    public Color fill = Color.green;
     public Color change = Color.white;
     public float min;
     public float max;

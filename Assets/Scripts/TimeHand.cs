@@ -50,8 +50,8 @@ public class TimeHand : MonoBehaviour {
             AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
-            float finalHappiness = levelManager.GetHappiness();
-            float finalMoney = levelManager.GetMoney();
+            float finalHappiness = levelManager.GetResource(1);
+            float finalMoney = levelManager.GetResource(2);
 
             if(cell.occupyingEvent != null) {
                 Debug.Log(cell.occupyingEvent.title + ": " + cell.occupyingEvent.description);
@@ -69,10 +69,10 @@ public class TimeHand : MonoBehaviour {
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
 
-            levelManager.SetHappiness(Mathf.Min(finalHappiness, 200));
-            levelManager.SetMoney(finalMoney);
+            levelManager.SetResource(1, Mathf.Min(finalHappiness, 200));
+            levelManager.SetResource(2, finalMoney);
 
-            if(levelManager.GetHappiness() <= 0 || levelManager.GetMoney() < 0) {
+            if(levelManager.GetResource(1) <= 0 || levelManager.GetResource(2) < 0) {
                 levelManager.LoseScene();
                 Destroy(gameObject);
             }
