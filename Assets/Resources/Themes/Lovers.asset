@@ -19,9 +19,17 @@ MonoBehaviour:
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
   menuBackground: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
-  levelBackground: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
   menuBackgroundColor: {r: 1, g: 0.83921576, b: 0.93725497, a: 1}
+  menuBackgroundLayers:
+  - sprite: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
+    pos: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0.83921576, b: 0.93725497, a: 1}
+  levelBackground: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
   backgroundColor: {r: 1, g: 0.8396226, b: 0.93609834, a: 1}
+  levelBackgroundLayers:
+  - sprite: {fileID: 21300000, guid: f04aef36a0dd0674dacf4b6f0ccfa499, type: 3}
+    pos: {x: 0, y: 0, z: 0}
+    color: {r: 1, g: 0.83921576, b: 0.93725497, a: 1}
   gridCellColor: {r: 0.9386792, g: 0.58003294, b: 0.7987198, a: 1}
   fixedGridCellColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -49,21 +57,6 @@ MonoBehaviour:
   pauseButtonColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
   helpButtonColor: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
   resourceBarBackgroundColor: {r: 0.93725497, g: 0.5803922, b: 0.8000001, a: 1}
-  happinessBars:
-  - fill: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
-    change: {r: 1, g: 1, b: 1, a: 1}
-  - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-    change: {r: 0.86666673, g: 0.9294118, b: 0.30588236, a: 1}
-  moneyBars:
-  - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-    change: {r: 1, g: 1, b: 1, a: 1}
-  - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-    change: {r: 1, g: 1, b: 1, a: 1}
-  - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-    change: {r: 1, g: 1, b: 1, a: 1}
-  weekBars:
-  - fill: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
-    change: {r: 1, g: 1, b: 1, a: 1}
   resourceBarColors:
   - resourceBars:
     - fill: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}

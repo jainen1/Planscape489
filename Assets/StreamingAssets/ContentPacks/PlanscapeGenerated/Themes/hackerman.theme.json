@@ -12,14 +12,32 @@
     "menuBackground": {
         "instanceID": 51944
     },
-    "levelBackground": {
-        "instanceID": 51944
-    },
     "menuBackgroundColor": {
         "r": 1.0,
         "g": 1.0,
         "b": 1.0,
         "a": 1.0
+    },
+    "menuBackgroundLayers": [
+        {
+            "sprite": {
+                "instanceID": 51944
+            },
+            "pos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        }
+    ],
+    "levelBackground": {
+        "instanceID": 51944
     },
     "backgroundColor": {
         "r": 1.0,
@@ -27,6 +45,24 @@
         "b": 1.0,
         "a": 1.0
     },
+    "levelBackgroundLayers": [
+        {
+            "sprite": {
+                "instanceID": 51944
+            },
+            "pos": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            }
+        }
+    ],
     "gridCellColor": {
         "r": 0.0784313753247261,
         "g": 0.0784313753247261,

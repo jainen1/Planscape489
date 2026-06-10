@@ -13,13 +13,17 @@ public class MenuTheme : ScriptableObject
     public float timerFontSizeScale = 1;
     public float timerCharacterSpacingScale = 1;
 
-    [Header("Background")]
+    [Header("Backgrounds")]
+
     public Sprite menuBackground;
+    public Color menuBackgroundColor;
+    public BackgroundLayer[] menuBackgroundLayers;
+
     public Sprite levelBackground;
+    public Color backgroundColor;
+    public BackgroundLayer[] levelBackgroundLayers;
 
     [Header("Colors")]
-    public Color menuBackgroundColor;
-    public Color backgroundColor;
 
     public Color gridCellColor;
     public Color fixedGridCellColor;
@@ -71,4 +75,11 @@ public class ResourceBarColorsCollection {
 public class ResourceBarColors {
     public Color fill = Color.green;
     public Color change = Color.white;
+}
+
+[Serializable]
+public class BackgroundLayer {
+    public Sprite sprite;
+    public Vector3 pos;
+    public Color color;
 }
