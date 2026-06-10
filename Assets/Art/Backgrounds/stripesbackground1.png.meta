@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 234d7fd5fb06f8a42b0a43e2e8b6eb9e
+guid: e27e4f5906728994b86187d8e46f02ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3682021761865329068
-    second: stripesbackground1_0
+      213: -4580979043016657058
+    second: stripesbackground1 1_0
+  - first:
+      213: -8536214119600377093
+    second: stripesbackground1 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stripesbackground1_0
+      name: stripesbackground1 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
+        width: 1900
         height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca9ad33c84b291330800000000000000
-      internalID: 3682021761865329068
+      spriteID: e57bb79d4d71d60c0800000000000000
+      internalID: -4580979043016657058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stripesbackground1 1_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 12
+        width: 1848
+        height: 1068
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf2bb8a2c76498980800000000000000
+      internalID: -8536214119600377093
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      stripesbackground1_0: 3682021761865329068
+      stripesbackground1 1_0: -4580979043016657058
+      stripesbackground1 1_1: -8536214119600377093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -9,57 +9,61 @@
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
-    "menuBackground": {
-        "instanceID": 51940
-    },
-    "menuBackgroundColor": {
-        "r": 0.9019608497619629,
-        "g": 0.501960813999176,
-        "b": 0.46666669845581057,
-        "a": 1.0
-    },
     "menuBackgroundLayers": [
         {
             "sprite": {
                 "instanceID": 51940
             },
-            "pos": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
             "color": {
                 "r": 0.9019608497619629,
                 "g": 0.501960813999176,
                 "b": 0.46666669845581057,
                 "a": 1.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }
     ],
-    "levelBackground": {
-        "instanceID": 51940
-    },
-    "backgroundColor": {
-        "r": 0.9019608497619629,
-        "g": 0.501960813999176,
-        "b": 0.46666669845581057,
-        "a": 1.0
-    },
     "levelBackgroundLayers": [
         {
             "sprite": {
                 "instanceID": 51940
             },
-            "pos": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
             "color": {
                 "r": 0.9019608497619629,
                 "g": 0.501960813999176,
                 "b": 0.46666669845581057,
                 "a": 1.0
+            },
+            "position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }
     ],

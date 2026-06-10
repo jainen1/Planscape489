@@ -15,12 +15,7 @@ public class MenuTheme : ScriptableObject
 
     [Header("Backgrounds")]
 
-    public Sprite menuBackground;
-    public Color menuBackgroundColor;
     public BackgroundLayer[] menuBackgroundLayers;
-
-    public Sprite levelBackground;
-    public Color backgroundColor;
     public BackgroundLayer[] levelBackgroundLayers;
 
     [Header("Colors")]
@@ -80,6 +75,8 @@ public class ResourceBarColors {
 [Serializable]
 public class BackgroundLayer {
     public Sprite sprite;
-    public Vector3 pos;
     public Color color;
+    public Vector3 position = Vector3.zero;
+    public Quaternion rotation;
+    public Vector3 scale = Vector3.one;
 }

@@ -14,10 +14,9 @@ public class MenuObject : MonoBehaviour
 
     public void UpdateMenuObject() {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
-       // Debug.Log("theme is: " + menuTheme.name); 
 
         switch(type) {
-            case MenuObjectType.Background: {
+            /*case MenuObjectType.Background: {
                 gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.levelBackground;
                 color = menuTheme.backgroundColor; break;
             }
@@ -25,7 +24,7 @@ public class MenuObject : MonoBehaviour
             case MenuObjectType.MenuBackground: {
                 gameObject.GetComponent<SpriteRenderer>().sprite = menuTheme.menuBackground;
                 color = menuTheme.menuBackgroundColor; break;
-            }
+            }*/
 
             case MenuObjectType.GridCell: {
                 color = menuTheme.gridCellColor;

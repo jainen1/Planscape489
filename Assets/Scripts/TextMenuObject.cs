@@ -24,15 +24,17 @@ public class TextMenuObject : MonoBehaviour
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
         TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
-        MenuObject backgroundMenuObject = backgroundObject.GetComponent<MenuObject>();
-        SpriteRenderer backgroundSpriteRenderer = backgroundObject.GetComponent<SpriteRenderer>();
-        Image backgroundImage = backgroundObject.GetComponent<Image>();
-
         Color backgroundColor = Color.white;
-        if(backgroundMenuObject != null) { backgroundColor = backgroundMenuObject.color; }
-        else if(backgroundSpriteRenderer != null) { backgroundColor = backgroundSpriteRenderer.color; }
-        else if(backgroundImage != null) { backgroundColor = backgroundImage.color; }
+        if(backgroundObject != null) {
+            MenuObject backgroundMenuObject = backgroundObject.GetComponent<MenuObject>();
+            SpriteRenderer backgroundSpriteRenderer = backgroundObject.GetComponent<SpriteRenderer>();
+            Image backgroundImage = backgroundObject.GetComponent<Image>();
 
+            if(backgroundMenuObject != null) { backgroundColor = backgroundMenuObject.color; }
+            else if(backgroundSpriteRenderer != null) { backgroundColor = backgroundSpriteRenderer.color; }
+            else if(backgroundImage != null) { backgroundColor = backgroundImage.color; }
+        }
+        
         textComponent.color = MenuObject.GetBrightOrDarkColor(backgroundColor, threshold) ? menuTheme.brightTextColor : menuTheme.darkTextColor;
 
         TMP_FontAsset font;
