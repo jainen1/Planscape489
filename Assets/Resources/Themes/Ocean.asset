@@ -52,27 +52,31 @@ MonoBehaviour:
   happinessBars:
   - fill: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
-    min: 0
-    max: 100
   - fill: {r: 0.3803922, g: 0.43137258, b: 0.7019608, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
-    min: 100
-    max: 200
   moneyBars:
   - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
-    min: 0
-    max: 1400
   - fill: {r: 0.6745098, g: 0.6627451, b: 0.9450981, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
-    min: 1400
-    max: 4200
   - fill: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
-    min: 4200
-    max: 12600
   weekBars:
   - fill: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
     change: {r: 1, g: 1, b: 1, a: 1}
-    min: 0
-    max: 16
+  resourceBarColors:
+  - resourceBars:
+    - fill: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+  - resourceBars:
+    - fill: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+    - fill: {r: 0.3803922, g: 0.43137258, b: 0.7019608, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+  - resourceBars:
+    - fill: {r: 0.6156863, g: 0.68235296, b: 0.72156864, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+    - fill: {r: 0.6745098, g: 0.6627451, b: 0.9450981, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+    - fill: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}

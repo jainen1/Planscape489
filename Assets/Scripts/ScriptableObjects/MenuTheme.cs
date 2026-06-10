@@ -58,12 +58,8 @@ public class MenuTheme : ScriptableObject
 
     public Color resourceBarBackgroundColor;
 
-    public ResourceBarColors[] happinessBars = new ResourceBarColors[2];
-    public ResourceBarColors[] moneyBars = new ResourceBarColors[3];
-    public ResourceBarColors[] weekBars = new ResourceBarColors[1];
-
     [Header("Resource Bars (0 = Week, 1 = Happiness, 2 = Money)")]
-    public ResourceBarColorsCollection[] resourceBarColors = new ResourceBarColorsCollection[0];
+    public ResourceBarColorsCollection[] resourceBarColors = new ResourceBarColorsCollection[3];
 }
 
 [Serializable]
