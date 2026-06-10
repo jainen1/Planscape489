@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class ResourceBar : MonoBehaviour
 {
-    private LevelManager gameManager;
+    private LevelManager levelManager;
     [SerializeField] private TextMeshProUGUI text;
     public GameObject background;
 
-    [SerializeField] ResourceType resourceType;
+    [SerializeField] private int resourceIndex;
 
     private float resourceAmount;
     private float displayedAmount;
@@ -24,55 +24,51 @@ public class ResourceBar : MonoBehaviour
     void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
 
     private void Awake() {
-        gameManager = FindFirstObjectByType<LevelManager>();
+        levelManager = FindFirstObjectByType<LevelManager>();
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
         //UpdateMenuObject();
     }
 
     public void UpdateMenuObject() {
-        MenuTheme menuTheme = GlobalGameManager.Instance.GetCurrentMenuTheme();
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
 
         background.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
-
-        ResourceBarColors[] resourceBarColors;
 
         for(int i = 0; i < resourcePieces.Count; i++) { Destroy(resourcePieces[i].gameObject); }
         resourcePieces.Clear();
 
+        ResourceBarColorsCollection[] collectionArray = menuTheme.resourceBarColors;
+        if(resourceIndex < collectionArray.Length) {
+            ResourceBarColorsCollection collection = collectionArray[resourceIndex];
+            //if(collection.resourceBars != null && collection.resourceBars.Length > 0) {
+                ResourceBarColors[] resourceBarColors = collection.resourceBars;
+                if(resourceBarColors != null && resourceBarColors.Length > 0) {
+                    for(int i = 0; i < resourceBarColors.Length; i++) {
+                        GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
+                        newResourcePiece.transform.parent = background.transform;
+                        ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
+                    
+                        ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
 
-        switch(resourceType) {
-            case ResourceType.Happiness: resourceBarColors = menuTheme.happinessBars; break;
-            case ResourceType.Money: resourceBarColors = menuTheme.moneyBars; break;
-            case ResourceType.Weeks: resourceBarColors = menuTheme.weekBars; break;
-            default: resourceBarColors = menuTheme.happinessBars; break;
-        }
+                        newResourcePieceComponent.min = values.min;
+                        newResourcePieceComponent.max = values.max;
 
-        for(int i = 0; i < resourceBarColors.Length; i++) {
-            GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
-            newResourcePiece.transform.parent = background.transform;
-            ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
+                        newResourcePieceComponent.fill.GetComponent<SpriteRenderer>().color = resourceBarColors[i].fill;
+                        newResourcePieceComponent.change.GetComponent<SpriteRenderer>().color = resourceBarColors[i].change;
 
-            newResourcePieceComponent.min = resourceBarColors[i].min;
-            newResourcePieceComponent.max = resourceBarColors[i].max;
+                        resourcePieces.Add(newResourcePieceComponent);
 
-            newResourcePieceComponent.fill.GetComponent<SpriteRenderer>().color = resourceBarColors[i].fill;
-            newResourcePieceComponent.change.GetComponent<SpriteRenderer>().color = resourceBarColors[i].change;
-
-            resourcePieces.Add(newResourcePieceComponent);
-
-            newResourcePiece.transform.position = Vector3.zero;
+                        newResourcePiece.transform.position = Vector3.zero;
+                    }
+                }
+            //}
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        switch(resourceType) {
-            case ResourceType.Happiness: resourceAmount = gameManager.GetHappiness(); break;
-            case ResourceType.Money: resourceAmount = gameManager.GetMoney(); break;
-            case ResourceType.Weeks: resourceAmount = GlobalGameManager.Instance.GetCurrentWeekIndex() + 1; break;
-        }
-
+    void Update() {
+        if(resourceIndex == 0) { resourceAmount = GlobalGameManager.GetCurrentWeekIndex() + 1; }
+        else { resourceAmount = levelManager.GetResource(resourceIndex); }
+        
         displayedAmount = Mathf.Lerp(displayedAmount, resourceAmount, 3f * Time.deltaTime);
         text.text = prefix + resourceAmount + suffix;
 
@@ -101,10 +97,4 @@ public class ResourceBar : MonoBehaviour
         bar.transform.position = new Vector3(background.transform.position.x - ((spriteSize.x / 2f) * (1 - progress)), gameObject.transform.position.y, bar.transform.position.z);
         bar.GetComponent<SpriteRenderer>().size = new Vector2((spriteSize.x) * progress, spriteSize.y);
     }
-}
-
-public enum ResourceType {
-    Happiness,
-    Money,
-    Weeks
 }

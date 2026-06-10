@@ -38,7 +38,7 @@ public class TaskListItem : MonoBehaviour
         }
 
         if (viewport != null) {
-            Debug.Log("viewport not null");
+            //Debug.Log("viewport not null");
             isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
         }
 

@@ -19,7 +19,7 @@ public class TimeHand : MonoBehaviour {
         levelManager = FindFirstObjectByType<LevelManager>();
         //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
-        timer = GlobalGameManager.Instance.GetCurrentWeek().firstPreparationTime;
+        timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
     }
 
@@ -29,7 +29,7 @@ public class TimeHand : MonoBehaviour {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.Instance.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
             }
         }
     }
@@ -50,8 +50,8 @@ public class TimeHand : MonoBehaviour {
             AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
-            float finalHappiness = levelManager.GetHappiness();
-            float finalMoney = levelManager.GetMoney();
+            float finalHappiness = levelManager.GetResource(1);
+            float finalMoney = levelManager.GetResource(2);
 
             if(cell.occupyingEvent != null) {
                 Debug.Log(cell.occupyingEvent.title + ": " + cell.occupyingEvent.description);
@@ -69,10 +69,10 @@ public class TimeHand : MonoBehaviour {
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
 
-            levelManager.SetHappiness(Mathf.Min(finalHappiness, 200));
-            levelManager.SetMoney(finalMoney);
+            levelManager.SetResource(1, Mathf.Min(finalHappiness, 200));
+            levelManager.SetResource(2, finalMoney);
 
-            if(levelManager.GetHappiness() <= 0 || levelManager.GetMoney() < 0) {
+            if(levelManager.GetResource(1) <= 0 || levelManager.GetResource(2) < 0) {
                 levelManager.LoseScene();
                 Destroy(gameObject);
             }
@@ -89,7 +89,7 @@ public class TimeHand : MonoBehaviour {
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
                 if(levelManager.RequiredTaskListIsEmpty()) {
-                    if(GlobalGameManager.Instance.GetCurrentWeekIndex() == GlobalGameManager.Instance.GetLastWeekIndex() - 1) {
+                    if(GlobalGameManager.GetCurrentWeekIndex() == GlobalGameManager.GetLastWeekIndex() - 1) {
                         levelManager.VictoryScene();
                     } else {
                         levelManager.WinScene();
@@ -98,7 +98,7 @@ public class TimeHand : MonoBehaviour {
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
-                timer = GlobalGameManager.Instance.GetCurrentWeek().dailyPreparationTime;
+                timer = GlobalGameManager.GetCurrentWeek().dailyPreparationTime;
             }
         }
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,8 +10,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject eventScreen;
 
-    private float happiness;
-    private float money;
+    [SerializeField] private List<float> resources;
 
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioClip loseSound;
@@ -27,10 +27,13 @@ public class LevelManager : MonoBehaviour
     public bool levelIsActive = true;
 
     public void StartLevel() {
-        Week currentWeek = GlobalGameManager.Instance.GetCurrentWeek();
+        Week currentWeek = GlobalGameManager.GetCurrentWeek();
 
-        SetHappiness(currentWeek.startingHappiness);
-        SetMoney(currentWeek.startingMoney);
+        resources = new List<float>();
+
+        resources.Add(GlobalGameManager.GetCurrentWeekIndex());
+        resources.Add(currentWeek.resourceBars[1].startingValue);
+        resources.Add(currentWeek.resourceBars[2].startingValue);
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
@@ -48,12 +51,12 @@ public class LevelManager : MonoBehaviour
     }
 
     public void PauseScene() {
-        GlobalGameManager.Instance.AddScene("PauseMenu");
+        GlobalGameManager.AddScene("PauseMenu");
         levelIsActive = false;
     }
 
     public void UnPauseScene() {
-        GlobalGameManager.Instance.CloseScene("PauseMenu");
+        GlobalGameManager.CloseScene("PauseMenu");
         levelIsActive = true;
     }
 
@@ -81,21 +84,13 @@ public class LevelManager : MonoBehaviour
         if(levelIsActive) { FindFirstObjectByType<TimeHand>().timer = 0; }
     }
 
-    public void FastForwardTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(true); }
-    }
-
-    public void NormalSpeedTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(false); }
-    }
-
-    public void ToggleSpeedTimeHand() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(!FindFirstObjectByType<TimeHand>().IsFast()); }
-    }
+    public void FastForwardTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(true); } }
+    public void NormalSpeedTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(false); } }
+    public void ToggleSpeedTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(!FindFirstObjectByType<TimeHand>().IsFast()); } }
 
     public void TutorialScene() {
         if(levelIsActive) {
-            GlobalGameManager.Instance.AddScene("Tutorial");
+            GlobalGameManager.AddScene("Tutorial");
             pauseMenuInteractible = false;
             levelIsActive = false;
         }
@@ -105,21 +100,21 @@ public class LevelManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.Instance.AddScene("VictoryScene");
+        GlobalGameManager.AddScene("VictoryScene");
     }
 
     public void WinScene() {
         AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.Instance.AddScene("WinScene");
+        GlobalGameManager.AddScene("WinScene");
     }
 
     public void LoseScene() {
         AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.Instance.AddScene("LoseScene");
+        GlobalGameManager.AddScene("LoseScene");
     }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
@@ -179,11 +174,8 @@ public class LevelManager : MonoBehaviour
         return cells[GetGridCellIndex(day, hour)];
     }
 
-    public void SetHappiness(float value) { happiness = value; }
-    public float GetHappiness() { return happiness; }
-
-    public void SetMoney(float value) { money = value; }
-    public float GetMoney() { return money; }
+    public void SetResource(int index, float value) { resources[index] = value; }
+    public float GetResource(int index) { return resources[index]; }
 
     //Telemetry
 
@@ -197,7 +189,7 @@ public class LevelManager : MonoBehaviour
     public void SamplePlannerMetric(int day, int hour) {
         if(doPlannerMetric) {
             //Debug.Log("Creating planner sample...");
-            string plannerData = "\nWeek " + GlobalGameManager.Instance.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetHappiness() + " Money = " + GetMoney() + "\n";
+            string plannerData = "\nWeek " + GlobalGameManager.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
             for(int i = 0; i < cells.Length; i++) {
                 string occupyingActivity = "";
                 if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }
