@@ -19,7 +19,7 @@ public class TimeHand : MonoBehaviour {
         levelManager = FindFirstObjectByType<LevelManager>();
         //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
-        timer = GlobalGameManager.Instance.GetCurrentWeek().firstPreparationTime;
+        timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
     }
 
@@ -29,7 +29,7 @@ public class TimeHand : MonoBehaviour {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.Instance.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
             }
         }
     }
@@ -89,7 +89,7 @@ public class TimeHand : MonoBehaviour {
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
                 if(levelManager.RequiredTaskListIsEmpty()) {
-                    if(GlobalGameManager.Instance.GetCurrentWeekIndex() == GlobalGameManager.Instance.GetLastWeekIndex() - 1) {
+                    if(GlobalGameManager.GetCurrentWeekIndex() == GlobalGameManager.GetLastWeekIndex() - 1) {
                         levelManager.VictoryScene();
                     } else {
                         levelManager.WinScene();
@@ -98,7 +98,7 @@ public class TimeHand : MonoBehaviour {
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
-                timer = GlobalGameManager.Instance.GetCurrentWeek().dailyPreparationTime;
+                timer = GlobalGameManager.GetCurrentWeek().dailyPreparationTime;
             }
         }
     }

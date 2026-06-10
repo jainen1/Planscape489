@@ -10,7 +10,7 @@ public class ThemeList : MonoBehaviour
     private int index = 0;
 
     private void Awake() {
-        CreateList(new List<MenuTheme>(GlobalGameManager.Instance.GetActiveMenuThemes()));
+        CreateList(new List<MenuTheme>(GlobalGameManager.GetActiveMenuThemes()));
     }
 
     public void CreateList(List<MenuTheme> themes) 

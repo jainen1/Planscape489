@@ -15,13 +15,13 @@ public class ThemeListItem : MonoBehaviour
     public void SetThemeIndex(int index) { themeIndex = index; }
 
     public void OnClickSelect() {
-        GlobalGameManager.Instance.SetThemeByIndex(themeIndex);
+        GlobalGameManager.SetThemeByIndex(themeIndex);
         //Debug.Log("Switched to: " + GlobalGameManager.Instance.GetActiveMenuThemes()[themeIndex].name);
     }
 
     public void SetupText() {
         if(buttonText != null) {
-            buttonText.text = GlobalGameManager.Instance.GetActiveMenuThemes()[themeIndex].name;
+            buttonText.text = GlobalGameManager.GetActiveMenuThemes()[themeIndex].name;
         }
     }
 }

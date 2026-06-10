@@ -13,7 +13,7 @@ public class MenuObject : MonoBehaviour
     void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
 
     public void UpdateMenuObject() {
-        MenuTheme menuTheme = GlobalGameManager.Instance.GetCurrentMenuTheme();
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
        // Debug.Log("theme is: " + menuTheme.name); 
 
         switch(type) {

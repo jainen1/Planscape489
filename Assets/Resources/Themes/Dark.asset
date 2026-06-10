@@ -76,3 +76,31 @@ MonoBehaviour:
     change: {r: 1, g: 1, b: 1, a: 1}
     min: 0
     max: 16
+  resourceBarColors:
+  - resourceBars:
+    - fill: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+      min: 0
+      max: 16
+  - resourceBars:
+    - fill: {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+      min: 0
+      max: 100
+    - fill: {r: 0.21960786, g: 0.15686275, b: 0.34117648, a: 1}
+      change: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+      min: 100
+      max: 200
+  - resourceBars:
+    - fill: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+      min: 0
+      max: 1400
+    - fill: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+      min: 1400
+      max: 4200
+    - fill: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+      change: {r: 1, g: 1, b: 1, a: 1}
+      min: 4200
+      max: 12600

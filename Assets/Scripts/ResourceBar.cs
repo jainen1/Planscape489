@@ -30,36 +30,43 @@ public class ResourceBar : MonoBehaviour
     }
 
     public void UpdateMenuObject() {
-        MenuTheme menuTheme = GlobalGameManager.Instance.GetCurrentMenuTheme();
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
 
         background.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
-
-        ResourceBarColors[] resourceBarColors;
 
         for(int i = 0; i < resourcePieces.Count; i++) { Destroy(resourcePieces[i].gameObject); }
         resourcePieces.Clear();
 
-        resourceBarColors = menuTheme.resourceBarColors[resourceIndex].resourceBars;
+        ResourceBarColorsCollection[] collectionArray = menuTheme.resourceBarColors;
+        if(resourceIndex < collectionArray.Length) {
+            ResourceBarColorsCollection collection = collectionArray[resourceIndex];
+            //if(collection.resourceBars != null && collection.resourceBars.Length > 0) {
+                ResourceBarColors[] resourceBarColors = collection.resourceBars;
+                if(resourceBarColors != null && resourceBarColors.Length > 0) {
+                    for(int i = 0; i < resourceBarColors.Length; i++) {
+                        GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
+                        newResourcePiece.transform.parent = background.transform;
+                        ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
+                    
+                        ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
 
-        for(int i = 0; i < resourceBarColors.Length; i++) {
-            GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
-            newResourcePiece.transform.parent = background.transform;
-            ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
+                        newResourcePieceComponent.min = values.min;
+                        newResourcePieceComponent.max = values.max;
 
-            newResourcePieceComponent.min = resourceBarColors[i].min;
-            newResourcePieceComponent.max = resourceBarColors[i].max;
+                        newResourcePieceComponent.fill.GetComponent<SpriteRenderer>().color = resourceBarColors[i].fill;
+                        newResourcePieceComponent.change.GetComponent<SpriteRenderer>().color = resourceBarColors[i].change;
 
-            newResourcePieceComponent.fill.GetComponent<SpriteRenderer>().color = resourceBarColors[i].fill;
-            newResourcePieceComponent.change.GetComponent<SpriteRenderer>().color = resourceBarColors[i].change;
+                        resourcePieces.Add(newResourcePieceComponent);
 
-            resourcePieces.Add(newResourcePieceComponent);
-
-            newResourcePiece.transform.position = Vector3.zero;
+                        newResourcePiece.transform.position = Vector3.zero;
+                    }
+                }
+            //}
         }
     }
 
     void Update() {
-        if(resourceIndex == 0) { resourceAmount = GlobalGameManager.Instance.GetCurrentWeekIndex() + 1; }
+        if(resourceIndex == 0) { resourceAmount = GlobalGameManager.GetCurrentWeekIndex() + 1; }
         else { resourceAmount = levelManager.GetResource(resourceIndex); }
         
         displayedAmount = Mathf.Lerp(displayedAmount, resourceAmount, 3f * Time.deltaTime);

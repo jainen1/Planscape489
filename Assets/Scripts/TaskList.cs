@@ -14,8 +14,8 @@ public class TaskList : MonoBehaviour
         ActivityWithCount[] activities;
 
         switch(activityType) {
-            case ActivityType.Required: activities = GlobalGameManager.Instance.GetCurrentWeek().requiredTasks; break;
-            case ActivityType.Bonus: activities = GlobalGameManager.Instance.GetCurrentWeek().bonusTasks; break;
+            case ActivityType.Required: activities = GlobalGameManager.GetCurrentWeek().requiredTasks; break;
+            case ActivityType.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
         }
 

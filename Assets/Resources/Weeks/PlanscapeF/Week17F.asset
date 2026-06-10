@@ -16,8 +16,25 @@ MonoBehaviour:
   timeHandSpeed: 0.52
   firstPreparationTime: 60
   dailyPreparationTime: 15
-  startingHappiness: 70
-  startingMoney: 400
+  resourceBars:
+  - startingValue: 0
+    resourceBars:
+    - min: 0
+      max: 16
+  - startingValue: 70
+    resourceBars:
+    - min: 0
+      max: 100
+    - min: 100
+      max: 200
+  - startingValue: 400
+    resourceBars:
+    - min: 0
+      max: 1400
+    - min: 1400
+      max: 4200
+    - min: 4200
+      max: 12600
   fixedActivities:
   - activity: {fileID: 11400000, guid: a553057f609de4800bde3eaabc63f23e, type: 2}
     time: {x: 6, y: 11}

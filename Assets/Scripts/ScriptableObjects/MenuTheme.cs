@@ -62,6 +62,7 @@ public class MenuTheme : ScriptableObject
     public ResourceBarColors[] moneyBars = new ResourceBarColors[3];
     public ResourceBarColors[] weekBars = new ResourceBarColors[1];
 
+    [Header("Resource Bars (0 = Week, 1 = Happiness, 2 = Money)")]
     public ResourceBarColorsCollection[] resourceBarColors = new ResourceBarColorsCollection[0];
 }
 
@@ -74,6 +75,4 @@ public class ResourceBarColorsCollection {
 public class ResourceBarColors {
     public Color fill = Color.green;
     public Color change = Color.white;
-    public float min;
-    public float max;
 }

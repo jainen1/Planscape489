@@ -14,7 +14,7 @@ public class Tutorial : MonoBehaviour
         levelManager = FindFirstObjectByType<LevelManager>();
         levelManager.pauseMenuInteractible = false;
         levelManager.levelIsActive = false;
-        GlobalGameManager.Instance.SendThemeUpdate();
+        GlobalGameManager.SendThemeUpdate();
         activeScreenIndex = 0;
         foreach(GameObject screen in screens) {
             screen.transform.localScale = Vector3.zero;
@@ -29,7 +29,7 @@ public class Tutorial : MonoBehaviour
             transform.localScale = Vector3.zero;
             levelManager.pauseMenuInteractible = true;
             levelManager.levelIsActive = true;
-            GlobalGameManager.Instance.CloseScene("Tutorial");
+            GlobalGameManager.CloseScene("Tutorial");
         } else {
             screens[activeScreenIndex].transform.localScale = Vector3.one;
         }

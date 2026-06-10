@@ -11,8 +11,7 @@ public class Week : ScriptableObject {
     public float firstPreparationTime = 60f;
     public float dailyPreparationTime = 15f;
 
-    public float startingHappiness = 70;
-    public float startingMoney = 2000;
+    public ResourceBarValuesCollection[] resourceBars;
 
     [Header("Activities")]
     public ActivityWithTime[] fixedActivities;
@@ -40,4 +39,16 @@ public class ActivityWithCount {
 public class EventWithTime {
     public EventObject eventObject;
     public Vector2 time;
+}
+
+[Serializable]
+public class ResourceBarValues {
+    public float min;
+    public float max;
+}
+
+[Serializable]
+public class ResourceBarValuesCollection {
+    public float startingValue;
+    public ResourceBarValues[] resourceBars = new ResourceBarValues[0];
 }

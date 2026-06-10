@@ -20,6 +20,6 @@ public class WeekDisplay : MonoBehaviour
     {
         Debug.Log("updatedisplay fn");   
 
-        if (weekText != null) { weekText.text = prefix + GlobalGameManager.Instance.GetCurrentWeekIndex().ToString(); }
+        if (weekText != null) { weekText.text = prefix + GlobalGameManager.GetCurrentWeekIndex().ToString(); }
     }
 }
