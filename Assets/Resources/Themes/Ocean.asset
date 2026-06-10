@@ -18,36 +18,36 @@ MonoBehaviour:
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
-  menuBackground: {fileID: -1939312270735109476, guid: 52847ed31af8c2b448d5589465ae0d08, type: 3}
-  levelBackground: {fileID: -1939312270735109476, guid: 52847ed31af8c2b448d5589465ae0d08, type: 3}
+  menuBackground: {fileID: 147434752360468177, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
+  levelBackground: {fileID: 147434752360468177, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
   menuBackgroundColor: {r: 0.94117653, g: 1, b: 0.9960785, a: 1}
   backgroundColor: {r: 0.9411765, g: 1, b: 0.9944321, a: 1}
   gridCellColor: {r: 0.8784314, g: 0.9511358, b: 1, a: 0.88235295}
-  fixedGridCellColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 0.23529412}
+  fixedGridCellColor: {r: 0.48104307, g: 0.67870784, b: 0.8867924, a: 0.23529412}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
-  darkTextColor: {r: 0, g: 0, b: 0, a: 1}
-  dailyTaskListColor: {r: 0.34901965, g: 0.58960384, b: 1, a: 1}
-  dailyTaskListSecondaryColor: {r: 0.514151, g: 0.6926859, b: 1, a: 1}
-  weeklyTaskListColor: {r: 0.38039216, g: 0.43315306, b: 0.7019608, a: 1}
-  weeklyTaskListSecondaryColor: {r: 0.5286579, g: 0.57646155, b: 0.8301887, a: 1}
-  bonusTaskListColor: {r: 0.6730911, g: 0.6627451, b: 0.94509804, a: 1}
-  bonusTaskListSecondaryColor: {r: 0.79658014, g: 0.7877358, b: 1, a: 1}
+  darkTextColor: {r: 0.044755742, g: 0.037379846, b: 0.2264151, a: 1}
+  dailyTaskListColor: {r: 0.37753648, g: 0.75899035, b: 0.7924528, a: 1}
+  dailyTaskListSecondaryColor: {r: 0.69855815, g: 0.8829883, b: 0.8867924, a: 1}
+  weeklyTaskListColor: {r: 0.23139909, g: 0.31436417, b: 0.754717, a: 1}
+  weeklyTaskListSecondaryColor: {r: 0.31523672, g: 0.4013699, b: 0.8679245, a: 1}
+  bonusTaskListColor: {r: 0.59607846, g: 0.7256007, b: 0.8392157, a: 1}
+  bonusTaskListSecondaryColor: {r: 0.37254906, g: 0.61638594, b: 0.8117647, a: 1}
   taskListScrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-  taskListCounterColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  requiredTask1Color: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
-  requiredTask2Color: {r: 0.27450982, g: 0.43529415, b: 0.9686275, a: 1}
-  requiredTask3Color: {r: 0.21176472, g: 0.30588236, b: 0.92549026, a: 1}
+  taskListCounterColor: {r: 0.7516478, g: 0.8584906, b: 0.62767, a: 1}
+  requiredTask1Color: {r: 0.48900855, g: 0.58385575, b: 0.9339623, a: 1}
+  requiredTask2Color: {r: 0.52954787, g: 0.62541103, b: 0.9433962, a: 1}
+  requiredTask3Color: {r: 0.6806248, g: 0.7087467, b: 0.8962264, a: 1}
   requiredTask4Color: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
-  bonusTask1Color: {r: 0.454902, g: 0.32156864, b: 0.83921576, a: 1}
-  bonusTask2Color: {r: 0.6745098, g: 0.6627451, b: 0.9450981, a: 1}
-  bonusTask3Color: {r: 0.7843138, g: 0.6627451, b: 0.9450981, a: 1}
-  bonusTask4Color: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
+  bonusTask1Color: {r: 0.3215687, g: 0.7774264, b: 0.8392157, a: 1}
+  bonusTask2Color: {r: 0.6627451, g: 0.91637003, b: 0.94509804, a: 1}
+  bonusTask3Color: {r: 0.6627451, g: 0.90899247, b: 0.94509804, a: 1}
+  bonusTask4Color: {r: 0.77294767, g: 0.6627451, b: 0.94509804, a: 1}
   fixedActivityColor: {r: 0.6161668, g: 0.6842391, b: 0.7216981, a: 1}
   fixedActivityBorderColor: {r: 0.30838376, g: 0.35774925, b: 0.3962264, a: 1}
-  timeHandColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
-  timeHandFastColor: {r: 0.3607843, g: 0.7921569, b: 0.6047903, a: 1}
-  pauseButtonColor: {r: 0.9450981, g: 0.6627451, b: 0.93725497, a: 1}
-  helpButtonColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
+  timeHandColor: {r: 0.14117646, g: 0.45160058, b: 0.58431375, a: 1}
+  timeHandFastColor: {r: 0.14117648, g: 0.45490196, b: 0.58431375, a: 1}
+  pauseButtonColor: {r: 0.14117648, g: 0.45490196, b: 0.58431375, a: 1}
+  helpButtonColor: {r: 0.14117648, g: 0.45490196, b: 0.58431375, a: 1}
   resourceBarBackgroundColor: {r: 0.8784314, g: 0.9529412, b: 1, a: 1}
   happinessBars:
   - fill: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
