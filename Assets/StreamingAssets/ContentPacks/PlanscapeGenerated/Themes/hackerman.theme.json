@@ -1,18 +1,18 @@
 {
     "mainFont": {
-        "instanceID": 50736
+        "instanceID": 50746
     },
     "mainFontSizeScale": 0.949999988079071,
     "mainCharacterSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50174
+        "instanceID": 50178
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51944
+                "instanceID": 51940
             },
             "color": {
                 "r": 1.0,
@@ -41,7 +41,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51944
+                "instanceID": 51940
             },
             "color": {
                 "r": 1.0,

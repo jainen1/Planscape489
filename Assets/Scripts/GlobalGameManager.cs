@@ -30,7 +30,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         //LoadActiveThemes();
         LoadThemesFromResources();
 
-        SaveGame();
+        //SaveGame();
 
         Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
         Instance.audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");

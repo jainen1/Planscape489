@@ -18,18 +18,23 @@ MonoBehaviour:
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
-  menuBackground: {fileID: 21300000, guid: abdc32713968db2409f1944571e0733f, type: 3}
-  menuBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   menuBackgroundLayers:
   - sprite: {fileID: 21300000, guid: abdc32713968db2409f1944571e0733f, type: 3}
-    pos: {x: 0, y: 0, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
-  levelBackground: {fileID: 21300000, guid: 04469d547601145418ae7f4102468f6a, type: 3}
-  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
   levelBackgroundLayers:
-  - sprite: {fileID: 21300000, guid: 04469d547601145418ae7f4102468f6a, type: 3}
-    pos: {x: 0, y: 0, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
+  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
+    color: {r: 1, g: 0.9843137, b: 0.9411765, a: 1}
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
+  - sprite: {fileID: 21300000, guid: c3d81fabe9b52064e93eaece892cddef, type: 3}
+    color: {r: 1, g: 0.972549, b: 0.8980392, a: 1}
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 1, y: 1, z: 1}
   gridCellColor: {r: 1, g: 0.94509804, b: 0.8784314, a: 1}
   fixedGridCellColor: {r: 0.8915094, g: 0.866278, b: 0.84104663, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
