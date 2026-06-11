@@ -338,7 +338,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1082482056}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.36324862
+  m_Size: 0.353942
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2250,10 +2250,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gothic Castle from wallpaperbat.com
+  m_text: 'Ocean background by Siddhi Shinde
 
-    Stripe backgrounds created with
-    imageonline.io'
+    Gothic Castle from wallpaperbat.com
+
+    Stripe
+    backgrounds created with imageonline.io'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
