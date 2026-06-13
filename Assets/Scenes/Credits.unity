@@ -338,7 +338,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1082482056}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.32678023
+  m_Size: 0.3120203
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1628,7 +1628,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Lawnmower by Joshua Friedman (ALIBI Music Library)'
+  m_text: ' "Lawnmower" by Joshua Friedman (ALIBI Music Library)
+
+    "Malware Injection"
+    by Remi Gallego
+
+    "Something''s Not Right" by Lucas Quinn'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
@@ -1866,6 +1871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaf5c2e5070c49c4b180e8b594eb2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  audioSource: {fileID: 0}
 --- !u!82 &712303415
 AudioSource:
   m_ObjectHideFlags: 0

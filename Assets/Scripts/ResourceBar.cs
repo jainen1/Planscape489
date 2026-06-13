@@ -70,6 +70,7 @@ public class ResourceBar : MonoBehaviour
         else { resourceAmount = levelManager.GetResource(resourceIndex); }
         
         displayedAmount = Mathf.Lerp(displayedAmount, resourceAmount, 3f * Time.deltaTime);
+        if(Mathf.Abs(resourceAmount - displayedAmount) < 1) { displayedAmount = resourceAmount; }
         text.text = prefix + resourceAmount + suffix;
 
         Vector2 fullSize = new Vector2(background.GetComponent<SpriteRenderer>().size.x - 0.1f, background.GetComponent<SpriteRenderer>().size.y - 0.1f);
@@ -85,7 +86,7 @@ public class ResourceBar : MonoBehaviour
             AdjustPositionAndSize(resourceBar.fill, GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar), fullSize);
             AdjustPositionAndSize(resourceBar.change, GetProgress(resourceBigger ? resourceAmount : displayedAmount, resourceBar), fullSize);
             resourceBar.text.GetComponent<TextMeshProUGUI>().text = prefix + resourceAmount + suffix;
-            resourceBar.mask.GetComponent<RectMask2D>().padding = new Vector4(0, 0, 6.3f - (GetProgress(resourceBigger ? resourceAmount : displayedAmount, resourceBar) * 6.3f), 0);
+            resourceBar.mask.GetComponent<RectMask2D>().padding = new Vector4(0, 0, 6.2f - (GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar) * 6.2f), 0);
         }
     }
 
