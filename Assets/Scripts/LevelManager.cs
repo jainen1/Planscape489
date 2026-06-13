@@ -37,7 +37,11 @@ public class LevelManager : MonoBehaviour
         Week currentWeek = GlobalGameManager.GetCurrentWeek();
 
         resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex(), currentWeek.resourceBars[1].startingValue, currentWeek.resourceBars[2].startingValue };
-        //resources.Add(currentWeek.resourceBars[1].startingValue);
+        if(currentWeek.resourceBars.Length > 3) {
+            for(int i = 3; i <= currentWeek.resourceBars.Length; i++) {
+                resources.Add(currentWeek.resourceBars[i].startingValue);
+            }
+        }
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {

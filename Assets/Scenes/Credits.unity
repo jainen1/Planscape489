@@ -338,7 +338,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1082482056}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.34300745
+  m_Size: 0.32678023
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 1287801508}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -725,7 +725,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Assets from Slidesgo, Flaticon, and Freepik
+  m_text: 'Assets from Slidesgo, Flaticon, and Freepik
+
+    Clock hand assets from
+    pngegg and pngmart'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
@@ -1466,7 +1469,9 @@ MonoBehaviour:
     Asimovian
     by Carolina Short
 
-    digital-7 by Style-7'
+    digital-7 by Style-7
+
+    Tahoma by Matthew Carter'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   m_sharedMaterial: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}

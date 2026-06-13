@@ -3,7 +3,6 @@ using TMPro;
 
 public class TimeHand : MonoBehaviour {
     private LevelManager levelManager;
-    [SerializeField] Vector3 origin;
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
     [SerializeField] private AudioClip[] clockTicking;
@@ -17,7 +16,6 @@ public class TimeHand : MonoBehaviour {
     void Start()
     {
         levelManager = FindFirstObjectByType<LevelManager>();
-        //origin = gameObject.transform.position;
         gameObject.transform.position = dayStartPositions[0];
         timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
