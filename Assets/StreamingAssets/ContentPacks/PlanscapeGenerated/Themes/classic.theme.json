@@ -1,18 +1,99 @@
 {
     "mainFont": {
-        "instanceID": 50628
+        "instanceID": 58908
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50178
+        "instanceID": 58910
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51918
+                "instanceID": 85154
+            },
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 85156
+            },
+            "color": {
+                "r": 0.2705882489681244,
+                "g": 0.3921568691730499,
+                "b": 0.9607843160629273,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 85152
+            },
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 58912
             },
             "color": {
                 "r": 1.0,
@@ -41,7 +122,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51920
+                "instanceID": 58914
             },
             "color": {
                 "r": 1.0,
@@ -68,7 +149,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51922
+                "instanceID": 58916
             },
             "color": {
                 "r": 1.0,
