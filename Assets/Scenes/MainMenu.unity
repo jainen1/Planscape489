@@ -527,8 +527,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1978309764}
   m_HandleRect: {fileID: 1978309763}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.88461524
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2092,7 +2092,7 @@ GameObject:
   - component: {fileID: 1475208749}
   - component: {fileID: 1475208748}
   m_Layer: 0
-  m_Name: BGMusic
+  m_Name: MusicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2110,6 +2110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaf5c2e5070c49c4b180e8b594eb2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  audioSource: {fileID: 1475208749}
 --- !u!82 &1475208749
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2121,8 +2122,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -819897486526295038, guid: befa488f80a0a4b40ba021041a9af3ca, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: b8e0a0f145d6d4f7fabaadef1ccf3c7c, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

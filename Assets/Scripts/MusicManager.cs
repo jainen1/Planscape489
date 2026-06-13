@@ -1,20 +1,17 @@
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : MonoSingleton<MusicManager>
 {
-    private static MusicManager instance;
+    [SerializeField] private AudioSource audioSource;
 
-    void Awake()
-    {
-        if (instance == null) //if game is just opened begin playing music
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            // If music is already playing, do not play a new music on top of this
-            Destroy(gameObject);
+    void OnEnable() { GlobalGameManager.OnUpdateTheme += UpdateMenuObject; }
+    void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
+
+    public void UpdateMenuObject() {
+        AudioClip themeMusic = GlobalGameManager.GetCurrentMenuTheme().music;
+        if(themeMusic != null && themeMusic != audioSource.clip) {
+            audioSource.clip = themeMusic;
+            audioSource.Play();
         }
     }
 }

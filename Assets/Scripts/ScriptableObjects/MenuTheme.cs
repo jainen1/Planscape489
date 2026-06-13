@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")] [Serializable]
 public class MenuTheme : ScriptableObject
 {
+    [Header("Music")]
+    public AudioClip music;
+
     [Header("Fonts")]
     public TMPro.TMP_FontAsset mainFont;
     public float mainFontSizeScale = 1;

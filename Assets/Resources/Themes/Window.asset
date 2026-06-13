@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
   m_Name: Window
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
+  music: {fileID: 8300000, guid: b8e0a0f145d6d4f7fabaadef1ccf3c7c, type: 3}
   mainFont: {fileID: 11400000, guid: 342efefe25f3c644e9fd234f2740dd34, type: 2}
   mainFontSizeScale: 1.5
   mainCharacterSpacingScale: 1
