@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")] [Serializable]
@@ -79,4 +80,17 @@ public class BackgroundLayer {
     public Vector3 position = Vector3.zero;
     public Quaternion rotation;
     public Vector3 scale = Vector3.one;
+}
+
+[CustomEditor(typeof(MenuTheme))]
+public class MyScriptEditor : Editor {
+    public override void OnInspectorGUI() {
+        if(EditorApplication.isPlaying && GUILayout.Button("Send Theme Update")) {
+            GlobalGameManager.SendThemeUpdate();
+        }
+
+        DrawDefaultInspector();
+
+        //myScript.doesntMatter = EditorGUILayout.Toggle("Hello World"); //Returns true when user clicks
+    }
 }
