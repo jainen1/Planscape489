@@ -1209,6 +1209,18 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.764151
       objectReference: {fileID: 0}
+    - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 30661e6894d33f14bb95d48f762714f2, type: 2}
+    - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Campaign, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8067569480031669092, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1

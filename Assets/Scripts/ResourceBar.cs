@@ -81,7 +81,7 @@ public class ResourceBar : MonoBehaviour
         for(int i = 0; i < resourcePieces.Count; i++) {
             ResourcePiece resourceBar = resourcePieces[i];
 
-            resourceBar.transform.position = new Vector3(background.transform.position.x, background.transform.position.y, -1f -(0.3f * (i + 1)));
+            resourceBar.transform.position = new Vector3(background.transform.position.x, background.transform.position.y, -(0.1f * (i + 1)));
 
             AdjustPositionAndSize(resourceBar.fill, GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar), fullSize);
             AdjustPositionAndSize(resourceBar.change, GetProgress(resourceBigger ? resourceAmount : displayedAmount, resourceBar), fullSize);
