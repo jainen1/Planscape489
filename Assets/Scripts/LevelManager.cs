@@ -1,5 +1,6 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
+using System.Collections;
 using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
@@ -26,14 +27,17 @@ public class LevelManager : MonoBehaviour
     public bool pauseMenuInteractible = true;
     public bool levelIsActive = true;
 
+    public EndSceneScreen victory;
+    public EndSceneScreen win;
+    public EndSceneScreen lose;
+
+    public EndSceneScreen activeEndScreen;
+
     public void StartLevel() {
         Week currentWeek = GlobalGameManager.GetCurrentWeek();
 
-        resources = new List<float>();
-
-        resources.Add(GlobalGameManager.GetCurrentWeekIndex());
-        resources.Add(currentWeek.resourceBars[1].startingValue);
-        resources.Add(currentWeek.resourceBars[2].startingValue);
+        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex(), currentWeek.resourceBars[1].startingValue, currentWeek.resourceBars[2].startingValue };
+        //resources.Add(currentWeek.resourceBars[1].startingValue);
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
@@ -81,12 +85,12 @@ public class LevelManager : MonoBehaviour
     }
 
     public void SkipTimer() {
-        if(levelIsActive) { FindFirstObjectByType<TimeHand>().timer = 0; }
+        if(levelIsActive) { timeHand.timer = 0; }
     }
 
-    public void FastForwardTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(true); } }
-    public void NormalSpeedTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(false); } }
-    public void ToggleSpeedTimeHand() { if(levelIsActive) { FindFirstObjectByType<TimeHand>().IsBecomeFast(!FindFirstObjectByType<TimeHand>().IsFast()); } }
+    public void FastForwardTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(true); } }
+    public void NormalSpeedTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(false); } }
+    public void ToggleSpeedTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(!timeHand.IsFast()); } }
 
     public void TutorialScene() {
         if(levelIsActive) {
@@ -96,35 +100,28 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void VictoryScene() {
-        AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
+    private void OpenEndScene() {
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.AddScene("VictoryScene");
+
+        GlobalGameManager.AddScene("EndScene");
     }
 
-    public void WinScene() {
-        AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
-        pauseMenuInteractible = false;
-        levelIsActive = false;
-        GlobalGameManager.AddScene("WinScene");
-    }
-
-    public void LoseScene() {
-        AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
-        pauseMenuInteractible = false;
-        levelIsActive = false;
-        GlobalGameManager.AddScene("LoseScene");
-    }
+    public void VictoryScene() { activeEndScreen = victory; OpenEndScene(); }
+    public void WinScene() { activeEndScreen = win; OpenEndScene(); }
+    public void LoseScene() { activeEndScreen = lose; OpenEndScene(); }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
         GameObject fixedActivity = Instantiate(activityPrefab);
-        fixedActivity.GetComponent<ActivityInitializer>().activity = activity;
-        fixedActivity.GetComponent<ActivityInitializer>().displayFixedBorder = true;
-        fixedActivity.GetComponent<ActivityInitializer>().Initialize();
-        fixedActivity.GetComponentInChildren<Activity>().SetTargetCell(cells[GetGridCellIndex(day, hour)]);
-        fixedActivity.GetComponent<ActivityInitializer>().SetFixed(true);
-        fixedActivity.GetComponentInChildren<Activity>().ClaimCells();
+        ActivityInitializer activityInitializer = fixedActivity.GetComponent<ActivityInitializer>();
+        Activity activityScript = fixedActivity.GetComponentInChildren<Activity>();
+
+        activityInitializer.activity = activity;
+        activityInitializer.displayFixedBorder = true;
+        activityInitializer.Initialize();
+        activityScript.SetTargetCell(cells[GetGridCellIndex(day, hour)]);
+        activityInitializer.SetFixed(true);
+        activityScript.ClaimCells();
     }
 
     public bool GetCellStatus(Activity activity, GridCell startCell) {
