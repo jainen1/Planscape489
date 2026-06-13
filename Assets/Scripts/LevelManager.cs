@@ -1,5 +1,6 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
+using System.Collections;
 using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
@@ -96,35 +97,33 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void VictoryScene() {
-        AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
+    private void OpenEndScene(int screenType) {
         pauseMenuInteractible = false;
         levelIsActive = false;
-        GlobalGameManager.AddScene("VictoryScene");
+
+        GlobalGameManager.AddScene("EndScene");
+        EndSceneManager manager = null;
+        IEnumerator coroutine = FindEndSceneManager(out manager);
+        StartCoroutine(coroutine);
+
+        manager.SetParameters(activeEndScreen);
     }
 
-    public void WinScene() {
-        AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 1.0f);
-        pauseMenuInteractible = false;
-        levelIsActive = false;
-        GlobalGameManager.AddScene("WinScene");
-    }
-
-    public void LoseScene() {
-        AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, 1.0f);
-        pauseMenuInteractible = false;
-        levelIsActive = false;
-        GlobalGameManager.AddScene("LoseScene");
-    }
+    public void VictoryScene() { OpenEndScene(0); }
+    public void WinScene() { OpenEndScene(1); }
+    public void LoseScene() { OpenEndScene(2); }
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
         GameObject fixedActivity = Instantiate(activityPrefab);
-        fixedActivity.GetComponent<ActivityInitializer>().activity = activity;
-        fixedActivity.GetComponent<ActivityInitializer>().displayFixedBorder = true;
-        fixedActivity.GetComponent<ActivityInitializer>().Initialize();
-        fixedActivity.GetComponentInChildren<Activity>().SetTargetCell(cells[GetGridCellIndex(day, hour)]);
-        fixedActivity.GetComponent<ActivityInitializer>().SetFixed(true);
-        fixedActivity.GetComponentInChildren<Activity>().ClaimCells();
+        ActivityInitializer activityInitializer = fixedActivity.GetComponent<ActivityInitializer>();
+        Activity activityScript = fixedActivity.GetComponentInChildren<Activity>();
+
+        activityInitializer.activity = activity;
+        activityInitializer.displayFixedBorder = true;
+        activityInitializer.Initialize();
+        activityScript.SetTargetCell(cells[GetGridCellIndex(day, hour)]);
+        activityInitializer.SetFixed(true);
+        activityScript.ClaimCells();
     }
 
     public bool GetCellStatus(Activity activity, GridCell startCell) {
