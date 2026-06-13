@@ -12,12 +12,8 @@ public class EndSceneManager : MonoBehaviour
     public GameObject restartWeek;
     public GameObject exitToMenu;
 
-    public EndSceneScreen victory;
-    public EndSceneScreen win;
-    public EndSceneScreen lose;
-
     public void Awake () {
-        SetParameters();
+        SetParameters(FindFirstObjectByType<LevelManager>().activeEndScreen);
     }
 
     public void SetParameters(EndSceneScreen endSceneScreen) {

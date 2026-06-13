@@ -188,5 +188,9 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
             LevelManager levelManager = FindFirstObjectByType<LevelManager>();
             if(levelManager != null) { levelManager.StartLevel(); }
         }
+        else if(scene.name == "EndScene") {
+            EndSceneManager endSceneManager = FindFirstObjectByType<EndSceneManager>();
+            if(endSceneManager != null) { endSceneManager.SetParameters(FindFirstObjectByType<LevelManager>().activeEndScreen); }
+        }
     }
 }
