@@ -110,7 +110,7 @@ public class MenuObject : MonoBehaviour
             }
             if(activityInitializer.activity != null) {
                 switch(activityInitializer.activityType) {
-                    case ActivityType.Required: {
+                    case TaskList.ActivityType.Required: {
                         switch(activityInitializer.activity.length) {
                             case int n when n >= 4: return menuTheme.requiredTask4Color;
                             case int n when n >= 3: return menuTheme.requiredTask3Color;
@@ -118,7 +118,7 @@ public class MenuObject : MonoBehaviour
                             default: return menuTheme.requiredTask1Color;
                         }
                     }
-                    case ActivityType.Bonus: {
+                    case TaskList.ActivityType.Bonus: {
                         switch(activityInitializer.activity.length) {
                             case int n when n >= 4: return menuTheme.bonusTask4Color;
                             case int n when n >= 3: return menuTheme.bonusTask3Color;

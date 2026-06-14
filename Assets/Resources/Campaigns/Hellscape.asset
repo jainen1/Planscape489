@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Hellscape
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
   weeks:
-  - {fileID: 11400000, guid: a981aab9998815142b2dbbb4c81519e4, type: 2}
+  - {fileID: 11400000, guid: 288f5df52fd56a24882ef413f7a8f740, type: 2}
+  randomEvents: []

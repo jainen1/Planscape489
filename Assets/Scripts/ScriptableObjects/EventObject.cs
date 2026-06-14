@@ -29,5 +29,5 @@ public class EventResult {
 [Serializable]
 public class ActivityWithCountAndType {
     public ActivityWithCount activityWithCount;
-    public ActivityType activityType;
+    public TaskList.ActivityType activityType;
 }

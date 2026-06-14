@@ -24,7 +24,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     [SerializeField] private float mouseLerp = 100f;
     [SerializeField] private float targetLerp = 5f;
 
-    [SerializeField] public ActivityType activityType;
+    [SerializeField] public TaskList.ActivityType activityType;
 
     void Awake() {
         levelManager = FindFirstObjectByType<LevelManager>();

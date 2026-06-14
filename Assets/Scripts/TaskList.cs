@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -105,5 +104,10 @@ public class TaskList : MonoBehaviour
         float taskItemDistance = 0.05f;
 
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * taskItemHeight) + ((itemList.Count - 1) * taskItemDistance) + taskItemHeight); // update the content height
+    }
+
+    public enum ActivityType {
+        Required,
+        Bonus
     }
 }
