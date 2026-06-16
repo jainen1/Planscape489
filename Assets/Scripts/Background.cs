@@ -24,7 +24,7 @@ public class Background : MonoBehaviour {
         for(int i = 0; i < backgroundLayers.Count; i++) { Destroy(backgroundLayers[i].gameObject); }
         backgroundLayers.Clear();
 
-        BackgroundLayer[] themeLayers;
+        MenuTheme.BackgroundLayer[] themeLayers;
         if(type == BackgroundType.Menu) { themeLayers = menuTheme.menuBackgroundLayers; }
         else { themeLayers = menuTheme.levelBackgroundLayers; }
 

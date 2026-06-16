@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 7
+  type: 2
   target: 0
   color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4407230440191932524
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 8
+  type: 3
   target: 2
   color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4574679196842494683
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 9
+  type: 4
   target: 0
   color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5136288827996116482
@@ -712,7 +712,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d20af53de9405274bbd9c9ae001b5e67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e24ddefc0f34c4a4b8b43d1ac963df01, type: 3}
   m_Color: {r: 0.495283, g: 0.495283, b: 0.495283, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 0
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 6
+  type: 1
   target: 0
   color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &5582139611250620806
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 6
+  type: 1
   target: 0
   color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7915953787215132717

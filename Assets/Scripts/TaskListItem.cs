@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskListItem : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject resourceTextComponent;
     [SerializeField] private GameObject countComponent;
-    [SerializeField] private GameObject countComponentBackground;
+    [SerializeField] public GameObject countComponentBackground;
 
 
     [SerializeField] private GameObject viewport;
@@ -29,12 +30,10 @@ public class TaskListItem : MonoBehaviour
         levelManager = FindFirstObjectByType<LevelManager>();
 
         if (viewport == null) {
-            Debug.LogError("Viewport reference is missing, auto assigning");
-
-            var scrollRect = GetComponentInParent<UnityEngine.UI.ScrollRect>();
-            if (scrollRect != null) {
-                viewport = scrollRect.viewport.gameObject;
-        }
+            Debug.LogWarning("Viewport reference is missing, auto assigning.");
+            var scrollRect = GetComponentInParent<ScrollRect>();
+            if (scrollRect != null) { viewport = scrollRect.viewport.gameObject; }
+            else { Debug.LogError("Scroll Rect is missing, cannot assign viewport."); }
         }
 
         if (viewport != null) {
@@ -102,7 +101,7 @@ public class TaskListItem : MonoBehaviour
             countComponentBackground.transform.localScale = Vector3.one;
         }
 
-        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+        gameObject.GetComponent<SimpleMenuObject>().OnThemeUpdate();
 
         countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }

@@ -12,30 +12,30 @@ public class TextMenuObject : MonoBehaviour
 
     [SerializeField] TextType textType = TextType.Basic;
 
-    void OnEnable() { GlobalGameManager.OnUpdateThemeText += UpdateMenuObject; }
-    void OnDisable() { GlobalGameManager.OnUpdateThemeText -= UpdateMenuObject; }
+    void OnEnable() { GlobalGameManager.OnUpdateThemeText += OnThemeUpdate; }
+    void OnDisable() { GlobalGameManager.OnUpdateThemeText -= OnThemeUpdate; }
 
     private void Awake() {
         fontSize = gameObject.GetComponent<TextMeshProUGUI>().fontSize;
         characterSpacing = gameObject.GetComponent <TextMeshProUGUI>().characterSpacing;
     }
 
-    public void UpdateMenuObject() {
+    public void OnThemeUpdate() {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
         TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
 
         Color backgroundColor = Color.white;
         if(backgroundObject != null) {
-            MenuObject backgroundMenuObject = backgroundObject.GetComponent<MenuObject>();
+            ReceivesThemeUpdates backgroundMenuObject = backgroundObject.GetComponent<ReceivesThemeUpdates>();
             SpriteRenderer backgroundSpriteRenderer = backgroundObject.GetComponent<SpriteRenderer>();
             Image backgroundImage = backgroundObject.GetComponent<Image>();
 
-            if(backgroundMenuObject != null) { backgroundColor = backgroundMenuObject.color; }
+            if(backgroundMenuObject != null) { backgroundColor = backgroundMenuObject.GetMainColor(); }
             else if(backgroundSpriteRenderer != null) { backgroundColor = backgroundSpriteRenderer.color; }
             else if(backgroundImage != null) { backgroundColor = backgroundImage.color; }
         }
         
-        textComponent.color = MenuObject.GetBrightOrDarkColor(backgroundColor, threshold) ? menuTheme.brightTextColor : menuTheme.darkTextColor;
+        textComponent.color = SimpleMenuObject.GetBrightOrDarkColor(backgroundColor, threshold) ? menuTheme.brightTextColor : menuTheme.darkTextColor;
 
         TMP_FontAsset font;
         float fontSizeScale;

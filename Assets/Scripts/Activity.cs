@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
-    private LevelManager levelManager;
     [SerializeField] public ActivityInitializer initializer;
 
     public bool isHeld = false;
@@ -26,10 +25,6 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] public TaskList.ActivityType activityType;
 
-    void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
-    }
-
     void Update() {
         if(isHeld) {
             foreach(GameObject cell in collidingCells) {
@@ -39,15 +34,14 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             }
         }
 
-        Vector3 targetPosition;
         if(isHeld && !initializer.IsFixed()) {
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = -2f;
             //gameObject.transform.position = targetPosition; //teleport to mouse position
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
         }
         else {
-            targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
+            Vector3 targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, targetLerp * Time.deltaTime);
         }
 
@@ -61,20 +55,19 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public void OnMouseDown() {
         if(FindFirstObjectByType<LevelManager>().levelIsActive) {
+            AudioClip sfx = fixedPickUp;
             if(!initializer.IsFixed()) {
                 isHeld = true;
-                AudioSource.PlayClipAtPoint(pickUp, Camera.main.transform.position, audioVolume);
+                sfx = pickUp;
             }
-            else {
-                AudioSource.PlayClipAtPoint(fixedPickUp, Camera.main.transform.position, audioVolume);
-            }
+            AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position, audioVolume);
         }
     }
 
     public void OnMouseUp() {
         if(!initializer.IsFixed()) {
             if(closestCell == null) {
-                foreach(GridCell cell in levelManager.cells) {
+                foreach(GridCell cell in LevelManager.Instance.cells) {
                     if(CellIsAvailable(cell)) {
                         SetTargetCell(cell);
                         break;
@@ -91,8 +84,8 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 ClaimCells();
                 if(isTouchingTrashCan) {
                     AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
-                    levelManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
-                    levelManager.ReturnTaskToList(initializer.activity);
+                    LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
+                    LevelManager.Instance.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
@@ -134,20 +127,18 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
         if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
         if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
-        if(!levelManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
+        if(!LevelManagerInstance.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
         if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
         if(!(initializer.activity.fullStomachLength > 0 ? levelManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
         return true;*/
 
-        return cell != null && cell.canBeUsed && !cell.isFixed && levelManager.GetCellStatus(this, cell)
-            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? levelManager.GetCellFoodStatus(this, cell) : true);
+        return cell != null && cell.canBeUsed && !cell.isFixed && LevelManager.Instance.GetCellStatus(this, cell)
+            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? LevelManager.Instance.GetCellFoodStatus(this, cell) : true);
     }
 
     public void ClaimCells() {
-        LevelManager gameManager2 = FindFirstObjectByType<LevelManager>();
-
-        if(occupiedCell != null) { gameManager2.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
+        if(occupiedCell != null) { LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
         occupiedCell = closestCell;
-        gameManager2.FreeOrOccupyCells(this, closestCell.GetComponent<GridCell>(), false);
+        LevelManager.Instance.FreeOrOccupyCells(this, closestCell.GetComponent<GridCell>(), false);
     }
 }
