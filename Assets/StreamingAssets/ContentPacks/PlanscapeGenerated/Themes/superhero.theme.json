@@ -1,6 +1,6 @@
 {
     "music": {
-        "instanceID": 51316
+        "instanceID": 50626
     },
     "mainFont": {
         "instanceID": 50628
@@ -8,14 +8,14 @@
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50178
+        "instanceID": 50630
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51962
+                "instanceID": 50632
             },
             "color": {
                 "r": 0.8867924213409424,
@@ -42,7 +42,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51964
+                "instanceID": 50634
             },
             "color": {
                 "r": 0.32160019874572756,
@@ -69,7 +69,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51966
+                "instanceID": 50636
             },
             "color": {
                 "r": 1.0,
@@ -96,7 +96,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51970
+                "instanceID": 50638
             },
             "color": {
                 "r": 0.8886792063713074,
@@ -123,7 +123,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51972
+                "instanceID": 50640
             },
             "color": {
                 "r": 1.0,
@@ -152,7 +152,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51970
+                "instanceID": 50638
             },
             "color": {
                 "r": 0.8886792063713074,
@@ -179,7 +179,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51972
+                "instanceID": 50640
             },
             "color": {
                 "r": 1.0,
