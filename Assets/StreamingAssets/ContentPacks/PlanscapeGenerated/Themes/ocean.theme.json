@@ -1,21 +1,21 @@
 {
     "music": {
-        "instanceID": 50626
+        "instanceID": 51376
     },
     "mainFont": {
-        "instanceID": 50628
+        "instanceID": 50630
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50630
+        "instanceID": 50180
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 50632
+                "instanceID": 51972
             },
             "color": {
                 "r": 0.09758810698986054,
@@ -42,7 +42,7 @@
         },
         {
             "sprite": {
-                "instanceID": 50634
+                "instanceID": 51976
             },
             "color": {
                 "r": 0.37254902720451357,
@@ -69,7 +69,7 @@
         },
         {
             "sprite": {
-                "instanceID": 50636
+                "instanceID": 51968
             },
             "color": {
                 "r": 1.0,
@@ -96,7 +96,7 @@
         },
         {
             "sprite": {
-                "instanceID": 50924
+                "instanceID": 51964
             },
             "color": {
                 "r": 0.9411765336990356,
@@ -116,16 +116,16 @@
                 "w": 0.0
             },
             "scale": {
-                "x": 1.840000033378601,
-                "y": 1.840000033378601,
-                "z": 1.840000033378601
+                "x": 1.100000023841858,
+                "y": 1.100000023841858,
+                "z": 1.100000023841858
             }
         }
     ],
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 50924
+                "instanceID": 51964
             },
             "color": {
                 "r": 0.9411765336990356,
@@ -145,9 +145,9 @@
                 "w": 0.0
             },
             "scale": {
-                "x": 1.840000033378601,
-                "y": 1.840000033378601,
-                "z": 1.840000033378601
+                "x": 1.100000023841858,
+                "y": 1.100000023841858,
+                "z": 1.100000023841858
             }
         }
     ],
