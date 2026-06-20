@@ -2,13 +2,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextMenuObject : MonoBehaviour
+public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
 {
     [SerializeField] private GameObject backgroundObject;
     [SerializeField] private int threshold = 128;
 
     private float fontSize;
     private float characterSpacing;
+    private float lineSpacing;
 
     [SerializeField] TextType textType = TextType.Basic;
 
@@ -20,10 +21,7 @@ public class TextMenuObject : MonoBehaviour
         characterSpacing = gameObject.GetComponent <TextMeshProUGUI>().characterSpacing;
     }
 
-    public void OnThemeUpdate() {
-        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
-        TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
-
+    public Color GetMainColor () {
         Color backgroundColor = Color.white;
         if(backgroundObject != null) {
             ReceivesThemeUpdates backgroundMenuObject = backgroundObject.GetComponent<ReceivesThemeUpdates>();
@@ -34,37 +32,48 @@ public class TextMenuObject : MonoBehaviour
             else if(backgroundSpriteRenderer != null) { backgroundColor = backgroundSpriteRenderer.color; }
             else if(backgroundImage != null) { backgroundColor = backgroundImage.color; }
         }
-        
-        textComponent.color = SimpleMenuObject.GetBrightOrDarkColor(backgroundColor, threshold) ? menuTheme.brightTextColor : menuTheme.darkTextColor;
 
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
+        return SimpleMenuObject.GetBrightOrDarkColor(backgroundColor, threshold) ? menuTheme.brightTextColor : menuTheme.darkTextColor;
+    }
+
+    public void OnThemeUpdate() {
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
         TMP_FontAsset font;
         float fontSizeScale;
         float characterSpacingScale;
+        float lineSpacingScale;
 
         switch(textType) {
             case TextType.Basic: {
                 font = menuTheme.mainFont;
                 fontSizeScale = menuTheme.mainFontSizeScale;
                 characterSpacingScale = menuTheme.mainCharacterSpacingScale;
+                lineSpacingScale = menuTheme.mainLineSpacingScale;
                 break;
             }
             case TextType.Timer: {
                 font = menuTheme.timerFont;
                 fontSizeScale = menuTheme.timerFontSizeScale;
                 characterSpacingScale = menuTheme.timerCharacterSpacingScale;
+                lineSpacingScale = menuTheme.timerLineSpacingScale;
                 break;
             }
             default: {
                 font = menuTheme.mainFont;
                 fontSizeScale = menuTheme.mainFontSizeScale;
                 characterSpacingScale = menuTheme.mainCharacterSpacingScale;
+                lineSpacingScale = menuTheme.mainLineSpacingScale;
                 break;
             }
         }
 
+        TextMeshProUGUI textComponent = gameObject.GetComponent<TextMeshProUGUI>();
+        textComponent.color = GetMainColor();
         textComponent.font = font;
         textComponent.fontSize = fontSize * fontSizeScale;
         textComponent.characterSpacing = characterSpacing * characterSpacingScale;
+        textComponent.lineSpacing = lineSpacing * characterSpacingScale;
     }
 }
 

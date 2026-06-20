@@ -9,10 +9,14 @@ public class MenuTheme : ScriptableObject
     public TMPro.TMP_FontAsset mainFont;
     public float mainFontSizeScale = 1;
     public float mainCharacterSpacingScale = 1;
+    public float mainLineSpacingScale = 1;
 
     public TMPro.TMP_FontAsset timerFont;
     public float timerFontSizeScale = 1;
     public float timerCharacterSpacingScale = 1;
+    public float timerLineSpacingScale = 1;
+
+    //public class Font
 
     [Header("Backgrounds")]
 
@@ -28,13 +32,14 @@ public class MenuTheme : ScriptableObject
         public Vector3 scale = Vector3.one;
     }
 
-    [Header("Task Lists (0 = Required, 2 = Bonus)")]
+    [Header("Task Lists (0 = Required, 2 = Bonus, 1 = Unused)")]
     public TaskListColors[] taskListColors = new TaskListColors[2];
 
     [Serializable]
     public class TaskListColors {
         public Color mainColor;
         public Color itemColor;
+        public Color secondaryColor;
         public Color scrollbarColor;
         public Color countColor;
         public Color[] taskColors = new Color[4];

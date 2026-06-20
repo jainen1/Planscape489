@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 318730135273808938}
   - component: {fileID: 293561233839224149}
   - component: {fileID: 4443868617776777927}
-  - component: {fileID: 8489505276607480978}
   - component: {fileID: -2622468303301592263}
   - component: {fileID: 4845209246608926930}
   m_Layer: 5
@@ -124,21 +123,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.63, y: 0.45}
   m_EdgeRadius: 0
---- !u!114 &8489505276607480978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048671215189803577}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52984ce622814ac459b2dfb34f3f6e04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MenuObject
-  type: 23
-  target: 1
-  color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!50 &-2622468303301592263
 Rigidbody2D:
   serializedVersion: 5

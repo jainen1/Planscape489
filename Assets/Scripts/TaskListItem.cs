@@ -94,20 +94,20 @@ public class TaskListItem : MonoBehaviour
     public void SetCount(int newCount) {
         count = newCount;
 
-        if(count <= 0) {
-            countComponentBackground.transform.localScale = Vector3.zero;
+        if(count <= 0) { countComponentBackground.transform.localScale = Vector3.zero; }
+        else { countComponentBackground.transform.localScale = Vector3.one; }
 
-        } else {
-            countComponentBackground.transform.localScale = Vector3.one;
-        }
+        Debug.Log("Count is equal to zero.");
 
-        gameObject.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+        taskList.OnThemeUpdate();
 
         countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
-        
+        if(collision.gameObject == viewport) {
+            isVisible = true;
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision) {

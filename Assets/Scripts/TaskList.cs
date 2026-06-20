@@ -23,7 +23,6 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
             case ActivityType.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
         }
-
         CreateList(activities);
     }
 
@@ -31,14 +30,24 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
     void OnDisable () { GlobalGameManager.OnUpdateTheme -= OnThemeUpdate; }
 
     public void OnThemeUpdate () {
-        MenuTheme.TaskListColors colors = GlobalGameManager.GetCurrentMenuTheme().taskListColors[0];
+        int activityTypeIndex;
+
+        switch(activityType) {
+            case ActivityType.Required: activityTypeIndex = 0; break;
+            case ActivityType.Bonus: activityTypeIndex = 2; break;
+            default: activityTypeIndex = 0; break;
+        }
+
+        MenuTheme.TaskListColors colors = GlobalGameManager.GetCurrentMenuTheme().taskListColors[activityTypeIndex];
         main.GetComponent<SpriteRenderer>().color = colors.mainColor;
         foreach(GameObject scrollbarObject in scrollbar) {
             scrollbarObject.GetComponent<Image>().color = colors.scrollbarColor;
         }
 
         foreach(GameObject taskListItem in itemList) {
-            taskListItem.GetComponent<Image>().color = colors.itemColor;
+            if(taskListItem.GetComponent<TaskListItem>().GetCount() == 0) {
+                taskListItem.GetComponent<Image>().color = GlobalGameManager.GetCurrentMenuTheme().fixedActivityColor;
+            } else { taskListItem.GetComponent<Image>().color = colors.itemColor; }
             taskListItem.GetComponent<TaskListItem>().countComponentBackground.GetComponent<Image>().color = colors.countColor;
         }
     }
