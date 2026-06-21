@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ResourceBar : MonoBehaviour
 {
-    private LevelManager levelManager;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private int resourceIndex;
 
@@ -18,14 +17,10 @@ public class ResourceBar : MonoBehaviour
     [SerializeField] private GameObject resourcePiecePrefab;
     [SerializeField] private List<ResourcePiece> resourcePieces = new List<ResourcePiece>();
 
-    void OnEnable() { GlobalGameManager.OnUpdateTheme += UpdateMenuObject; }
-    void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
+    void OnEnable() { GlobalGameManager.OnUpdateTheme += OnUpdateTheme; }
+    void OnDisable() { GlobalGameManager.OnUpdateTheme -= OnUpdateTheme; }
 
-    private void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
-    }
-
-    public void UpdateMenuObject() {
+    public void OnUpdateTheme() {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
 
         gameObject.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
@@ -33,8 +28,8 @@ public class ResourceBar : MonoBehaviour
         for(int i = 0; i < resourcePieces.Count; i++) { Destroy(resourcePieces[i].gameObject); }
         resourcePieces.Clear();
 
-        ResourceBarColorsCollection[] collectionArray = menuTheme.resourceBarColors;
-        ResourceBarColors[] resourceBarColors = collectionArray[resourceIndex].resourceBars;
+        MenuTheme.ResourceBarColors.Collection[] collectionArray = menuTheme.resourceBarColors;
+        MenuTheme.ResourceBarColors[] resourceBarColors = collectionArray[resourceIndex].resourceBars;
 
         if(resourceIndex < collectionArray.Length && resourceBarColors != null && resourceBarColors.Length > 0) {
             //ResourceBarColorsCollection collection = collectionArray[resourceIndex];
@@ -61,7 +56,7 @@ public class ResourceBar : MonoBehaviour
 
     void Update() {
         if(resourceIndex == 0) { resourceAmount = GlobalGameManager.GetCurrentWeekIndex() + 1; }
-        else { resourceAmount = levelManager.GetResource(resourceIndex); }
+        else { resourceAmount = LevelManager.GetResource(resourceIndex); }
 
         if(displayedAmount != resourceAmount) { UpdateDisplay(); }
     }

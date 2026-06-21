@@ -7,11 +7,13 @@
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
+    "mainLineSpacingScale": 1.0,
     "timerFont": {
         "instanceID": 50180
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
+    "timerLineSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
             "sprite": {
@@ -464,5 +466,83 @@
                 }
             ]
         }
-    ]
+    ],
+    "resourceBarBackgroundColor": {
+        "r": 0.8862745761871338,
+        "g": 1.0,
+        "b": 0.8784314393997192,
+        "a": 1.0
+    },
+    "gridCellColor": {
+        "r": 0.8856598138809204,
+        "g": 1.0,
+        "b": 0.8784313797950745,
+        "a": 1.0
+    },
+    "fixedGridCellColor": {
+        "r": 0.8711055517196655,
+        "g": 0.9198113083839417,
+        "b": 0.8677465319633484,
+        "a": 1.0
+    },
+    "brightTextColor": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+    },
+    "darkTextColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 1.0
+    },
+    "menuButtonBackgroundColor": {
+        "r": 0.3803921937942505,
+        "g": 0.7019608020782471,
+        "b": 0.4705882668495178,
+        "a": 1.0
+    },
+    "fixedActivityColor": {
+        "r": 0.4793965816497803,
+        "g": 0.6273584961891174,
+        "b": 0.5083978176116943,
+        "a": 1.0
+    },
+    "fixedActivityBorderColor": {
+        "r": 0.26982465386390688,
+        "g": 0.31603771448135378,
+        "b": 0.2893741726875305,
+        "a": 1.0
+    },
+    "timeHandColor": {
+        "r": 0.658823549747467,
+        "g": 0.474531888961792,
+        "b": 0.0,
+        "a": 1.0
+    },
+    "timeHandFastColor": {
+        "r": 0.7882353067398071,
+        "g": 0.3448023498058319,
+        "b": 0.15686272084712983,
+        "a": 1.0
+    },
+    "pauseButtonColor": {
+        "r": 0.9019608497619629,
+        "g": 0.501960813999176,
+        "b": 0.46666669845581057,
+        "a": 1.0
+    },
+    "helpButtonColor": {
+        "r": 0.30588236451148989,
+        "g": 0.7450980544090271,
+        "b": 0.4274510145187378,
+        "a": 1.0
+    },
+    "music": {
+        "instanceID": 51406
+    },
+    "buttonClick": {
+        "instanceID": 0
+    }
 }

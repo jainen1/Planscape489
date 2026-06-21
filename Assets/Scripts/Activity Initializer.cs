@@ -61,22 +61,22 @@ public class ActivityInitializer : MonoBehaviour
         if(activity.money != 0) { resourceText += "\n" + (activity.money >= 0 ? "$+" : "$-") + Mathf.Abs(activity.money * activity.length); }
         resourceTextComponent.GetComponent<TextMeshProUGUI>().text = resourceText;
 
-        visiblePanel.GetComponent<MenuObject>().UpdateMenuObject();
-        fullStomachPanel.GetComponent<MenuObject>().UpdateMenuObject();
-        visibleShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
-        fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
-        title.GetComponent<TextMenuObject>().UpdateMenuObject();
-        resourceTextComponent.GetComponent<MenuObject>().UpdateMenuObject();
+        UpdateChildren();
     }
+
     public void SetFixed(bool x) {
         isFixed = x;
         fixedBorder.SetActive(x && displayFixedBorder);
-        visiblePanel.GetComponent<MenuObject>().UpdateMenuObject();
-        fullStomachPanel.GetComponent<MenuObject>().UpdateMenuObject();
-        visibleShadowPanel.GetComponent<MenuObject>().UpdateMenuObject();
-        fixedBorder.GetComponent<MenuObject>().UpdateMenuObject();
-        title.GetComponent<TextMenuObject>().UpdateMenuObject();
-        resourceTextComponent.GetComponent<MenuObject>().UpdateMenuObject();
+        UpdateChildren();
+    }
+
+    public void UpdateChildren () {
+        visiblePanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+        fullStomachPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+        visibleShadowPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+        fixedBorder.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+        title.GetComponent<TextMenuObject>().OnThemeUpdate();
+        resourceTextComponent.GetComponent<SimpleMenuObject>().OnThemeUpdate();
     }
 
     public bool IsFixed() {

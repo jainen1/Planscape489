@@ -1,8 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TaskList : MonoBehaviour
+public class TaskList : MonoBehaviour, ReceivesThemeUpdates
 {
+    [Header("Objects")]
+    [SerializeField] private GameObject main;
+    [SerializeField] private GameObject[] scrollbar;
+
+    [Header("Parameters")]
     [SerializeField] private GameObject firstItem;
     [SerializeField] private List<GameObject> itemList;
     [SerializeField] private ActivityType activityType;
@@ -17,8 +23,37 @@ public class TaskList : MonoBehaviour
             case ActivityType.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
         }
-
         CreateList(activities);
+    }
+
+    void OnEnable () { GlobalGameManager.OnUpdateTheme += OnThemeUpdate; }
+    void OnDisable () { GlobalGameManager.OnUpdateTheme -= OnThemeUpdate; }
+
+    public void OnThemeUpdate () {
+        int activityTypeIndex;
+
+        switch(activityType) {
+            case ActivityType.Required: activityTypeIndex = 0; break;
+            case ActivityType.Bonus: activityTypeIndex = 2; break;
+            default: activityTypeIndex = 0; break;
+        }
+
+        MenuTheme.TaskListColors colors = GlobalGameManager.GetCurrentMenuTheme().taskListColors[activityTypeIndex];
+        main.GetComponent<SpriteRenderer>().color = colors.mainColor;
+        foreach(GameObject scrollbarObject in scrollbar) {
+            scrollbarObject.GetComponent<Image>().color = colors.scrollbarColor;
+        }
+
+        foreach(GameObject taskListItem in itemList) {
+            if(taskListItem.GetComponent<TaskListItem>().GetCount() == 0) {
+                taskListItem.GetComponent<Image>().color = GlobalGameManager.GetCurrentMenuTheme().fixedActivityColor;
+            } else { taskListItem.GetComponent<Image>().color = colors.itemColor; }
+            taskListItem.GetComponent<TaskListItem>().countComponentBackground.GetComponent<Image>().color = colors.countColor;
+        }
+    }
+
+    public Color GetMainColor () {
+        return GlobalGameManager.GetCurrentMenuTheme().taskListColors[0].mainColor;
     }
 
     public bool ReturnTaskToList(ActivityObject activity) {
@@ -111,3 +146,30 @@ public class TaskList : MonoBehaviour
         Bonus
     }
 }
+
+
+
+ /*           case MenuObjectType.DailyTaskList: color = menuTheme.dailyTaskListColor; break;
+case MenuObjectType.DailyTaskListSecondary: {
+    color = menuTheme.dailyTaskListSecondaryColor;
+    TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+    if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+    break;
+}
+case MenuObjectType.WeeklyTaskList: color = menuTheme.weeklyTaskListColor; break;
+case MenuObjectType.WeeklyTaskListSecondary: {
+    color = menuTheme.weeklyTaskListSecondaryColor;
+    TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+    if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+    break;
+}
+case MenuObjectType.BonusTaskList: color = menuTheme.bonusTaskListColor; break;
+case MenuObjectType.BonusTaskListSecondary: {
+    color = menuTheme.bonusTaskListSecondaryColor;
+    TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
+    if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
+    break;
+}
+
+case MenuObjectType.TaskListScrollbar: color = menuTheme.taskListScrollbarColor; break;
+case MenuObjectType.TaskListCounter: color = menuTheme.taskListCounterColor; break;*/

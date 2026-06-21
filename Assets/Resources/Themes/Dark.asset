@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
   m_Name: Dark
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
-  music: {fileID: 8300000, guid: ea3677c5e736d4bc694b823310cdbb06, type: 3}
   mainFont: {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
   mainFontSizeScale: 1
   mainCharacterSpacingScale: 1
+  mainLineSpacingScale: 1
   timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
+  timerLineSpacingScale: 1
   menuBackgroundLayers:
   - sprite: {fileID: 21300000, guid: cbf92809830fc0840bc495177caaa2e9, type: 3}
     color: {r: 0, g: 0, b: 0, a: 1}
@@ -56,33 +57,37 @@ MonoBehaviour:
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
-  gridCellColor: {r: 0.08414637, g: 0.05807226, b: 0.14150941, a: 1}
-  fixedGridCellColor: {r: 0.16842544, g: 0.13768244, b: 0.24528301, a: 1}
-  brightTextColor: {r: 1, g: 1, b: 1, a: 1}
-  darkTextColor: {r: 0, g: 0, b: 0, a: 1}
-  dailyTaskListColor: {r: 0.21875605, g: 0.15859735, b: 0.33962262, a: 1}
-  dailyTaskListSecondaryColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
-  weeklyTaskListColor: {r: 0.3461097, g: 0.24991101, b: 0.4528302, a: 1}
-  weeklyTaskListSecondaryColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
-  bonusTaskListColor: {r: 0.7176471, g: 0.46666667, b: 0.9019608, a: 1}
-  bonusTaskListSecondaryColor: {r: 0.6313726, g: 0.759, b: 0.86666673, a: 1}
-  taskListScrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-  taskListCounterColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}
-  requiredTask1Color: {r: 0.21960786, g: 0.15686275, b: 0.34117648, a: 1}
-  requiredTask2Color: {r: 0.21960786, g: 0.15686275, b: 0.34117648, a: 1}
-  requiredTask3Color: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
-  requiredTask4Color: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
-  bonusTask1Color: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
-  bonusTask2Color: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
-  bonusTask3Color: {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
-  bonusTask4Color: {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
-  fixedActivityColor: {r: 0.29500705, g: 0.24363653, b: 0.3537736, a: 1}
-  fixedActivityBorderColor: {r: 0.21072897, g: 0.16981132, b: 0.25, a: 1}
-  timeHandColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
-  timeHandFastColor: {r: 0.8349056, g: 0.36231756, b: 0.5916238, a: 1}
-  pauseButtonColor: {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
-  helpButtonColor: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
-  resourceBarBackgroundColor: {r: 0.08235294, g: 0.058823533, b: 0.14117648, a: 1}
+  taskListColors:
+  - mainColor: {r: 0.21960786, g: 0.15686275, b: 0.34117648, a: 1}
+    itemColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
+    secondaryColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
+    scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
+    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    taskColors:
+    - {r: 0.21960786, g: 0.15686275, b: 0.34117648, a: 1}
+    - {r: 0.21960786, g: 0.15686275, b: 0.34117648, a: 1}
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+  - mainColor: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    itemColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
+    secondaryColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
+    scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
+    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    taskColors:
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+  - mainColor: {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
+    itemColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
+    secondaryColor: {r: 0.6313726, g: 0.7607844, b: 0.86666673, a: 1}
+    scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
+    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    taskColors:
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    - {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+    - {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
+    - {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
   resourceBarColors:
   - resourceBars:
     - fill: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
@@ -99,3 +104,17 @@ MonoBehaviour:
       change: {r: 1, g: 1, b: 1, a: 1}
     - fill: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
+  resourceBarBackgroundColor: {r: 0.08235294, g: 0.058823533, b: 0.14117648, a: 1}
+  gridCellColor: {r: 0.08414637, g: 0.05807226, b: 0.14150941, a: 1}
+  fixedGridCellColor: {r: 0.16842544, g: 0.13768244, b: 0.24528301, a: 1}
+  brightTextColor: {r: 1, g: 1, b: 1, a: 1}
+  darkTextColor: {r: 0, g: 0, b: 0, a: 1}
+  menuButtonBackgroundColor: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+  fixedActivityColor: {r: 0.29500705, g: 0.24363653, b: 0.3537736, a: 1}
+  fixedActivityBorderColor: {r: 0.21072897, g: 0.16981132, b: 0.25, a: 1}
+  timeHandColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+  timeHandFastColor: {r: 0.8349056, g: 0.36231756, b: 0.5916238, a: 1}
+  pauseButtonColor: {r: 0.7176471, g: 0.4666667, b: 0.90196085, a: 1}
+  helpButtonColor: {r: 0.34509805, g: 0.2509804, b: 0.45098042, a: 1}
+  music: {fileID: 8300000, guid: ea3677c5e736d4bc694b823310cdbb06, type: 3}
+  buttonClick: {fileID: 0}

@@ -3,7 +3,7 @@ using USCG.Core.Telemetry;
 using System.Collections;
 using System.Collections.Generic;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoSingleton<LevelManager>
 {
     public GridCell[] cells;
 
@@ -12,9 +12,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject eventScreen;
 
     [SerializeField] private List<float> resources;
-
-    [SerializeField] private AudioClip winSound;
-    [SerializeField] private AudioClip loseSound;
 
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
@@ -27,18 +24,20 @@ public class LevelManager : MonoBehaviour
     public bool pauseMenuInteractible = true;
     public bool levelIsActive = true;
 
+    [Header("End Scenes")]
     public EndSceneScreen victory;
     public EndSceneScreen win;
     public EndSceneScreen lose;
-
     public EndSceneScreen activeEndScreen;
+
+    protected override bool IsPersistent () { return false; }
 
     public void StartLevel() {
         Week currentWeek = GlobalGameManager.GetCurrentWeek();
 
-        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex(), currentWeek.resourceBars[1].startingValue, currentWeek.resourceBars[2].startingValue };
-        if(currentWeek.resourceBars.Length > 3) {
-            for(int i = 3; i <= currentWeek.resourceBars.Length; i++) {
+        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex() };
+        if(currentWeek.resourceBars.Length > 1) {
+            for(int i = 1; i < currentWeek.resourceBars.Length; i++) {
                 resources.Add(currentWeek.resourceBars[i].startingValue);
             }
         }
@@ -70,11 +69,8 @@ public class LevelManager : MonoBehaviour
 
     public void TogglePause() {
         if(pauseMenuInteractible) {
-            if(levelIsActive) {
-                PauseScene();
-            } else {
-                UnPauseScene();
-            }
+            if(levelIsActive) { PauseScene(); }
+            else { UnPauseScene(); }
         }
     }
 
@@ -175,8 +171,8 @@ public class LevelManager : MonoBehaviour
         return cells[GetGridCellIndex(day, hour)];
     }
 
-    public void SetResource(int index, float value) { resources[index] = value; }
-    public float GetResource(int index) { return resources[index]; }
+    public static void SetResource(int index, float value) { Instance.resources[index] = value; }
+    public static float GetResource(int index) { return Instance.resources[index]; }
 
     //Telemetry
 

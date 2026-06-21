@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 
 public class TimeHand : MonoBehaviour {
-    private LevelManager levelManager;
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
     [SerializeField] private AudioClip[] clockTicking;
@@ -13,9 +12,7 @@ public class TimeHand : MonoBehaviour {
     [SerializeField] private bool isFast = false;
     [SerializeField] private float fastSpeedModifier = 1.5f;
 
-    void Start()
-    {
-        levelManager = FindFirstObjectByType<LevelManager>();
+    void Start() {
         gameObject.transform.position = dayStartPositions[0];
         timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
@@ -23,7 +20,7 @@ public class TimeHand : MonoBehaviour {
 
     private void Update() {
         timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
-        if(levelManager.levelIsActive) {
+        if(LevelManager.Instance.levelIsActive) {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
             } else {
@@ -38,7 +35,7 @@ public class TimeHand : MonoBehaviour {
 
     public void IsBecomeFast(bool yes) {
         isFast = yes;
-        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+        gameObject.GetComponent<SimpleMenuObject>().OnThemeUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -48,8 +45,8 @@ public class TimeHand : MonoBehaviour {
             AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
             clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
-            float finalHappiness = levelManager.GetResource(1);
-            float finalMoney = levelManager.GetResource(2);
+            float finalHappiness = LevelManager.GetResource(1);
+            float finalMoney = LevelManager.GetResource(2);
 
             if(cell.occupyingEvent != null) {
                 Debug.Log(cell.occupyingEvent.title + ": " + cell.occupyingEvent.description);
@@ -67,18 +64,18 @@ public class TimeHand : MonoBehaviour {
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
 
-            levelManager.SetResource(1, Mathf.Min(finalHappiness, 200));
-            levelManager.SetResource(2, finalMoney);
+            LevelManager.SetResource(1, Mathf.Min(finalHappiness, 200));
+            LevelManager.SetResource(2, finalMoney);
 
-            if(levelManager.GetResource(1) <= 0 || levelManager.GetResource(2) < 0) {
-                levelManager.LoseScene();
+            if(LevelManager.GetResource(1) <= 0 || LevelManager.GetResource(2) < 0) {
+                LevelManager.Instance.LoseScene();
                 Destroy(gameObject);
             }
 
             cell.isFixed = true;
-            cell.GetComponent<MenuObject>().UpdateMenuObject();
+            cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
 
-            levelManager.SamplePlannerMetric(cell.day, cell.hour);
+            LevelManager.Instance.SamplePlannerMetric(cell.day, cell.hour);
         }
     }
 
@@ -86,13 +83,13 @@ public class TimeHand : MonoBehaviour {
         GridCell cell = collision.GetComponent<GridCell>();
         if(cell != null && cell.hour == 22) {
             if(cell.day == 7) {
-                if(levelManager.RequiredTaskListIsEmpty()) {
+                if(LevelManager.Instance.RequiredTaskListIsEmpty()) {
                     if(GlobalGameManager.GetCurrentWeekIndex() == GlobalGameManager.GetLastWeekIndex() - 1) {
-                        levelManager.VictoryScene();
+                        LevelManager.Instance.VictoryScene();
                     } else {
-                        levelManager.WinScene();
+                        LevelManager.Instance.WinScene();
                     }
-                } else { levelManager.LoseScene(); }
+                } else { LevelManager.Instance.LoseScene(); }
                 Destroy(gameObject);
             } else {
                 gameObject.transform.position = dayStartPositions[cell.day];
