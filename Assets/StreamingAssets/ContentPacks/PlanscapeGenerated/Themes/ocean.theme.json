@@ -1,12 +1,15 @@
 {
+    "music": {
+        "instanceID": 51376
+    },
     "mainFont": {
-        "instanceID": 50638
+        "instanceID": 50630
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50188
+        "instanceID": 50180
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -14,12 +17,12 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51946
+                "instanceID": 51972
             },
             "color": {
-                "r": 0.0,
-                "g": 0.0,
-                "b": 0.0,
+                "r": 0.09758810698986054,
+                "g": 0.17353644967079163,
+                "b": 0.40566039085388186,
                 "a": 1.0
             },
             "position": {
@@ -41,7 +44,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51948
+                "instanceID": 51976
             },
             "color": {
                 "r": 0.37254902720451357,
@@ -68,7 +71,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51950
+                "instanceID": 51968
             },
             "color": {
                 "r": 1.0,
@@ -95,7 +98,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51990
+                "instanceID": 51964
             },
             "color": {
                 "r": 0.9411765336990356,
@@ -115,16 +118,16 @@
                 "w": 0.0
             },
             "scale": {
-                "x": 1.840000033378601,
-                "y": 1.840000033378601,
-                "z": 1.840000033378601
+                "x": 1.100000023841858,
+                "y": 1.100000023841858,
+                "z": 1.100000023841858
             }
         }
     ],
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51990
+                "instanceID": 51964
             },
             "color": {
                 "r": 0.9411765336990356,
@@ -144,9 +147,9 @@
                 "w": 0.0
             },
             "scale": {
-                "x": 1.840000033378601,
-                "y": 1.840000033378601,
-                "z": 1.840000033378601
+                "x": 1.100000023841858,
+                "y": 1.100000023841858,
+                "z": 1.100000023841858
             }
         }
     ],

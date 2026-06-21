@@ -22,12 +22,12 @@ MonoBehaviour:
   timerLineSpacingScale: 1
   menuBackgroundLayers:
   - sprite: {fileID: 21300000, guid: cbf92809830fc0840bc495177caaa2e9, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    color: {r: 0.0745372, g: 0.23584908, b: 0.09470119, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
   - sprite: {fileID: 21300000, guid: b3417f32a3b5c524e9c6078c01df6bde, type: 3}
-    color: {r: 0.3803922, g: 0.7019608, b: 0.47058827, a: 1}
+    color: {r: 0.44723296, g: 0.745283, b: 0.36912602, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
@@ -36,64 +36,60 @@ MonoBehaviour:
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
-  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
+  - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.9490197, g: 1, b: 0.94117653, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
-  - sprite: {fileID: 21300000, guid: c3d81fabe9b52064e93eaece892cddef, type: 3}
+  - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.92240566, g: 1, b: 0.91132075, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
   levelBackgroundLayers:
-  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
+  - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.9490197, g: 1, b: 0.94117653, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
-  - sprite: {fileID: 21300000, guid: c3d81fabe9b52064e93eaece892cddef, type: 3}
+  - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.9215687, g: 1, b: 0.909804, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
-  taskListColors:
-  - mainColor: {r: 0.7960785, g: 0.909804, b: 0.2392157, a: 1}
-    itemColor: {r: 0.9294118, g: 1, b: 0.57254905, a: 1}
-    secondaryColor: {r: 0.9294118, g: 1, b: 0.57254905, a: 1}
-    scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
-    taskColors:
-    - {r: 0.7960785, g: 0.909804, b: 0.2392157, a: 1}
-    - {r: 0.54509807, g: 0.7725491, b: 0.3137255, a: 1}
-    - {r: 0.3019608, g: 0.7176471, b: 0.2784314, a: 1}
-    - {r: 0.098039225, g: 0.7372549, b: 0.35686275, a: 1}
-  - mainColor: {r: 0.3803922, g: 0.7019608, b: 0.47058827, a: 1}
-    itemColor: {r: 0.5294118, g: 0.7960785, b: 0.6039216, a: 1}
-    secondaryColor: {r: 0.5294118, g: 0.7960785, b: 0.6039216, a: 1}
-    scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
-    taskColors:
-    - {r: 0.3019608, g: 0.7176471, b: 0.2784314, a: 1}
-    - {r: 0.098039225, g: 0.7372549, b: 0.35686275, a: 1}
-    - {r: 0.7686275, g: 0.6627451, b: 0.9450981, a: 1}
-    - {r: 0.97647065, g: 0.6392157, b: 0.9568628, a: 1}
-  - mainColor: {r: 0.7686275, g: 0.6627451, b: 0.9450981, a: 1}
-    itemColor: {r: 0.87843144, g: 0.8000001, b: 1, a: 1}
-    secondaryColor: {r: 0.87843144, g: 0.8000001, b: 1, a: 1}
-    scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
-    taskColors:
-    - {r: 0.7686275, g: 0.6627451, b: 0.9450981, a: 1}
-    - {r: 0.97647065, g: 0.6392157, b: 0.9568628, a: 1}
-    - {r: 0.9333334, g: 0.5411765, b: 0.63529414, a: 1}
-    - {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+  gridCellColor: {r: 0.84910995, g: 0.990566, b: 0.7429245, a: 1}
+  fixedGridCellColor: {r: 0.92357796, g: 0.9339623, b: 0.7885814, a: 1}
+  brightTextColor: {r: 0.9995647, g: 1, b: 0.9103774, a: 1}
+  darkTextColor: {r: 0.20455693, g: 0.4245283, b: 0.14217694, a: 1}
+  dailyTaskListColor: {r: 0.62077725, g: 0.8773585, b: 0.45937166, a: 1}
+  dailyTaskListSecondaryColor: {r: 0.84511626, g: 1, b: 0.57254905, a: 1}
+  weeklyTaskListColor: {r: 0.4060378, g: 0.6698113, b: 0.31278923, a: 1}
+  weeklyTaskListSecondaryColor: {r: 0.59821516, g: 0.764151, b: 0.46497867, a: 1}
+  bonusTaskListColor: {r: 0.41030157, g: 0.7647059, b: 0.39215687, a: 1}
+  bonusTaskListSecondaryColor: {r: 0.74819136, g: 0.9529412, b: 0.6862745, a: 1}
+  taskListScrollbarColor: {r: 0.9953008, g: 1, b: 0.8820755, a: 1}
+  taskListCounterColor: {r: 0.8963423, g: 0.9245283, b: 0.2747419, a: 1}
+  requiredTask1Color: {r: 0.7960785, g: 0.909804, b: 0.2392157, a: 1}
+  requiredTask2Color: {r: 0.54509807, g: 0.7725491, b: 0.3137255, a: 1}
+  requiredTask3Color: {r: 0.3019608, g: 0.7176471, b: 0.2784314, a: 1}
+  requiredTask4Color: {r: 0.098039225, g: 0.7372549, b: 0.35686275, a: 1}
+  bonusTask1Color: {r: 0.7477648, g: 0.94509804, b: 0.6627451, a: 1}
+  bonusTask2Color: {r: 0.85836196, g: 0.9764706, b: 0.6392157, a: 1}
+  bonusTask3Color: {r: 0.8746229, g: 0.93333334, b: 0.5411765, a: 1}
+  bonusTask4Color: {r: 0.5249919, g: 0.9019608, b: 0.46666667, a: 1}
+  fixedActivityColor: {r: 0.44494015, g: 0.6886792, b: 0.40606087, a: 1}
+  fixedActivityBorderColor: {r: 0.15115318, g: 0.2830189, b: 0.13483447, a: 1}
+  timeHandColor: {r: 0.6, g: 0.8117647, b: 0.34901962, a: 1}
+  timeHandFastColor: {r: 0.79757285, g: 0.8117647, b: 0.3490196, a: 1}
+  pauseButtonColor: {r: 0.7772075, g: 0.9019608, b: 0.46666667, a: 1}
+  helpButtonColor: {r: 0.5996735, g: 0.8113208, b: 0.34825563, a: 1}
+  resourceBarBackgroundColor: {r: 0.8862746, g: 1, b: 0.87843144, a: 1}
   resourceBarColors:
   - resourceBars:
-    - fill: {r: 0.30588236, g: 0.74509805, b: 0.427451, a: 1}
+    - fill: {r: 0.44313726, g: 0.6862745, b: 0.40392157, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
   - resourceBars:
-    - fill: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    - fill: {r: 0.9056604, g: 0.8911581, b: 0.35457456, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
     - fill: {r: 0.3803922, g: 0.7019608, b: 0.47058827, a: 1}
       change: {r: 0.3019608, g: 0.7176471, b: 0.2784314, a: 1}
