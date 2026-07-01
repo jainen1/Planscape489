@@ -15,7 +15,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static event UpdateTheme OnUpdateTheme;
     public static event UpdateTheme OnUpdateThemeText;
 
-    [SerializeField] private AudioClip clickSound;
     [SerializeField] private AudioMixer audioMixer;
 
     [SerializeField] private Scene activeMenuScene;
@@ -30,8 +29,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         LoadThemesFromResources();
 
         //SaveGame();
-
-        Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
         Instance.audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
 
         SendThemeUpdate();
@@ -39,9 +36,10 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     }
 
     public static void PlayClickSound() {
+        if(GetCurrentMenuTheme().buttonClick == null) {  return; }
         float volume;
         Instance.audioMixer.GetFloat("SFX Volume", out volume);
-        AudioSource.PlayClipAtPoint(Instance.clickSound, Camera.main.transform.position, 1.0f * volume);
+        AudioSource.PlayClipAtPoint(GetCurrentMenuTheme().buttonClick, Camera.main.transform.position, volume);
     }
 
     // Weeks //
