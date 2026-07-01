@@ -5,14 +5,14 @@ public class TimeHand : MonoBehaviour {
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
     private int clockTickIndex;
-    [SerializeField] private Vector3[] dayStartPositions;
+    [SerializeField] private GameObject[] startPositions;
 
     [Header("Fast Forward")]
     [SerializeField] private bool isFast = false;
     [SerializeField] private float fastSpeedModifier = 1.5f;
 
     void Start() {
-        gameObject.transform.position = dayStartPositions[0];
+        gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
         timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
     }
@@ -91,7 +91,7 @@ public class TimeHand : MonoBehaviour {
                 } else { LevelManager.Instance.LoseScene(); }
                 Destroy(gameObject);
             } else {
-                gameObject.transform.position = dayStartPositions[cell.day];
+                gameObject.transform.position = new Vector3(startPositions[cell.day].transform.position.x, startPositions[cell.day].transform.position.y, -2f);
                 timer = GlobalGameManager.GetCurrentWeek().dailyPreparationTime;
             }
         }
