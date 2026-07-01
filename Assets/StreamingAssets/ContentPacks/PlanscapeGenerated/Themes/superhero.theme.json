@@ -537,5 +537,31 @@
     },
     "buttonClick": {
         "instanceID": 0
-    }
+    },
+    "clockTicking": [
+        {
+            "instanceID": 54318
+        },
+        {
+            "instanceID": 54320
+        },
+        {
+            "instanceID": 54322
+        },
+        {
+            "instanceID": 54324
+        },
+        {
+            "instanceID": 54326
+        },
+        {
+            "instanceID": 54328
+        },
+        {
+            "instanceID": 54330
+        },
+        {
+            "instanceID": 54332
+        }
+    ]
 }

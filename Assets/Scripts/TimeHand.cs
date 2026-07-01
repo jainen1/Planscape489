@@ -4,7 +4,6 @@ using TMPro;
 public class TimeHand : MonoBehaviour {
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
-    [SerializeField] private AudioClip[] clockTicking;
     private int clockTickIndex;
     [SerializeField] private Vector3[] dayStartPositions;
 
@@ -42,8 +41,8 @@ public class TimeHand : MonoBehaviour {
         GridCell cell = collision.GetComponent<GridCell>();
 
         if(cell != null && cell.canBeUsed) {
-            AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
-            clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
+            AudioSource.PlayClipAtPoint(GlobalGameManager.GetCurrentMenuTheme().clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
+            clockTickIndex = (clockTickIndex > GlobalGameManager.GetCurrentMenuTheme().clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
             float finalHappiness = LevelManager.GetResource(1);
             float finalMoney = LevelManager.GetResource(2);

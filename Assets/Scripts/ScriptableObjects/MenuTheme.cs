@@ -81,6 +81,7 @@ public class MenuTheme : ScriptableObject
     [Header("Music & SFX")]
     public AudioClip music;
     public AudioClip buttonClick;
+    public AudioClip[] clockTicking;
 }
 
 [CustomEditor(typeof(MenuTheme))]

@@ -60,7 +60,6 @@ MonoBehaviour:
   taskListColors:
   - mainColor: {r: 0.34901962, g: 0.5882353, b: 1, a: 1}
     itemColor: {r: 0.5137255, g: 0.69411767, b: 1, a: 1}
-    secondaryColor: {r: 0.5137255, g: 0.69411767, b: 1, a: 1}
     scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
     countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
     taskColors:
@@ -70,7 +69,6 @@ MonoBehaviour:
     - {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
   - mainColor: {r: 0.3803922, g: 0.43137258, b: 0.7019608, a: 1}
     itemColor: {r: 0.5294118, g: 0.5764706, b: 0.8313726, a: 1}
-    secondaryColor: {r: 0.5294118, g: 0.5764706, b: 0.8313726, a: 1}
     scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
     countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
     taskColors:
@@ -80,7 +78,6 @@ MonoBehaviour:
     - {r: 0.6745098, g: 0.6627451, b: 0.9450981, a: 1}
   - mainColor: {r: 0.6745098, g: 0.6627451, b: 0.9450981, a: 1}
     itemColor: {r: 0.7960785, g: 0.78823537, b: 1, a: 1}
-    secondaryColor: {r: 0.7960785, g: 0.78823537, b: 1, a: 1}
     scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
     countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
     taskColors:
@@ -118,3 +115,12 @@ MonoBehaviour:
   helpButtonColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
   music: {fileID: 8300000, guid: b8e0a0f145d6d4f7fabaadef1ccf3c7c, type: 3}
   buttonClick: {fileID: 0}
+  clockTicking:
+  - {fileID: 8300000, guid: 54544397f08be7d4d87e0837a0cd7fe3, type: 3}
+  - {fileID: 8300000, guid: 2e9dda05f4289f047bbfe8d3ba808948, type: 3}
+  - {fileID: 8300000, guid: 717f43a1c3cb8e047a946ebc370c3507, type: 3}
+  - {fileID: 8300000, guid: f90fb9be4044f524ab8e9a9ae410eb66, type: 3}
+  - {fileID: 8300000, guid: 1c623107a2c60a548be79ba5796dd9af, type: 3}
+  - {fileID: 8300000, guid: 6507de5b2ebb0ab479e41f87742d1ecd, type: 3}
+  - {fileID: 8300000, guid: 5aa7d8c832cbe3a4fbfde575ab46da2c, type: 3}
+  - {fileID: 8300000, guid: 72d85c8fd4ae0ad4d8404c19f5239edb, type: 3}
