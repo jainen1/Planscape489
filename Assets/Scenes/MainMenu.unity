@@ -2119,7 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaf5c2e5070c49c4b180e8b594eb2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  audioSource: {fileID: 1475208749}
+  musicSource: {fileID: 1475208749}
 --- !u!82 &1475208749
 AudioSource:
   m_ObjectHideFlags: 0

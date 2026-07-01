@@ -39,7 +39,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         if(GetCurrentMenuTheme().buttonClick == null) {  return; }
         float volume;
         Instance.audioMixer.GetFloat("SFX Volume", out volume);
-        AudioSource.PlayClipAtPoint(GetCurrentMenuTheme().buttonClick, Camera.main.transform.position, volume);
+        AudioSource.PlayClipAtPoint(GetCurrentMenuTheme().buttonClick, Camera.main.transform.position, 1.0f * volume);
     }
 
     // Weeks //

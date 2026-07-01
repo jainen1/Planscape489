@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MusicManager : MonoSingleton<MusicManager>
 {
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource musicSource;
 
     void OnEnable() { GlobalGameManager.OnUpdateTheme += UpdateMenuObject; }
     void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
@@ -17,9 +17,9 @@ public class MusicManager : MonoSingleton<MusicManager>
             }
         }
 
-        if(themeMusic != null && themeMusic != audioSource.clip) {
-            audioSource.clip = themeMusic;
-            audioSource.Play();
+        if(themeMusic != null && themeMusic != musicSource.clip) {
+            musicSource.clip = themeMusic;
+            musicSource.Play();
         }
     }
 }
