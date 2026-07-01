@@ -55,6 +55,8 @@ public class LevelManager : MonoSingleton<LevelManager>
                 CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
             }
         }
+
+        GlobalGameManager.SendThemeUpdate();
     }
 
     public void PauseScene() {

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: Week1
   m_EditorClassIdentifier: Assembly-CSharp::Week
-  music: {fileID: 0}
+  musicType: 2
+  gameplayType: 0
   timeHandSpeed: 0.48
   firstPreparationTime: 60
   dailyPreparationTime: 15

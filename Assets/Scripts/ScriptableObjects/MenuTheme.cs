@@ -79,7 +79,10 @@ public class MenuTheme : ScriptableObject
     public Color helpButtonColor;
 
     [Header("Music & SFX")]
-    public AudioClip music;
+    public AudioClip calmMusic;
+    public AudioClip tenseMusic;
+    public AudioClip superTenseMusic;
+
     public AudioClip buttonClick;
     public AudioClip[] clockTicking;
 }

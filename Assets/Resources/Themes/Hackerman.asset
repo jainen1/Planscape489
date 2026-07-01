@@ -103,7 +103,9 @@ MonoBehaviour:
   timeHandFastColor: {r: 0.740566, g: 0.2305536, b: 0.3412161, a: 1}
   pauseButtonColor: {r: 0.5019608, g: 0.078431375, b: 0.078431375, a: 1}
   helpButtonColor: {r: 0.078431375, g: 0.5803922, b: 0.078431375, a: 1}
-  music: {fileID: 8300000, guid: adc3e7f1cea99d744b51ccb0543b4521, type: 3}
+  calmMusic: {fileID: 8300000, guid: adc3e7f1cea99d744b51ccb0543b4521, type: 3}
+  tenseMusic: {fileID: 0}
+  superTenseMusic: {fileID: 8300000, guid: 75b286b4e7e7f7940bbae1b8814c6e97, type: 3}
   buttonClick: {fileID: 0}
   clockTicking:
   - {fileID: 8300000, guid: 54544397f08be7d4d87e0837a0cd7fe3, type: 3}

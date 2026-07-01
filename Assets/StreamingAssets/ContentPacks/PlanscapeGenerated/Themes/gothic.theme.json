@@ -478,8 +478,14 @@
         "b": 0.6078431606292725,
         "a": 1.0
     },
-    "music": {
+    "calmMusic": {
         "instanceID": 50002
+    },
+    "tenseMusic": {
+        "instanceID": 0
+    },
+    "superTenseMusic": {
+        "instanceID": 0
     },
     "buttonClick": {
         "instanceID": 0
