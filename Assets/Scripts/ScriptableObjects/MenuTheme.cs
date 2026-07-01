@@ -39,7 +39,6 @@ public class MenuTheme : ScriptableObject
     public class TaskListColors {
         public Color mainColor;
         public Color itemColor;
-        public Color secondaryColor;
         public Color scrollbarColor;
         public Color countColor;
         public Color[] taskColors = new Color[4];

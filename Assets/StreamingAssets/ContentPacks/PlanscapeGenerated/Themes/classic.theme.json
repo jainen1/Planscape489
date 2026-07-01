@@ -1,15 +1,12 @@
 {
-    "music": {
-        "instanceID": 51376
-    },
     "mainFont": {
-        "instanceID": 50630
+        "instanceID": 49820
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50180
+        "instanceID": 49822
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -17,7 +14,7 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51972
+                "instanceID": 49824
             },
             "color": {
                 "r": 0.0,
@@ -44,7 +41,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51976
+                "instanceID": 49826
             },
             "color": {
                 "r": 0.2705882489681244,
@@ -71,7 +68,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51968
+                "instanceID": 49828
             },
             "color": {
                 "r": 1.0,
@@ -98,7 +95,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51952
+                "instanceID": 49830
             },
             "color": {
                 "r": 1.0,
@@ -127,7 +124,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51980
+                "instanceID": 49832
             },
             "color": {
                 "r": 1.0,
@@ -154,7 +151,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51984
+                "instanceID": 49834
             },
             "color": {
                 "r": 1.0,
@@ -191,12 +188,6 @@
             "itemColor": {
                 "r": 1.0,
                 "g": 0.8862745761871338,
-                "b": 0.7137255072593689,
-                "a": 1.0
-            },
-            "secondaryColor": {
-                "r": 1.0,
-                "g": 0.886274516582489,
                 "b": 0.7137255072593689,
                 "a": 1.0
             },
@@ -252,12 +243,6 @@
                 "b": 0.6666666865348816,
                 "a": 1.0
             },
-            "secondaryColor": {
-                "r": 0.6980392336845398,
-                "g": 0.9058823585510254,
-                "b": 0.6666666865348816,
-                "a": 1.0
-            },
             "scrollbarColor": {
                 "r": 1.0,
                 "g": 1.0,
@@ -308,12 +293,6 @@
                 "r": 0.9450981020927429,
                 "g": 0.8431373238563538,
                 "b": 0.9725490808486939,
-                "a": 1.0
-            },
-            "secondaryColor": {
-                "r": 0.9450980424880981,
-                "g": 0.843137264251709,
-                "b": 0.9725490212440491,
                 "a": 1.0
             },
             "scrollbarColor": {
@@ -527,7 +506,7 @@
         "a": 1.0
     },
     "music": {
-        "instanceID": 51406
+        "instanceID": 49836
     },
     "buttonClick": {
         "instanceID": 0
