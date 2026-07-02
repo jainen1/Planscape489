@@ -35,11 +35,17 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         //PrintThemes();
     }
 
+    public static AudioMixer GetAudioMixer() { return Instance.audioMixer; }
+
+    public static void PlayClip(AudioClip clip, string channelName) {
+        float volume;
+        GetAudioMixer().GetFloat(channelName, out volume);
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, Mathf.Pow(10f, volume / 20));
+    }
+
     public static void PlayClickSound() {
         if(GetCurrentMenuTheme().buttonClick == null) {  return; }
-        float volume;
-        Instance.audioMixer.GetFloat("SFX Volume", out volume);
-        AudioSource.PlayClipAtPoint(GetCurrentMenuTheme().buttonClick, Camera.main.transform.position, 1.0f * volume);
+        PlayClip(GetCurrentMenuTheme().buttonClick, "SFX Volume");
     }
 
     // Weeks //

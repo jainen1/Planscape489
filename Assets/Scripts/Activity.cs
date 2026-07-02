@@ -7,13 +7,6 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public bool isHeld = false;
 
-    [SerializeField] private AudioClip pickUp;
-    [SerializeField] private AudioClip fixedPickUp;
-    [SerializeField] private AudioClip failedPickUp;
-    [SerializeField] private AudioClip putDown;
-    [SerializeField] private AudioClip trashSound;
-    [SerializeField] private float audioVolume;
-
     private List<GameObject> collidingCells = new List<GameObject>();
     private GameObject closestCell = null;
     private GameObject occupiedCell = null;
@@ -55,12 +48,12 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public void OnMouseDown() {
         if(FindFirstObjectByType<LevelManager>().levelIsActive) {
-            AudioClip sfx = fixedPickUp;
+            AudioClip sfx = GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail; //was originally 'fixedPickUp', but that has been merged with 'failedPickUp'.
             if(!initializer.IsFixed()) {
                 isHeld = true;
-                sfx = pickUp;
+                sfx = GlobalGameManager.GetCurrentMenuTheme().activityPickUp;
             }
-            AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position, audioVolume);
+            GlobalGameManager.PlayClip(sfx, "SFX Volume");
         }
     }
 
@@ -75,7 +68,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 }
             }
             if(closestCell == null) {
-                AudioSource.PlayClipAtPoint(failedPickUp, Camera.main.transform.position, audioVolume);
+                GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, "SFX Volume");
                 Destroy(gameObject.transform.parent.gameObject);
             }
             else {
@@ -83,13 +76,13 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
                 ClaimCells();
                 if(isTouchingTrashCan) {
-                    AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
+                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityTrash, "SFX Volume");
                     LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
                     LevelManager.Instance.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
-                    AudioSource.PlayClipAtPoint(putDown, Camera.main.transform.position, audioVolume);
+                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPutDown, "SFX Volume");
                 }
             }
         }

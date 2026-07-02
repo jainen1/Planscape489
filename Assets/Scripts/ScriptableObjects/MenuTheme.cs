@@ -84,5 +84,9 @@ public class MenuTheme : ScriptableObject
     public AudioClip superTenseMusic;
 
     public AudioClip buttonClick;
+    public AudioClip activityPickUp;
+    public AudioClip activityPickUpFail;
+    public AudioClip activityPutDown;
+    public AudioClip activityTrash;
     public AudioClip[] clockTicking;
 }

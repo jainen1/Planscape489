@@ -488,7 +488,19 @@
         "instanceID": 51542
     },
     "buttonClick": {
-        "instanceID": 51556
+        "instanceID": 66806
+    },
+    "activityPickUp": {
+        "instanceID": 75676
+    },
+    "activityPickUpFail": {
+        "instanceID": 73782
+    },
+    "activityPutDown": {
+        "instanceID": 75672
+    },
+    "activityTrash": {
+        "instanceID": 51546
     },
     "clockTicking": [
         {
