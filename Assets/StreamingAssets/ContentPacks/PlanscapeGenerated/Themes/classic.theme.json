@@ -1,12 +1,12 @@
 {
     "mainFont": {
-        "instanceID": 49820
+        "instanceID": 50638
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 49822
+        "instanceID": 50188
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -14,7 +14,7 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 49824
+                "instanceID": 52034
             },
             "color": {
                 "r": 0.0,
@@ -41,7 +41,7 @@
         },
         {
             "sprite": {
-                "instanceID": 49826
+                "instanceID": 52036
             },
             "color": {
                 "r": 0.2705882489681244,
@@ -68,7 +68,7 @@
         },
         {
             "sprite": {
-                "instanceID": 49828
+                "instanceID": 52038
             },
             "color": {
                 "r": 1.0,
@@ -95,7 +95,7 @@
         },
         {
             "sprite": {
-                "instanceID": 49830
+                "instanceID": 52040
             },
             "color": {
                 "r": 1.0,
@@ -124,7 +124,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 49832
+                "instanceID": 52042
             },
             "color": {
                 "r": 1.0,
@@ -151,7 +151,7 @@
         },
         {
             "sprite": {
-                "instanceID": 49834
+                "instanceID": 52044
             },
             "color": {
                 "r": 1.0,
@@ -506,7 +506,7 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 49836
+        "instanceID": 51404
     },
     "tenseMusic": {
         "instanceID": 0
@@ -515,32 +515,32 @@
         "instanceID": 0
     },
     "buttonClick": {
-        "instanceID": 50214
+        "instanceID": 51556
     },
     "clockTicking": [
         {
-            "instanceID": 54318
+            "instanceID": 52046
         },
         {
-            "instanceID": 54320
+            "instanceID": 52048
         },
         {
-            "instanceID": 54322
+            "instanceID": 52050
         },
         {
-            "instanceID": 54324
+            "instanceID": 52052
         },
         {
-            "instanceID": 54326
+            "instanceID": 52054
         },
         {
-            "instanceID": 54328
+            "instanceID": 52056
         },
         {
-            "instanceID": 54330
+            "instanceID": 52058
         },
         {
-            "instanceID": 54332
+            "instanceID": 52060
         }
     ]
 }
