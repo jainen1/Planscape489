@@ -278,7 +278,7 @@ PrefabInstance:
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6604925413005977269, guid: 1b98a71b904729e4892a137197425247, type: 3}
+      objectReference: {fileID: 6087605605718836095, guid: add58f071b152f94fb448f6bfa4c9942, type: 3}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GlobalGameManager, Assembly-CSharp
+      value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -597,30 +597,6 @@ MonoBehaviour:
   nextWeek: {fileID: 1614841844}
   restartWeek: {fileID: 1320207007}
   exitToMenu: {fileID: 967194442}
-  victory:
-    title: Campaign finished!
-    description: You have mastered scheduling. Congrats on graduating!
-    sound: {fileID: 8300000, guid: 5e564108975afe342a41a982cace8539, type: 3}
-    color: {r: 0.8, g: 0.6784314, b: 0.3372549, a: 0.8901961}
-    next: 0
-    restart: 0
-    exit: 1
-  win:
-    title: Week finished!
-    description: You've made it through another week. Keep going!
-    sound: {fileID: 8300000, guid: 5e564108975afe342a41a982cace8539, type: 3}
-    color: {r: 0.4117647, g: 0.77254903, b: 0.4392157, a: 0.8901961}
-    next: 1
-    restart: 1
-    exit: 1
-  lose:
-    title: Burnt out!
-    description: Your schedule has overloaded! Try again?
-    sound: {fileID: 8300000, guid: f1f3605d2366d1148b750b6fb034e88f, type: 3}
-    color: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 0.8901961}
-    next: 0
-    restart: 1
-    exit: 1
 --- !u!1 &1229113858
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,7 +756,7 @@ PrefabInstance:
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6604925413005977269, guid: 1b98a71b904729e4892a137197425247, type: 3}
+      objectReference: {fileID: 6087605605718836095, guid: add58f071b152f94fb448f6bfa4c9942, type: 3}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -803,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GlobalGameManager, Assembly-CSharp
+      value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -948,7 +924,7 @@ PrefabInstance:
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6604925413005977269, guid: 1b98a71b904729e4892a137197425247, type: 3}
+      objectReference: {fileID: 6087605605718836095, guid: add58f071b152f94fb448f6bfa4c9942, type: 3}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -983,7 +959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GlobalGameManager, Assembly-CSharp
+      value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

@@ -56,7 +56,7 @@ public class TaskListItem : MonoBehaviour
 
                 SetCount(count - 1);
             } else {
-                GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, GlobalGameManager.AudioChannels.sfxVolume);
+                SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, SoundManager.AudioChannels.sfx);
                 newActivity = null;
             }
         }

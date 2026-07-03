@@ -287,8 +287,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6604925413005977269, guid: 1b98a71b904729e4892a137197425247, type: 3}
-        m_TargetAssemblyTypeName: GlobalGameManager, Assembly-CSharp
+      - m_Target: {fileID: 6087605605718836095, guid: add58f071b152f94fb448f6bfa4c9942, type: 3}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:

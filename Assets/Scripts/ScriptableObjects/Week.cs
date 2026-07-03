@@ -12,6 +12,10 @@ public class Week : ScriptableObject {
     public float firstPreparationTime = 60f;
     public float dailyPreparationTime = 15f;
 
+    public int days = 7;
+    public int hoursPerDay = 17;
+    public int dayStartHour = 6;
+
     public ResourceBarValues.Collection[] resourceBars;
 
     [Header("Activities")]

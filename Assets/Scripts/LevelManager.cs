@@ -1,6 +1,5 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
-using System.Collections;
 using System.Collections.Generic;
 
 public class LevelManager : MonoSingleton<LevelManager>
@@ -57,6 +56,8 @@ public class LevelManager : MonoSingleton<LevelManager>
         }
 
         GlobalGameManager.SendThemeUpdate();
+        //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
+        _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
     }
 
     public void PauseScene() {
@@ -126,27 +127,6 @@ public class LevelManager : MonoSingleton<LevelManager>
         activityScript.ClaimCells();
     }
 
-    public bool GetCellStatus(Activity activity, GridCell startCell) {
-        int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
-        for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(endCellIndex > cells.Length - 1 || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
-                return false;
-            }
-        } return true;
-    }
-
-    public bool GetCellFoodStatus(Activity activity, GridCell startCell) {
-        int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = Mathf.Min(startCellIndex + activity.initializer.activity.fullStomachLength - 1, GetGridCellIndex(startCell.day, 22));
-        for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(endCellIndex > cells.Length - 1 || (cells[i].occupyingFoodActivity != null && cells[i].occupyingFoodActivity != activity)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public void FreeOrOccupyCells(Activity activity, GridCell startCell, bool free) {
         int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
         int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
@@ -163,10 +143,8 @@ public class LevelManager : MonoSingleton<LevelManager>
     }
 
     public static int GetGridCellIndex(int day, int hour) {
-        return ((day - 1) * 17) + (hour - 6);
-        //Day 1, Cell 6 (index 0): ((1-1)*17)+(6-6) = 0
-        //Day 2, Cell 21 (index 32): ((2-1)*17)+(21-6) = 32
-        //Day 7, Cell 22 (index 118): ((7-1)*17)+(22-6) = 118
+        return ((day - 1) * GlobalGameManager.GetCurrentWeek().hoursPerDay) + (hour - GlobalGameManager.GetCurrentWeek().dayStartHour);
+        //Examples: Day 1, Cell 6 (index 0): ((1-1)*17)+(6-6) = 0;   Day 2, Cell 21 (index 32): ((2-1)*17)+(21-6) = 32;   Day 7, Cell 22 (index 118): ((7-1)*17)+(22-6) = 118
     }
 
     public GridCell GridCellFromIndex(int day, int hour) {
@@ -176,14 +154,9 @@ public class LevelManager : MonoSingleton<LevelManager>
     public static void SetResource(int index, float value) { Instance.resources[index] = value; }
     public static float GetResource(int index) { return Instance.resources[index]; }
 
-    //Telemetry
+    // Telemetry //
 
     private MetricId _plannerMetric = default;
-
-    private void Start() {
-        //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
-        _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
-    }
 
     public void SamplePlannerMetric(int day, int hour) {
         if(doPlannerMetric) {

@@ -53,7 +53,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 isHeld = true;
                 sfx = GlobalGameManager.GetCurrentMenuTheme().activityPickUp;
             }
-            GlobalGameManager.PlayClip(sfx, GlobalGameManager.AudioChannels.sfxVolume);
+            SoundManager.PlayClip(sfx, SoundManager.AudioChannels.sfx);
         }
     }
 
@@ -68,7 +68,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 }
             }
             if(closestCell == null) {
-                GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, GlobalGameManager.AudioChannels.sfxVolume);
+                SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, SoundManager.AudioChannels.sfx);
                 Destroy(gameObject.transform.parent.gameObject);
             }
             else {
@@ -76,13 +76,13 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
                 ClaimCells();
                 if(isTouchingTrashCan) {
-                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityTrash, GlobalGameManager.AudioChannels.sfxVolume);
+                    SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityTrash, SoundManager.AudioChannels.sfx);
                     LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
                     LevelManager.Instance.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
-                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPutDown, GlobalGameManager.AudioChannels.sfxVolume);
+                    SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPutDown, SoundManager.AudioChannels.sfx);
                 }
             }
         }
@@ -115,18 +115,32 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private bool CellIsAvailable(GridCell cell) {
+        if(cell == null) { /*Debug.LogWarning("Cell unavailable: Cell is null!");*/ return false; }
+        if(!cell.canBeUsed) { /*Debug.LogWarning("Cell unavailable: Cell cannot be used!");*/ return false; }
+        if(cell.isFixed) { /*Debug.LogWarning("Cell unavailable: Cell is fixed!");*/ return false; }
+        if(cell.hour + initializer.activity.length >= 24) { /*Debug.LogWarning("Cell unavailable: Cell is beyond end of day!");*/ return false; }
 
-        //Debug
-        /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
-        if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
-        if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
-        if(!LevelManagerInstance.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
-        if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
-        if(!(initializer.activity.fullStomachLength > 0 ? levelManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
-        return true;*/
+        //previously 'GetCellStatus' in LevelManager. Tests if all spaces that would be taken up by the activity are free
+        int startCellIndex = LevelManager.GetGridCellIndex(cell.day, cell.hour);
+        int endCellIndex = startCellIndex + initializer.activity.length - 1;
+        for(int i = startCellIndex; i <= endCellIndex; i++) {
+            if(endCellIndex > LevelManager.Instance.cells.Length - 1 || (LevelManager.Instance.cells[i].occupyingActivity != null && LevelManager.Instance.cells[i].occupyingActivity != this)) {
+                //Debug.LogWarning("Cell unavailable: Cell(s) occupied!");
+                return false;
+            }
+        }
 
-        return cell != null && cell.canBeUsed && !cell.isFixed && LevelManager.Instance.GetCellStatus(this, cell)
-            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? LevelManager.Instance.GetCellFoodStatus(this, cell) : true);
+        //previously 'GetCellFoodStatus' in LevelManager. Tests if all spaces that would be taken up by the activity's 'full stomach' are free of 'full stomach'
+        if(initializer.activity.fullStomachLength > 0) { 
+            int foodEndCellIndex = Mathf.Min(startCellIndex + initializer.activity.fullStomachLength - 1, LevelManager.GetGridCellIndex(cell.day, 22));
+            for(int i = startCellIndex; i <= foodEndCellIndex; i++) {
+                if(foodEndCellIndex > LevelManager.Instance.cells.Length - 1 || (LevelManager.Instance.cells[i].occupyingFoodActivity != null && LevelManager.Instance.cells[i].occupyingFoodActivity != this)) {
+                    //Debug.Log("Cell unavailable: Activity is food, and cell is occupied by food!");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public void ClaimCells() {

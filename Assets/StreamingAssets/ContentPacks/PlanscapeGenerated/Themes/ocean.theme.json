@@ -527,5 +527,14 @@
         {
             "instanceID": 52026
         }
-    ]
+    ],
+    "win": {
+        "instanceID": 0
+    },
+    "lose": {
+        "instanceID": 0
+    },
+    "victory": {
+        "instanceID": 0
+    }
 }

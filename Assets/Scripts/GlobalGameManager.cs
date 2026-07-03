@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GlobalGameManager : MonoSingleton<GlobalGameManager>
@@ -15,8 +14,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static event UpdateTheme OnUpdateTheme;
     public static event UpdateTheme OnUpdateThemeText;
 
-    [SerializeField] private AudioMixer audioMixer;
-
     [SerializeField] private Scene activeMenuScene;
 
     [SerializeField] private MenuTheme[] activeThemes; //temporary
@@ -27,41 +24,11 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SaveAllThemesToJson();
         //LoadActiveThemes();
         LoadThemesFromResources();
+        //PrintThemes();
 
         //SaveGame();
-        Instance.audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
 
         SendThemeUpdate();
-        //PrintThemes();
-    }
-
-    public static AudioMixer GetAudioMixer() { return Instance.audioMixer; }
-
-    public static void PlayClip(AudioClip clip, [UnityEngine.Internal.DefaultValue("SFX Volume")] string channelName) {
-        float volume;
-        GetAudioMixer().GetFloat(channelName, out volume);
-
-        //AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, Mathf.Pow(10f, volume / 20));
-        GameObject gameObject = new GameObject("TemporaryAudio("+clip.name+")"); // from here on is an edited version of the 'AudioSource.PlayClipAtPoint' function.
-        gameObject.transform.position = Camera.main.transform.position;
-        AudioSource audioSource = (AudioSource) gameObject.AddComponent(typeof(AudioSource));
-        audioSource.clip = clip;
-        //audioSource.spatialBlend = 1f;
-        audioSource.volume = Mathf.Pow(10f, volume / 20);
-        audioSource.bypassEffects = true;
-        DontDestroyOnLoad(gameObject);
-        audioSource.Play();
-        Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
-    }
-
-    public static void PlayClickSound() {
-        if(GetCurrentMenuTheme().buttonClick == null) {  return; }
-        PlayClip(GetCurrentMenuTheme().buttonClick, AudioChannels.sfxVolume);
-    }
-
-    public static class AudioChannels {
-        public static string musicVolume = "Music Volume";
-        public static string sfxVolume = "SFX Volume";
     }
 
     // Weeks //
@@ -72,8 +39,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void AdvanceWeek() { Instance.currentWeek++; }
 
     public static void SaveGame () {
-        //string saveFilePath = Path.Combine(Application.persistentDataPath, /*"PlanscapeSave "+*/DateTime.Now.ToString("yyyy-MM-dd.HH:mm:ss")+".plansave.json");
-        string saveFilePath = Path.Combine(Application.persistentDataPath, "save.json");
+        string saveFilePath = Path.Combine(Application.persistentDataPath, "save.json"); //previously "PlanscapeSave "+*/DateTime.Now.ToString("yyyy-MM-dd.HH:mm:ss")+".plansave.json"
         GameSave gameData = new GameSave();
         if(Instance.campaign != null) {
             gameData.currentCampaign = Instance.campaign.ToString();
@@ -87,8 +53,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void SaveSettings () {
         string saveFilePath = Path.Combine(Application.persistentDataPath, "settings.save.json");
         GameSettings gameSettings = new GameSettings();
-        Instance.audioMixer.GetFloat(AudioChannels.musicVolume, out gameSettings.musicVolume);
-        Instance.audioMixer.GetFloat(AudioChannels.sfxVolume, out gameSettings.sfxVolume);
+        SoundManager.GetAudioMixer().GetFloat(SoundManager.AudioChannels.music + " Volume", out gameSettings.musicVolume);
+        SoundManager.GetAudioMixer().GetFloat(SoundManager.AudioChannels.sfx + " Volume", out gameSettings.sfxVolume);
 
         File.WriteAllText(saveFilePath, JsonUtility.ToJson(gameSettings, true));
         Debug.Log("Wrote new settings save data to " + saveFilePath);

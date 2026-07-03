@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")] [Serializable]
@@ -78,15 +77,22 @@ public class MenuTheme : ScriptableObject
     public Color pauseButtonColor;
     public Color helpButtonColor;
 
-    [Header("Music & SFX")]
+    [Header("Music")]
     public AudioClip calmMusic;
     public AudioClip tenseMusic;
     public AudioClip superTenseMusic;
 
+    [Header("SFX")]
     public AudioClip buttonClick;
+
     public AudioClip activityPickUp;
     public AudioClip activityPickUpFail;
     public AudioClip activityPutDown;
     public AudioClip activityTrash;
+
     public AudioClip[] clockTicking;
+
+    public AudioClip win;
+    public AudioClip lose;
+    public AudioClip victory;
 }
