@@ -1,12 +1,12 @@
 {
     "mainFont": {
-        "instanceID": 50756
+        "instanceID": 50760
     },
     "mainFontSizeScale": 0.949999988079071,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50188
+        "instanceID": 50192
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -14,7 +14,7 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52034
+                "instanceID": 52000
             },
             "color": {
                 "r": 1.0,
@@ -41,7 +41,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52036
+                "instanceID": 52002
             },
             "color": {
                 "r": 0.7843137979507446,
@@ -68,7 +68,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52038
+                "instanceID": 52004
             },
             "color": {
                 "r": 0.0784313753247261,
@@ -95,7 +95,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52084
+                "instanceID": 52050
             },
             "color": {
                 "r": 1.0,
@@ -124,7 +124,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52084
+                "instanceID": 52050
             },
             "color": {
                 "r": 1.0,
@@ -479,53 +479,53 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51538
+        "instanceID": 51544
     },
     "tenseMusic": {
         "instanceID": 0
     },
     "superTenseMusic": {
-        "instanceID": 51542
+        "instanceID": 51552
     },
     "buttonClick": {
-        "instanceID": 66806
+        "instanceID": 51546
     },
     "activityPickUp": {
-        "instanceID": 75676
+        "instanceID": 51548
     },
     "activityPickUpFail": {
-        "instanceID": 73782
+        "instanceID": 51542
     },
     "activityPutDown": {
-        "instanceID": 75672
+        "instanceID": 51556
     },
     "activityTrash": {
-        "instanceID": 51546
+        "instanceID": 51558
     },
     "clockTicking": [
         {
-            "instanceID": 52046
+            "instanceID": 52012
         },
         {
-            "instanceID": 52048
+            "instanceID": 52014
         },
         {
-            "instanceID": 52050
+            "instanceID": 52016
         },
         {
-            "instanceID": 52052
+            "instanceID": 52018
         },
         {
-            "instanceID": 52054
+            "instanceID": 52020
         },
         {
-            "instanceID": 52056
+            "instanceID": 52022
         },
         {
-            "instanceID": 52058
+            "instanceID": 52024
         },
         {
-            "instanceID": 52060
+            "instanceID": 52026
         }
     ]
 }

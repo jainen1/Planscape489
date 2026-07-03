@@ -45,7 +45,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     public static void PlayClickSound() {
         if(GetCurrentMenuTheme().buttonClick == null) {  return; }
-        PlayClip(GetCurrentMenuTheme().buttonClick, "SFX Volume");
+        PlayClip(GetCurrentMenuTheme().buttonClick, AudioChannels.sfxVolume);
+    }
+
+    public static class AudioChannels {
+        public static string musicVolume = "Music Volume";
+        public static string sfxVolume = "SFX Volume";
     }
 
     // Weeks //
@@ -71,8 +76,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void SaveSettings () {
         string saveFilePath = Path.Combine(Application.persistentDataPath, "settings.save.json");
         GameSettings gameSettings = new GameSettings();
-        Instance.audioMixer.GetFloat("Music Volume", out gameSettings.musicVolume);
-        Instance.audioMixer.GetFloat("SFX Volume", out gameSettings.sfxVolume);
+        Instance.audioMixer.GetFloat(AudioChannels.musicVolume, out gameSettings.musicVolume);
+        Instance.audioMixer.GetFloat(AudioChannels.sfxVolume, out gameSettings.sfxVolume);
 
         File.WriteAllText(saveFilePath, JsonUtility.ToJson(gameSettings, true));
         Debug.Log("Wrote new settings save data to " + saveFilePath);

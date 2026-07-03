@@ -4,10 +4,7 @@ using UnityEngine.UI;
 
 public class TaskListItem : MonoBehaviour
 {
-    private LevelManager levelManager;
     [SerializeField] private GameObject activity;
-    [SerializeField] private AudioClip clickSound;
-    [SerializeField] private AudioClip rejectSound;
 
     private GameObject newActivity;
 
@@ -27,8 +24,6 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private int count;
 
     private void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
-
         if (viewport == null) {
             Debug.LogWarning("Viewport reference is missing, auto assigning.");
             var scrollRect = GetComponentInParent<ScrollRect>();
@@ -36,13 +31,10 @@ public class TaskListItem : MonoBehaviour
             else { Debug.LogError("Scroll Rect is missing, cannot assign viewport."); }
         }
 
-        if (viewport != null) {
-            //Debug.Log("viewport not null");
+        if (viewport != null) { //Debug.Log("viewport not null");
             isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
-        }
-
-        else {
-            isVisible = true; // Default to true if viewport is not found, to avoid blocking interactions
+        } else {
+            isVisible = true; // Default to true if viewport is not found, to prevent interactions from being blocked
             Debug.LogError($"TaskListItem on {gameObject.name} couldn't find a viewport defaulting to always visible");
         }
 
@@ -50,9 +42,9 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        if(levelManager.levelIsActive && isVisible) {
+        if(LevelManager.Instance.levelIsActive && isVisible) {
             if(count > 0) {
-                AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
+                //GlobalGameManager.PlayClickSound();
 
                 //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
                 newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
@@ -64,14 +56,14 @@ public class TaskListItem : MonoBehaviour
 
                 SetCount(count - 1);
             } else {
-                AudioSource.PlayClipAtPoint(rejectSound, Camera.main.transform.position, 1.0f);
+                GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, GlobalGameManager.AudioChannels.sfxVolume);
                 newActivity = null;
             }
         }
     }
 
     public void OnMouseUp() {
-        if(levelManager.levelIsActive && isVisible && newActivity != null) {
+        if(LevelManager.Instance.levelIsActive && isVisible && newActivity != null) {
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
         }
     }
@@ -99,7 +91,7 @@ public class TaskListItem : MonoBehaviour
 
         Debug.Log("Count is equal to zero.");
 
-        taskList.OnThemeUpdate();
+        taskList.OnThemeUpdate(); // could be optimized to only use parts of the task list item instead of the entire task list
 
         countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }

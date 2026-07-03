@@ -116,7 +116,7 @@ MonoBehaviour:
   calmMusic: {fileID: 8300000, guid: ea3677c5e736d4bc694b823310cdbb06, type: 3}
   tenseMusic: {fileID: 0}
   superTenseMusic: {fileID: 0}
-  buttonClick: {fileID: 8300000, guid: 962890b0cffb42648a530a4850164564, type: 3}
+  buttonClick: {fileID: 8300000, guid: 3812ff9881cac484db9278c28424d8d9, type: 3}
   activityPickUp: {fileID: 8300000, guid: c4b8754dc47ea724f9bb0386d27dbde6, type: 3}
   activityPickUpFail: {fileID: 8300000, guid: 055ac9c5cf266274681fee8894f1bf7b, type: 3}
   activityPutDown: {fileID: 8300000, guid: bf911544daea5d74cb78c36f0fcbd77b, type: 3}

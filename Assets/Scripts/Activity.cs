@@ -53,7 +53,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 isHeld = true;
                 sfx = GlobalGameManager.GetCurrentMenuTheme().activityPickUp;
             }
-            GlobalGameManager.PlayClip(sfx, "SFX Volume");
+            GlobalGameManager.PlayClip(sfx, GlobalGameManager.AudioChannels.sfxVolume);
         }
     }
 
@@ -68,7 +68,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
                 }
             }
             if(closestCell == null) {
-                GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, "SFX Volume");
+                GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, GlobalGameManager.AudioChannels.sfxVolume);
                 Destroy(gameObject.transform.parent.gameObject);
             }
             else {
@@ -76,13 +76,13 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
                 ClaimCells();
                 if(isTouchingTrashCan) {
-                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityTrash, "SFX Volume");
+                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityTrash, GlobalGameManager.AudioChannels.sfxVolume);
                     LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
                     LevelManager.Instance.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
-                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPutDown, "SFX Volume");
+                    GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPutDown, GlobalGameManager.AudioChannels.sfxVolume);
                 }
             }
         }
