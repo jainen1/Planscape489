@@ -162,9 +162,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         if(FindAnyObjectByType<LevelManager>()) { AddScene("PauseMenu"); }
     }
 
-    public static void PauseLevel() { FindFirstObjectByType<LevelManager>().levelIsActive = false; }
-    public static void UnPauseLevel() { FindFirstObjectByType<LevelManager>().levelIsActive = true; }
-
     void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
     void OnDisable() { SceneManager.sceneLoaded -= OnSceneLoaded; }
 
@@ -175,7 +172,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         }
         else if(scene.name == "EndScene") {
             EndSceneManager endSceneManager = FindFirstObjectByType<EndSceneManager>();
-            if(endSceneManager != null) { endSceneManager.SetParameters(FindFirstObjectByType<LevelManager>().activeEndScreen); }
+            if(endSceneManager != null) { endSceneManager.SetParameters(LevelManager.Instance.activeEndScreen); }
         }
     }
 }

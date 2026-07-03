@@ -60,14 +60,16 @@ public class LevelManager : MonoSingleton<LevelManager>
         _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
     }
 
-    public void PauseScene() {
+    public static void PauseScene() {
         GlobalGameManager.AddScene("PauseMenu");
-        levelIsActive = false;
+        Instance.levelIsActive = false;
+        MusicManager.Instance.MuffleMusicIfInLevel(true);
     }
 
-    public void UnPauseScene() {
+    public static void UnPauseScene() {
         GlobalGameManager.CloseScene("PauseMenu");
-        levelIsActive = true;
+        Instance.levelIsActive = true;
+        MusicManager.Instance.MuffleMusicIfInLevel(false);
     }
 
     public void TogglePause() {
