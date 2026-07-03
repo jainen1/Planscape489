@@ -78,8 +78,8 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
             if(activityInitializer.activity != null) {
                 int taskListIndex = 0;
                 switch(activityInitializer.activityType) {
-                    case TaskList.ActivityType.Required: taskListIndex = 0; break;
-                    case TaskList.ActivityType.Bonus: taskListIndex = 2; break;
+                    case Activity.Type.Required: taskListIndex = 0; break;
+                    case Activity.Type.Bonus: taskListIndex = 2; break;
                 }
                 return menuTheme.taskListColors[taskListIndex].taskColors[Mathf.Min(activityInitializer.activity.length - 1, menuTheme.taskListColors[taskListIndex].taskColors.Length)];
             }

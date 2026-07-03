@@ -16,7 +16,12 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     [SerializeField] private float mouseLerp = 100f;
     [SerializeField] private float targetLerp = 5f;
 
-    [SerializeField] public TaskList.ActivityType activityType;
+    [SerializeField] public Type activityType;
+
+    public enum Type {
+        Required,
+        Bonus
+    }
 
     void Update() {
         if(isHeld) {

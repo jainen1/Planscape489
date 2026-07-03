@@ -11,7 +11,7 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
     [Header("Parameters")]
     [SerializeField] private GameObject firstItem;
     [SerializeField] private List<GameObject> itemList;
-    [SerializeField] private ActivityType activityType;
+    [SerializeField] private Activity.Type activityType;
 
     private void Awake() {
         itemList = new List<GameObject>();
@@ -19,8 +19,8 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
         ActivityWithCount[] activities;
 
         switch(activityType) {
-            case ActivityType.Required: activities = GlobalGameManager.GetCurrentWeek().requiredTasks; break;
-            case ActivityType.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
+            case Activity.Type.Required: activities = GlobalGameManager.GetCurrentWeek().requiredTasks; break;
+            case Activity.Type.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
             default: activities = new ActivityWithCount[0]; break;
         }
         CreateList(activities);
@@ -33,8 +33,8 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
         int activityTypeIndex;
 
         switch(activityType) {
-            case ActivityType.Required: activityTypeIndex = 0; break;
-            case ActivityType.Bonus: activityTypeIndex = 2; break;
+            case Activity.Type.Required: activityTypeIndex = 0; break;
+            case Activity.Type.Bonus: activityTypeIndex = 2; break;
             default: activityTypeIndex = 0; break;
         }
 
@@ -80,8 +80,8 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
         return true;
     }
 
-    public ActivityType GetActivityType() { return activityType; }
-    public void SetActivityType(ActivityType type) { activityType = type; }
+    public Activity.Type GetActivityType() { return activityType; }
+    public void SetActivityType(Activity.Type type) { activityType = type; }
 
     public void CreateList(ActivityWithCount[] activities) {
         GameObject content = gameObject;
@@ -140,36 +140,4 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
 
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * taskItemHeight) + ((itemList.Count - 1) * taskItemDistance) + taskItemHeight); // update the content height
     }
-
-    public enum ActivityType {
-        Required,
-        Bonus
-    }
 }
-
-
-
- /*           case MenuObjectType.DailyTaskList: color = menuTheme.dailyTaskListColor; break;
-case MenuObjectType.DailyTaskListSecondary: {
-    color = menuTheme.dailyTaskListSecondaryColor;
-    TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
-    if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
-    break;
-}
-case MenuObjectType.WeeklyTaskList: color = menuTheme.weeklyTaskListColor; break;
-case MenuObjectType.WeeklyTaskListSecondary: {
-    color = menuTheme.weeklyTaskListSecondaryColor;
-    TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
-    if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
-    break;
-}
-case MenuObjectType.BonusTaskList: color = menuTheme.bonusTaskListColor; break;
-case MenuObjectType.BonusTaskListSecondary: {
-    color = menuTheme.bonusTaskListSecondaryColor;
-    TaskListItem taskListItem = gameObject.GetComponent<TaskListItem>();
-    if(taskListItem != null && taskListItem.GetCount() <= 0) { color = menuTheme.fixedActivityColor; }
-    break;
-}
-
-case MenuObjectType.TaskListScrollbar: color = menuTheme.taskListScrollbarColor; break;
-case MenuObjectType.TaskListCounter: color = menuTheme.taskListCounterColor; break;*/
