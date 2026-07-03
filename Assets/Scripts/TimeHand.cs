@@ -41,7 +41,7 @@ public class TimeHand : MonoBehaviour {
         GridCell cell = collision.GetComponent<GridCell>();
 
         if(cell != null && cell.canBeUsed) {
-            AudioSource.PlayClipAtPoint(GlobalGameManager.GetCurrentMenuTheme().clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
+            GlobalGameManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().clockTicking[clockTickIndex], GlobalGameManager.AudioChannels.sfxVolume);
             clockTickIndex = (clockTickIndex > GlobalGameManager.GetCurrentMenuTheme().clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
             float finalHappiness = LevelManager.GetResource(1);

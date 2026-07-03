@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1890495521898800942, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: Campaign, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2067338389391331445, guid: 0494884c098033343a11e5fe88ebe6fd, type: 3}
       propertyPath: m_text
