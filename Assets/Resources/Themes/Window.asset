@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
   m_Name: Window
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
+  translationKey: planscape.windowTheme
   mainFont: {fileID: 11400000, guid: 342efefe25f3c644e9fd234f2740dd34, type: 2}
   mainFontSizeScale: 1.5
   mainCharacterSpacingScale: 1
@@ -120,3 +121,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6507de5b2ebb0ab479e41f87742d1ecd, type: 3}
   - {fileID: 8300000, guid: 5aa7d8c832cbe3a4fbfde575ab46da2c, type: 3}
   - {fileID: 8300000, guid: 72d85c8fd4ae0ad4d8404c19f5239edb, type: 3}
+  win: {fileID: 0}
+  lose: {fileID: 0}
+  victory: {fileID: 0}

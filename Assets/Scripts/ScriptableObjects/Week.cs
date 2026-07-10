@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Week", menuName = "Scriptable Objects/Week")]
-public class Week : ScriptableObject {
+public class Week : StuffedScriptableObject {
     public MusicType musicType = MusicType.Calm;
     public GameplayType gameplayType = GameplayType.Calendar;
 

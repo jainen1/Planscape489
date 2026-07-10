@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MenuTheme", menuName = "Scriptable Objects/MenuTheme")] [Serializable]
-public class MenuTheme : ScriptableObject
+public class MenuTheme : StuffedScriptableObject
 {
     [Header("Fonts")]
     public TMPro.TMP_FontAsset mainFont;
