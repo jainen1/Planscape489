@@ -1,12 +1,13 @@
 {
+    "translationKey": "planscape.loversTheme",
     "mainFont": {
-        "instanceID": 50642
+        "instanceID": 50810
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50192
+        "instanceID": 50358
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -14,12 +15,12 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52000
+                "instanceID": 52116
             },
             "color": {
-                "r": 0.0,
-                "g": 0.0,
-                "b": 0.0,
+                "r": 0.6196078658103943,
+                "g": 0.10980392247438431,
+                "b": 0.33725491166114809,
                 "a": 1.0
             },
             "position": {
@@ -41,7 +42,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52002
+                "instanceID": 52118
             },
             "color": {
                 "r": 0.9372549653053284,
@@ -68,7 +69,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52004
+                "instanceID": 52120
             },
             "color": {
                 "r": 1.0,
@@ -95,7 +96,34 @@
         },
         {
             "sprite": {
-                "instanceID": 52008
+                "instanceID": 66812
+            },
+            "color": {
+                "r": 0.6196078658103943,
+                "g": 0.10980392247438431,
+                "b": 0.33725491166114809,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 52124
             },
             "color": {
                 "r": 1.0,
@@ -122,7 +150,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52010
+                "instanceID": 52126
             },
             "color": {
                 "r": 0.9849056601524353,
@@ -151,7 +179,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52008
+                "instanceID": 52124
             },
             "color": {
                 "r": 1.0,
@@ -178,7 +206,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52010
+                "instanceID": 52126
             },
             "color": {
                 "r": 0.9843137860298157,
@@ -491,9 +519,9 @@
         "a": 1.0
     },
     "menuButtonBackgroundColor": {
-        "r": 0.4235294461250305,
-        "g": 0.7019608020782471,
-        "b": 0.3803921937942505,
+        "r": 0.6196078658103943,
+        "g": 0.10980392247438431,
+        "b": 0.33725491166114809,
         "a": 1.0
     },
     "fixedActivityColor": {
@@ -533,7 +561,7 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51392
+        "instanceID": 51570
     },
     "tenseMusic": {
         "instanceID": 0
@@ -542,44 +570,44 @@
         "instanceID": 0
     },
     "buttonClick": {
-        "instanceID": 58838
+        "instanceID": 51724
     },
     "activityPickUp": {
-        "instanceID": 51564
+        "instanceID": 51738
     },
     "activityPickUpFail": {
-        "instanceID": 51554
+        "instanceID": 51728
     },
     "activityPutDown": {
-        "instanceID": 51560
+        "instanceID": 51734
     },
     "activityTrash": {
-        "instanceID": 51558
+        "instanceID": 51732
     },
     "clockTicking": [
         {
-            "instanceID": 52012
+            "instanceID": 52128
         },
         {
-            "instanceID": 52014
+            "instanceID": 52130
         },
         {
-            "instanceID": 52016
+            "instanceID": 52132
         },
         {
-            "instanceID": 52018
+            "instanceID": 52134
         },
         {
-            "instanceID": 52020
+            "instanceID": 52136
         },
         {
-            "instanceID": 52022
+            "instanceID": 52138
         },
         {
-            "instanceID": 52024
+            "instanceID": 52140
         },
         {
-            "instanceID": 52026
+            "instanceID": 52142
         }
     ],
     "win": {

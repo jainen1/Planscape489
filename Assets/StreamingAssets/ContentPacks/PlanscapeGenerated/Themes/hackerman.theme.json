@@ -1,12 +1,13 @@
 {
+    "translationKey": "planscape.hackermanTheme",
     "mainFont": {
-        "instanceID": 50760
+        "instanceID": 50928
     },
     "mainFontSizeScale": 0.949999988079071,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50192
+        "instanceID": 50358
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -14,7 +15,7 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52000
+                "instanceID": 52116
             },
             "color": {
                 "r": 1.0,
@@ -41,7 +42,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52002
+                "instanceID": 52118
             },
             "color": {
                 "r": 0.7843137979507446,
@@ -68,7 +69,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52004
+                "instanceID": 52120
             },
             "color": {
                 "r": 0.0784313753247261,
@@ -95,7 +96,34 @@
         },
         {
             "sprite": {
-                "instanceID": 52050
+                "instanceID": 66812
+            },
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 52166
             },
             "color": {
                 "r": 1.0,
@@ -124,7 +152,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52050
+                "instanceID": 52166
             },
             "color": {
                 "r": 1.0,
@@ -479,53 +507,53 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51544
+        "instanceID": 51716
     },
     "tenseMusic": {
         "instanceID": 0
     },
     "superTenseMusic": {
-        "instanceID": 51552
+        "instanceID": 51726
     },
     "buttonClick": {
-        "instanceID": 51546
+        "instanceID": 51718
     },
     "activityPickUp": {
-        "instanceID": 51548
+        "instanceID": 51720
     },
     "activityPickUpFail": {
-        "instanceID": 51542
+        "instanceID": 51714
     },
     "activityPutDown": {
-        "instanceID": 51556
+        "instanceID": 51730
     },
     "activityTrash": {
-        "instanceID": 51558
+        "instanceID": 51732
     },
     "clockTicking": [
         {
-            "instanceID": 52012
+            "instanceID": 52128
         },
         {
-            "instanceID": 52014
+            "instanceID": 52130
         },
         {
-            "instanceID": 52016
+            "instanceID": 52132
         },
         {
-            "instanceID": 52018
+            "instanceID": 52134
         },
         {
-            "instanceID": 52020
+            "instanceID": 52136
         },
         {
-            "instanceID": 52022
+            "instanceID": 52138
         },
         {
-            "instanceID": 52024
+            "instanceID": 52140
         },
         {
-            "instanceID": 52026
+            "instanceID": 52142
         }
     ],
     "win": {
