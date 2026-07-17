@@ -18,7 +18,8 @@ public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
 
     private void Awake() {
         fontSize = gameObject.GetComponent<TextMeshProUGUI>().fontSize;
-        characterSpacing = gameObject.GetComponent <TextMeshProUGUI>().characterSpacing;
+        characterSpacing = gameObject.GetComponent<TextMeshProUGUI>().characterSpacing;
+        lineSpacing = gameObject.GetComponent<TextMeshProUGUI>().lineSpacing;
     }
 
     public Color GetMainColor () {

@@ -76,7 +76,7 @@ public class ActivityInitializer : MonoBehaviour
         visibleShadowPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
         fixedBorder.GetComponent<SimpleMenuObject>().OnThemeUpdate();
         title.GetComponent<TextMenuObject>().OnThemeUpdate();
-        resourceTextComponent.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+        resourceTextComponent.GetComponent<TextMenuObject>().OnThemeUpdate();
     }
 
     public bool IsFixed() {
