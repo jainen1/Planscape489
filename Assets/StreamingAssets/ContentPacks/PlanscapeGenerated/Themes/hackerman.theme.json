@@ -15,7 +15,7 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52116
+                "instanceID": 86274
             },
             "color": {
                 "r": 1.0,
@@ -42,7 +42,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52118
+                "instanceID": 86276
             },
             "color": {
                 "r": 0.7843137979507446,
@@ -69,7 +69,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52120
+                "instanceID": 86278
             },
             "color": {
                 "r": 0.0784313753247261,
@@ -96,7 +96,7 @@
         },
         {
             "sprite": {
-                "instanceID": 66812
+                "instanceID": 86280
             },
             "color": {
                 "r": 1.0,
@@ -123,7 +123,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52166
+                "instanceID": 86322
             },
             "color": {
                 "r": 1.0,
@@ -152,7 +152,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52166
+                "instanceID": 86322
             },
             "color": {
                 "r": 1.0,
@@ -507,53 +507,53 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51716
+        "instanceID": 53146
     },
     "tenseMusic": {
         "instanceID": 0
     },
     "superTenseMusic": {
-        "instanceID": 51726
+        "instanceID": 53154
     },
     "buttonClick": {
-        "instanceID": 51718
+        "instanceID": 53148
     },
     "activityPickUp": {
-        "instanceID": 51720
+        "instanceID": 53150
     },
     "activityPickUpFail": {
-        "instanceID": 51714
+        "instanceID": 53144
     },
     "activityPutDown": {
-        "instanceID": 51730
+        "instanceID": 53158
     },
     "activityTrash": {
-        "instanceID": 51732
+        "instanceID": 53160
     },
     "clockTicking": [
         {
-            "instanceID": 52128
+            "instanceID": 86288
         },
         {
-            "instanceID": 52130
+            "instanceID": 86290
         },
         {
-            "instanceID": 52132
+            "instanceID": 86292
         },
         {
-            "instanceID": 52134
+            "instanceID": 86294
         },
         {
-            "instanceID": 52136
+            "instanceID": 86296
         },
         {
-            "instanceID": 52138
+            "instanceID": 86298
         },
         {
-            "instanceID": 52140
+            "instanceID": 86300
         },
         {
-            "instanceID": 52142
+            "instanceID": 86302
         }
     ],
     "win": {
