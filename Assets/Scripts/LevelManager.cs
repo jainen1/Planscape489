@@ -43,6 +43,11 @@ public class LevelManager : MonoSingleton<LevelManager>
             GameObject column = Instantiate(columnPrefab);
             column.name = "Column " + (i+1);
             column.transform.SetParent(grid.transform);
+
+            string dayName = null;
+            switch(i) { case 0: dayName = "SUN"; break; case 1: dayName = "MON"; break; case 2: dayName = "TUE"; break; case 3: dayName = "WED"; break; case 4: dayName = "THU"; break; case 5: dayName = "FRI"; break; case 6: dayName = "SAT"; break; }
+            column.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dayName;
+
             timeHand.startPositions.Add(column.transform.GetChild(0).GetChild(0).gameObject);
             GlobalGameManager.SendThemeUpdate();
             for(int j = currentWeek.dayStartHour; j < currentWeek.hoursPerDay + currentWeek.dayStartHour; j++) {
