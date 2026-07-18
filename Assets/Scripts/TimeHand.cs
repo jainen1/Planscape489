@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class TimeHand : MonoBehaviour {
     [HideInInspector] public float timer;
@@ -12,7 +13,7 @@ public class TimeHand : MonoBehaviour {
     [SerializeField] private float fastSpeedModifier = 1.5f;
 
     void Start() {
-        gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
+        StartCoroutine(TeleportAfterDelay());
         timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
         clockTickIndex = 0;
     }
@@ -26,6 +27,11 @@ public class TimeHand : MonoBehaviour {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
             }
         }
+    }
+
+    IEnumerator TeleportAfterDelay () {
+        yield return null;
+        gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
     }
 
     public bool IsFast() {
