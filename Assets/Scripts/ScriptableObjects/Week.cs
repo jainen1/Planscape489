@@ -26,6 +26,9 @@ public class Week : StuffedScriptableObject {
     [Header("Events")]
     //public float randomEventChance;
     public EventWithTime[] fixedEvents;
+
+    [TextArea(1, 16)]
+    public string[] tutorialContent;
 }
 
 [Serializable]

@@ -1,21 +1,17 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TimeHand : MonoBehaviour {
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
     private int clockTickIndex;
-    [SerializeField] private GameObject[] startPositions;
+    public List<GameObject> startPositions;
 
     [Header("Fast Forward")]
     [SerializeField] private bool isFast = false;
     [SerializeField] private float fastSpeedModifier = 1.5f;
-
-    void Start() {
-        gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
-        timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
-        clockTickIndex = 0;
-    }
 
     private void Update() {
         timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
@@ -26,6 +22,12 @@ public class TimeHand : MonoBehaviour {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
             }
         }
+    }
+
+    public void StartTimeHand () {
+        gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
+        timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
+        clockTickIndex = 0;
     }
 
     public bool IsFast() {
@@ -80,8 +82,9 @@ public class TimeHand : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision) {
         GridCell cell = collision.GetComponent<GridCell>();
-        if(cell != null && cell.hour == 22) {
-            if(cell.day == 7) {
+        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+        if(cell != null && cell.hour == (currentWeek.dayStartHour + currentWeek.hoursPerDay - 1)) {
+            if(cell.day == currentWeek.days) {
                 if(LevelManager.Instance.RequiredTaskListIsEmpty()) {
                     if(GlobalGameManager.GetCurrentWeekIndex() == GlobalGameManager.GetLastWeekIndex() - 1) {
                         LevelManager.Instance.VictoryScene();

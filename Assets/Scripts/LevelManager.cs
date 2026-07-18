@@ -1,10 +1,17 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
-    public GridCell[] cells;
+    [SerializeField] private GameObject grid;
+
+    [SerializeField] private GameObject columnPrefab;
+    [SerializeField] private GameObject cellPrefab;
+    public List<GridCell> cells;
 
     [SerializeField] private GameObject activityPrefab;
 
@@ -31,31 +38,86 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     protected override bool IsPersistent () { return false; }
 
-    public void StartLevel() {
-        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+    IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
+        for(int i = 0; i < currentWeek.days; i++) {
+            GameObject column = Instantiate(columnPrefab);
+            column.name = "Column " + (i+1);
+            column.transform.SetParent(grid.transform);
 
-        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex() };
-        if(currentWeek.resourceBars.Length > 1) {
-            for(int i = 1; i < currentWeek.resourceBars.Length; i++) {
-                resources.Add(currentWeek.resourceBars[i].startingValue);
+            string dayName = null;
+            switch(i) { case 0: dayName = "SUN"; break; case 1: dayName = "MON"; break; case 2: dayName = "TUE"; break; case 3: dayName = "WED"; break; case 4: dayName = "THU"; break; case 5: dayName = "FRI"; break; case 6: dayName = "SAT"; break; }
+            column.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dayName;
+
+            timeHand.startPositions.Add(column.transform.GetChild(0).GetChild(0).gameObject);
+            GlobalGameManager.SendThemeUpdate();
+            for(int j = currentWeek.dayStartHour; j < currentWeek.hoursPerDay + currentWeek.dayStartHour; j++) {
+                GameObject cell = Instantiate(cellPrefab);
+                cell.name = "Cell " + (j);
+                cell.transform.SetParent(column.transform);
+                GridCell cellComponent = cell.GetComponent<GridCell>();
+                if(cellComponent != null) {
+                    cellComponent.day = i + 1;
+                    cellComponent.hour = j;
+                    cells.Add(cellComponent);
+                    cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+                    cell.GetComponent<TextMenuObject>().OnThemeUpdate();
+                    //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
+                    yield return new WaitForSeconds(Mathf.Log(1.08f, (float) ((i*17) + Mathf.Max(j, 1))));
+                }
+            }
+        }
+
+        timeHand.StartTimeHand();
+
+        if(currentWeek.fixedActivities.Length > 0) {
+            for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
+                ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
+                CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
+                yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
             }
         }
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
                 EventWithTime activeEvent = currentWeek.fixedEvents[i];
-                cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)].occupyingEvent = activeEvent.eventObject;
+                GridCell targetCell = cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)];
+                targetCell.occupyingEvent = activeEvent.eventObject;
+                targetCell.GetComponent<TextMeshProUGUI>().text = "! EVENT !";
+                targetCell.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Bold;
+                //targetCell.GetComponent<TextMeshProUGUI>().color = ;
+
+                yield return new WaitForSeconds(Mathf.Log(1.08f, (i + 2)));
             }
         }
 
-        if(currentWeek.fixedActivities.Length > 0) {
-            for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
-                ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
-                CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
-            }
+        yield return new WaitForSeconds(0.5f);
+        if(currentWeek.tutorialContent.Length < 1) {
+            Instance.levelIsActive = true;
+        } else {
+            GlobalGameManager.AddScene("Tutorial");
         }
 
         GlobalGameManager.SendThemeUpdate();
+    }
+
+    IEnumerator PrepareResources(Week currentWeek) {
+        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex() };
+        if(currentWeek.resourceBars.Length > 1) {
+            for(int i = 1; i < currentWeek.resourceBars.Length; i++) {
+                resources.Add(currentWeek.resourceBars[i].startingValue);
+            }
+        }
+        yield return null;
+    }
+
+    public void StartLevel() {
+        Instance.levelIsActive = false;
+        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+
+        cells = new List<GridCell>();
+        StartCoroutine(PrepareCells(currentWeek, cells));
+        StartCoroutine(PrepareResources(currentWeek));
+
         //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
         _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
     }
@@ -164,7 +226,7 @@ public class LevelManager : MonoSingleton<LevelManager>
         if(doPlannerMetric) {
             //Debug.Log("Creating planner sample...");
             string plannerData = "\nWeek " + GlobalGameManager.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
-            for(int i = 0; i < cells.Length; i++) {
+            for(int i = 0; i < cells.Count; i++) {
                 string occupyingActivity = "";
                 if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }
                 plannerData += "cell_" + i.ToString("000") + ": " + occupyingActivity + ", ";
