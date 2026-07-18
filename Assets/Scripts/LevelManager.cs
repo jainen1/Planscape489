@@ -1,10 +1,15 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
+using System.Collections;
 using System.Collections.Generic;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
-    public GridCell[] cells;
+    [SerializeField] private GameObject grid;
+
+    [SerializeField] private GameObject columnPrefab;
+    [SerializeField] private GameObject cellPrefab;
+    public List<GridCell> cells;
 
     [SerializeField] private GameObject activityPrefab;
 
@@ -31,20 +36,24 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     protected override bool IsPersistent () { return false; }
 
-    public void StartLevel() {
-        Week currentWeek = GlobalGameManager.GetCurrentWeek();
-
-        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex() };
-        if(currentWeek.resourceBars.Length > 1) {
-            for(int i = 1; i < currentWeek.resourceBars.Length; i++) {
-                resources.Add(currentWeek.resourceBars[i].startingValue);
-            }
-        }
-
-        if(currentWeek.fixedEvents.Length > 0) {
-            for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
-                EventWithTime activeEvent = currentWeek.fixedEvents[i];
-                cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)].occupyingEvent = activeEvent.eventObject;
+    IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
+        for(int i = 0; i < currentWeek.days; i++) {
+            GameObject column = Instantiate(columnPrefab);
+            column.name = "Column " + (i+1);
+            column.transform.SetParent(grid.transform);
+            for(int j = currentWeek.dayStartHour; j < currentWeek.hoursPerDay + currentWeek.dayStartHour; j++) {
+                GameObject cell = Instantiate(cellPrefab);
+                cell.name = "Cell " + (j);
+                cell.transform.SetParent(column.transform);
+                GridCell cellComponent = cell.GetComponent<GridCell>();
+                if(cellComponent != null) {
+                    cellComponent.day = i + 1;
+                    cellComponent.hour = j;
+                    cells.Add(cellComponent);
+                    GlobalGameManager.SendThemeUpdate();
+                    //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
+                    yield return new WaitForSeconds(Mathf.Log(1.08f, (float) ((i*17) + Mathf.Max(j, 1))));
+                }
             }
         }
 
@@ -52,8 +61,35 @@ public class LevelManager : MonoSingleton<LevelManager>
             for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
                 ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
                 CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
+                yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
             }
         }
+
+        if(currentWeek.fixedEvents.Length > 0) {
+            for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
+                EventWithTime activeEvent = currentWeek.fixedEvents[i];
+                cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)].occupyingEvent = activeEvent.eventObject;
+                yield return new WaitForSeconds(Mathf.Log(1.08f, (i + 2)));
+            }
+        }
+    }
+
+    IEnumerator PrepareResources(Week currentWeek) {
+        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex() };
+        if(currentWeek.resourceBars.Length > 1) {
+            for(int i = 1; i < currentWeek.resourceBars.Length; i++) {
+                resources.Add(currentWeek.resourceBars[i].startingValue);
+            }
+        }
+        yield return null;
+    }
+
+    public void StartLevel() {
+        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+
+        cells = new List<GridCell>();
+        StartCoroutine(PrepareCells(currentWeek, cells));
+        StartCoroutine(PrepareResources(currentWeek));
 
         GlobalGameManager.SendThemeUpdate();
         //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
@@ -164,7 +200,7 @@ public class LevelManager : MonoSingleton<LevelManager>
         if(doPlannerMetric) {
             //Debug.Log("Creating planner sample...");
             string plannerData = "\nWeek " + GlobalGameManager.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
-            for(int i = 0; i < cells.Length; i++) {
+            for(int i = 0; i < cells.Count; i++) {
                 string occupyingActivity = "";
                 if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }
                 plannerData += "cell_" + i.ToString("000") + ": " + occupyingActivity + ", ";

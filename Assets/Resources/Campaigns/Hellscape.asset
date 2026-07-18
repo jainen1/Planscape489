@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
   m_Name: Hellscape
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
+  translationKey: 
   weeks:
+  - {fileID: 11400000, guid: 6dfba4f76be47744c85e57534298b94d, type: 2}
   - {fileID: 11400000, guid: 288f5df52fd56a24882ef413f7a8f740, type: 2}
   randomEvents: []

@@ -129,7 +129,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         int startCellIndex = LevelManager.GetGridCellIndex(cell.day, cell.hour);
         int endCellIndex = startCellIndex + initializer.activity.length - 1;
         for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(endCellIndex > LevelManager.Instance.cells.Length - 1 || (LevelManager.Instance.cells[i].occupyingActivity != null && LevelManager.Instance.cells[i].occupyingActivity != this)) {
+            if(endCellIndex > LevelManager.Instance.cells.Count - 1 || (LevelManager.Instance.cells[i].occupyingActivity != null && LevelManager.Instance.cells[i].occupyingActivity != this)) {
                 //Debug.LogWarning("Cell unavailable: Cell(s) occupied!");
                 return false;
             }
@@ -139,7 +139,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         if(initializer.activity.fullStomachLength > 0) { 
             int foodEndCellIndex = Mathf.Min(startCellIndex + initializer.activity.fullStomachLength - 1, LevelManager.GetGridCellIndex(cell.day, 22));
             for(int i = startCellIndex; i <= foodEndCellIndex; i++) {
-                if(foodEndCellIndex > LevelManager.Instance.cells.Length - 1 || (LevelManager.Instance.cells[i].occupyingFoodActivity != null && LevelManager.Instance.cells[i].occupyingFoodActivity != this)) {
+                if(foodEndCellIndex > LevelManager.Instance.cells.Count - 1 || (LevelManager.Instance.cells[i].occupyingFoodActivity != null && LevelManager.Instance.cells[i].occupyingFoodActivity != this)) {
                     //Debug.Log("Cell unavailable: Activity is food, and cell is occupied by food!");
                     return false;
                 }

@@ -31,6 +31,7 @@ public class TimeHand : MonoBehaviour {
 
     IEnumerator TeleportAfterDelay () {
         yield return null;
+        yield return null;
         gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
     }
 

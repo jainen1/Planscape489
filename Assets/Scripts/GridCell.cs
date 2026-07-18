@@ -18,9 +18,9 @@ public class GridCell : MonoBehaviour
         occupyingActivity = null;
         occupyingFoodActivity = null;
 
-        if(canBeUsed) {
+        /*if(canBeUsed) {
             hour = int.Parse(gameObject.name.Substring(gameObject.name.Length - 2));
             day = int.Parse(gameObject.transform.parent.name.Substring(gameObject.transform.parent.name.Length - 1));
-        }
+        }*/
     }
 }
