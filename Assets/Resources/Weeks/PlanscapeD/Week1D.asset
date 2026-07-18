@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: Week1D
   m_EditorClassIdentifier: Assembly-CSharp::Week
-  music: {fileID: 0}
+  translationKey: 
+  musicType: 0
+  gameplayType: 0
   timeHandSpeed: 0.48
   firstPreparationTime: 60
   dailyPreparationTime: 15
+  days: 7
+  hoursPerDay: 17
+  dayStartHour: 6
   resourceBars:
   - startingValue: 0
     resourceBars:
@@ -75,3 +80,43 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: f705dd4a6377b4c34ad0b95586472798, type: 2}
     count: 1
   fixedEvents: []
+  tutorialContent:
+  - '- Intro -
+
+
+    Welcome to Planscape!
+
+
+    Your goal is to make it to the end
+    of the week without going negative on Happiness or Money.
+
+
+    If your Happiness
+    or Money falls to zero, you burn out.'
+  - "- Activities -\n\nActivities in your To-Do lists affect your Happiness and Money.\n\nClick
+    and drag an activity to schedule it. Don\u2019t worry, you can pick it up again!\n\n\u201CMust
+    Do\u201D activities MUST be done by the end of the week. \u201CCould Do\u201D
+    don\u2019t have to, though!\n\nTo delete an activity, drag it right back to a
+    task list and it\u2019ll slot back in!"
+  - '- Special Activities -
+
+
+    Grey activities are immovable. Plan accordingly!
+
+
+    Certain
+    activities have a hollow space descending from them representing a full stomach;
+    you will be unable to place other "meal" tasks in that space.'
+  - '- Time -
+
+
+    You get 60 seconds to plan your week and 15 seconds before each
+    day starts.
+
+
+    When the Time Hand starts ticking, all past activities are
+    set in stone.
+
+
+    You can still move activities around in the future, though!
+    Don''t stop working when the clock is ticking!'

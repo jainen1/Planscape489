@@ -51,8 +51,6 @@ MonoBehaviour:
     time: {x: 3, y: 12}
   - activity: {fileID: 11400000, guid: 2a34045deb627434197b6ec1a74cb73e, type: 2}
     time: {x: 5, y: 12}
-  - activity: {fileID: 11400000, guid: 2a34045deb627434197b6ec1a74cb73e, type: 2}
-    time: {x: 6, y: 14}
   - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
     time: {x: 3, y: 19}
   - activity: {fileID: 11400000, guid: af61d56ad22da264da57910278f76e9f, type: 2}
@@ -61,8 +59,6 @@ MonoBehaviour:
     time: {x: 1, y: 12}
   - activity: {fileID: 11400000, guid: 0dfe6b4bccfc4d7489f63b5a7e311ebf, type: 2}
     time: {x: 4, y: 11}
-  - activity: {fileID: 11400000, guid: 2ca272c6661a7474aad0eec1031ab64b, type: 2}
-    time: {x: 7, y: 22}
   requiredTasks:
   - activity: {fileID: 11400000, guid: 398c8ba604615614a91852d4cd558f01, type: 2}
     count: 18
@@ -89,4 +85,7 @@ MonoBehaviour:
     count: 1
   - activity: {fileID: 11400000, guid: 92ee374a7b701405aa65dd7442f8db49, type: 2}
     count: 1
-  fixedEvents: []
+  fixedEvents:
+  - eventObject: {fileID: 11400000, guid: 5b5f5dd19984a9341a515bb5e6ff9ab5, type: 2}
+    time: {x: 5, y: 8}
+  tutorialContent: []

@@ -140,7 +140,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         //Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         Instance.campaign = campaign;
         Instance.currentWeek = 0;
-        StartWeekWithTutorial();
+        //StartWeekWithTutorial();
+        StartWeek();
     }
 
     public static void StartWeekWithTutorial() {
