@@ -89,7 +89,9 @@ MonoBehaviour:
   - eventObject: {fileID: 11400000, guid: 5b5f5dd19984a9341a515bb5e6ff9ab5, type: 2}
     time: {x: 5, y: 8}
   tutorialContent:
-  - 'Welcome to Hellscape, loser!
+  - type: 0
+    text: 'Welcome to Hellscape, loser!
 
 
-    Now get your ass in gear, it''s time to PLAN!'
+      Now get your ass in gear, it''s time
+      to PLAN!'
