@@ -27,8 +27,8 @@ public class Week : StuffedScriptableObject {
     //public float randomEventChance;
     public Utilities.EventWithTime[] fixedEvents;
 
-    [TextArea(1, 16)]
-    public string[] tutorialContent;
+    [Header("Tutorial")]
+    public Utilities.TutorialContent[] tutorialContent;
 
     public static class Utilities {
         [Serializable]
@@ -61,6 +61,13 @@ public class Week : StuffedScriptableObject {
             }
         }
 
+        [Serializable]
+        public class TutorialContent {
+            public TutorialContentType type;
+            [TextArea(1, 16)]
+            public string text;
+        }
+
         public enum MusicType {
             Calm,
             Tense,
@@ -71,6 +78,11 @@ public class Week : StuffedScriptableObject {
             Calendar,
             Invaders,
             Zombies
+        }
+
+        public enum TutorialContentType {
+            Tutorial,
+            Dialogue
         }
     }
 }

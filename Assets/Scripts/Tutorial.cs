@@ -12,7 +12,7 @@ public class Tutorial : MonoBehaviour
         LevelManager.Instance.levelIsActive = false;
         GlobalGameManager.SendThemeUpdate();
         activeContentIndex = 0;
-        content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex];
+        content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex].text;
     }
 
     public void AdvanceTutorialOrEnd() {
@@ -22,7 +22,7 @@ public class Tutorial : MonoBehaviour
             LevelManager.Instance.levelIsActive = true;
             GlobalGameManager.CloseScene("Tutorial");
         } else {
-            content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex];
+            content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex].text;
         }
     }
 }
