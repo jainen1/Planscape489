@@ -1,13 +1,13 @@
 {
     "translationKey": "planscape.hackermanTheme",
     "mainFont": {
-        "instanceID": 50986
+        "instanceID": 50966
     },
     "mainFontSizeScale": 0.949999988079071,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 49942
+        "instanceID": 50396
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -15,7 +15,7 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52168
+                "instanceID": 52494
             },
             "color": {
                 "r": 1.0,
@@ -42,7 +42,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52170
+                "instanceID": 52496
             },
             "color": {
                 "r": 0.7843137979507446,
@@ -69,7 +69,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52172
+                "instanceID": 52498
             },
             "color": {
                 "r": 0.0784313753247261,
@@ -96,7 +96,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52174
+                "instanceID": 52500
             },
             "color": {
                 "r": 1.0,
@@ -123,7 +123,7 @@
         },
         {
             "sprite": {
-                "instanceID": 52216
+                "instanceID": 52548
             },
             "color": {
                 "r": 1.0,
@@ -152,7 +152,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52216
+                "instanceID": 52548
             },
             "color": {
                 "r": 1.0,
@@ -507,53 +507,53 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51732
+        "instanceID": 51754
     },
     "tenseMusic": {
         "instanceID": 0
     },
     "superTenseMusic": {
-        "instanceID": 51742
+        "instanceID": 51764
     },
     "buttonClick": {
-        "instanceID": 51734
+        "instanceID": 51756
     },
     "activityPickUp": {
-        "instanceID": 51736
+        "instanceID": 51758
     },
     "activityPickUpFail": {
-        "instanceID": 51730
+        "instanceID": 51752
     },
     "activityPutDown": {
-        "instanceID": 51746
+        "instanceID": 51768
     },
     "activityTrash": {
-        "instanceID": 51748
+        "instanceID": 51770
     },
     "clockTicking": [
         {
-            "instanceID": 52182
+            "instanceID": 52508
         },
         {
-            "instanceID": 52184
+            "instanceID": 52510
         },
         {
-            "instanceID": 52186
+            "instanceID": 52512
         },
         {
-            "instanceID": 52188
+            "instanceID": 52514
         },
         {
-            "instanceID": 52190
+            "instanceID": 52516
         },
         {
-            "instanceID": 52192
+            "instanceID": 52518
         },
         {
-            "instanceID": 52194
+            "instanceID": 52520
         },
         {
-            "instanceID": 52196
+            "instanceID": 52522
         }
     ],
     "win": {

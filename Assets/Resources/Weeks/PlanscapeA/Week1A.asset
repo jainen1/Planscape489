@@ -87,42 +87,47 @@ MonoBehaviour:
     count: 1
   fixedEvents: []
   tutorialContent:
-  - '- Intro -
+  - type: 0
+    text: '- Intro -
 
 
-    Welcome to Planscape!
+      Welcome to Planscape!
 
 
-    Your goal is to make it to the end
-    of the week without going negative on Happiness or Money.
+      Your goal is to make it
+      to the end of the week without going negative on Happiness or Money.
 
 
-    If your Happiness
-    or Money falls to zero, you burn out.'
-  - "- Activities -\n\nActivities in your To-Do lists affect your Happiness and Money.\n\nClick
-    and drag an activity to schedule it. Don\u2019t worry, you can pick it up again!\n\n\u201CMust
-    Do\u201D activities MUST be done by the end of the week. \u201CCould Do\u201D
-    don\u2019t have to, though!\n\nTo delete an activity, drag it right back to a
-    task list and it\u2019ll slot back in!"
-  - '- Special Activities -
+      If
+      your Happiness or Money falls to zero, you burn out.'
+  - type: 0
+    text: "- Activities -\r\n\r\nActivities in your To-Do lists affect your Happiness
+      and Money.\r\n\r\nClick and drag an activity to schedule it. Don\u2019t worry,
+      you can pick it up again!\r\n\r\n\u201CMust Do\u201D activities MUST be done
+      by the end of the week. \u201CCould Do\u201D don\u2019t have to, though!\r\n\r\nTo
+      delete an activity, drag it right back to a task list and it\u2019ll slot back
+      in!"
+  - type: 0
+    text: '- Special Activities -
 
 
-    Grey activities are immovable. Plan accordingly!
+      Grey activities are immovable. Plan accordingly!
 
 
-    Certain
-    activities have a hollow space descending from them representing a full stomach;
-    you will be unable to place other "meal" tasks in that space.'
-  - '- Time -
+      Certain
+      activities have a hollow space descending from them representing a full stomach;
+      you will be unable to place other "meal" tasks in that space.'
+  - type: 0
+    text: '- Time -
 
 
-    You get 60 seconds to plan your week and 15 seconds before each
-    day starts.
+      You get 60 seconds to plan your week and 15 seconds before
+      each day starts.
 
 
-    When the Time Hand starts ticking, all past activities are
-    set in stone.
+      When the Time Hand starts ticking, all past activities
+      are set in stone.
 
 
-    You can still move activities around in the future, though!
-    Don''t stop working when the clock is ticking!'
+      You can still move activities around in the future,
+      though! Don''t stop working when the clock is ticking!'
