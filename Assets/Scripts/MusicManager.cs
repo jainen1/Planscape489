@@ -14,9 +14,9 @@ public class MusicManager : MonoSingleton<MusicManager>
         AudioClip themeMusic = GlobalGameManager.GetCurrentMenuTheme().calmMusic;
         if(FindAnyObjectByType<LevelManager>()) { //test if you are in the level
             switch(GlobalGameManager.GetCurrentWeek().musicType) {
-                case MusicType.SuperTense: { themeMusic = GlobalGameManager.GetCurrentMenuTheme().superTenseMusic; if(themeMusic != null) {  break; } else { goto case MusicType.Tense; } }
-                case MusicType.Tense: { themeMusic = GlobalGameManager.GetCurrentMenuTheme().tenseMusic; if(themeMusic != null) {  break; } else { goto case MusicType.Calm; } }
-                case MusicType.Calm: { themeMusic = GlobalGameManager.GetCurrentMenuTheme().calmMusic; break; }
+                case Week.Utilities.MusicType.SuperTense: { themeMusic = GlobalGameManager.GetCurrentMenuTheme().superTenseMusic; if(themeMusic != null) {  break; } else { goto case Week.Utilities.MusicType.Tense; } }
+                case Week.Utilities.MusicType.Tense: { themeMusic = GlobalGameManager.GetCurrentMenuTheme().tenseMusic; if(themeMusic != null) {  break; } else { goto case Week.Utilities.MusicType.Calm; } }
+                case Week.Utilities.MusicType.Calm: { themeMusic = GlobalGameManager.GetCurrentMenuTheme().calmMusic; break; }
             }
         }
 

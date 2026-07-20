@@ -21,13 +21,13 @@ public class EventChoice {
 public class EventResult {
     public int happinessChange;
     public int moneyChange;
-    public List<ActivityWithTime> addFixedActivities;
+    public List<Week.Utilities.ActivityWithTime> addFixedActivities;
     public List<ActivityWithCountAndType> addActivities;
     public List<EventObject> addEvents;
 }
 
 [Serializable]
 public class ActivityWithCountAndType {
-    public ActivityWithCount activityWithCount;
+    public Week.Utilities.ActivityWithCount activityWithCount;
     public Activity.Type activityType;
 }

@@ -71,7 +71,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
         if(currentWeek.fixedActivities.Length > 0) {
             for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
-                ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
+                Week.Utilities.ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
                 CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
                 yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
             }
@@ -79,7 +79,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
-                EventWithTime activeEvent = currentWeek.fixedEvents[i];
+                Week.Utilities.EventWithTime activeEvent = currentWeek.fixedEvents[i];
                 GridCell targetCell = cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)];
                 targetCell.occupyingEvent = activeEvent.eventObject;
                 targetCell.GetComponent<TextMeshProUGUI>().text = "! EVENT !";

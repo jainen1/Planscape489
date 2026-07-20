@@ -8,7 +8,7 @@ public class TaskListItem : MonoBehaviour
 
     private GameObject newActivity;
 
-    [HideInInspector] public ActivityWithCount activityWithCount;
+    [HideInInspector] public Week.Utilities.ActivityWithCount activityWithCount;
 
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject resourceTextComponent;
