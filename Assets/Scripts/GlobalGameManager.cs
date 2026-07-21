@@ -9,6 +9,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     [SerializeField] private int currentWeek = 0;
 
     [SerializeField] private MenuTheme currentTheme;
+    [SerializeField] private MenuTheme defaultTheme;
 
     public delegate void UpdateTheme();
     public static event UpdateTheme OnUpdateTheme;
@@ -24,7 +25,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SaveAllThemesToJson();
         //LoadActiveThemes();
         LoadThemesFromResources();
-        //PrintThemes();
 
         //SaveGame();
 
@@ -89,7 +89,12 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SendThemeUpdate();
     }
 
-    public static MenuTheme GetCurrentMenuTheme() { return Instance.currentTheme; }
+    public static MenuTheme GetCurrentMenuTheme() {
+        if(Instance.currentTheme == null) {
+            return Instance.defaultTheme;
+        } return Instance.currentTheme;
+    }
+
     public static MenuTheme[] GetActiveMenuThemes() { return Instance.activeThemes; }
 
     private static string themesFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Themes");
