@@ -28,7 +28,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
   - sprite: {fileID: 21300000, guid: b3417f32a3b5c524e9c6078c01df6bde, type: 3}
-    color: {r: 0.7294118, g: 0.15686275, b: 0.16470589, a: 1}
+    color: {r: 0.36078432, g: 0.14509805, b: 0.14509805, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
@@ -38,17 +38,17 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
   - sprite: {fileID: 21300000, guid: aa47c7800243a6c4c8decc6255ad0eb3, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
+    color: {r: 0.36078432, g: 0.14509805, b: 0.14509805, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
-  - sprite: {fileID: 21300000, guid: beeed2acda05cb949b78345ff4ebc113, type: 3}
+  - sprite: {fileID: -6833492607462250157, guid: 8c30b8cb0be2e437395f9705509bfb67, type: 3}
     color: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
   levelBackgroundLayers:
-  - sprite: {fileID: 21300000, guid: beeed2acda05cb949b78345ff4ebc113, type: 3}
+  - sprite: {fileID: -6833492607462250157, guid: 8c30b8cb0be2e437395f9705509bfb67, type: 3}
     color: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
