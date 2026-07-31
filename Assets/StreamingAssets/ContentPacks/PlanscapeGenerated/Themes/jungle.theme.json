@@ -123,7 +123,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51944
+                "instanceID": 52044
             },
             "color": {
                 "r": 0.9490196704864502,
@@ -152,7 +152,7 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51944
+                "instanceID": 52044
             },
             "color": {
                 "r": 0.9490196704864502,
@@ -179,7 +179,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51944
+                "instanceID": 52044
             },
             "color": {
                 "r": 0.9215686917304993,
