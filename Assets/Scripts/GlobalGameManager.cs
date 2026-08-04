@@ -22,7 +22,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public GameSettings settings;
 
     protected override void OnInitialize() {
-        SaveAllThemesToJson();
+        //SaveAllThemesToJson();
         //LoadActiveThemes();
         LoadThemesFromResources();
 
@@ -97,15 +97,47 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     public static MenuTheme[] GetActiveMenuThemes() { return Instance.activeThemes; }
 
-    private static string themesFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Themes");
-    private static string campaignsFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Campaigns");
+    private static string planscapeGeneratedFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated");
 
-    public void SaveAllThemesToJson() {
-        MenuTheme[] resourcesThemes = Resources.LoadAll<MenuTheme>("Themes");
-        Debug.Log("Writing theme data to " + themesFolder);
-        foreach(MenuTheme menuTheme in resourcesThemes) {
-            if(!Directory.Exists(themesFolder)) { Directory.CreateDirectory(themesFolder); }
-            File.WriteAllText(Path.Combine(themesFolder, menuTheme.name.ToLower() + ".theme.json"), JsonUtility.ToJson(menuTheme, true)); // save theme to JSON
+    public static void SaveAllResourcesToJson() {
+        SaveAllCampaignsToJson();
+        SaveAllThemesToJson();
+        SaveAllWeeksToJson();
+    }
+
+    public static void SaveAllCampaignsToJson() {
+        string folderPath = Path.Combine(planscapeGeneratedFolder, "Campaigns");
+
+        Campaign[] objectList = Resources.LoadAll<Campaign>("Campaigns");
+        Debug.Log("Writing campaign data to " + folderPath);
+        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
+        for(int i = 0; i < objectList.Length; i++) {
+            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".campaign.json"), JsonUtility.ToJson(objectList[i], true)); // save campaign to JSON
+            Debug.Log("Generating Campaigns... (" + (i + 1) + "/" + objectList.Length + ")");
+        }
+    }
+
+    public static void SaveAllThemesToJson() {
+        string folderPath = Path.Combine(planscapeGeneratedFolder, "Themes");
+
+        MenuTheme[] objectList = Resources.LoadAll<MenuTheme>("Themes");
+        Debug.Log("Writing theme data to " + folderPath);
+        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
+        for(int i = 0; i < objectList.Length; i++) {
+            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".theme.json"), JsonUtility.ToJson(objectList[i], true)); // save theme to JSON
+            Debug.Log("Generating Themes... (" + (i+1) + "/" + objectList.Length + ")");
+        }
+    }
+
+    public static void SaveAllWeeksToJson() {
+        string folderPath = Path.Combine(planscapeGeneratedFolder, "Weeks");
+
+        Week[] objectList = Resources.LoadAll<Week>("Weeks");
+        Debug.Log("Writing week data to " + folderPath);
+        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
+        for(int i = 0; i < objectList.Length; i++) {
+            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".week.json"), JsonUtility.ToJson(objectList[i], true)); // save week to JSON
+            Debug.Log("Generating Weeks... (" + (i + 1) + "/" + objectList.Length + ")");
         }
     }
 
@@ -118,7 +150,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void LoadActiveThemes() {
         //AssetDatabase.Refresh();
         int themeFileIndex = 0;
-        foreach(var file in Directory.EnumerateFiles(themesFolder, "theme.json")) {
+        foreach(var file in Directory.EnumerateFiles(Path.Combine(planscapeGeneratedFolder, "Themes"), "theme.json")) {
             string json = File.ReadAllText(file);
             JsonUtility.FromJsonOverwrite(json, Instance.activeThemes[themeFileIndex]);
             Debug.Log("Read theme data from file " + file);

@@ -62,7 +62,8 @@ public class LevelManager : MonoSingleton<LevelManager>
                     cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
                     cell.GetComponent<TextMenuObject>().OnThemeUpdate();
                     //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
-                    yield return new WaitForSecondsRealtime(Mathf.Log(1.08f, (float) ((i*17) + Mathf.Max(j, 1))));
+                    yield return new WaitForSeconds((2.5f - (i * 0.01f)) / (currentWeek.hoursPerDay * currentWeek.days));
+                    //yield return new WaitForSeconds(Mathf.Log(1.08f, (float) ((i*17) + Mathf.Max(j, 1))));
                 }
             }
         }
@@ -90,7 +91,7 @@ public class LevelManager : MonoSingleton<LevelManager>
             }
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSeconds(0.5f);
         if(currentWeek.tutorialContent.Length < 1) {
             Instance.levelIsActive = true;
         } else {
