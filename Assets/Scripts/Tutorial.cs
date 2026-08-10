@@ -17,12 +17,16 @@ public class Tutorial : MonoBehaviour
 
     public void AdvanceTutorialOrEnd() {
         activeContentIndex++;
-        if(activeContentIndex >= GlobalGameManager.GetCurrentWeek().tutorialContent.Length) { //end tutorial
-            LevelManager.Instance.pauseMenuInteractible = true;
-            LevelManager.Instance.levelIsActive = true;
-            GlobalGameManager.CloseScene("Tutorial");
+        if(activeContentIndex >= GlobalGameManager.GetCurrentWeek().tutorialContent.Length) {
+            EndTutorial();
         } else {
             content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex].text;
         }
+    }
+
+    public void EndTutorial () {
+        LevelManager.Instance.pauseMenuInteractible = true;
+        LevelManager.Instance.levelIsActive = true;
+        GlobalGameManager.CloseScene("Tutorial");
     }
 }
