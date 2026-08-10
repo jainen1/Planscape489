@@ -556,6 +556,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1582657742}
     m_Modifications:
+    - target: {fileID: 765329137170615038, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: c744378a7e6e51048ad8597c0c2d5bc1, type: 2}
+    - target: {fileID: 1383665904060082550, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     - target: {fileID: 2376040834461263444, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_text
       value: 'Play as a college
@@ -583,6 +591,18 @@ PrefabInstance:
     - target: {fileID: 2405418073981551091, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_fontSizeBase
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.b
+      value: 0.18039215
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.g
+      value: 0.31188378
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Pivot.x
@@ -683,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 639486920}
+      objectReference: {fileID: 0}
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.5707547
@@ -733,17 +753,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
---- !u!114 &639486920 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6341197661688395467, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
-  m_PrefabInstance: {fileID: 639486919}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &639486921 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
@@ -1056,6 +1065,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1582657742}
     m_Modifications:
+    - target: {fileID: 765329137170615038, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 30661e6894d33f14bb95d48f762714f2, type: 2}
+    - target: {fileID: 1383665904060082550, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6833492607462250157, guid: 8c30b8cb0be2e437395f9705509bfb67, type: 3}
     - target: {fileID: 2376040834461263444, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_text
       value: 'Play as a low-ranked
@@ -1084,6 +1101,18 @@ PrefabInstance:
     - target: {fileID: 2405418073981551091, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_fontSizeBase
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7888756
       objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Pivot.x
@@ -1184,7 +1213,7 @@ PrefabInstance:
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 1285268857}
+      objectReference: {fileID: 0}
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.5707547
@@ -1238,17 +1267,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
---- !u!114 &1285268857 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6341197661688395467, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
-  m_PrefabInstance: {fileID: 1285268856}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &1285268858 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
@@ -2118,6 +2136,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1582657742}
     m_Modifications:
+    - target: {fileID: 765329137170615038, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 9658f7959acd8054fb6955b72e4a063b, type: 2}
+    - target: {fileID: 1383665904060082550, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: beeed2acda05cb949b78345ff4ebc113, type: 3}
     - target: {fileID: 2376040834461263444, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_text
       value: 'Play as a college
@@ -2145,6 +2171,18 @@ PrefabInstance:
     - target: {fileID: 2405418073981551091, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_fontSizeBase
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.b
+      value: 0.12385191
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8562507
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9245283
       objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Pivot.x
@@ -2245,7 +2283,7 @@ PrefabInstance:
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 1700424975}
+      objectReference: {fileID: 0}
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.5707547
@@ -2295,17 +2333,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
---- !u!114 &1700424975 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6341197661688395467, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
-  m_PrefabInstance: {fileID: 1700424974}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &1700424976 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
@@ -2319,6 +2346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1582657742}
     m_Modifications:
+    - target: {fileID: 765329137170615038, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: feb198bfec12c5e4ea37627eb0e49c44, type: 2}
     - target: {fileID: 2376040834461263444, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_text
       value: 'Play as a college
@@ -2346,6 +2377,18 @@ PrefabInstance:
     - target: {fileID: 2405418073981551091, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_fontSizeBase
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.b
+      value: 0.16470589
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.g
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2944576595221423988, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
+      propertyPath: m_Color.r
+      value: 0.22995901
       objectReference: {fileID: 0}
     - target: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Pivot.x
@@ -2446,7 +2489,7 @@ PrefabInstance:
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 1822921307}
+      objectReference: {fileID: 0}
     - target: {fileID: 7684215939337479919, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.5707547
@@ -2504,17 +2547,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
---- !u!114 &1822921307 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6341197661688395467, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
-  m_PrefabInstance: {fileID: 1822921306}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &1822921308 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6002036797049382711, guid: 6e1efd59214aa8a438ebeb9df7224bab, type: 3}
