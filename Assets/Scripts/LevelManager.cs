@@ -62,8 +62,12 @@ public class LevelManager : MonoSingleton<LevelManager>
                     cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
                     cell.GetComponent<TextMenuObject>().OnThemeUpdate();
                     //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
-                    yield return new WaitForSeconds((2.5f - (i * 0.01f)) / (currentWeek.hoursPerDay * currentWeek.days));
-                    //yield return new WaitForSeconds(Mathf.Log(1.08f, (float) ((i*17) + Mathf.Max(j, 1))));
+
+                    //float waitTime = (2.5f - (i * 0.1f)) / (currentWeek.hoursPerDay * currentWeek.days);
+                    float waitTime = Mathf.Log(1.08f, (float) ((i * 17) + Mathf.Max(j, 1)));
+                    //Debug.Log("Delaying for " + waitTime);
+                    float counter = 0f;
+                    while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
                 }
             }
         }
@@ -74,7 +78,10 @@ public class LevelManager : MonoSingleton<LevelManager>
             for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
                 Week.Utilities.ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
                 CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
-                yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
+                //yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
+                float waitTime = Mathf.Log(1.08f, (i+2));
+                float counter = 0f;
+                while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
             }
         }
 
@@ -85,18 +92,19 @@ public class LevelManager : MonoSingleton<LevelManager>
                 targetCell.occupyingEvent = activeEvent.eventObject;
                 targetCell.GetComponent<TextMeshProUGUI>().text = "! EVENT !";
                 targetCell.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Bold;
-                //targetCell.GetComponent<TextMeshProUGUI>().color = ;
-
-                yield return new WaitForSeconds(Mathf.Log(1.08f, (i + 2)));
+                targetCell.GetComponent<TextMeshProUGUI>().color = GlobalGameManager.GetCurrentMenuTheme().eventTextColor;
+                
+                float waitTime = Mathf.Log(1.08f, (i + 2));
+                float counter = 0f;
+                while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
             }
         }
 
-        yield return new WaitForSeconds(0.5f);
-        if(currentWeek.tutorialContent.Length < 1) {
-            Instance.levelIsActive = true;
-        } else {
-            GlobalGameManager.AddScene("Tutorial");
-        }
+        float counter = 0f;
+        while(counter < 0.5f) { counter += Time.deltaTime; yield return null; }
+
+        if(currentWeek.tutorialContent.Length < 1) { Instance.levelIsActive = true; }
+        else { GlobalGameManager.AddScene("Tutorial"); }
 
         GlobalGameManager.SendThemeUpdate();
     }
