@@ -39,6 +39,8 @@ public class LevelManager : MonoSingleton<LevelManager>
     protected override bool IsPersistent () { return false; }
 
     IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
+        float counter = 0f; //the thing don't work if this is defined each time it's used. This is the way
+
         for(int i = 0; i < currentWeek.days; i++) {
             GameObject column = Instantiate(columnPrefab);
             column.name = "Column " + (i+1);
@@ -66,8 +68,8 @@ public class LevelManager : MonoSingleton<LevelManager>
                     //float waitTime = (2.5f - (i * 0.1f)) / (currentWeek.hoursPerDay * currentWeek.days);
                     float waitTime = Mathf.Log(1.08f, (float) ((i * 17) + Mathf.Max(j, 1)));
                     //Debug.Log("Delaying for " + waitTime);
-                    float counter = 0f;
                     while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                    counter = 0f;
                 }
             }
         }
@@ -80,8 +82,8 @@ public class LevelManager : MonoSingleton<LevelManager>
                 CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
                 //yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
                 float waitTime = Mathf.Log(1.08f, (i+2));
-                float counter = 0f;
                 while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                counter = 0f;
             }
         }
 
@@ -95,13 +97,13 @@ public class LevelManager : MonoSingleton<LevelManager>
                 targetCell.GetComponent<TextMeshProUGUI>().color = GlobalGameManager.GetCurrentMenuTheme().eventTextColor;
                 
                 float waitTime = Mathf.Log(1.08f, (i + 2));
-                float counter = 0f;
                 while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                counter = 0f;
             }
         }
 
-        float counter = 0f;
         while(counter < 0.5f) { counter += Time.deltaTime; yield return null; }
+        counter = 0f;
 
         if(currentWeek.tutorialContent.Length < 1) { Instance.levelIsActive = true; }
         else { GlobalGameManager.AddScene("Tutorial"); }

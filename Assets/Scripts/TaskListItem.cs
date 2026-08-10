@@ -86,10 +86,11 @@ public class TaskListItem : MonoBehaviour
     public void SetCount(int newCount) {
         count = newCount;
 
-        if(count <= 0) { countComponentBackground.transform.localScale = Vector3.zero; }
+        if(count <= 0) {
+            countComponentBackground.transform.localScale = Vector3.zero;
+            //Debug.Log("Count is equal to zero.");
+        }
         else { countComponentBackground.transform.localScale = Vector3.one; }
-
-        Debug.Log("Count is equal to zero.");
 
         taskList.OnThemeUpdate(); // could be optimized to only use parts of the task list item instead of the entire task list
 
