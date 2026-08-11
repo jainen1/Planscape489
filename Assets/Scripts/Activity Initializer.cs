@@ -28,7 +28,7 @@ public class ActivityInitializer : MonoBehaviour
 
     public bool displayFixedBorder = false;
 
-    void Update()
+    void FixedUpdate()
     {
         visiblePanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.19f);
         fullStomachPanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffsetStomach, mainPanel.transform.position.z + 0.2f);
