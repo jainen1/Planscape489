@@ -7,34 +7,30 @@ using TMPro;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
-    [SerializeField] private GameObject grid;
-
-    [SerializeField] private GameObject columnPrefab;
-    [SerializeField] private GameObject cellPrefab;
-    public List<GridCell> cells;
-
-    [SerializeField] private GameObject activityPrefab;
-
-    [SerializeField] private GameObject eventScreen;
-
     [SerializeField] private List<float> resources;
 
+    public GameObject activityHolder;
+    [SerializeField] private GameObject grid;
+    public List<GridCell> cells;
+    [SerializeField] private GameObject eventScreen;
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
-
     public TimeHand timeHand;
-
-    [Header("Telemetry")]
-    [SerializeField] bool doPlannerMetric = true;
 
     public bool pauseMenuInteractible = true;
     public bool levelIsActive = true;
+    [SerializeField] private bool doTelemetry = true;
 
     [Header("End Scenes")]
     public EndSceneScreen victory;
     public EndSceneScreen win;
     public EndSceneScreen lose;
     public EndSceneScreen activeEndScreen;
+
+    [Header("Prefabs")]
+    [SerializeField] private GameObject columnPrefab;
+    [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private GameObject activityPrefab;
 
     protected override bool IsPersistent () { return false; }
 
@@ -191,6 +187,8 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
         GameObject fixedActivity = Instantiate(activityPrefab);
+        fixedActivity.name = "Activity(Fixed)";
+        fixedActivity.transform.SetParent(activityHolder.transform);
         ActivityInitializer activityInitializer = fixedActivity.GetComponent<ActivityInitializer>();
         Activity activityScript = fixedActivity.GetComponentInChildren<Activity>();
 
@@ -234,7 +232,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     private MetricId _plannerMetric = default;
 
     public void SamplePlannerMetric(int day, int hour) {
-        if(doPlannerMetric) {
+        if(doTelemetry) {
             //Debug.Log("Creating planner sample...");
             string plannerData = "\nWeek " + GlobalGameManager.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
             for(int i = 0; i < cells.Count; i++) {

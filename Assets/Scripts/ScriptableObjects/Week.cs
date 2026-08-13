@@ -31,23 +31,9 @@ public class Week : StuffedScriptableObject {
     public Utilities.TutorialContent[] tutorialContent;
 
     public static class Utilities {
-        [Serializable]
-        public class ActivityWithTime {
-            public ActivityObject activity;
-            public Vector2 time;
-        }
-
-        [Serializable]
-        public class ActivityWithCount {
-            public ActivityObject activity;
-            public int count;
-        }
-
-        [Serializable]
-        public class EventWithTime {
-            public EventObject eventObject;
-            public Vector2 time;
-        }
+        [Serializable] public class ActivityWithTime { public ActivityObject activity; public Vector2 time; }
+        [Serializable] public class ActivityWithCount { public ActivityObject activity; public int count; }
+        [Serializable] public class EventWithTime { public EventObject eventObject; public Vector2 time; }
 
         [Serializable]
         public class ResourceBarValues {

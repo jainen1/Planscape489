@@ -42,9 +42,7 @@ public class ActivityInitializer : MonoBehaviour
         yOffset = (cellHeight / 2f) - (panelSize.y / 2); //(originalSize / 2.0) - (bigSize / 2.0);
         yOffsetStomach = (cellHeight / 2f) - (fullStomachPanelSize.y / 2); //(originalSize / 2.0) - (bigSize / 2.0);
 
-        if(activity.fullStomachLength > 0) {
-            fullStomachPanel.SetActive(true);
-        }
+        if(activity.fullStomachLength > 0) { fullStomachPanel.SetActive(true); }
 
         visiblePanel.GetComponent<SpriteRenderer>().size = panelSize;
         fullStomachPanel.GetComponent<SpriteRenderer>().size = fullStomachPanelSize;
@@ -54,7 +52,6 @@ public class ActivityInitializer : MonoBehaviour
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
         title.GetComponent<TextMeshProUGUI>().text = activity.title;
-
 
         string resourceText = string.Empty;
         if(activity.happiness != 0) { resourceText += (activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activity.happiness * activity.length); }
@@ -70,7 +67,7 @@ public class ActivityInitializer : MonoBehaviour
         UpdateChildren();
     }
 
-    public void UpdateChildren () {
+    public void UpdateChildren() {
         visiblePanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
         fullStomachPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
         visibleShadowPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();

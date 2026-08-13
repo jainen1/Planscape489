@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: zHellscape
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
   translationKey: 
-  name: Hellscape
-  description: 'Play as a low-ranked demon trying to manage their share of humans
-    to torture!
-
-
-    Weeks: 1
-
-    Difficulty: Hard'
   thumbnail: {fileID: -6833492607462250157, guid: 8c30b8cb0be2e437395f9705509bfb67, type: 3}
+  accentColor: {r: 0.83396226, g: 0.067661025, b: 0.29371995, a: 1}
   weeks:
   - {fileID: 11400000, guid: 6dfba4f76be47744c85e57534298b94d, type: 2}
   - {fileID: 11400000, guid: 288f5df52fd56a24882ef413f7a8f740, type: 2}
   randomEvents: []
+  title: Hellscape
+  description: Play as a low-ranked demon trying to manage their share of humans
+    to torture!
+  difficulty: 2

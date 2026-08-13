@@ -5,25 +5,26 @@ using TMPro;
 public class CampaignListItem : MonoBehaviour
 {
     [SerializeField] private Image thumbnail;
+    [SerializeField] private Image shape;
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI description;
     public Campaign campaign;
 
     private void Start() {
-        // Set the button's text to match the theme name automatically
         SetupText();
     }
 
     public void OnClickSelect() {
         GlobalGameManager.SetCampaignAndPlay(campaign);
-        //Debug.Log("Switched to: " + GlobalGameManager.Instance.GetActiveMenuThemes()[themeIndex].name);
     }
 
     public void SetupText() {
         if(title != null) {
             thumbnail.sprite = campaign.thumbnail;
-            title.text = campaign.name;
-            description.text = campaign.description;
+            shape.color = campaign.accentColor;
+
+            title.text = campaign.title;
+            description.text = campaign.description + "\n\nWeeks: <b>" + campaign.weeks.Length + "</b>\nDifficulty: <b>" + campaign.difficulty + "</b>";
         }
     }
 }

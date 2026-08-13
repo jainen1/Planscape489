@@ -15,9 +15,7 @@ public class TaskListItem : MonoBehaviour
     [SerializeField] private GameObject countComponent;
     [SerializeField] public GameObject countComponentBackground;
 
-
     [SerializeField] private GameObject viewport;
-
     [SerializeField] TaskList taskList;
 
     [SerializeField] private bool isVisible;
@@ -48,6 +46,8 @@ public class TaskListItem : MonoBehaviour
 
                 //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
                 newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
+                newActivity.name = "Activity";
+                newActivity.transform.SetParent(LevelManager.Instance.activityHolder.transform);
 
                 newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
                 newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
@@ -79,9 +79,7 @@ public class TaskListItem : MonoBehaviour
         SetCount(activityWithCount.count);
     }
 
-    public int GetCount() {
-        return count;
-    }
+    public int GetCount() { return count; }
 
     public void SetCount(int newCount) {
         count = newCount;
@@ -97,21 +95,7 @@ public class TaskListItem : MonoBehaviour
         countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }
 
-    public void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject == viewport) {
-            isVisible = true;
-        }
-    }
-
-    public void OnTriggerStay2D(Collider2D collision) {
-        if(collision.gameObject == viewport) {
-            isVisible = true;
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision) {
-        if(collision.gameObject == viewport) {
-            isVisible = false;
-        }
-    }
+    public void OnTriggerEnter2D(Collider2D collision) { if(collision.gameObject == viewport) { isVisible = true; } }
+    //public void OnTriggerStay2D(Collider2D collision) { if(collision.gameObject == viewport) { isVisible = true; } }
+    public void OnTriggerExit2D(Collider2D collision) { if(collision.gameObject == viewport) { isVisible = false; } }
 }

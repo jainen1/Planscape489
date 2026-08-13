@@ -13,6 +13,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] private bool isTouchingTrashCan = false;
 
+    [SerializeField] private bool doMouseLerp = true;
     [SerializeField] private float mouseLerp = 100f;
     [SerializeField] private float targetLerp = 5f;
 
@@ -36,7 +37,12 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = -2f;
             //gameObject.transform.position = targetPosition; //teleport to mouse position
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
+
+            if(doMouseLerp) {
+                gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
+            } else {
+                gameObject.transform.position = targetPosition;
+            }
         }
         else {
             Vector3 targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
@@ -66,10 +72,7 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
         if(!initializer.IsFixed()) {
             if(closestCell == null) {
                 foreach(GridCell cell in LevelManager.Instance.cells) {
-                    if(CellIsAvailable(cell)) {
-                        SetTargetCell(cell);
-                        break;
-                    }
+                    if(CellIsAvailable(cell)) { SetTargetCell(cell); break; }
                 }
             }
             if(closestCell == null) {
@@ -95,24 +98,14 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(!initializer.IsFixed()) {
-            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
-                collidingCells.Add(collision.gameObject);
-            }
-
-            if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-                isTouchingTrashCan = true;
-            }
+            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) { collidingCells.Add(collision.gameObject); }
+            if(collision.gameObject.GetComponent<TaskDelete>() != null) { isTouchingTrashCan = true; }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if(collidingCells.Contains(collision.gameObject)) {
-            collidingCells.Remove(collision.gameObject);
-        }
-
-        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-            isTouchingTrashCan = false;
-        }
+        if(collidingCells.Contains(collision.gameObject)) { collidingCells.Remove(collision.gameObject); }
+        if(collision.gameObject.GetComponent<TaskDelete>() != null) { isTouchingTrashCan = false; }
     }
 
     public void SetTargetCell(GridCell cell) {

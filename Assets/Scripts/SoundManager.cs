@@ -9,16 +9,17 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public static void PlayClip(AudioClip clip, [UnityEngine.Internal.DefaultValue("SFX")] string channelName) {
         // from here on is an edited version of the 'AudioSource.PlayClipAtPoint' function. 'AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, Mathf.Pow(10f, volume / 20));'
-        GameObject gameObject = new GameObject("TemporaryAudio(" + clip.name + ")");
-        gameObject.transform.position = Camera.main.transform.position;
-        DontDestroyOnLoad(gameObject);
+        GameObject temporaryAudioObject = new GameObject("TemporaryAudio(" + clip.name + ")");
+        temporaryAudioObject.transform.position = Camera.main.transform.position;
+        //DontDestroyOnLoad(temporaryAudioObject);
+        temporaryAudioObject.transform.SetParent(Instance.gameObject.transform);
 
-        AudioSource audioSource = (AudioSource) gameObject.AddComponent(typeof(AudioSource));
+        AudioSource audioSource = (AudioSource) temporaryAudioObject.AddComponent(typeof(AudioSource));
         audioSource.clip = clip;
         audioSource.outputAudioMixerGroup = Instance.audioMixer.FindMatchingGroups(channelName)[0]; //previously 'audioSource.volume = Mathf.Pow(10f, volume / 20);'
         audioSource.bypassEffects = true;
         audioSource.Play();
-        Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+        Destroy(temporaryAudioObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
     }
 
     public static void PlayClickSound() {
