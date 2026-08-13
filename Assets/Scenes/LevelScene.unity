@@ -4343,7 +4343,6 @@ PrefabInstance:
     - target: {fileID: 1241134670838342522, guid: 70dc94d52a8436346823dc8c1c5af204, type: 3}
       propertyPath: requiredTaskList
       value: 
-      objectReference: {fileID: 0}
       objectReference: {fileID: 2249609483852887290}
     - target: {fileID: 6505233850280053665, guid: 70dc94d52a8436346823dc8c1c5af204, type: 3}
       propertyPath: m_LocalPosition.x
