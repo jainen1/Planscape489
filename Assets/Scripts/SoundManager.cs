@@ -31,4 +31,40 @@ public class SoundManager : MonoSingleton<SoundManager>
         public static string music = "Music";
         public static string sfx = "SFX";
     }
+
+    public static void DiegeticActivitySound(AudioClip activityClip, float pitch = 1.0f) {
+        //1 - BC: check if activity exists 
+        if (activityClip == null) { return; }
+
+        //2 - make temp game audio object
+        GameObject temporaryAudioObject = new GameObject("ActivityAudio(" + activityClip.name + ")");
+        temporaryAudioObject.transform.position = Camera.main.transform.position;
+        temporaryAudioObject.transform.SetParent(Instance.gameObject.transform);
+
+        //3 -  configure audio source
+        AudioSource audioSource = temporaryAudioObject.AddComponent<AudioSource>();
+        audioSource.clip = activityClip;
+        audioSource.pitch = pitch;
+
+        //4 - set audio mixer group
+        if (Instance.audioMixer != null)
+        {
+            var groups = Instance.audioMixer.FindMatchingGroups(AudioChannels.sfx);
+            if (groups.Length > 0)
+            {
+                audioSource.outputAudioMixerGroup = groups[0];
+            }
+        }
+
+        audioSource.pitch = pitch;
+        audioSource.bypassEffects = true;
+        audioSource.Play();
+
+        //5 - destroy temp audio object after clip length
+            
+        float safePitch = Mathf.Max(0.1f, Mathf.Abs(pitch));
+        float timeScale = Time.timeScale < 0.01f ? 0.01f : Time.timeScale;
+        Destroy(temporaryAudioObject, (activityClip.length / safePitch) * timeScale); //cleanup
+        
+    }
 }

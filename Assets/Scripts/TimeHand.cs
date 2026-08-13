@@ -58,6 +58,12 @@ public class TimeHand : MonoBehaviour {
 
                 finalHappiness += cell.occupyingActivity.initializer.activity.happiness;
                 finalMoney += cell.occupyingActivity.initializer.activity.money;
+
+                AudioClip clip = cell.occupyingActivity.initializer.activity.sound;
+                
+                float tempPitch = cell.occupyingActivity.initializer.activity.pitch;
+
+                SoundManager.DiegeticActivitySound(clip, tempPitch);
             }
 
             //Debug.Log("Final Stuff being evaluated");
