@@ -103,17 +103,19 @@ MonoBehaviour:
     - fill: {r: 0.3803922, g: 0.7019608, b: 0.47058827, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
   resourceBarBackgroundColor: {r: 0.8862746, g: 1, b: 0.87843144, a: 1}
-  gridCellColor: {r: 0.84910995, g: 0.990566, b: 0.7429245, a: 1}
-  fixedGridCellColor: {r: 0.92357796, g: 0.9339623, b: 0.7885814, a: 1}
   brightTextColor: {r: 0.9995647, g: 1, b: 0.9103774, a: 1}
   darkTextColor: {r: 0.078000784, g: 0.18396229, b: 0.04772607, a: 1}
+  eventTextColor: {r: 0, g: 0, b: 0, a: 0}
+  teamPlanscapeColor: {r: 0.99607843, g: 0.99607843, b: 0.99215686, a: 1}
   menuButtonBackgroundColor: {r: 0.15294118, g: 0.28235295, b: 0.13333334, a: 1}
+  pauseButtonColor: {r: 0.7772075, g: 0.9019608, b: 0.4666667, a: 1}
+  helpButtonColor: {r: 0.5996735, g: 0.8113208, b: 0.34825563, a: 1}
+  gridCellColor: {r: 0.84910995, g: 0.990566, b: 0.7429245, a: 1}
+  fixedGridCellColor: {r: 0.92357796, g: 0.9339623, b: 0.7885814, a: 1}
   fixedActivityColor: {r: 0.44494015, g: 0.6886792, b: 0.40606087, a: 1}
   fixedActivityBorderColor: {r: 0.15115318, g: 0.2830189, b: 0.13483447, a: 1}
   timeHandColor: {r: 0.6, g: 0.8117647, b: 0.34901962, a: 1}
   timeHandFastColor: {r: 0.79757285, g: 0.8117647, b: 0.3490196, a: 1}
-  pauseButtonColor: {r: 0.7772075, g: 0.9019608, b: 0.4666667, a: 1}
-  helpButtonColor: {r: 0.5996735, g: 0.8113208, b: 0.34825563, a: 1}
   calmMusic: {fileID: 8300000, guid: b8e0a0f145d6d4f7fabaadef1ccf3c7c, type: 3}
   tenseMusic: {fileID: 0}
   superTenseMusic: {fileID: 0}

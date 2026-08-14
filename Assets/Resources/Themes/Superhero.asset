@@ -23,12 +23,12 @@ MonoBehaviour:
   timerLineSpacingScale: 1
   menuBackgroundLayers:
   - sprite: {fileID: 21300000, guid: cbf92809830fc0840bc495177caaa2e9, type: 3}
-    color: {r: 0.8867924, g: 0.21333212, b: 0.21333212, a: 1}
+    color: {r: 0.15686275, g: 0.16862746, b: 0.8509804, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
   - sprite: {fileID: 21300000, guid: b3417f32a3b5c524e9c6078c01df6bde, type: 3}
-    color: {r: 0.15619439, g: 0.16507722, b: 0.8490566, a: 1}
+    color: {r: 0.8862745, g: 0.21176471, b: 0.21176471, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
@@ -108,18 +108,19 @@ MonoBehaviour:
     - fill: {r: 0.9150943, g: 0.8945972, b: 0.5395603, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
   resourceBarBackgroundColor: {r: 0.8784314, g: 0.9529412, b: 1, a: 1}
-  gridCellColor: {r: 0.8745098, g: 0.9529412, b: 1, a: 0.68235296}
-  fixedGridCellColor: {r: 0.2300641, g: 0.8156138, b: 0.8867924, a: 0.23529412}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
   eventTextColor: {r: 0, g: 0, b: 0, a: 0}
+  teamPlanscapeColor: {r: 0.1764706, g: 0.27058825, b: 0.75686276, a: 1}
   menuButtonBackgroundColor: {r: 0.17661981, g: 0.26976505, b: 0.764151, a: 1}
+  pauseButtonColor: {r: 0.8980392, g: 0.56420624, b: 0.10588237, a: 1}
+  helpButtonColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
+  gridCellColor: {r: 0.8745098, g: 0.9529412, b: 1, a: 0.68235296}
+  fixedGridCellColor: {r: 0.2300641, g: 0.8156138, b: 0.8867924, a: 0.23529412}
   fixedActivityColor: {r: 0.57627267, g: 0.65285814, b: 0.6981132, a: 1}
   fixedActivityBorderColor: {r: 0.4185208, g: 0.47227818, b: 0.5188679, a: 1}
   timeHandColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
   timeHandFastColor: {r: 0.8773585, g: 0.2207546, b: 0.1779548, a: 1}
-  pauseButtonColor: {r: 0.8980392, g: 0.56420624, b: 0.10588237, a: 1}
-  helpButtonColor: {r: 0.3647059, g: 0.36078432, b: 0.79215693, a: 1}
   calmMusic: {fileID: 8300000, guid: b8e0a0f145d6d4f7fabaadef1ccf3c7c, type: 3}
   tenseMusic: {fileID: 0}
   superTenseMusic: {fileID: 0}
