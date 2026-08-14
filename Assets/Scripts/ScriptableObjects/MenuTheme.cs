@@ -58,25 +58,25 @@ public class MenuTheme : StuffedScriptableObject
         }
     }
 
-    [Header("Other Colors")]
-
-    public Color gridCellColor;
-    public Color fixedGridCellColor;
-
+    [Header("Text Colors")]
     public Color brightTextColor;
     public Color darkTextColor;
     public Color eventTextColor;
+    public Color teamPlanscapeColor;
 
+    [Header("Other Colors")]
     public Color menuButtonBackgroundColor;
+    public Color pauseButtonColor;
+    public Color helpButtonColor;
+
+    public Color gridCellColor;
+    public Color fixedGridCellColor;
 
     public Color fixedActivityColor;
     public Color fixedActivityBorderColor;
 
     public Color timeHandColor;
     public Color timeHandFastColor;
-
-    public Color pauseButtonColor;
-    public Color helpButtonColor;
 
     [Header("Music")]
     public AudioClip calmMusic;
