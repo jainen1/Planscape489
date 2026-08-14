@@ -43,6 +43,8 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
 
             case MenuObjectType.BrightText: color = menuTheme.brightTextColor; break;
             case MenuObjectType.DarkText: color = menuTheme.darkTextColor; break;
+            case MenuObjectType.EventText: color = menuTheme.eventTextColor; break;
+            case MenuObjectType.SubtitleText: color = menuTheme.teamPlanscapeColor; break;
 
             case MenuObjectType.PauseButton: color = menuTheme.pauseButtonColor; break;
             case MenuObjectType.HelpButton: color = menuTheme.helpButtonColor; break;
@@ -117,6 +119,9 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
         PauseButton,
         HelpButton,
 
-        MenuBackground
+        MenuBackground,
+
+        EventText,
+        SubtitleText
     }
 }
