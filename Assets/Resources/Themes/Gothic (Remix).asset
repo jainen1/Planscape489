@@ -107,7 +107,7 @@ MonoBehaviour:
   fixedActivityBorderColor: {r: 0.26415092, g: 0.117248125, b: 0.100925595, a: 1}
   timeHandColor: {r: 0.81960785, g: 0.5686275, b: 0.5529412, a: 1}
   timeHandFastColor: {r: 0.9528302, g: 0.6449252, b: 0.40899786, a: 1}
-  pauseButtonColor: {r: 0.54901963, g: 0.22352941, b: 0.2901961, a: 1}
+  pauseButtonColor: {r: 0.15218937, g: 0.21002175, b: 0.4716981, a: 1}
   helpButtonColor: {r: 0.3764706, g: 0.12156863, b: 0.18431373, a: 1}
   calmMusic: {fileID: 8300000, guid: 7f37f9545d0072541aff6a1e8e9779a7, type: 3}
   tenseMusic: {fileID: 0}

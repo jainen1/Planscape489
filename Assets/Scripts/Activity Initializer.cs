@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActivityInitializer : MonoBehaviour
 {
@@ -28,12 +29,12 @@ public class ActivityInitializer : MonoBehaviour
 
     public bool displayFixedBorder = false;
 
-    void Update()
+    void FixedUpdate()
     {
-        visiblePanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.19f);
-        fullStomachPanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffsetStomach, mainPanel.transform.position.z + 0.2f);
-        fixedBorder.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, mainPanel.transform.position.z + 0.18f);
-        visibleShadowPanel.transform.position = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y + yOffset, shadowPanel.transform.position.z + 0.2f);
+        visiblePanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, visiblePanel.transform.position.z /*mainPanel.transform.position.z + 0.19f*/);
+        fullStomachPanel.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffsetStomach, fullStomachPanel.transform.position.z /*mainPanel.transform.position.z + 0.2f*/);
+        fixedBorder.transform.position = new Vector3(mainPanel.transform.position.x, mainPanel.transform.position.y + yOffset, fixedBorder.transform.position.z /*mainPanel.transform.position.z + 0.18f*/);
+        visibleShadowPanel.transform.position = new Vector3(shadowPanel.transform.position.x, shadowPanel.transform.position.y + yOffset, visibleShadowPanel.transform.position.z /*shadowPanel.transform.position.z + 0.2f*/);
     }
 
     public void Initialize() {
@@ -42,19 +43,18 @@ public class ActivityInitializer : MonoBehaviour
         yOffset = (cellHeight / 2f) - (panelSize.y / 2); //(originalSize / 2.0) - (bigSize / 2.0);
         yOffsetStomach = (cellHeight / 2f) - (fullStomachPanelSize.y / 2); //(originalSize / 2.0) - (bigSize / 2.0);
 
-        if(activity.fullStomachLength > 0) {
-            fullStomachPanel.SetActive(true);
-        }
+        if(activity.fullStomachLength > 0) { fullStomachPanel.SetActive(true); }
 
-        visiblePanel.GetComponent<SpriteRenderer>().size = panelSize;
-        fullStomachPanel.GetComponent<SpriteRenderer>().size = fullStomachPanelSize;
-        visibleShadowPanel.GetComponent<SpriteRenderer>().size = panelSize;
-        fixedBorder.GetComponent<SpriteRenderer>().size = panelSize;
+        //visiblePanel.GetComponent<Image>().size = panelSize;
+        visiblePanel.GetComponent<RectTransform>().sizeDelta = panelSize;
+
+        fullStomachPanel.GetComponent<RectTransform>().sizeDelta = fullStomachPanelSize;
+        visibleShadowPanel.GetComponent<RectTransform>().sizeDelta = panelSize;
+        fixedBorder.GetComponent<RectTransform>().sizeDelta = panelSize;
         mainPanel.GetComponent<BoxCollider2D>().size = panelSize;
         mainPanel.GetComponent<BoxCollider2D>().offset = new Vector2(0, yOffset);
 
         title.GetComponent<TextMeshProUGUI>().text = activity.title;
-
 
         string resourceText = string.Empty;
         if(activity.happiness != 0) { resourceText += (activity.happiness >= 0 ? "H+" : "H-") + Mathf.Abs(activity.happiness * activity.length); }
@@ -70,7 +70,7 @@ public class ActivityInitializer : MonoBehaviour
         UpdateChildren();
     }
 
-    public void UpdateChildren () {
+    public void UpdateChildren() {
         visiblePanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
         fullStomachPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();
         visibleShadowPanel.GetComponent<SimpleMenuObject>().OnThemeUpdate();

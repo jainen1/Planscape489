@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
   m_Name: PlanscapeA
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
+  translationKey: 
+  thumbnail: {fileID: 147434752360468177, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
+  accentColor: {r: 0.83396226, g: 0.8071827, b: 0.38236377, a: 1}
   weeks:
   - {fileID: 11400000, guid: 297932ed8962c114fba7cad5b0bf6ff0, type: 2}
   - {fileID: 11400000, guid: 2fdada770a6587c479bcb44ac39dfbaa, type: 2}
@@ -31,3 +34,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2805e0f9a322a0c47a7399f3af097554, type: 2}
   - {fileID: 11400000, guid: b031e0cb481ae404ba1d22a69f90fb13, type: 2}
   randomEvents: []
+  title: Aspiring Artist
+  description: 'Play as a college student trying to
+
+    get through their
+
+    last
+    semester!'
+  difficulty: 0

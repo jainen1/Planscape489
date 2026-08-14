@@ -23,7 +23,7 @@ public class ResourceBar : MonoBehaviour
     public void OnUpdateTheme() {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
 
-        gameObject.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
+        gameObject.GetComponent<Image>().color = menuTheme.resourceBarBackgroundColor;
 
         for(int i = 0; i < resourcePieces.Count; i++) { Destroy(resourcePieces[i].gameObject); }
         resourcePieces.Clear();
@@ -35,7 +35,7 @@ public class ResourceBar : MonoBehaviour
             //ResourceBarColorsCollection collection = collectionArray[resourceIndex];
             for(int i = 0; i < resourceBarColors.Length; i++) {
                 GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
-                newResourcePiece.transform.parent = gameObject.transform;
+                newResourcePiece.transform.SetParent(gameObject.transform);
                 //newResourcePiece.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -(0.1f * (i + 1)));
                 ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
                     
@@ -43,8 +43,8 @@ public class ResourceBar : MonoBehaviour
 
                 newResourcePieceComponent.min = values.min;
                 newResourcePieceComponent.max = values.max;
-                newResourcePieceComponent.fill.GetComponent<SpriteRenderer>().color = resourceBarColors[i].fill;
-                newResourcePieceComponent.change.GetComponent<SpriteRenderer>().color = resourceBarColors[i].change;
+                newResourcePieceComponent.fill.GetComponent<Image>().color = resourceBarColors[i].fill;
+                newResourcePieceComponent.change.GetComponent<Image>().color = resourceBarColors[i].change;
 
                 resourcePieces.Add(newResourcePieceComponent);
 
@@ -82,8 +82,8 @@ public class ResourceBar : MonoBehaviour
     }
 
     private void AdjustPositionAndSize(GameObject bar, float progress) {
-        Vector2 spriteSize = gameObject.GetComponent<SpriteRenderer>().size;
+        Vector2 spriteSize = gameObject.GetComponent<RectTransform>().sizeDelta;
         bar.transform.position = new Vector3(gameObject.transform.position.x - (((spriteSize.x - 0.1f) / 2f) * (1 - progress)), gameObject.transform.position.y, bar.transform.position.z);
-        bar.GetComponent<SpriteRenderer>().size = new Vector2((spriteSize.x - 0.1f) * progress, (spriteSize.y - 0.1f));
+        bar.GetComponent<RectTransform>().sizeDelta = new Vector2((spriteSize.x - 0.1f) * progress, (spriteSize.y - 0.1f));
     }
 }

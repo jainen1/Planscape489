@@ -1,13 +1,21 @@
 {
     "translationKey": "planscape.jungleTheme",
     "mainFont": {
+<<<<<<< HEAD
         "instanceID": 50694
+=======
+        "instanceID": 49810
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
+<<<<<<< HEAD
         "instanceID": 50240
+=======
+        "instanceID": 49798
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -15,7 +23,11 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51446
+=======
+                "instanceID": 51418
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.09803922474384308,
@@ -42,7 +54,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51448
+=======
+                "instanceID": 51420
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.6196078658103943,
@@ -69,7 +85,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51450
+=======
+                "instanceID": 51422
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.07058823853731156,
@@ -96,7 +116,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51452
+=======
+                "instanceID": 51424
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -123,7 +147,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 52088
+=======
+                "instanceID": 52116
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.9490196704864502,
@@ -152,7 +180,11 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 52088
+=======
+                "instanceID": 52116
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.9490196704864502,
@@ -179,7 +211,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 52088
+=======
+                "instanceID": 52116
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.9215686917304993,
@@ -491,6 +527,12 @@
         "b": 0.047726068645715716,
         "a": 1.0
     },
+    "eventTextColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
     "menuButtonBackgroundColor": {
         "r": 0.15294118225574494,
         "g": 0.2823529541492462,
@@ -534,7 +576,11 @@
         "a": 1.0
     },
     "calmMusic": {
+<<<<<<< HEAD
         "instanceID": 51460
+=======
+        "instanceID": 51432
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "tenseMusic": {
         "instanceID": 0
@@ -543,6 +589,7 @@
         "instanceID": 0
     },
     "buttonClick": {
+<<<<<<< HEAD
         "instanceID": 51462
     },
     "activityPickUp": {
@@ -581,6 +628,46 @@
         },
         {
             "instanceID": 51486
+=======
+        "instanceID": 51434
+    },
+    "activityPickUp": {
+        "instanceID": 51436
+    },
+    "activityPickUpFail": {
+        "instanceID": 51438
+    },
+    "activityPutDown": {
+        "instanceID": 51440
+    },
+    "activityTrash": {
+        "instanceID": 51442
+    },
+    "clockTicking": [
+        {
+            "instanceID": 51444
+        },
+        {
+            "instanceID": 51446
+        },
+        {
+            "instanceID": 51448
+        },
+        {
+            "instanceID": 51450
+        },
+        {
+            "instanceID": 51452
+        },
+        {
+            "instanceID": 51454
+        },
+        {
+            "instanceID": 51456
+        },
+        {
+            "instanceID": 51458
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
         }
     ],
     "win": {

@@ -9,16 +9,17 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public static void PlayClip(AudioClip clip, [UnityEngine.Internal.DefaultValue("SFX")] string channelName) {
         // from here on is an edited version of the 'AudioSource.PlayClipAtPoint' function. 'AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, Mathf.Pow(10f, volume / 20));'
-        GameObject gameObject = new GameObject("TemporaryAudio(" + clip.name + ")");
-        gameObject.transform.position = Camera.main.transform.position;
-        DontDestroyOnLoad(gameObject);
+        GameObject temporaryAudioObject = new GameObject("TemporaryAudio(" + clip.name + ")");
+        temporaryAudioObject.transform.position = Camera.main.transform.position;
+        //DontDestroyOnLoad(temporaryAudioObject);
+        temporaryAudioObject.transform.SetParent(Instance.gameObject.transform);
 
-        AudioSource audioSource = (AudioSource) gameObject.AddComponent(typeof(AudioSource));
+        AudioSource audioSource = (AudioSource) temporaryAudioObject.AddComponent(typeof(AudioSource));
         audioSource.clip = clip;
         audioSource.outputAudioMixerGroup = Instance.audioMixer.FindMatchingGroups(channelName)[0]; //previously 'audioSource.volume = Mathf.Pow(10f, volume / 20);'
         audioSource.bypassEffects = true;
         audioSource.Play();
-        Destroy(gameObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
+        Destroy(temporaryAudioObject, clip.length * ((Time.timeScale < 0.01f) ? 0.01f : Time.timeScale));
     }
 
     public static void PlayClickSound() {
@@ -29,5 +30,41 @@ public class SoundManager : MonoSingleton<SoundManager>
     public static class AudioChannels {
         public static string music = "Music";
         public static string sfx = "SFX";
+    }
+
+    public static void DiegeticActivitySound(AudioClip activityClip, float pitch = 1.0f) {
+        //1 - BC: check if activity exists 
+        if (activityClip == null) { return; }
+
+        //2 - make temp game audio object
+        GameObject temporaryAudioObject = new GameObject("ActivityAudio(" + activityClip.name + ")");
+        temporaryAudioObject.transform.position = Camera.main.transform.position;
+        temporaryAudioObject.transform.SetParent(Instance.gameObject.transform);
+
+        //3 -  configure audio source
+        AudioSource audioSource = temporaryAudioObject.AddComponent<AudioSource>();
+        audioSource.clip = activityClip;
+        audioSource.pitch = pitch;
+
+        //4 - set audio mixer group
+        if (Instance.audioMixer != null)
+        {
+            var groups = Instance.audioMixer.FindMatchingGroups(AudioChannels.sfx);
+            if (groups.Length > 0)
+            {
+                audioSource.outputAudioMixerGroup = groups[0];
+            }
+        }
+
+        audioSource.pitch = pitch;
+        audioSource.bypassEffects = true;
+        audioSource.Play();
+
+        //5 - destroy temp audio object after clip length
+            
+        float safePitch = Mathf.Max(0.1f, Mathf.Abs(pitch));
+        float timeScale = Time.timeScale < 0.01f ? 0.01f : Time.timeScale;
+        Destroy(temporaryAudioObject, (activityClip.length / safePitch) * timeScale); //cleanup
+        
     }
 }

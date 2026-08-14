@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Nap
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
+  translationKey: 
   title: Nap
   length: 2
   fullStomachLength: 0
-  type: 2
   happiness: 5
   money: 0
+  sound: {fileID: 8300000, guid: 9b363388846494facb2c0bb6dd780390, type: 3}
+  pitch: 1

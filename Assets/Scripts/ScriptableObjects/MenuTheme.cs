@@ -65,6 +65,7 @@ public class MenuTheme : StuffedScriptableObject
 
     public Color brightTextColor;
     public Color darkTextColor;
+    public Color eventTextColor;
 
     public Color menuButtonBackgroundColor;
 

@@ -7,28 +7,19 @@ using TMPro;
 
 public class LevelManager : MonoSingleton<LevelManager>
 {
-    [SerializeField] private GameObject grid;
-
-    [SerializeField] private GameObject columnPrefab;
-    [SerializeField] private GameObject cellPrefab;
-    public List<GridCell> cells;
-
-    [SerializeField] private GameObject activityPrefab;
-
-    [SerializeField] private GameObject eventScreen;
-
     [SerializeField] private List<float> resources;
 
+    public GameObject activityHolder;
+    [SerializeField] private GameObject grid;
+    public List<GridCell> cells;
+    [SerializeField] private GameObject eventScreen;
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
-
     public TimeHand timeHand;
-
-    [Header("Telemetry")]
-    [SerializeField] bool doPlannerMetric = true;
 
     public bool pauseMenuInteractible = true;
     public bool levelIsActive = true;
+    [SerializeField] private bool doTelemetry = true;
 
     [Header("End Scenes")]
     public EndSceneScreen victory;
@@ -36,9 +27,16 @@ public class LevelManager : MonoSingleton<LevelManager>
     public EndSceneScreen lose;
     public EndSceneScreen activeEndScreen;
 
+    [Header("Prefabs")]
+    [SerializeField] private GameObject columnPrefab;
+    [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private GameObject activityPrefab;
+
     protected override bool IsPersistent () { return false; }
 
     IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
+        float counter = 0f; //the thing don't work if this is defined each time it's used. This is the way
+
         for(int i = 0; i < currentWeek.days; i++) {
             GameObject column = Instantiate(columnPrefab);
             column.name = "Column " + (i+1);
@@ -62,7 +60,12 @@ public class LevelManager : MonoSingleton<LevelManager>
                     cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
                     cell.GetComponent<TextMenuObject>().OnThemeUpdate();
                     //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
-                    yield return new WaitForSecondsRealtime(Mathf.Log(1.08f, (float) ((i*17) + Mathf.Max(j, 1))));
+
+                    //float waitTime = (2.5f - (i * 0.1f)) / (currentWeek.hoursPerDay * currentWeek.days);
+                    float waitTime = Mathf.Log(1.08f, (float) ((i * 17) + Mathf.Max(j, 1)));
+                    //Debug.Log("Delaying for " + waitTime);
+                    while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                    counter = 0f;
                 }
             }
         }
@@ -73,7 +76,10 @@ public class LevelManager : MonoSingleton<LevelManager>
             for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
                 Week.Utilities.ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
                 CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
-                yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
+                //yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
+                float waitTime = Mathf.Log(1.08f, (i+2));
+                while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                counter = 0f;
             }
         }
 
@@ -84,18 +90,19 @@ public class LevelManager : MonoSingleton<LevelManager>
                 targetCell.occupyingEvent = activeEvent.eventObject;
                 targetCell.GetComponent<TextMeshProUGUI>().text = "! EVENT !";
                 targetCell.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Bold;
-                //targetCell.GetComponent<TextMeshProUGUI>().color = ;
-
-                yield return new WaitForSeconds(Mathf.Log(1.08f, (i + 2)));
+                targetCell.GetComponent<TextMeshProUGUI>().color = GlobalGameManager.GetCurrentMenuTheme().eventTextColor;
+                
+                float waitTime = Mathf.Log(1.08f, (i + 2));
+                while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                counter = 0f;
             }
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
-        if(currentWeek.tutorialContent.Length < 1) {
-            Instance.levelIsActive = true;
-        } else {
-            GlobalGameManager.AddScene("Tutorial");
-        }
+        while(counter < 0.5f) { counter += Time.deltaTime; yield return null; }
+        counter = 0f;
+
+        if(currentWeek.tutorialContent.Length < 1) { Instance.levelIsActive = true; }
+        else { GlobalGameManager.AddScene("Tutorial"); }
 
         GlobalGameManager.SendThemeUpdate();
     }
@@ -180,6 +187,8 @@ public class LevelManager : MonoSingleton<LevelManager>
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
         GameObject fixedActivity = Instantiate(activityPrefab);
+        fixedActivity.name = "Activity(Fixed)";
+        fixedActivity.transform.SetParent(activityHolder.transform);
         ActivityInitializer activityInitializer = fixedActivity.GetComponent<ActivityInitializer>();
         Activity activityScript = fixedActivity.GetComponentInChildren<Activity>();
 
@@ -223,7 +232,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     private MetricId _plannerMetric = default;
 
     public void SamplePlannerMetric(int day, int hour) {
-        if(doPlannerMetric) {
+        if(doTelemetry) {
             //Debug.Log("Creating planner sample...");
             string plannerData = "\nWeek " + GlobalGameManager.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
             for(int i = 0; i < cells.Count; i++) {

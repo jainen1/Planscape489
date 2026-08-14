@@ -1,13 +1,21 @@
 {
     "translationKey": "planscape.superheroTheme",
     "mainFont": {
+<<<<<<< HEAD
         "instanceID": 50694
+=======
+        "instanceID": 49810
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
+<<<<<<< HEAD
         "instanceID": 50240
+=======
+        "instanceID": 49798
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -15,7 +23,11 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51446
+=======
+                "instanceID": 51418
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.8867924213409424,
@@ -42,7 +54,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51448
+=======
+                "instanceID": 51420
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.15619438886642457,
@@ -69,7 +85,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51450
+=======
+                "instanceID": 51422
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -96,7 +116,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51452
+=======
+                "instanceID": 51424
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.1568627506494522,
@@ -123,7 +147,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 52138
+=======
+                "instanceID": 51428
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.8886792063713074,
@@ -150,7 +178,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 51458
+=======
+                "instanceID": 51430
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -179,7 +211,11 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 52138
+=======
+                "instanceID": 51428
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.8886792063713074,
@@ -206,7 +242,11 @@
         },
         {
             "sprite": {
+<<<<<<< HEAD
                 "instanceID": 52138
+=======
+                "instanceID": 51430
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -518,6 +558,12 @@
         "b": 0.0,
         "a": 1.0
     },
+    "eventTextColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
     "menuButtonBackgroundColor": {
         "r": 0.17661981284618379,
         "g": 0.26976504921913149,
@@ -561,7 +607,11 @@
         "a": 1.0
     },
     "calmMusic": {
+<<<<<<< HEAD
         "instanceID": 51460
+=======
+        "instanceID": 51432
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "tenseMusic": {
         "instanceID": 0
@@ -570,6 +620,7 @@
         "instanceID": 0
     },
     "buttonClick": {
+<<<<<<< HEAD
         "instanceID": 51462
     },
     "activityPickUp": {
@@ -587,6 +638,34 @@
     "clockTicking": [
         {
             "instanceID": 51472
+=======
+        "instanceID": 51434
+    },
+    "activityPickUp": {
+        "instanceID": 51436
+    },
+    "activityPickUpFail": {
+        "instanceID": 51438
+    },
+    "activityPutDown": {
+        "instanceID": 51440
+    },
+    "activityTrash": {
+        "instanceID": 51442
+    },
+    "clockTicking": [
+        {
+            "instanceID": 51444
+        },
+        {
+            "instanceID": 51446
+        },
+        {
+            "instanceID": 51448
+        },
+        {
+            "instanceID": 51450
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
         },
         {
             "instanceID": 51474
@@ -598,6 +677,7 @@
             "instanceID": 51478
         },
         {
+<<<<<<< HEAD
             "instanceID": 51480
         },
         {
@@ -608,6 +688,9 @@
         },
         {
             "instanceID": 51486
+=======
+            "instanceID": 51458
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
         }
     ],
     "win": {
