@@ -42,7 +42,7 @@ MonoBehaviour:
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 0.75, y: 0.75, z: 0.75}
-  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
+  - sprite: {fileID: 89308894535659259, guid: 3a9fe90a50e3243bf8f6c2b0e68b37bd, type: 3}
     color: {r: 1, g: 0.83921576, b: 0.93725497, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -53,72 +53,74 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
   levelBackgroundLayers:
-  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
+  - sprite: {fileID: 89308894535659259, guid: 3a9fe90a50e3243bf8f6c2b0e68b37bd, type: 3}
     color: {r: 1, g: 0.83921576, b: 0.93725497, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
-  - sprite: {fileID: 21300000, guid: c3d81fabe9b52064e93eaece892cddef, type: 3}
+  - sprite: {fileID: 89308894535659259, guid: 3a9fe90a50e3243bf8f6c2b0e68b37bd, type: 3}
     color: {r: 0.9843138, g: 0.7803922, b: 0.9176471, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     scale: {x: 1, y: 1, z: 1}
   taskListColors:
-  - mainColor: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
-    itemColor: {r: 1, g: 0.8862746, b: 0.7137255, a: 1}
+  - mainColor: {r: 1, g: 0.34901965, b: 0.6633574, a: 1}
+    itemColor: {r: 1, g: 0.7137255, b: 0.87366366, a: 1}
     scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    countColor: {r: 0.5754717, g: 0.13843894, b: 0.45399374, a: 1}
     taskColors:
-    - {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
-    - {r: 1, g: 0.8235295, b: 0.16078432, a: 1}
-    - {r: 0.5372549, g: 0.86274517, b: 0.28627452, a: 1}
-    - {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-  - mainColor: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-    itemColor: {r: 0.69803923, g: 0.9058824, b: 0.6666667, a: 1}
+    - {r: 0.9433962, g: 0.5328362, b: 0.4405482, a: 1}
+    - {r: 0.8606653, g: 0.66215736, b: 0.9056604, a: 1}
+    - {r: 1, g: 0.6745283, b: 0.86007684, a: 1}
+    - {r: 0.7830189, g: 0.15881987, b: 0.3288186, a: 1}
+  - mainColor: {r: 0.5985146, g: 0.3003738, b: 0.8490566, a: 1}
+    itemColor: {r: 0.80807835, g: 0.6808473, b: 0.9433962, a: 1}
     scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    countColor: {r: 0.7264151, g: 0.21586864, b: 0.5471822, a: 1}
     taskColors:
-    - {r: 0.5372549, g: 0.86274517, b: 0.28627452, a: 1}
-    - {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-    - {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
-    - {r: 0.40000004, g: 0.5803922, b: 1, a: 1}
-  - mainColor: {r: 0.8862746, g: 0.6627451, b: 0.9450981, a: 1}
-    itemColor: {r: 0.9450981, g: 0.8431373, b: 0.9725491, a: 1}
+    - {r: 0.70685613, g: 0.34718758, b: 0.8867924, a: 1}
+    - {r: 0.7924528, g: 0.10840159, b: 0.43404344, a: 1}
+    - {r: 0.9433962, g: 0.37824848, b: 0.8532556, a: 1}
+    - {r: 1, g: 0.39999998, b: 0.61143476, a: 1}
+  - mainColor: {r: 0.6, g: 0.3019608, b: 0.8509804, a: 1}
+    itemColor: {r: 0.80784315, g: 0.68235296, b: 0.94509804, a: 1}
     scrollbarColor: {r: 1, g: 1, b: 1, a: 1}
-    countColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    countColor: {r: 0.7254902, g: 0.21568628, b: 0.54901963, a: 1}
     taskColors:
-    - {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
-    - {r: 0.40000004, g: 0.5803922, b: 1, a: 1}
-    - {r: 0.8862746, g: 0.6627451, b: 0.9450981, a: 1}
-    - {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
+    - {r: 0.7058824, g: 0.34901962, b: 0.8862745, a: 1}
+    - {r: 0.7921569, g: 0.10980392, b: 0.43529412, a: 1}
+    - {r: 0.94509804, g: 0.3764706, b: 0.85882354, a: 1}
+    - {r: 1, g: 0.4, b: 0.6117647, a: 1}
   resourceBarColors:
   - resourceBars:
-    - fill: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
+    - fill: {r: 0.764151, g: 0.19824673, b: 0.4842068, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
   - resourceBars:
-    - fill: {r: 1, g: 0.7411765, b: 0.34901962, a: 1}
+    - fill: {r: 0.9056604, g: 0.35457456, b: 0.35457456, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
-    - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
-      change: {r: 0.86666673, g: 0.9294118, b: 0.30588236, a: 1}
+    - fill: {r: 0.8396226, g: 0.52674437, b: 0.6020908, a: 1}
+      change: {r: 0.8490566, g: 0.41251338, b: 0.7088246, a: 1}
   - resourceBars:
-    - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
+    - fill: {r: 0.9150943, g: 0.43596473, b: 0.4966117, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
-    - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
+    - fill: {r: 0.8113208, g: 0.22579211, b: 0.6263686, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
-    - fill: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
+    - fill: {r: 0.6159718, g: 0.16862744, b: 0.7058824, a: 1}
       change: {r: 1, g: 1, b: 1, a: 1}
-  resourceBarBackgroundColor: {r: 0.93725497, g: 0.5803922, b: 0.8000001, a: 1}
-  gridCellColor: {r: 0.9386792, g: 0.58003294, b: 0.7987198, a: 1}
-  fixedGridCellColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+  resourceBarBackgroundColor: {r: 0.9150943, g: 0.8158152, b: 0.87691003, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
-  darkTextColor: {r: 0, g: 0, b: 0, a: 1}
+  darkTextColor: {r: 0.18867922, g: 0.024029901, b: 0.15949106, a: 1}
+  eventTextColor: {r: 0, g: 0, b: 0, a: 0}
+  teamPlanscapeColor: {r: 0.61960787, g: 0.105882354, b: 0.33333334, a: 1}
   menuButtonBackgroundColor: {r: 0.61960787, g: 0.10980392, b: 0.3372549, a: 1}
-  fixedActivityColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
-  fixedActivityBorderColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
-  timeHandColor: {r: 0.39607844, g: 0, b: 0, a: 1}
-  timeHandFastColor: {r: 0.61960787, g: 0.10980392, b: 0.3372549, a: 1}
-  pauseButtonColor: {r: 0.90196085, g: 0.5019608, b: 0.4666667, a: 1}
-  helpButtonColor: {r: 0.35686275, g: 0.77647066, b: 0.8313726, a: 1}
+  pauseButtonColor: {r: 0.9056604, g: 0.24350302, b: 0.44590166, a: 1}
+  helpButtonColor: {r: 0.70640993, g: 0.25938943, b: 0.8207547, a: 1}
+  gridCellColor: {r: 0.9150943, g: 0.6863207, b: 0.82710445, a: 0.59607846}
+  fixedGridCellColor: {r: 0.7075472, g: 0.3571111, b: 0.6334145, a: 0.59607846}
+  fixedActivityColor: {r: 0.74509805, g: 0.48235294, b: 0.8980392, a: 1}
+  fixedActivityBorderColor: {r: 0.47058824, g: 0.25882354, b: 0.7411765, a: 1}
+  timeHandColor: {r: 0.38679248, g: 0.034665354, b: 0.142259, a: 1}
+  timeHandFastColor: {r: 0.9150943, g: 0.09927912, b: 0.46325842, a: 1}
   calmMusic: {fileID: 8300000, guid: b8e0a0f145d6d4f7fabaadef1ccf3c7c, type: 3}
   tenseMusic: {fileID: 0}
   superTenseMusic: {fileID: 0}

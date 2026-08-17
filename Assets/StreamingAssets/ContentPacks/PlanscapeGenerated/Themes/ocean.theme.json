@@ -1,13 +1,21 @@
 {
     "translationKey": "planscape.oceanTheme",
     "mainFont": {
-        "instanceID": 49788
+<<<<<<< HEAD
+        "instanceID": 50694
+=======
+        "instanceID": 49810
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 49790
+<<<<<<< HEAD
+        "instanceID": 50240
+=======
+        "instanceID": 49798
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -15,7 +23,11 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 49792
+<<<<<<< HEAD
+                "instanceID": 51446
+=======
+                "instanceID": 51418
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.09758810698986054,
@@ -42,7 +54,11 @@
         },
         {
             "sprite": {
-                "instanceID": 49794
+<<<<<<< HEAD
+                "instanceID": 51448
+=======
+                "instanceID": 51420
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.37254902720451357,
@@ -69,7 +85,11 @@
         },
         {
             "sprite": {
-                "instanceID": 49796
+<<<<<<< HEAD
+                "instanceID": 51450
+=======
+                "instanceID": 51422
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -96,7 +116,11 @@
         },
         {
             "sprite": {
-                "instanceID": 49798
+<<<<<<< HEAD
+                "instanceID": 51452
+=======
+                "instanceID": 51424
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.09803922474384308,
@@ -123,7 +147,11 @@
         },
         {
             "sprite": {
-                "instanceID": 52108
+<<<<<<< HEAD
+                "instanceID": 52092
+=======
+                "instanceID": 52120
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.9411765336990356,
@@ -152,7 +180,11 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 52108
+<<<<<<< HEAD
+                "instanceID": 52092
+=======
+                "instanceID": 52120
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.9411765336990356,
@@ -464,6 +496,12 @@
         "b": 0.22641509771347047,
         "a": 1.0
     },
+    "eventTextColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
     "menuButtonBackgroundColor": {
         "r": 0.23137256503105164,
         "g": 0.3137255012989044,
@@ -507,7 +545,11 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51524
+<<<<<<< HEAD
+        "instanceID": 51460
+=======
+        "instanceID": 51432
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "tenseMusic": {
         "instanceID": 0
@@ -516,44 +558,85 @@
         "instanceID": 0
     },
     "buttonClick": {
-        "instanceID": 49804
+<<<<<<< HEAD
+        "instanceID": 51462
     },
     "activityPickUp": {
-        "instanceID": 49806
+        "instanceID": 51464
     },
     "activityPickUpFail": {
-        "instanceID": 49808
+        "instanceID": 51466
     },
     "activityPutDown": {
-        "instanceID": 49810
+        "instanceID": 51468
     },
     "activityTrash": {
-        "instanceID": 49812
+        "instanceID": 51470
     },
     "clockTicking": [
         {
-            "instanceID": 49814
+            "instanceID": 51472
         },
         {
-            "instanceID": 49816
+            "instanceID": 51474
         },
         {
-            "instanceID": 49818
+            "instanceID": 51476
         },
         {
-            "instanceID": 49820
+            "instanceID": 51478
         },
         {
-            "instanceID": 49822
+            "instanceID": 51480
         },
         {
-            "instanceID": 49824
+            "instanceID": 51482
         },
         {
-            "instanceID": 49826
+            "instanceID": 51484
         },
         {
-            "instanceID": 49828
+            "instanceID": 51486
+=======
+        "instanceID": 51434
+    },
+    "activityPickUp": {
+        "instanceID": 51436
+    },
+    "activityPickUpFail": {
+        "instanceID": 51438
+    },
+    "activityPutDown": {
+        "instanceID": 51440
+    },
+    "activityTrash": {
+        "instanceID": 51442
+    },
+    "clockTicking": [
+        {
+            "instanceID": 51444
+        },
+        {
+            "instanceID": 51446
+        },
+        {
+            "instanceID": 51448
+        },
+        {
+            "instanceID": 51450
+        },
+        {
+            "instanceID": 51452
+        },
+        {
+            "instanceID": 51454
+        },
+        {
+            "instanceID": 51456
+        },
+        {
+            "instanceID": 51458
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
         }
     ],
     "win": {

@@ -1,13 +1,21 @@
 {
     "translationKey": "planscape.classicTheme",
     "mainFont": {
-        "instanceID": 50674
+<<<<<<< HEAD
+        "instanceID": 50694
+=======
+        "instanceID": 49810
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "mainFontSizeScale": 1.0,
     "mainCharacterSpacingScale": 1.0,
     "mainLineSpacingScale": 1.0,
     "timerFont": {
-        "instanceID": 50220
+<<<<<<< HEAD
+        "instanceID": 50240
+=======
+        "instanceID": 49798
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "timerFontSizeScale": 1.0,
     "timerCharacterSpacingScale": 1.0,
@@ -15,7 +23,10 @@
     "menuBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51424
+<<<<<<< HEAD
+                "instanceID": 51446
+=======
+                "instanceID": 51418
             },
             "color": {
                 "r": 0.0,
@@ -42,7 +53,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51426
+                "instanceID": 51420
             },
             "color": {
                 "r": 0.2705882489681244,
@@ -69,7 +80,7 @@
         },
         {
             "sprite": {
-                "instanceID": 51428
+                "instanceID": 51422
             },
             "color": {
                 "r": 1.0,
@@ -96,7 +107,8 @@
         },
         {
             "sprite": {
-                "instanceID": 51430
+                "instanceID": 51424
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 0.0,
@@ -123,9 +135,93 @@
         },
         {
             "sprite": {
-                "instanceID": 51432
+                "instanceID": 51448
             },
             "color": {
+<<<<<<< HEAD
+                "r": 0.2705882489681244,
+                "g": 0.3921568691730499,
+                "b": 0.9607843160629273,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 51450
+            },
+            "color": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 51452
+            },
+            "color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "position": {
+                "x": -5.0,
+                "y": 2.4000000953674318,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 0.0
+            },
+            "scale": {
+                "x": 0.75,
+                "y": 0.75,
+                "z": 0.75
+            }
+        },
+        {
+            "sprite": {
+                "instanceID": 51454
+            },
+            "color": {
+=======
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
                 "r": 1.0,
                 "g": 1.0,
                 "b": 1.0,
@@ -152,7 +248,11 @@
     "levelBackgroundLayers": [
         {
             "sprite": {
-                "instanceID": 51434
+<<<<<<< HEAD
+                "instanceID": 51456
+=======
+                "instanceID": 51428
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -179,7 +279,11 @@
         },
         {
             "sprite": {
-                "instanceID": 51436
+<<<<<<< HEAD
+                "instanceID": 51458
+=======
+                "instanceID": 51430
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
             },
             "color": {
                 "r": 1.0,
@@ -491,6 +595,12 @@
         "b": 0.0,
         "a": 1.0
     },
+    "eventTextColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 0.0
+    },
     "menuButtonBackgroundColor": {
         "r": 0.4235294461250305,
         "g": 0.7019608020782471,
@@ -534,7 +644,11 @@
         "a": 1.0
     },
     "calmMusic": {
-        "instanceID": 51438
+<<<<<<< HEAD
+        "instanceID": 51460
+=======
+        "instanceID": 51432
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
     },
     "tenseMusic": {
         "instanceID": 0
@@ -543,44 +657,77 @@
         "instanceID": 0
     },
     "buttonClick": {
-        "instanceID": 51440
+<<<<<<< HEAD
+        "instanceID": 51462
     },
     "activityPickUp": {
-        "instanceID": 51442
+        "instanceID": 51464
     },
     "activityPickUpFail": {
-        "instanceID": 51444
+        "instanceID": 51466
     },
     "activityPutDown": {
-        "instanceID": 51446
+        "instanceID": 51468
     },
     "activityTrash": {
-        "instanceID": 51448
+        "instanceID": 51470
     },
     "clockTicking": [
         {
+            "instanceID": 51472
+=======
+        "instanceID": 51434
+    },
+    "activityPickUp": {
+        "instanceID": 51436
+    },
+    "activityPickUpFail": {
+        "instanceID": 51438
+    },
+    "activityPutDown": {
+        "instanceID": 51440
+    },
+    "activityTrash": {
+        "instanceID": 51442
+    },
+    "clockTicking": [
+        {
+            "instanceID": 51444
+        },
+        {
+            "instanceID": 51446
+        },
+        {
+            "instanceID": 51448
+        },
+        {
             "instanceID": 51450
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
         },
         {
-            "instanceID": 51452
+            "instanceID": 51474
         },
         {
-            "instanceID": 51454
+            "instanceID": 51476
         },
         {
-            "instanceID": 51456
+            "instanceID": 51478
         },
         {
+<<<<<<< HEAD
+            "instanceID": 51480
+        },
+        {
+            "instanceID": 51482
+        },
+        {
+            "instanceID": 51484
+        },
+        {
+            "instanceID": 51486
+=======
             "instanceID": 51458
-        },
-        {
-            "instanceID": 51460
-        },
-        {
-            "instanceID": 51462
-        },
-        {
-            "instanceID": 51464
+>>>>>>> 268244ecf2430437c87f80ba60992c10a013738c
         }
     ],
     "win": {

@@ -30,7 +30,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
     protected virtual void Awake() {
         // If instance already exists (duplicate prevention)
         if(instance != null && instance != this) {
-            Debug.LogWarning($"[Singleton] Instance already exists, destroying {typeof(T).Name}.");
+            Debug.LogWarning($"{typeof(T).Name} Instance already exists, destroying duplicate.");
             Destroy(gameObject);
             return;
         }
