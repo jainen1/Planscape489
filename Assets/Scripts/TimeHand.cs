@@ -90,7 +90,7 @@ public class TimeHand : MonoBehaviour {
         GridCell cell = collision.GetComponent<GridCell>();
         Week currentWeek = GlobalGameManager.GetCurrentWeek();
         if(cell != null && cell.hour == (currentWeek.dayStartHour + currentWeek.hoursPerDay - 1)) {
-            if(cell.day == currentWeek.days) {
+            if(cell.day == currentWeek.days.Length) {
                 if(LevelManager.Instance.RequiredTaskListIsEmpty()) {
                     if(GlobalGameManager.GetCurrentWeekIndex() == GlobalGameManager.GetLastWeekIndex() - 1) {
                         LevelManager.Instance.VictoryScene();

@@ -211,8 +211,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 917707208395696618, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
     - target: {fileID: 5710029065703833287, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
+      propertyPath: m_text
+      value: SUN
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710029065703833287, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
+      propertyPath: m_fontSize
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710029065703833287, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
       propertyPath: m_fontStyle
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5710029065703833287, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 6640321440834366388, guid: 13a48474a5a317d46bd6e7c4bf28ed35, type: 3}
       propertyPath: m_Name

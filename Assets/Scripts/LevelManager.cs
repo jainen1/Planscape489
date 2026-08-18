@@ -37,14 +37,11 @@ public class LevelManager : MonoSingleton<LevelManager>
     IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
         float counter = 0f; //the thing don't work if this is defined each time it's used. This is the way
 
-        for(int i = 0; i < currentWeek.days; i++) {
+        for(int i = 0; i < currentWeek.days.Length; i++) {
             GameObject column = Instantiate(columnPrefab);
             column.name = "Column " + (i+1);
             column.transform.SetParent(grid.transform);
-
-            string dayName = null;
-            switch(i) { case 0: dayName = "SUN"; break; case 1: dayName = "MON"; break; case 2: dayName = "TUE"; break; case 3: dayName = "WED"; break; case 4: dayName = "THU"; break; case 5: dayName = "FRI"; break; case 6: dayName = "SAT"; break; }
-            column.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dayName;
+            column.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentWeek.days[i];
 
             timeHand.startPositions.Add(column.transform.GetChild(0).GetChild(0).gameObject);
             GlobalGameManager.SendThemeUpdate();

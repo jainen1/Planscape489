@@ -12,7 +12,7 @@ public class Week : StuffedScriptableObject {
     public float firstPreparationTime = 60f;
     public float dailyPreparationTime = 15f;
 
-    public int days = 7;
+    public string[] days = new string[7];
     public int hoursPerDay = 17;
     public int dayStartHour = 6;
 

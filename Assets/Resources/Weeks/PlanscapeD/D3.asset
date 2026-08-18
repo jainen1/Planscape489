@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: D3
   m_EditorClassIdentifier: Assembly-CSharp::Week
-  music: {fileID: 0}
+  translationKey: 
+  musicType: 0
+  gameplayType: 0
   timeHandSpeed: 0.6
   firstPreparationTime: 60
   dailyPreparationTime: 15
+  days:
+  - SUN
+  - MON
+  - TUE
+  - WED
+  - THU
+  - FRI
+  - SAT
+  hoursPerDay: 17
+  dayStartHour: 6
   resourceBars:
   - startingValue: 0
     resourceBars:
@@ -75,3 +87,4 @@ MonoBehaviour:
   - activity: {fileID: 11400000, guid: f3b52c204d1524efca976dc71b5dfd8c, type: 2}
     count: 1
   fixedEvents: []
+  tutorialContent: []

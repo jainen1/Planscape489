@@ -18,7 +18,14 @@ MonoBehaviour:
   timeHandSpeed: 0.85
   firstPreparationTime: 60
   dailyPreparationTime: 15
-  days: 7
+  days:
+  - SUN
+  - MON
+  - TUE
+  - WED
+  - THU
+  - FRI
+  - SAT
   hoursPerDay: 17
   dayStartHour: 6
   resourceBars:

@@ -12,11 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9405f939bebdb2a43a10bdd9f911ad3a, type: 3}
   m_Name: H1
   m_EditorClassIdentifier: Assembly-CSharp::Week
+  translationKey: 
   musicType: 2
   gameplayType: 0
   timeHandSpeed: 0.48
   firstPreparationTime: 60
   dailyPreparationTime: 15
+  days:
+  - SUN
+  - MON
+  - TUE
+  - WED
+  - THU
+  hoursPerDay: 17
+  dayStartHour: 6
   resourceBars:
   - startingValue: 0
     resourceBars:
@@ -40,3 +49,4 @@ MonoBehaviour:
   requiredTasks: []
   bonusTasks: []
   fixedEvents: []
+  tutorialContent: []
