@@ -72,8 +72,12 @@ public class ResourceBar : MonoBehaviour
             ResourcePiece resourceBar = resourcePieces[i];
             AdjustPositionAndSize(resourceBar.fill, GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar));
             AdjustPositionAndSize(resourceBar.change, GetProgress(resourceBigger ? resourceAmount : displayedAmount, resourceBar));
-            resourceBar.text.GetComponent<TextMeshProUGUI>().text = displayText;
-            resourceBar.mask.GetComponent<RectMask2D>().padding = new Vector4(0, 0, 6.2f - (GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar) * 6.2f), 0);
+            resourceBar.fillText.GetComponent<TextMeshProUGUI>().text = displayText;
+            resourceBar.changeText.GetComponent<TextMeshProUGUI>().text = displayText;
+
+            resourceBar.fillText.transform.position = text.transform.position;
+            resourceBar.changeText.transform.position = text.transform.position;
+            //resourceBar.mask.GetComponent<RectMask2D>().padding = new Vector4(0, 0, 6.2f - (GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar) * 6.2f), 0);
         }
     }
 
