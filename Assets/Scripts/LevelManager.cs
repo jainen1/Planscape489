@@ -44,7 +44,7 @@ public class LevelManager : MonoSingleton<LevelManager>
 
             string dayName = null;
             switch(i) { case 0: dayName = "SUN"; break; case 1: dayName = "MON"; break; case 2: dayName = "TUE"; break; case 3: dayName = "WED"; break; case 4: dayName = "THU"; break; case 5: dayName = "FRI"; break; case 6: dayName = "SAT"; break; }
-            column.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dayName;
+            column.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dayName;
 
             timeHand.startPositions.Add(column.transform.GetChild(0).GetChild(0).gameObject);
             GlobalGameManager.SendThemeUpdate();
@@ -58,7 +58,7 @@ public class LevelManager : MonoSingleton<LevelManager>
                     cellComponent.hour = j;
                     cells.Add(cellComponent);
                     cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
-                    cell.GetComponent<TextMenuObject>().OnThemeUpdate();
+                    cell.transform.GetChild(0).GetComponent<TextMenuObject>().OnThemeUpdate();
                     //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
 
                     //float waitTime = (2.5f - (i * 0.1f)) / (currentWeek.hoursPerDay * currentWeek.days);
@@ -88,9 +88,10 @@ public class LevelManager : MonoSingleton<LevelManager>
                 Week.Utilities.EventWithTime activeEvent = currentWeek.fixedEvents[i];
                 GridCell targetCell = cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)];
                 targetCell.occupyingEvent = activeEvent.eventObject;
-                targetCell.GetComponent<TextMeshProUGUI>().text = "! EVENT !";
-                targetCell.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Bold;
-                targetCell.GetComponent<TextMeshProUGUI>().color = GlobalGameManager.GetCurrentMenuTheme().eventTextColor;
+                TextMeshProUGUI cellText = targetCell.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                cellText.text = "! EVENT !";
+                cellText.fontStyle = FontStyles.Bold;
+                cellText.color = GlobalGameManager.GetCurrentMenuTheme().eventTextColor;
                 
                 float waitTime = Mathf.Log(1.08f, (i + 2));
                 while(counter < waitTime) { counter += Time.deltaTime; yield return null; }

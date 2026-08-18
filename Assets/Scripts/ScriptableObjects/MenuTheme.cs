@@ -28,7 +28,8 @@ public class MenuTheme : StuffedScriptableObject
         public Color color;
         public Vector3 position = Vector3.zero;
         public Quaternion rotation;
-        public Vector3 scale = Vector3.one;
+        //public Vector3 scale = Vector3.one;
+        public Vector2 dimensions = new Vector2(19.2f, 10.8f);
     }
 
     [Header("Task Lists (0 = Required, 2 = Bonus, 1 = Unused)")]

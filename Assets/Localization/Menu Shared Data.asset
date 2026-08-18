@@ -10,17 +10,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: StringTableCollection Shared Data
+  m_Name: Menu Shared Data
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
-  m_TableCollectionName: StringTableCollection
+  m_TableCollectionName: Menu
   m_TableCollectionNameGuidString: 4638ea885e3fe7f42bbbc2f36d46564f
   m_Entries:
   - m_Id: 15043911680
-    m_Key: button.continue
+    m_Key: menu.continue
     m_Metadata:
       m_Items: []
-  - m_Id: 84216373248
-    m_Key: activity.eat
+  - m_Id: 38376278110863360
+    m_Key: menu.newgame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38376314425147392
+    m_Key: menu.options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38376340304003072
+    m_Key: menu.themes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38376370096144384
+    m_Key: menu.credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38376395870142464
+    m_Key: menu.exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38377306319323136
+    m_Key: menu.paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38377610150510592
+    m_Key: menu.resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38377635979034624
+    m_Key: menu.restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38377668178706432
+    m_Key: menu.save
     m_Metadata:
       m_Items: []
   m_Metadata:

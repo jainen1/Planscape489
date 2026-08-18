@@ -39,7 +39,7 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
         }
 
         MenuTheme.TaskListColors colors = GlobalGameManager.GetCurrentMenuTheme().taskListColors[activityTypeIndex];
-        main.GetComponent<SpriteRenderer>().color = colors.mainColor;
+        main.GetComponent<Image>().color = colors.mainColor;
         foreach(GameObject scrollbarObject in scrollbar) {
             scrollbarObject.GetComponent<Image>().color = colors.scrollbarColor;
         }

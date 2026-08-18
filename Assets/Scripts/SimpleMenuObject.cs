@@ -93,6 +93,7 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
     public static bool GetBrightOrDarkColor(Color backgroundColor, int threshold) {
         float backgroundColorBrightness = (0.2126f * (backgroundColor.r * 255)) + (0.7152f * (backgroundColor.g * 255)) + (0.0722f * (backgroundColor.b * 255));
         bool brighter = (backgroundColorBrightness <= threshold);
+
         //Debug.Log("This object's brightness is " + backgroundColorBrightness + ", which is " + (brighter? "brighter" : "darker")  + " than the threshold of " + threshold + ".");
         return brighter; // 'true' means light, 'false' means dark
     }

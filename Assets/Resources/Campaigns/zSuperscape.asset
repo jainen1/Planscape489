@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: zSuperscape
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
   translationKey: 
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 5193401657051771739, guid: cf939723f3bdf46b4b3bcf50b51e1eb9, type: 3}
   accentColor: {r: 0.066666685, g: 0.6500722, b: 0.8352941, a: 1}
   weeks:
   - {fileID: 11400000, guid: 6dfba4f76be47744c85e57534298b94d, type: 2}
