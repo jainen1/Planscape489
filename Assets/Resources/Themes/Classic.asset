@@ -105,7 +105,7 @@ MonoBehaviour:
   resourceBarBackgroundColor: {r: 1, g: 0.9450981, b: 0.87843144, a: 1}
   brightTextColor: {r: 1, g: 1, b: 1, a: 1}
   darkTextColor: {r: 0, g: 0, b: 0, a: 1}
-  eventTextColor: {r: 0, g: 0, b: 0, a: 0}
+  eventTextColor: {r: 0, g: 0, b: 0, a: 1}
   teamPlanscapeColor: {r: 0.27450982, g: 0.39215687, b: 0.95686275, a: 1}
   menuButtonBackgroundColor: {r: 0.42352945, g: 0.7019608, b: 0.3803922, a: 1}
   pauseButtonColor: {r: 0.9019608, g: 0.5019608, b: 0.46666667, a: 1}

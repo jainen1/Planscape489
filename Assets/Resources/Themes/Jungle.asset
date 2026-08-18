@@ -26,38 +26,38 @@ MonoBehaviour:
     color: {r: 0.098039225, g: 0.7372549, b: 0.35686275, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 0.75, y: 0.75, z: 0.75}
+    dimensions: {x: 4.17, y: 1.26}
   - sprite: {fileID: 21300000, guid: b3417f32a3b5c524e9c6078c01df6bde, type: 3}
     color: {r: 0.61960787, g: 0.87843144, b: 0.45882356, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 0.75, y: 0.75, z: 0.75}
+    dimensions: {x: 4.17, y: 1.26}
   - sprite: {fileID: 21300000, guid: 3b2f97f3739f5554f81c33055159ce6f, type: 3}
     color: {r: 0.07058824, g: 0.13333334, b: 0.054901965, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 0.75, y: 0.75, z: 0.75}
+    dimensions: {x: 4.17, y: 1.26}
   - sprite: {fileID: 21300000, guid: aa47c7800243a6c4c8decc6255ad0eb3, type: 3}
     color: {r: 1, g: 1, b: 1, a: 1}
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 0.75, y: 0.75, z: 0.75}
+    dimensions: {x: 4.17, y: 1.26}
   - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.9490197, g: 1, b: 0.94117653, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 1, y: 1, z: 1}
+    dimensions: {x: 19.2, y: 10.8}
   levelBackgroundLayers:
   - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.9490197, g: 1, b: 0.94117653, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 1, y: 1, z: 1}
+    dimensions: {x: 19.2, y: 10.8}
   - sprite: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
     color: {r: 0.9215687, g: 1, b: 0.909804, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 1, y: 1, z: 1}
+    dimensions: {x: 19.2, y: 10.8}
   taskListColors:
   - mainColor: {r: 0.62077725, g: 0.8773585, b: 0.45937166, a: 1}
     itemColor: {r: 0.84511626, g: 1, b: 0.57254905, a: 1}
@@ -105,7 +105,7 @@ MonoBehaviour:
   resourceBarBackgroundColor: {r: 0.8862746, g: 1, b: 0.87843144, a: 1}
   brightTextColor: {r: 0.9995647, g: 1, b: 0.9103774, a: 1}
   darkTextColor: {r: 0.078000784, g: 0.18396229, b: 0.04772607, a: 1}
-  eventTextColor: {r: 0, g: 0, b: 0, a: 0}
+  eventTextColor: {r: 0, g: 0, b: 0, a: 1}
   teamPlanscapeColor: {r: 0.99607843, g: 0.99607843, b: 0.99215686, a: 1}
   menuButtonBackgroundColor: {r: 0.15294118, g: 0.28235295, b: 0.13333334, a: 1}
   pauseButtonColor: {r: 0.7772075, g: 0.9019608, b: 0.4666667, a: 1}
