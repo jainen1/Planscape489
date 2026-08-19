@@ -1,0 +1,126 @@
+{
+    "translationKey": "",
+    "musicType": 0,
+    "gameplayType": 0,
+    "timeHandSpeed": 0.5199999809265137,
+    "firstPreparationTime": 60.0,
+    "dailyPreparationTime": 15.0,
+    "days": 7,
+    "hoursPerDay": 17,
+    "dayStartHour": 6,
+    "resourceBars": [
+        {
+            "startingValue": 0.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 16.0
+                }
+            ]
+        },
+        {
+            "startingValue": 70.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 100.0
+                },
+                {
+                    "min": 100.0,
+                    "max": 200.0
+                }
+            ]
+        },
+        {
+            "startingValue": 400.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 1400.0
+                },
+                {
+                    "min": 1400.0,
+                    "max": 4200.0
+                },
+                {
+                    "min": 4200.0,
+                    "max": 12600.0
+                }
+            ]
+        }
+    ],
+    "fixedActivities": [
+        {
+            "activity": {
+                "instanceID": 50120
+            },
+            "time": {
+                "x": 6.0,
+                "y": 11.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50122
+            },
+            "time": {
+                "x": 2.0,
+                "y": 11.0
+            }
+        }
+    ],
+    "requiredTasks": [
+        {
+            "activity": {
+                "instanceID": 49896
+            },
+            "count": 18
+        },
+        {
+            "activity": {
+                "instanceID": 49898
+            },
+            "count": 7
+        },
+        {
+            "activity": {
+                "instanceID": 49904
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49910
+            },
+            "count": 1
+        }
+    ],
+    "bonusTasks": [
+        {
+            "activity": {
+                "instanceID": 49902
+            },
+            "count": 3
+        },
+        {
+            "activity": {
+                "instanceID": 49914
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49916
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49918
+            },
+            "count": 1
+        }
+    ],
+    "fixedEvents": [],
+    "tutorialContent": []
+}

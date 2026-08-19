@@ -1,0 +1,195 @@
+{
+    "translationKey": "",
+    "musicType": 0,
+    "gameplayType": 0,
+    "timeHandSpeed": 0.6600000262260437,
+    "firstPreparationTime": 60.0,
+    "dailyPreparationTime": 15.0,
+    "days": 7,
+    "hoursPerDay": 17,
+    "dayStartHour": 6,
+    "resourceBars": [
+        {
+            "startingValue": 0.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 16.0
+                }
+            ]
+        },
+        {
+            "startingValue": 70.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 100.0
+                },
+                {
+                    "min": 100.0,
+                    "max": 200.0
+                }
+            ]
+        },
+        {
+            "startingValue": 400.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 1400.0
+                },
+                {
+                    "min": 1400.0,
+                    "max": 4200.0
+                },
+                {
+                    "min": 4200.0,
+                    "max": 12600.0
+                }
+            ]
+        }
+    ],
+    "fixedActivities": [
+        {
+            "activity": {
+                "instanceID": 50086
+            },
+            "time": {
+                "x": 3.0,
+                "y": 9.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50088
+            },
+            "time": {
+                "x": 3.0,
+                "y": 13.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50090
+            },
+            "time": {
+                "x": 4.0,
+                "y": 14.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50092
+            },
+            "time": {
+                "x": 5.0,
+                "y": 18.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50094
+            },
+            "time": {
+                "x": 2.0,
+                "y": 10.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50104
+            },
+            "time": {
+                "x": 2.0,
+                "y": 20.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50110
+            },
+            "time": {
+                "x": 4.0,
+                "y": 19.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 49894
+            },
+            "time": {
+                "x": 4.0,
+                "y": 11.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50106
+            },
+            "time": {
+                "x": 7.0,
+                "y": 22.0
+            }
+        }
+    ],
+    "requiredTasks": [
+        {
+            "activity": {
+                "instanceID": 49896
+            },
+            "count": 18
+        },
+        {
+            "activity": {
+                "instanceID": 49898
+            },
+            "count": 7
+        },
+        {
+            "activity": {
+                "instanceID": 49904
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49910
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 50098
+            },
+            "count": 4
+        }
+    ],
+    "bonusTasks": [
+        {
+            "activity": {
+                "instanceID": 49902
+            },
+            "count": 3
+        },
+        {
+            "activity": {
+                "instanceID": 49914
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49916
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49918
+            },
+            "count": 1
+        }
+    ],
+    "fixedEvents": [],
+    "tutorialContent": []
+}

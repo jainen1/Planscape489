@@ -1,0 +1,203 @@
+{
+    "translationKey": "",
+    "musicType": 0,
+    "gameplayType": 0,
+    "timeHandSpeed": 0.47999998927116396,
+    "firstPreparationTime": 60.0,
+    "dailyPreparationTime": 15.0,
+    "days": 7,
+    "hoursPerDay": 17,
+    "dayStartHour": 6,
+    "resourceBars": [
+        {
+            "startingValue": 0.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 16.0
+                }
+            ]
+        },
+        {
+            "startingValue": 70.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 100.0
+                },
+                {
+                    "min": 100.0,
+                    "max": 200.0
+                }
+            ]
+        },
+        {
+            "startingValue": 400.0,
+            "resourceBars": [
+                {
+                    "min": 0.0,
+                    "max": 1400.0
+                },
+                {
+                    "min": 1400.0,
+                    "max": 4200.0
+                },
+                {
+                    "min": 4200.0,
+                    "max": 12600.0
+                }
+            ]
+        }
+    ],
+    "fixedActivities": [
+        {
+            "activity": {
+                "instanceID": 50086
+            },
+            "time": {
+                "x": 3.0,
+                "y": 9.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50088
+            },
+            "time": {
+                "x": 3.0,
+                "y": 13.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50090
+            },
+            "time": {
+                "x": 4.0,
+                "y": 14.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50092
+            },
+            "time": {
+                "x": 5.0,
+                "y": 18.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50094
+            },
+            "time": {
+                "x": 2.0,
+                "y": 10.0
+            }
+        },
+        {
+            "activity": {
+                "instanceID": 50096
+            },
+            "time": {
+                "x": 7.0,
+                "y": 21.0
+            }
+        }
+    ],
+    "requiredTasks": [
+        {
+            "activity": {
+                "instanceID": 49896
+            },
+            "count": 18
+        },
+        {
+            "activity": {
+                "instanceID": 49898
+            },
+            "count": 7
+        },
+        {
+            "activity": {
+                "instanceID": 49904
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49910
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 50098
+            },
+            "count": 2
+        },
+        {
+            "activity": {
+                "instanceID": 50100
+            },
+            "count": 1
+        }
+    ],
+    "bonusTasks": [
+        {
+            "activity": {
+                "instanceID": 49902
+            },
+            "count": 2
+        },
+        {
+            "activity": {
+                "instanceID": 49906
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49916
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49914
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 49918
+            },
+            "count": 1
+        },
+        {
+            "activity": {
+                "instanceID": 50102
+            },
+            "count": 1
+        }
+    ],
+    "fixedEvents": [],
+    "tutorialContent": [
+        {
+            "type": 0,
+            "text": "- Intro -\n\nWelcome to Planscape!\n\nYour goal is to make it to the end of the week without going negative on Happiness or Money.\n\nIf your Happiness or Money falls to zero, you burn out."
+        },
+        {
+            "type": 0,
+            "text": "- Activities -\r\n\r\nActivities in your To-Do lists affect your Happiness and Money.\r\n\r\nClick and drag an activity to schedule it. Don’t worry, you can pick it up again!\r\n\r\n“Must Do” activities MUST be done by the end of the week. “Could Do” don’t have to, though!\r\n\r\nTo delete an activity, drag it right back to a task list and it’ll slot back in!"
+        },
+        {
+            "type": 0,
+            "text": "- Special Activities -\n\nGrey activities are immovable. Plan accordingly!\n\nCertain activities have a hollow space descending from them representing a full stomach; you will be unable to place other \"meal\" tasks in that space."
+        },
+        {
+            "type": 0,
+            "text": "- Time -\n\nYou get 60 seconds to plan your week and 15 seconds before each day starts.\n\nWhen the Time Hand starts ticking, all past activities are set in stone.\n\nYou can still move activities around in the future, though! Don't stop working when the clock is ticking!"
+        }
+    ]
+}
