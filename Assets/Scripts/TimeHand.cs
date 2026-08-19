@@ -1,35 +1,45 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class TimeHand : MonoBehaviour {
-    private LevelManager levelManager;
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
-    [SerializeField] private AudioClip[] clockTicking;
+    [SerializeField] private GameObject skipButton;
+    [SerializeField] public Scrollbar fastForward;
     private int clockTickIndex;
-    [SerializeField] private Vector3[] dayStartPositions;
+    public List<GameObject> startPositions;
 
     [Header("Fast Forward")]
     [SerializeField] private bool isFast = false;
-    [SerializeField] private float fastSpeedModifier = 1.5f;
-
-    void Start()
-    {
-        levelManager = FindFirstObjectByType<LevelManager>();
-        gameObject.transform.position = dayStartPositions[0];
-        timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
-        clockTickIndex = 0;
-    }
+    [SerializeField] public float speedMultiplier = 1f;
+    [SerializeField] private float actualSpeed;
+    public float ActualSpeed => actualSpeed;
 
     private void Update() {
         timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
-        if(levelManager.levelIsActive) {
+        if(LevelManager.Instance.levelIsActive) {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
+                skipButton.transform.localScale = Vector3.one;
+                fastForward.transform.localScale = Vector3.zero;
+                fastForward.interactable = false;
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
+                actualSpeed = GlobalGameManager.GetCurrentWeek().timeHandSpeed * speedMultiplier * Time.deltaTime;
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (actualSpeed), gameObject.transform.position.z);
+                skipButton.transform.localScale = Vector3.zero;
+                fastForward.transform.localScale = Vector3.one;
+                fastForward.interactable = true;
             }
         }
+    }
+
+    public void StartTimeHand () {
+        gameObject.transform.position = new Vector3(startPositions[0].transform.position.x, startPositions[0].transform.position.y, -2);
+        timer = GlobalGameManager.GetCurrentWeek().firstPreparationTime;
+        clockTickIndex = 0;
     }
 
     public bool IsFast() {
@@ -38,18 +48,18 @@ public class TimeHand : MonoBehaviour {
 
     public void IsBecomeFast(bool yes) {
         isFast = yes;
-        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+        gameObject.GetComponent<SimpleMenuObject>().OnThemeUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         GridCell cell = collision.GetComponent<GridCell>();
 
         if(cell != null && cell.canBeUsed) {
-            AudioSource.PlayClipAtPoint(clockTicking[clockTickIndex], Camera.main.transform.position, 1.0f);
-            clockTickIndex = (clockTickIndex > clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
+            SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().clockTicking[clockTickIndex], SoundManager.AudioChannels.sfx);
+            clockTickIndex = (clockTickIndex > GlobalGameManager.GetCurrentMenuTheme().clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
 
-            float finalHappiness = levelManager.GetResource(1);
-            float finalMoney = levelManager.GetResource(2);
+            float finalHappiness = LevelManager.GetResource(1);
+            float finalMoney = LevelManager.GetResource(2);
 
             if(cell.occupyingEvent != null) {
                 Debug.Log(cell.occupyingEvent.title + ": " + cell.occupyingEvent.description);
@@ -60,6 +70,12 @@ public class TimeHand : MonoBehaviour {
 
                 finalHappiness += cell.occupyingActivity.initializer.activity.happiness;
                 finalMoney += cell.occupyingActivity.initializer.activity.money;
+
+                AudioClip clip = cell.occupyingActivity.initializer.activity.sound;
+                
+                float tempPitch = cell.occupyingActivity.initializer.activity.pitch;
+
+                SoundManager.DiegeticActivitySound(clip, tempPitch);
             }
 
             //Debug.Log("Final Stuff being evaluated");
@@ -67,35 +83,36 @@ public class TimeHand : MonoBehaviour {
             if(finalHappiness > 150) { finalHappiness -= Mathf.Min(finalHappiness - 150, 10); }
             else if(finalHappiness > 100) { finalHappiness -= Mathf.Min(finalHappiness - 100, 5); }
 
-            levelManager.SetResource(1, Mathf.Min(finalHappiness, 200));
-            levelManager.SetResource(2, finalMoney);
+            LevelManager.SetResource(1, Mathf.Min(finalHappiness, 200));
+            LevelManager.SetResource(2, finalMoney);
 
-            if(levelManager.GetResource(1) <= 0 || levelManager.GetResource(2) < 0) {
-                levelManager.LoseScene();
+            if(LevelManager.GetResource(1) <= 0 || LevelManager.GetResource(2) < 0) {
+                LevelManager.Instance.LoseScene();
                 Destroy(gameObject);
             }
 
             cell.isFixed = true;
-            cell.GetComponent<MenuObject>().UpdateMenuObject();
+            cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
 
-            levelManager.SamplePlannerMetric(cell.day, cell.hour);
+            LevelManager.Instance.SamplePlannerMetric(cell.day, cell.hour);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         GridCell cell = collision.GetComponent<GridCell>();
-        if(cell != null && cell.hour == 22) {
-            if(cell.day == 7) {
-                if(levelManager.RequiredTaskListIsEmpty()) {
+        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+        if(cell != null && cell.hour == (currentWeek.dayStartHour + currentWeek.hoursPerDay - 1)) {
+            if(cell.day == currentWeek.days.Length) {
+                if(LevelManager.Instance.RequiredTaskListIsEmpty()) {
                     if(GlobalGameManager.GetCurrentWeekIndex() == GlobalGameManager.GetLastWeekIndex() - 1) {
-                        levelManager.VictoryScene();
+                        LevelManager.Instance.VictoryScene();
                     } else {
-                        levelManager.WinScene();
+                        LevelManager.Instance.WinScene();
                     }
-                } else { levelManager.LoseScene(); }
+                } else { LevelManager.Instance.LoseScene(); }
                 Destroy(gameObject);
             } else {
-                gameObject.transform.position = dayStartPositions[cell.day];
+                gameObject.transform.position = new Vector3(startPositions[cell.day].transform.position.x, startPositions[cell.day].transform.position.y, -2f);
                 timer = GlobalGameManager.GetCurrentWeek().dailyPreparationTime;
             }
         }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ResourceBar : MonoBehaviour
 {
-    private LevelManager levelManager;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private int resourceIndex;
 
@@ -18,38 +17,34 @@ public class ResourceBar : MonoBehaviour
     [SerializeField] private GameObject resourcePiecePrefab;
     [SerializeField] private List<ResourcePiece> resourcePieces = new List<ResourcePiece>();
 
-    void OnEnable() { GlobalGameManager.OnUpdateTheme += UpdateMenuObject; }
-    void OnDisable() { GlobalGameManager.OnUpdateTheme -= UpdateMenuObject; }
+    void OnEnable() { GlobalGameManager.OnUpdateTheme += OnUpdateTheme; }
+    void OnDisable() { GlobalGameManager.OnUpdateTheme -= OnUpdateTheme; }
 
-    private void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
-    }
-
-    public void UpdateMenuObject() {
+    public void OnUpdateTheme() {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
 
-        gameObject.GetComponent<SpriteRenderer>().color = menuTheme.resourceBarBackgroundColor;
+        gameObject.GetComponent<Image>().color = menuTheme.resourceBarBackgroundColor;
 
         for(int i = 0; i < resourcePieces.Count; i++) { Destroy(resourcePieces[i].gameObject); }
         resourcePieces.Clear();
 
-        ResourceBarColorsCollection[] collectionArray = menuTheme.resourceBarColors;
-        ResourceBarColors[] resourceBarColors = collectionArray[resourceIndex].resourceBars;
+        MenuTheme.ResourceBarColors.Collection[] collectionArray = menuTheme.resourceBarColors;
+        MenuTheme.ResourceBarColors[] resourceBarColors = collectionArray[resourceIndex].resourceBars;
 
         if(resourceIndex < collectionArray.Length && resourceBarColors != null && resourceBarColors.Length > 0) {
             //ResourceBarColorsCollection collection = collectionArray[resourceIndex];
             for(int i = 0; i < resourceBarColors.Length; i++) {
                 GameObject newResourcePiece = Instantiate(resourcePiecePrefab);
-                newResourcePiece.transform.parent = gameObject.transform;
+                newResourcePiece.transform.SetParent(gameObject.transform);
                 //newResourcePiece.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -(0.1f * (i + 1)));
                 ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
                     
-                ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
+                Week.Utilities.ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
 
                 newResourcePieceComponent.min = values.min;
                 newResourcePieceComponent.max = values.max;
-                newResourcePieceComponent.fill.GetComponent<SpriteRenderer>().color = resourceBarColors[i].fill;
-                newResourcePieceComponent.change.GetComponent<SpriteRenderer>().color = resourceBarColors[i].change;
+                newResourcePieceComponent.fill.GetComponent<Image>().color = resourceBarColors[i].fill;
+                newResourcePieceComponent.change.GetComponent<Image>().color = resourceBarColors[i].change;
 
                 resourcePieces.Add(newResourcePieceComponent);
 
@@ -61,7 +56,7 @@ public class ResourceBar : MonoBehaviour
 
     void Update() {
         if(resourceIndex == 0) { resourceAmount = GlobalGameManager.GetCurrentWeekIndex() + 1; }
-        else { resourceAmount = levelManager.GetResource(resourceIndex); }
+        else { resourceAmount = LevelManager.GetResource(resourceIndex); }
 
         if(displayedAmount != resourceAmount) { UpdateDisplay(); }
     }
@@ -77,8 +72,12 @@ public class ResourceBar : MonoBehaviour
             ResourcePiece resourceBar = resourcePieces[i];
             AdjustPositionAndSize(resourceBar.fill, GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar));
             AdjustPositionAndSize(resourceBar.change, GetProgress(resourceBigger ? resourceAmount : displayedAmount, resourceBar));
-            resourceBar.text.GetComponent<TextMeshProUGUI>().text = displayText;
-            resourceBar.mask.GetComponent<RectMask2D>().padding = new Vector4(0, 0, 6.2f - (GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar) * 6.2f), 0);
+            resourceBar.fillText.GetComponent<TextMeshProUGUI>().text = displayText;
+            resourceBar.changeText.GetComponent<TextMeshProUGUI>().text = displayText;
+
+            resourceBar.fillText.transform.position = text.transform.position;
+            resourceBar.changeText.transform.position = text.transform.position;
+            //resourceBar.mask.GetComponent<RectMask2D>().padding = new Vector4(0, 0, 6.2f - (GetProgress(resourceBigger ? displayedAmount : resourceAmount, resourceBar) * 6.2f), 0);
         }
     }
 
@@ -87,8 +86,8 @@ public class ResourceBar : MonoBehaviour
     }
 
     private void AdjustPositionAndSize(GameObject bar, float progress) {
-        Vector2 spriteSize = gameObject.GetComponent<SpriteRenderer>().size;
+        Vector2 spriteSize = gameObject.GetComponent<RectTransform>().sizeDelta;
         bar.transform.position = new Vector3(gameObject.transform.position.x - (((spriteSize.x - 0.1f) / 2f) * (1 - progress)), gameObject.transform.position.y, bar.transform.position.z);
-        bar.GetComponent<SpriteRenderer>().size = new Vector2((spriteSize.x - 0.1f) * progress, (spriteSize.y - 0.1f));
+        bar.GetComponent<RectTransform>().sizeDelta = new Vector2((spriteSize.x - 0.1f) * progress, (spriteSize.y - 0.1f));
     }
 }

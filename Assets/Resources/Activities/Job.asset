@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Job
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
+  translationKey: 
   title: Cashier Job
   length: 3
   fullStomachLength: 0
-  type: 1
   happiness: -10
   money: 60
+  sound: {fileID: 8300000, guid: 4b871e2b7495e421684f677989de2b42, type: 3}
+  pitch: 1

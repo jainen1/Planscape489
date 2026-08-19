@@ -1,24 +1,59 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TaskList : MonoBehaviour
+public class TaskList : MonoBehaviour, ReceivesThemeUpdates
 {
+    [Header("Objects")]
+    [SerializeField] private GameObject main;
+    [SerializeField] private GameObject[] scrollbar;
+
+    [Header("Parameters")]
     [SerializeField] private GameObject firstItem;
     [SerializeField] private List<GameObject> itemList;
-    [SerializeField] private ActivityType activityType;
+    [SerializeField] private Activity.Type activityType;
 
     private void Awake() {
         itemList = new List<GameObject>();
 
-        ActivityWithCount[] activities;
+        Week.Utilities.ActivityWithCount[] activities;
 
         switch(activityType) {
-            case ActivityType.Required: activities = GlobalGameManager.GetCurrentWeek().requiredTasks; break;
-            case ActivityType.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
-            default: activities = new ActivityWithCount[0]; break;
+            case Activity.Type.Required: activities = GlobalGameManager.GetCurrentWeek().requiredTasks; break;
+            case Activity.Type.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
+            default: activities = new Week.Utilities.ActivityWithCount[0]; break;
+        }
+        CreateList(activities);
+    }
+
+    void OnEnable () { GlobalGameManager.OnUpdateTheme += OnThemeUpdate; }
+    void OnDisable () { GlobalGameManager.OnUpdateTheme -= OnThemeUpdate; }
+
+    public void OnThemeUpdate () {
+        int activityTypeIndex;
+
+        switch(activityType) {
+            case Activity.Type.Required: activityTypeIndex = 0; break;
+            case Activity.Type.Bonus: activityTypeIndex = 2; break;
+            default: activityTypeIndex = 0; break;
         }
 
-        CreateList(activities);
+        MenuTheme.TaskListColors colors = GlobalGameManager.GetCurrentMenuTheme().taskListColors[activityTypeIndex];
+        main.GetComponent<Image>().color = colors.mainColor;
+        foreach(GameObject scrollbarObject in scrollbar) {
+            scrollbarObject.GetComponent<Image>().color = colors.scrollbarColor;
+        }
+
+        foreach(GameObject taskListItem in itemList) {
+            if(taskListItem.GetComponent<TaskListItem>().GetCount() == 0) {
+                taskListItem.GetComponent<Image>().color = GlobalGameManager.GetCurrentMenuTheme().fixedActivityColor;
+            } else { taskListItem.GetComponent<Image>().color = colors.itemColor; }
+            taskListItem.GetComponent<TaskListItem>().countComponentBackground.GetComponent<Image>().color = colors.countColor;
+        }
+    }
+
+    public Color GetMainColor () {
+        return GlobalGameManager.GetCurrentMenuTheme().taskListColors[0].mainColor;
     }
 
     public bool ReturnTaskToList(ActivityObject activity) {
@@ -45,10 +80,10 @@ public class TaskList : MonoBehaviour
         return true;
     }
 
-    public ActivityType GetActivityType() { return activityType; }
-    public void SetActivityType(ActivityType type) { activityType = type; }
+    public Activity.Type GetActivityType() { return activityType; }
+    public void SetActivityType(Activity.Type type) { activityType = type; }
 
-    public void CreateList(ActivityWithCount[] activities) {
+    public void CreateList(Week.Utilities.ActivityWithCount[] activities) {
         GameObject content = gameObject;
 
         // destroys the previously generated item and clears the list 
@@ -88,7 +123,7 @@ public class TaskList : MonoBehaviour
         }
     }
 
-    public void AddTaskListItem(ActivityWithCount activity) {
+    public void AddTaskListItem(Week.Utilities.ActivityWithCount activity) {
         GameObject listItemClone = Instantiate(firstItem);
         listItemClone.transform.SetParent(gameObject.transform); // sub object set to content
         itemList.Add(listItemClone);
@@ -104,10 +139,5 @@ public class TaskList : MonoBehaviour
         float taskItemDistance = 0.05f;
 
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(gameObject.GetComponent<RectTransform>().sizeDelta.x, (itemList.Count * taskItemHeight) + ((itemList.Count - 1) * taskItemDistance) + taskItemHeight); // update the content height
-    }
-
-    public enum ActivityType {
-        Required,
-        Bonus
     }
 }

@@ -24,11 +24,13 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
         }
     }
 
+    protected virtual bool IsPersistent () { return true; }
+
     // Called immediately after instance is created
     protected virtual void Awake() {
         // If instance already exists (duplicate prevention)
         if(instance != null && instance != this) {
-            Debug.LogWarning($"[Singleton] Instance already exists, destroying {typeof(T).Name}.");
+            Debug.LogWarning($"{typeof(T).Name} Instance already exists, destroying duplicate.");
             Destroy(gameObject);
             return;
         }
@@ -38,7 +40,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T
 
         // Persist object across scene transitions
         // Only apply at runtime due to editor behavior considerations
-        if(Application.isPlaying) {
+        if(Application.isPlaying && IsPersistent()) {
             DontDestroyOnLoad(gameObject);
         }
 

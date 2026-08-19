@@ -1,37 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tutorial : MonoBehaviour
 {
-    [SerializeField] GameObject visibleWhileTutorial;
-    [SerializeField] List<GameObject> screens;
-
-    [SerializeField] private int activeScreenIndex;
-
-    private LevelManager levelManager;
+    [SerializeField] private TextMeshProUGUI content;
+    [SerializeField] private int activeContentIndex;
 
     public void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
-        levelManager.pauseMenuInteractible = false;
-        levelManager.levelIsActive = false;
+        LevelManager.Instance.pauseMenuInteractible = false;
+        LevelManager.Instance.levelIsActive = false;
         GlobalGameManager.SendThemeUpdate();
-        activeScreenIndex = 0;
-        foreach(GameObject screen in screens) {
-            screen.transform.localScale = Vector3.zero;
-        }
-        screens[activeScreenIndex].transform.localScale = Vector3.one;
+        activeContentIndex = 0;
+        content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex].text;
     }
 
     public void AdvanceTutorialOrEnd() {
-        activeScreenIndex++;
-        screens[activeScreenIndex - 1].transform.localScale = Vector3.zero;
-        if(activeScreenIndex >= screens.Count) { //end tutorial
-            transform.localScale = Vector3.zero;
-            levelManager.pauseMenuInteractible = true;
-            levelManager.levelIsActive = true;
-            GlobalGameManager.CloseScene("Tutorial");
+        activeContentIndex++;
+        if(activeContentIndex >= GlobalGameManager.GetCurrentWeek().tutorialContent.Length) {
+            EndTutorial();
         } else {
-            screens[activeScreenIndex].transform.localScale = Vector3.one;
+            content.text = GlobalGameManager.GetCurrentWeek().tutorialContent[activeContentIndex].text;
         }
+    }
+
+    public void EndTutorial () {
+        LevelManager.Instance.pauseMenuInteractible = true;
+        LevelManager.Instance.levelIsActive = true;
+        GlobalGameManager.CloseScene("Tutorial");
     }
 }

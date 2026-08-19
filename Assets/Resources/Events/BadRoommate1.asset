@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abe64cdc9068ac43962ba5444254e44, type: 3}
   m_Name: BadRoommate1
   m_EditorClassIdentifier: Assembly-CSharp::Event
+  translationKey: 
   title: Laundry Disaster!
   description: Your roommate washed her red clothes with your whites, and now everything
     is pink! Oh no! I don't know what else to put here.
   choices:
-  - description: 
+  - description: Too bad...
     result:
-      happinessChange: 0
+      happinessChange: -10
       moneyChange: 0
       addFixedActivities: []
-      addActivities: []
+      addActivities:
+      - activityWithCount:
+          activity: {fileID: 11400000, guid: ba43a378f62f342ea8321250dcc9e9c7, type: 2}
+          count: 1
+        activityType: 0
       addEvents: []

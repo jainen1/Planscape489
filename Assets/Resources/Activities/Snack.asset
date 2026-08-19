@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Snack
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
+  translationKey: 
   title: Snack
   length: 1
   fullStomachLength: 3
   happiness: 10
   money: -10
+  sound: {fileID: 8300000, guid: bb8401a9b14114cfc9dbe2d48fe19217, type: 3}
+  pitch: 1

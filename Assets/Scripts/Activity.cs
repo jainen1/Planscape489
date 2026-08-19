@@ -3,17 +3,9 @@ using UnityEngine;
 
 public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*/
 {
-    private LevelManager levelManager;
     [SerializeField] public ActivityInitializer initializer;
 
     public bool isHeld = false;
-
-    [SerializeField] private AudioClip pickUp;
-    [SerializeField] private AudioClip fixedPickUp;
-    [SerializeField] private AudioClip failedPickUp;
-    [SerializeField] private AudioClip putDown;
-    [SerializeField] private AudioClip trashSound;
-    [SerializeField] private float audioVolume;
 
     private List<GameObject> collidingCells = new List<GameObject>();
     private GameObject closestCell = null;
@@ -21,13 +13,15 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     [SerializeField] private bool isTouchingTrashCan = false;
 
+    [SerializeField] private bool doMouseLerp = true;
     [SerializeField] private float mouseLerp = 100f;
     [SerializeField] private float targetLerp = 5f;
 
-    [SerializeField] public TaskList.ActivityType activityType;
+    [SerializeField] public Type activityType;
 
-    void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
+    public enum Type {
+        Required,
+        Bonus
     }
 
     void Update() {
@@ -39,15 +33,19 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
             }
         }
 
-        Vector3 targetPosition;
         if(isHeld && !initializer.IsFixed()) {
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = -2f;
             //gameObject.transform.position = targetPosition; //teleport to mouse position
-            gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
+
+            if(doMouseLerp) {
+                gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, mouseLerp * Time.deltaTime); //lerp to mouse position
+            } else {
+                gameObject.transform.position = targetPosition;
+            }
         }
         else {
-            targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
+            Vector3 targetPosition = new Vector3(occupiedCell.transform.position.x, occupiedCell.transform.position.y, -2f);
             gameObject.transform.position = Vector3.Lerp(transform.position, targetPosition, targetLerp * Time.deltaTime);
         }
 
@@ -61,28 +59,24 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     public void OnMouseDown() {
         if(FindFirstObjectByType<LevelManager>().levelIsActive) {
+            AudioClip sfx = GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail; //was originally 'fixedPickUp', but that has been merged with 'failedPickUp'.
             if(!initializer.IsFixed()) {
                 isHeld = true;
-                AudioSource.PlayClipAtPoint(pickUp, Camera.main.transform.position, audioVolume);
+                sfx = GlobalGameManager.GetCurrentMenuTheme().activityPickUp;
             }
-            else {
-                AudioSource.PlayClipAtPoint(fixedPickUp, Camera.main.transform.position, audioVolume);
-            }
+            SoundManager.PlayClip(sfx, SoundManager.AudioChannels.sfx);
         }
     }
 
     public void OnMouseUp() {
         if(!initializer.IsFixed()) {
             if(closestCell == null) {
-                foreach(GridCell cell in levelManager.cells) {
-                    if(CellIsAvailable(cell)) {
-                        SetTargetCell(cell);
-                        break;
-                    }
+                foreach(GridCell cell in LevelManager.Instance.cells) {
+                    if(CellIsAvailable(cell)) { SetTargetCell(cell); break; }
                 }
             }
             if(closestCell == null) {
-                AudioSource.PlayClipAtPoint(failedPickUp, Camera.main.transform.position, audioVolume);
+                SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, SoundManager.AudioChannels.sfx);
                 Destroy(gameObject.transform.parent.gameObject);
             }
             else {
@@ -90,13 +84,13 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
                 ClaimCells();
                 if(isTouchingTrashCan) {
-                    AudioSource.PlayClipAtPoint(trashSound, Camera.main.transform.position, audioVolume);
-                    levelManager.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
-                    levelManager.ReturnTaskToList(initializer.activity);
+                    SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityTrash, SoundManager.AudioChannels.sfx);
+                    LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true);
+                    LevelManager.Instance.ReturnTaskToList(initializer.activity);
                     Destroy(gameObject.transform.parent.gameObject);
                 }
                 else {
-                    AudioSource.PlayClipAtPoint(putDown, Camera.main.transform.position, audioVolume);
+                    SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPutDown, SoundManager.AudioChannels.sfx);
                 }
             }
         }
@@ -104,24 +98,14 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(!initializer.IsFixed()) {
-            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) {
-                collidingCells.Add(collision.gameObject);
-            }
-
-            if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-                isTouchingTrashCan = true;
-            }
+            if(CellIsAvailable(collision.GetComponent<GridCell>()) && !collidingCells.Contains(collision.gameObject)) { collidingCells.Add(collision.gameObject); }
+            if(collision.gameObject.GetComponent<TaskDelete>() != null) { isTouchingTrashCan = true; }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        if(collidingCells.Contains(collision.gameObject)) {
-            collidingCells.Remove(collision.gameObject);
-        }
-
-        if(collision.gameObject.GetComponent<TaskDelete>() != null) {
-            isTouchingTrashCan = false;
-        }
+        if(collidingCells.Contains(collision.gameObject)) { collidingCells.Remove(collision.gameObject); }
+        if(collision.gameObject.GetComponent<TaskDelete>() != null) { isTouchingTrashCan = false; }
     }
 
     public void SetTargetCell(GridCell cell) {
@@ -129,25 +113,37 @@ public class Activity : MonoBehaviour/*, IPointerDownHandler, IPointerUpHandler*
     }
 
     private bool CellIsAvailable(GridCell cell) {
+        if(cell == null) { /*Debug.LogWarning("Cell unavailable: Cell is null!");*/ return false; }
+        if(!cell.canBeUsed) { /*Debug.LogWarning("Cell unavailable: Cell cannot be used!");*/ return false; }
+        if(cell.isFixed) { /*Debug.LogWarning("Cell unavailable: Cell is fixed!");*/ return false; }
+        if(cell.hour + initializer.activity.length >= 24) { /*Debug.LogWarning("Cell unavailable: Cell is beyond end of day!");*/ return false; }
 
-        //Debug
-        /*if(cell == null) { Debug.Log("Cell is null!"); return false; }
-        if(!cell.canBeUsed) { Debug.Log("Cell cannot be used!"); return false; }
-        if(cell.isFixed) { Debug.Log("Cell is fixed!"); return false; }
-        if(!levelManager.GetCellStatus(this, cell)) { Debug.Log("Cell status returned false!"); return false; }
-        if(!(cell.hour + initializer.activity.length < 24)) { Debug.Log("Cell is beyond end of day!"); return false; }
-        if(!(initializer.activity.fullStomachLength > 0 ? levelManager.GetCellFoodStatus(this, cell) : true)) { Debug.Log("Cell cannot be used for food!");  return false; }
-        return true;*/
+        //previously 'GetCellStatus' in LevelManager. Tests if all spaces that would be taken up by the activity are free
+        int startCellIndex = LevelManager.GetGridCellIndex(cell.day, cell.hour);
+        int endCellIndex = startCellIndex + initializer.activity.length - 1;
+        for(int i = startCellIndex; i <= endCellIndex; i++) {
+            if(endCellIndex > LevelManager.Instance.cells.Count - 1 || (LevelManager.Instance.cells[i].occupyingActivity != null && LevelManager.Instance.cells[i].occupyingActivity != this)) {
+                //Debug.LogWarning("Cell unavailable: Cell(s) occupied!");
+                return false;
+            }
+        }
 
-        return cell != null && cell.canBeUsed && !cell.isFixed && levelManager.GetCellStatus(this, cell)
-            && (cell.hour + initializer.activity.length < 24) && (initializer.activity.fullStomachLength > 0? levelManager.GetCellFoodStatus(this, cell) : true);
+        //previously 'GetCellFoodStatus' in LevelManager. Tests if all spaces that would be taken up by the activity's 'full stomach' are free of 'full stomach'
+        if(initializer.activity.fullStomachLength > 0) { 
+            int foodEndCellIndex = Mathf.Min(startCellIndex + initializer.activity.fullStomachLength - 1, LevelManager.GetGridCellIndex(cell.day, 22));
+            for(int i = startCellIndex; i <= foodEndCellIndex; i++) {
+                if(foodEndCellIndex > LevelManager.Instance.cells.Count - 1 || (LevelManager.Instance.cells[i].occupyingFoodActivity != null && LevelManager.Instance.cells[i].occupyingFoodActivity != this)) {
+                    //Debug.Log("Cell unavailable: Activity is food, and cell is occupied by food!");
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public void ClaimCells() {
-        LevelManager gameManager2 = FindFirstObjectByType<LevelManager>();
-
-        if(occupiedCell != null) { gameManager2.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
+        if(occupiedCell != null) { LevelManager.Instance.FreeOrOccupyCells(this, occupiedCell.GetComponent<GridCell>(), true); }
         occupiedCell = closestCell;
-        gameManager2.FreeOrOccupyCells(this, closestCell.GetComponent<GridCell>(), false);
+        LevelManager.Instance.FreeOrOccupyCells(this, closestCell.GetComponent<GridCell>(), false);
     }
 }

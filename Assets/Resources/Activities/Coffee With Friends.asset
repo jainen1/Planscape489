@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Coffee With Friends
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
+  translationKey: 
   title: Coffee w Friends
   length: 2
   fullStomachLength: 0
-  type: 2
   happiness: 25
   money: -5
+  sound: {fileID: 8300000, guid: fd65a5869f1e247bda41fb0c65abdff0, type: 3}
+  pitch: 1

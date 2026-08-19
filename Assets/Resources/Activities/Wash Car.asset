@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc12e788a107914888cae6341a962af, type: 3}
   m_Name: Wash Car
   m_EditorClassIdentifier: Assembly-CSharp::ActivityObject
+  translationKey: 
   title: Wash Car
   length: 1
   fullStomachLength: 0
-  type: 1
   happiness: 0
   money: -5
+  sound: {fileID: 8300000, guid: a270e490a3b534ad292309699d97dfe3, type: 3}
+  pitch: 1

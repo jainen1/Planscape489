@@ -1,80 +1,152 @@
 using UnityEngine;
 using USCG.Core.Telemetry;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : MonoSingleton<LevelManager>
 {
-    public GridCell[] cells;
-
-    [SerializeField] private GameObject activityPrefab;
-
-    [SerializeField] private GameObject eventScreen;
-
     [SerializeField] private List<float> resources;
 
-    [SerializeField] private AudioClip winSound;
-    [SerializeField] private AudioClip loseSound;
-
+    public GameObject activityHolder;
+    [SerializeField] private GameObject grid;
+    public List<GridCell> cells;
+    [SerializeField] private GameObject eventScreen;
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
-
     public TimeHand timeHand;
-
-    [Header("Telemetry")]
-    [SerializeField] bool doPlannerMetric = true;
+    [SerializeField] private float timeHandMaxForwardSpeed = 3f;
 
     public bool pauseMenuInteractible = true;
     public bool levelIsActive = true;
+    [SerializeField] private bool doTelemetry = true;
 
+    [Header("End Scenes")]
     public EndSceneScreen victory;
     public EndSceneScreen win;
     public EndSceneScreen lose;
-
     public EndSceneScreen activeEndScreen;
 
-    public void StartLevel() {
-        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+    [Header("Prefabs")]
+    [SerializeField] private GameObject columnPrefab;
+    [SerializeField] private GameObject cellPrefab;
+    [SerializeField] private GameObject activityPrefab;
 
-        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex(), currentWeek.resourceBars[1].startingValue, currentWeek.resourceBars[2].startingValue };
-        if(currentWeek.resourceBars.Length > 3) {
-            for(int i = 3; i <= currentWeek.resourceBars.Length; i++) {
-                resources.Add(currentWeek.resourceBars[i].startingValue);
+    public delegate void TimeHandSpeedChange ();
+    public static event TimeHandSpeedChange OnTimeHandSpeedChange;
+
+    protected override bool IsPersistent () { return false; }
+
+    IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
+        float counter = 0f; //the thing don't work if this is defined each time it's used. This is the way
+
+        for(int i = 0; i < currentWeek.days.Length; i++) {
+            GameObject column = Instantiate(columnPrefab);
+            column.name = "Column " + (i+1);
+            column.transform.SetParent(grid.transform);
+            column.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentWeek.days[i];
+
+            timeHand.startPositions.Add(column.transform.GetChild(0).GetChild(0).gameObject);
+            GlobalGameManager.SendThemeUpdate();
+            for(int j = currentWeek.dayStartHour; j < currentWeek.hoursPerDay + currentWeek.dayStartHour; j++) {
+                GameObject cell = Instantiate(cellPrefab);
+                cell.name = "Cell " + (j);
+                cell.transform.SetParent(column.transform);
+                GridCell cellComponent = cell.GetComponent<GridCell>();
+                if(cellComponent != null) {
+                    cellComponent.day = i + 1;
+                    cellComponent.hour = j;
+                    cells.Add(cellComponent);
+                    cell.GetComponent<SimpleMenuObject>().OnThemeUpdate();
+                    cell.transform.GetChild(0).GetComponent<TextMenuObject>().OnThemeUpdate();
+                    //SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().buttonClick, SoundManager.AudioChannels.sfx);
+
+                    //float waitTime = (2.5f - (i * 0.1f)) / (currentWeek.hoursPerDay * currentWeek.days);
+                    float waitTime = Mathf.Log(1.08f, (float) ((i * 17) + Mathf.Max(j, 1)));
+                    //Debug.Log("Delaying for " + waitTime);
+                    while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                    counter = 0f;
+                }
+            }
+        }
+
+        timeHand.StartTimeHand();
+
+        if(currentWeek.fixedActivities.Length > 0) {
+            for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
+                Week.Utilities.ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
+                CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
+                //yield return new WaitForSeconds(Mathf.Log(1.08f, (i+2)));
+                float waitTime = Mathf.Log(1.08f, (i+2));
+                while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                counter = 0f;
             }
         }
 
         if(currentWeek.fixedEvents.Length > 0) {
             for(int i = 0; i < currentWeek.fixedEvents.Length; i++) {
-                EventWithTime activeEvent = currentWeek.fixedEvents[i];
-                cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)].occupyingEvent = activeEvent.eventObject;
+                Week.Utilities.EventWithTime activeEvent = currentWeek.fixedEvents[i];
+                GridCell targetCell = cells[GetGridCellIndex((int) activeEvent.time.x, (int) activeEvent.time.y)];
+                targetCell.occupyingEvent = activeEvent.eventObject;
+                TextMeshProUGUI cellText = targetCell.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                cellText.text = "! EVENT !";
+                cellText.fontStyle = FontStyles.Bold;
+                cellText.color = GlobalGameManager.GetCurrentMenuTheme().eventTextColor;
+                
+                float waitTime = Mathf.Log(1.08f, (i + 2));
+                while(counter < waitTime) { counter += Time.deltaTime; yield return null; }
+                counter = 0f;
             }
         }
 
-        if(currentWeek.fixedActivities.Length > 0) {
-            for(int i = 0; i < currentWeek.fixedActivities.Length; i++) {
-                ActivityWithTime activeActivity = currentWeek.fixedActivities[i];
-                CreateNewFixedActivity(activeActivity.activity, (int) activeActivity.time.x, (int) activeActivity.time.y);
-            }
-        }
+        while(counter < 0.5f) { counter += Time.deltaTime; yield return null; }
+        counter = 0f;
+
+        if(currentWeek.tutorialContent.Length < 1) { Instance.levelIsActive = true; }
+        else { GlobalGameManager.AddScene("Tutorial"); }
+
+        GlobalGameManager.SendThemeUpdate();
     }
 
-    public void PauseScene() {
+    IEnumerator PrepareResources(Week currentWeek) {
+        resources = new List<float> { GlobalGameManager.GetCurrentWeekIndex() };
+        if(currentWeek.resourceBars.Length > 1) {
+            for(int i = 1; i < currentWeek.resourceBars.Length; i++) {
+                resources.Add(currentWeek.resourceBars[i].startingValue);
+            }
+        }
+        yield return null;
+    }
+
+    public void StartLevel() {
+        Instance.levelIsActive = false;
+        Week currentWeek = GlobalGameManager.GetCurrentWeek();
+
+        cells = new List<GridCell>();
+        StartCoroutine(PrepareCells(currentWeek, cells));
+        StartCoroutine(PrepareResources(currentWeek));
+
+        //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
+        _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
+    }
+
+    public static void PauseScene() {
         GlobalGameManager.AddScene("PauseMenu");
-        levelIsActive = false;
+        Instance.levelIsActive = false;
+        MusicManager.Instance.MuffleMusicIfInLevel(true);
     }
 
-    public void UnPauseScene() {
+    public static void UnPauseScene() {
         GlobalGameManager.CloseScene("PauseMenu");
-        levelIsActive = true;
+        Instance.levelIsActive = true;
+        MusicManager.Instance.MuffleMusicIfInLevel(false);
     }
 
     public void TogglePause() {
         if(pauseMenuInteractible) {
-            if(levelIsActive) {
-                PauseScene();
-            } else {
-                UnPauseScene();
-            }
+            if(levelIsActive) { PauseScene(); }
+            else { UnPauseScene(); }
         }
     }
 
@@ -91,6 +163,8 @@ public class LevelManager : MonoBehaviour
     public void SkipTimer() {
         if(levelIsActive) { timeHand.timer = 0; }
     }
+
+    public void SetTimeHandSpeed(float percentage) { if(levelIsActive) { timeHand.speedMultiplier = 1 + (percentage * (timeHandMaxForwardSpeed - 1)); OnTimeHandSpeedChange(); } }
 
     public void FastForwardTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(true); } }
     public void NormalSpeedTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(false); } }
@@ -117,6 +191,8 @@ public class LevelManager : MonoBehaviour
 
     private void CreateNewFixedActivity(ActivityObject activity, int day, int hour) {
         GameObject fixedActivity = Instantiate(activityPrefab);
+        fixedActivity.name = "Activity(Fixed)";
+        fixedActivity.transform.SetParent(activityHolder.transform);
         ActivityInitializer activityInitializer = fixedActivity.GetComponent<ActivityInitializer>();
         Activity activityScript = fixedActivity.GetComponentInChildren<Activity>();
 
@@ -126,27 +202,6 @@ public class LevelManager : MonoBehaviour
         activityScript.SetTargetCell(cells[GetGridCellIndex(day, hour)]);
         activityInitializer.SetFixed(true);
         activityScript.ClaimCells();
-    }
-
-    public bool GetCellStatus(Activity activity, GridCell startCell) {
-        int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = startCellIndex + activity.initializer.activity.length - 1;
-        for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(endCellIndex > cells.Length - 1 || (cells[i].occupyingActivity != null && cells[i].occupyingActivity != activity)) {
-                return false;
-            }
-        } return true;
-    }
-
-    public bool GetCellFoodStatus(Activity activity, GridCell startCell) {
-        int startCellIndex = GetGridCellIndex(startCell.day, startCell.hour);
-        int endCellIndex = Mathf.Min(startCellIndex + activity.initializer.activity.fullStomachLength - 1, GetGridCellIndex(startCell.day, 22));
-        for(int i = startCellIndex; i <= endCellIndex; i++) {
-            if(endCellIndex > cells.Length - 1 || (cells[i].occupyingFoodActivity != null && cells[i].occupyingFoodActivity != activity)) {
-                return false;
-            }
-        }
-        return true;
     }
 
     public void FreeOrOccupyCells(Activity activity, GridCell startCell, bool free) {
@@ -165,33 +220,26 @@ public class LevelManager : MonoBehaviour
     }
 
     public static int GetGridCellIndex(int day, int hour) {
-        return ((day - 1) * 17) + (hour - 6);
-        //Day 1, Cell 6 (index 0): ((1-1)*17)+(6-6) = 0
-        //Day 2, Cell 21 (index 32): ((2-1)*17)+(21-6) = 32
-        //Day 7, Cell 22 (index 118): ((7-1)*17)+(22-6) = 118
+        return ((day - 1) * GlobalGameManager.GetCurrentWeek().hoursPerDay) + (hour - GlobalGameManager.GetCurrentWeek().dayStartHour);
+        //Examples: Day 1, Cell 6 (index 0): ((1-1)*17)+(6-6) = 0;   Day 2, Cell 21 (index 32): ((2-1)*17)+(21-6) = 32;   Day 7, Cell 22 (index 118): ((7-1)*17)+(22-6) = 118
     }
 
     public GridCell GridCellFromIndex(int day, int hour) {
         return cells[GetGridCellIndex(day, hour)];
     }
 
-    public void SetResource(int index, float value) { resources[index] = value; }
-    public float GetResource(int index) { return resources[index]; }
+    public static void SetResource(int index, float value) { Instance.resources[index] = value; }
+    public static float GetResource(int index) { return Instance.resources[index]; }
 
-    //Telemetry
+    // Telemetry //
 
     private MetricId _plannerMetric = default;
 
-    private void Start() {
-        //_spaceBarMetric = TelemetryManager.instance.CreateAccumulatedMetric("SpaceBarMetric");
-        _plannerMetric = TelemetryManager.instance.CreateSampledMetric<string>("PlannerMetric");
-    }
-
     public void SamplePlannerMetric(int day, int hour) {
-        if(doPlannerMetric) {
+        if(doTelemetry) {
             //Debug.Log("Creating planner sample...");
             string plannerData = "\nWeek " + GlobalGameManager.GetCurrentWeekIndex()+1 + " Day " + day + " Hour " + hour + "; Happiness = " + GetResource(1) + " Money = " + GetResource(2) + "\n";
-            for(int i = 0; i < cells.Length; i++) {
+            for(int i = 0; i < cells.Count; i++) {
                 string occupyingActivity = "";
                 if(cells[i].occupyingActivity != null) { occupyingActivity += cells[i].occupyingActivity.initializer.activity.title;  } else { occupyingActivity += "null"; }
                 plannerData += "cell_" + i.ToString("000") + ": " + occupyingActivity + ", ";

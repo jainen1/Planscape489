@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GlobalGameManager : MonoSingleton<GlobalGameManager>
@@ -10,13 +9,11 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     [SerializeField] private int currentWeek = 0;
 
     [SerializeField] private MenuTheme currentTheme;
+    [SerializeField] private MenuTheme defaultTheme;
 
     public delegate void UpdateTheme();
     public static event UpdateTheme OnUpdateTheme;
     public static event UpdateTheme OnUpdateThemeText;
-
-    [SerializeField] private AudioClip clickSound;
-    [SerializeField] private AudioMixer audioMixer;
 
     [SerializeField] private Scene activeMenuScene;
 
@@ -25,23 +22,13 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public GameSettings settings;
 
     protected override void OnInitialize() {
-        SaveAllThemesToJson();
+        //SaveAllThemesToJson();
         //LoadActiveThemes();
         LoadThemesFromResources();
 
         //SaveGame();
 
-        Instance.clickSound = Resources.Load<AudioClip>("Sounds/clickSound");
-        Instance.audioMixer = Resources.Load<AudioMixer>("Sounds/AudioMixer");
-
         SendThemeUpdate();
-        //PrintThemes();
-    }
-
-    public static void PlayClickSound() {
-        float volume;
-        Instance.audioMixer.GetFloat("SFX Volume", out volume);
-        AudioSource.PlayClipAtPoint(Instance.clickSound, Camera.main.transform.position, 1.0f * volume);
     }
 
     // Weeks //
@@ -52,8 +39,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void AdvanceWeek() { Instance.currentWeek++; }
 
     public static void SaveGame () {
-        //string saveFilePath = Path.Combine(Application.persistentDataPath, /*"PlanscapeSave "+*/DateTime.Now.ToString("yyyy-MM-dd.HH:mm:ss")+".plansave.json");
-        string saveFilePath = Path.Combine(Application.persistentDataPath, "save.json");
+        string saveFilePath = Path.Combine(Application.persistentDataPath, "save.json"); //previously "PlanscapeSave "+*/DateTime.Now.ToString("yyyy-MM-dd.HH:mm:ss")+".plansave.json"
         GameSave gameData = new GameSave();
         if(Instance.campaign != null) {
             gameData.currentCampaign = Instance.campaign.ToString();
@@ -67,8 +53,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void SaveSettings () {
         string saveFilePath = Path.Combine(Application.persistentDataPath, "settings.save.json");
         GameSettings gameSettings = new GameSettings();
-        Instance.audioMixer.GetFloat("Music Volume", out gameSettings.musicVolume);
-        Instance.audioMixer.GetFloat("SFX Volume", out gameSettings.sfxVolume);
+        SoundManager.GetAudioMixer().GetFloat(SoundManager.AudioChannels.music + " Volume", out gameSettings.musicVolume);
+        SoundManager.GetAudioMixer().GetFloat(SoundManager.AudioChannels.sfx + " Volume", out gameSettings.sfxVolume);
 
         File.WriteAllText(saveFilePath, JsonUtility.ToJson(gameSettings, true));
         Debug.Log("Wrote new settings save data to " + saveFilePath);
@@ -103,18 +89,55 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         SendThemeUpdate();
     }
 
-    public static MenuTheme GetCurrentMenuTheme() { return Instance.currentTheme; }
+    public static MenuTheme GetCurrentMenuTheme() {
+        if(Instance.currentTheme == null) {
+            return Instance.defaultTheme;
+        } return Instance.currentTheme;
+    }
+
     public static MenuTheme[] GetActiveMenuThemes() { return Instance.activeThemes; }
 
-    private static string themesFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Themes");
-    private static string campaignsFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated", "Campaigns");
+    private static string planscapeGeneratedFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated");
 
-    public void SaveAllThemesToJson() {
-        MenuTheme[] resourcesThemes = Resources.LoadAll<MenuTheme>("Themes");
-        Debug.Log("Writing theme data to " + themesFolder);
-        foreach(MenuTheme menuTheme in resourcesThemes) {
-            if(!Directory.Exists(themesFolder)) { Directory.CreateDirectory(themesFolder); }
-            File.WriteAllText(Path.Combine(themesFolder, menuTheme.name.ToLower() + ".theme.json"), JsonUtility.ToJson(menuTheme, true)); // save theme to JSON
+    public static void SaveAllResourcesToJson() {
+        SaveAllCampaignsToJson();
+        SaveAllThemesToJson();
+        SaveAllWeeksToJson();
+    }
+
+    public static void SaveAllCampaignsToJson() {
+        string folderPath = Path.Combine(planscapeGeneratedFolder, "Campaigns");
+
+        Campaign[] objectList = Resources.LoadAll<Campaign>("Campaigns");
+        Debug.Log("Writing campaign data to " + folderPath);
+        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
+        for(int i = 0; i < objectList.Length; i++) {
+            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".campaign.json"), JsonUtility.ToJson(objectList[i], true)); // save campaign to JSON
+            Debug.Log("Generating Campaigns... (" + (i + 1) + "/" + objectList.Length + ")");
+        }
+    }
+
+    public static void SaveAllThemesToJson() {
+        string folderPath = Path.Combine(planscapeGeneratedFolder, "Themes");
+
+        MenuTheme[] objectList = Resources.LoadAll<MenuTheme>("Themes");
+        Debug.Log("Writing theme data to " + folderPath);
+        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
+        for(int i = 0; i < objectList.Length; i++) {
+            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".theme.json"), JsonUtility.ToJson(objectList[i], true)); // save theme to JSON
+            Debug.Log("Generating Themes... (" + (i+1) + "/" + objectList.Length + ")");
+        }
+    }
+
+    public static void SaveAllWeeksToJson() {
+        string folderPath = Path.Combine(planscapeGeneratedFolder, "Weeks");
+
+        Week[] objectList = Resources.LoadAll<Week>("Weeks");
+        Debug.Log("Writing week data to " + folderPath);
+        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
+        for(int i = 0; i < objectList.Length; i++) {
+            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".week.json"), JsonUtility.ToJson(objectList[i], true)); // save week to JSON
+            Debug.Log("Generating Weeks... (" + (i + 1) + "/" + objectList.Length + ")");
         }
     }
 
@@ -127,7 +150,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     public static void LoadActiveThemes() {
         //AssetDatabase.Refresh();
         int themeFileIndex = 0;
-        foreach(var file in Directory.EnumerateFiles(themesFolder, "theme.json")) {
+        foreach(var file in Directory.EnumerateFiles(Path.Combine(planscapeGeneratedFolder, "Themes"), "theme.json")) {
             string json = File.ReadAllText(file);
             JsonUtility.FromJsonOverwrite(json, Instance.activeThemes[themeFileIndex]);
             Debug.Log("Read theme data from file " + file);
@@ -154,7 +177,8 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         //Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
         Instance.campaign = campaign;
         Instance.currentWeek = 0;
-        StartWeekWithTutorial();
+        //StartWeekWithTutorial();
+        StartWeek();
     }
 
     public static void StartWeekWithTutorial() {
@@ -176,9 +200,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         if(FindAnyObjectByType<LevelManager>()) { AddScene("PauseMenu"); }
     }
 
-    public static void PauseLevel() { FindFirstObjectByType<LevelManager>().levelIsActive = false; }
-    public static void UnPauseLevel() { FindFirstObjectByType<LevelManager>().levelIsActive = true; }
-
     void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
     void OnDisable() { SceneManager.sceneLoaded -= OnSceneLoaded; }
 
@@ -189,7 +210,7 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         }
         else if(scene.name == "EndScene") {
             EndSceneManager endSceneManager = FindFirstObjectByType<EndSceneManager>();
-            if(endSceneManager != null) { endSceneManager.SetParameters(FindFirstObjectByType<LevelManager>().activeEndScreen); }
+            if(endSceneManager != null) { endSceneManager.SetParameters(LevelManager.Instance.activeEndScreen); }
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "EventObject", menuName = "Scriptable Objects/EventObject")]
-public class EventObject : ScriptableObject
+public class EventObject : StuffedScriptableObject
 {
     public string title;
     public string description;
@@ -21,13 +21,13 @@ public class EventChoice {
 public class EventResult {
     public int happinessChange;
     public int moneyChange;
-    public List<ActivityWithTime> addFixedActivities;
+    public List<Week.Utilities.ActivityWithTime> addFixedActivities;
     public List<ActivityWithCountAndType> addActivities;
     public List<EventObject> addEvents;
 }
 
 [Serializable]
 public class ActivityWithCountAndType {
-    public ActivityWithCount activityWithCount;
-    public TaskList.ActivityType activityType;
+    public Week.Utilities.ActivityWithCount activityWithCount;
+    public Activity.Type activityType;
 }

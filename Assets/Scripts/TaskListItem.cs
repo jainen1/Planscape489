@@ -1,49 +1,38 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskListItem : MonoBehaviour
 {
-    private LevelManager levelManager;
     [SerializeField] private GameObject activity;
-    [SerializeField] private AudioClip clickSound;
-    [SerializeField] private AudioClip rejectSound;
 
     private GameObject newActivity;
 
-    [HideInInspector] public ActivityWithCount activityWithCount;
+    [HideInInspector] public Week.Utilities.ActivityWithCount activityWithCount;
 
     [SerializeField] private GameObject title;
     [SerializeField] private GameObject resourceTextComponent;
     [SerializeField] private GameObject countComponent;
-    [SerializeField] private GameObject countComponentBackground;
-
+    [SerializeField] public GameObject countComponentBackground;
 
     [SerializeField] private GameObject viewport;
-
     [SerializeField] TaskList taskList;
 
     [SerializeField] private bool isVisible;
     [SerializeField] private int count;
 
     private void Awake() {
-        levelManager = FindFirstObjectByType<LevelManager>();
-
         if (viewport == null) {
-            Debug.LogError("Viewport reference is missing, auto assigning");
-
-            var scrollRect = GetComponentInParent<UnityEngine.UI.ScrollRect>();
-            if (scrollRect != null) {
-                viewport = scrollRect.viewport.gameObject;
-        }
+            Debug.LogWarning("Viewport reference is missing, auto assigning.");
+            var scrollRect = GetComponentInParent<ScrollRect>();
+            if (scrollRect != null) { viewport = scrollRect.viewport.gameObject; }
+            else { Debug.LogError("Scroll Rect is missing, cannot assign viewport."); }
         }
 
-        if (viewport != null) {
-            //Debug.Log("viewport not null");
+        if (viewport != null) { //Debug.Log("viewport not null");
             isVisible = GetComponent<BoxCollider2D>().IsTouching(viewport.GetComponent<BoxCollider2D>());
-        }
-
-        else {
-            isVisible = true; // Default to true if viewport is not found, to avoid blocking interactions
+        } else {
+            isVisible = true; // Default to true if viewport is not found, to prevent interactions from being blocked
             Debug.LogError($"TaskListItem on {gameObject.name} couldn't find a viewport defaulting to always visible");
         }
 
@@ -51,12 +40,14 @@ public class TaskListItem : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        if(levelManager.levelIsActive && isVisible) {
+        if(LevelManager.Instance.levelIsActive && isVisible) {
             if(count > 0) {
-                AudioSource.PlayClipAtPoint(clickSound, Camera.main.transform.position, 1.0f);
+                //GlobalGameManager.PlayClickSound();
 
                 //newActivity = Instantiate(activity, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
                 newActivity = Instantiate(activity, gameObject.transform.position, Quaternion.identity);
+                newActivity.name = "Activity";
+                newActivity.transform.SetParent(LevelManager.Instance.activityHolder.transform);
 
                 newActivity.GetComponent<ActivityInitializer>().activity = activityWithCount.activity;
                 newActivity.GetComponent<ActivityInitializer>().activityType = taskList.GetActivityType();
@@ -65,14 +56,14 @@ public class TaskListItem : MonoBehaviour
 
                 SetCount(count - 1);
             } else {
-                AudioSource.PlayClipAtPoint(rejectSound, Camera.main.transform.position, 1.0f);
+                SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().activityPickUpFail, SoundManager.AudioChannels.sfx);
                 newActivity = null;
             }
         }
     }
 
     public void OnMouseUp() {
-        if(levelManager.levelIsActive && isVisible && newActivity != null) {
+        if(LevelManager.Instance.levelIsActive && isVisible && newActivity != null) {
             newActivity.GetComponentInChildren<Activity>().gameObject.SendMessage("OnMouseUp", SendMessageOptions.RequireReceiver);
         }
     }
@@ -88,38 +79,23 @@ public class TaskListItem : MonoBehaviour
         SetCount(activityWithCount.count);
     }
 
-    public int GetCount() {
-        return count;
-    }
+    public int GetCount() { return count; }
 
     public void SetCount(int newCount) {
         count = newCount;
 
         if(count <= 0) {
             countComponentBackground.transform.localScale = Vector3.zero;
-
-        } else {
-            countComponentBackground.transform.localScale = Vector3.one;
+            //Debug.Log("Count is equal to zero.");
         }
+        else { countComponentBackground.transform.localScale = Vector3.one; }
 
-        gameObject.GetComponent<MenuObject>().UpdateMenuObject();
+        taskList.OnThemeUpdate(); // could be optimized to only use parts of the task list item instead of the entire task list
 
         countComponent.GetComponent<TextMeshProUGUI>().text = count.ToString("##");
     }
 
-    public void OnTriggerEnter2D(Collider2D collision) {
-        
-    }
-
-    public void OnTriggerStay2D(Collider2D collision) {
-        if(collision.gameObject == viewport) {
-            isVisible = true;
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision) {
-        if(collision.gameObject == viewport) {
-            isVisible = false;
-        }
-    }
+    public void OnTriggerEnter2D(Collider2D collision) { if(collision.gameObject == viewport) { isVisible = true; } }
+    public void OnTriggerStay2D(Collider2D collision) { if(collision.gameObject == viewport) { isVisible = true; } }
+    public void OnTriggerExit2D(Collider2D collision) { if(collision.gameObject == viewport) { isVisible = false; } }
 }
