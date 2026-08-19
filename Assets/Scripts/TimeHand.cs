@@ -8,7 +8,7 @@ public class TimeHand : MonoBehaviour {
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
     [SerializeField] private GameObject skipButton;
-    [SerializeField] private Scrollbar fastForward;
+    [SerializeField] public Scrollbar fastForward;
     private int clockTickIndex;
     public List<GameObject> startPositions;
 

@@ -33,6 +33,9 @@ public class LevelManager : MonoSingleton<LevelManager>
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private GameObject activityPrefab;
 
+    public delegate void TimeHandSpeedChange ();
+    public static event TimeHandSpeedChange OnTimeHandSpeedChange;
+
     protected override bool IsPersistent () { return false; }
 
     IEnumerator PrepareCells(Week currentWeek, List<GridCell> cells) {
@@ -161,7 +164,7 @@ public class LevelManager : MonoSingleton<LevelManager>
         if(levelIsActive) { timeHand.timer = 0; }
     }
 
-    public void SetTimeHandSpeed(float percentage) { if(levelIsActive) { timeHand.speedMultiplier = 1 + (percentage * (timeHandMaxForwardSpeed - 1)); } }
+    public void SetTimeHandSpeed(float percentage) { if(levelIsActive) { timeHand.speedMultiplier = 1 + (percentage * (timeHandMaxForwardSpeed - 1)); OnTimeHandSpeedChange(); } }
 
     public void FastForwardTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(true); } }
     public void NormalSpeedTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(false); } }

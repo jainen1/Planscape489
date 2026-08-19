@@ -10,8 +10,8 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
 
     [HideInInspector] public Color color = Color.red;
 
-    void OnEnable() { GlobalGameManager.OnUpdateTheme += OnThemeUpdate; }
-    void OnDisable() { GlobalGameManager.OnUpdateTheme -= OnThemeUpdate; }
+    void OnEnable() { GlobalGameManager.OnUpdateTheme += OnThemeUpdate; LevelManager.OnTimeHandSpeedChange += OnThemeUpdate; }
+    void OnDisable() { GlobalGameManager.OnUpdateTheme -= OnThemeUpdate; LevelManager.OnTimeHandSpeedChange -= OnThemeUpdate; }
 
     public void OnThemeUpdate() {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
@@ -35,9 +35,7 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
             case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>(), menuTheme)); break;
             case MenuObjectType.FixedActivityBorder: color = menuTheme.fixedActivityBorderColor; break;
             case MenuObjectType.TimeHand: {
-                TimeHand timeHand = gameObject.GetComponent<TimeHand>();
-                if(timeHand != null && timeHand.IsFast()) { color = menuTheme.timeHandFastColor; } 
-                else { color = menuTheme.timeHandColor;}
+                color = Color.Lerp(menuTheme.timeHandColor, menuTheme.timeHandFastColor, LevelManager.Instance.timeHand.fastForward.value);
                 break;
             }
 
