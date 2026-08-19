@@ -16,6 +16,7 @@ public class LevelManager : MonoSingleton<LevelManager>
     [SerializeField] private TaskList requiredTaskList;
     [SerializeField] private TaskList bonusTaskList;
     public TimeHand timeHand;
+    [SerializeField] private float timeHandMaxForwardSpeed = 3f;
 
     public bool pauseMenuInteractible = true;
     public bool levelIsActive = true;
@@ -159,6 +160,8 @@ public class LevelManager : MonoSingleton<LevelManager>
     public void SkipTimer() {
         if(levelIsActive) { timeHand.timer = 0; }
     }
+
+    public void SetTimeHandSpeed(float percentage) { if(levelIsActive) { timeHand.speedMultiplier = 1 + (percentage * (timeHandMaxForwardSpeed - 1)); } }
 
     public void FastForwardTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(true); } }
     public void NormalSpeedTimeHand() { if(levelIsActive) { timeHand.IsBecomeFast(false); } }

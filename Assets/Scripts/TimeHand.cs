@@ -2,24 +2,36 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class TimeHand : MonoBehaviour {
     [HideInInspector] public float timer;
     [SerializeField] private GameObject timerObject;
+    [SerializeField] private GameObject skipButton;
+    [SerializeField] private Scrollbar fastForward;
     private int clockTickIndex;
     public List<GameObject> startPositions;
 
     [Header("Fast Forward")]
     [SerializeField] private bool isFast = false;
-    [SerializeField] private float fastSpeedModifier = 1.5f;
+    [SerializeField] public float speedMultiplier = 1f;
+    [SerializeField] private float actualSpeed;
+    public float ActualSpeed => actualSpeed;
 
     private void Update() {
         timerObject.GetComponent<TextMeshProUGUI>().text = timer.ToString("00.00");
         if(LevelManager.Instance.levelIsActive) {
             if(timer > 0) {
                 timer = Mathf.Max(0, timer - Time.deltaTime);
+                skipButton.transform.localScale = Vector3.one;
+                fastForward.transform.localScale = Vector3.zero;
+                fastForward.interactable = false;
             } else {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (GlobalGameManager.GetCurrentWeek().timeHandSpeed * Time.deltaTime * (isFast? fastSpeedModifier : 1)), gameObject.transform.position.z);
+                actualSpeed = GlobalGameManager.GetCurrentWeek().timeHandSpeed * speedMultiplier * Time.deltaTime;
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - (actualSpeed), gameObject.transform.position.z);
+                skipButton.transform.localScale = Vector3.zero;
+                fastForward.transform.localScale = Vector3.one;
+                fastForward.interactable = true;
             }
         }
     }
