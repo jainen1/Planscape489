@@ -27,36 +27,44 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
             case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme); break;
             case MenuObjectType.ActivityShadowPanel: {
                 Color temp = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme);
-                temp.a = 0.7f;
-                color = temp;
+                temp.a = 0.7f; color = temp;
                 break;
             }
 
             case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>(), menuTheme)); break;
-            case MenuObjectType.FixedActivityBorder: color = menuTheme.fixedActivityBorderColor; break;
-            case MenuObjectType.TimeHand: {
-                color = Color.Lerp(menuTheme.timeHandColor, menuTheme.timeHandFastColor, LevelManager.Instance.timeHand.fastForward.value);
-                break;
-            }
-
-            case MenuObjectType.BrightText: color = menuTheme.brightTextColor; break;
-            case MenuObjectType.DarkText: color = menuTheme.darkTextColor; break;
-            case MenuObjectType.EventText: color = menuTheme.eventTextColor; break;
-            case MenuObjectType.SubtitleText: color = menuTheme.teamPlanscapeColor; break;
-
-            case MenuObjectType.PauseButton: color = menuTheme.pauseButtonColor; break;
-            case MenuObjectType.HelpButton: color = menuTheme.helpButtonColor; break;
-
-            case MenuObjectType.MenuBackground: color = menuTheme.menuButtonBackgroundColor; break;
-
-            default: break;
+            case MenuObjectType.TimeHand: { color = Color.Lerp(menuTheme.timeHandColor, menuTheme.timeHandFastColor, LevelManager.Instance.timeHand.fastForward.value); break; }
+            default: { color = GetColorForType(type); break; }
         };
 
         switch(target) {
-            case ThemeTarget.SpriteRenderer: gameObject.GetComponent<SpriteRenderer>().color = color; break;
+            //case ThemeTarget.SpriteRenderer: gameObject.GetComponent<SpriteRenderer>().color = color; break;
             case ThemeTarget.Image: gameObject.GetComponent<Image>().color = color; break;
             case ThemeTarget.TextMeshPro: gameObject.GetComponent<TextMeshProUGUI>().color = color; break;
             default : break;
+        }
+    }
+
+    public static Color GetColorForType (MenuObjectType type) {
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
+
+        switch(type) {
+            case MenuObjectType.GridCell: return menuTheme.gridCellColor;
+            case MenuObjectType.FixedGridCell: return menuTheme.fixedGridCellColor;
+
+            case MenuObjectType.FixedActivityBorder: return menuTheme.fixedActivityBorderColor;
+            case MenuObjectType.TimeHand: { return Color.Lerp(menuTheme.timeHandColor, menuTheme.timeHandFastColor, LevelManager.Instance.timeHand.fastForward.value); }
+
+            case MenuObjectType.BrightText: return menuTheme.brightTextColor;
+            case MenuObjectType.DarkText: return menuTheme.darkTextColor;
+            case MenuObjectType.EventText: return menuTheme.eventTextColor;
+            case MenuObjectType.SubtitleText: return menuTheme.teamPlanscapeColor;
+
+            case MenuObjectType.PauseButton: return menuTheme.pauseButtonColor;
+            case MenuObjectType.HelpButton: return menuTheme.helpButtonColor;
+
+            case MenuObjectType.MenuBackground: return menuTheme.menuButtonBackgroundColor;
+
+            default: return Color.red;
         }
     }
 
@@ -92,8 +100,11 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
         float backgroundColorBrightness = (0.2126f * (backgroundColor.r * 255)) + (0.7152f * (backgroundColor.g * 255)) + (0.0722f * (backgroundColor.b * 255));
         bool brighter = (backgroundColorBrightness <= threshold);
 
+        Vector3 brightnessCoefficients = new Vector3(0.2126f, 0.7152f, 0.0722f);
+        //return Vector3.Dot(brightnessCoefficients, new Vector3(backgroundColor.r, backgroundColor.g, backgroundColor.b)) <= threshold; // 'true' means light, 'false' means dark
+
         //Debug.Log("This object's brightness is " + backgroundColorBrightness + ", which is " + (brighter? "brighter" : "darker")  + " than the threshold of " + threshold + ".");
-        return brighter; // 'true' means light, 'false' means dark
+        return brighter;
     }
 
     private enum ThemeTarget {
@@ -121,6 +132,8 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
         MenuBackground,
 
         EventText,
-        SubtitleText
+        SubtitleText,
+
+        FixedGridCell
     }
 }

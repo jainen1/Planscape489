@@ -58,6 +58,14 @@ MonoBehaviour:
     m_Localized: save game
     m_Metadata:
       m_Items: []
+  - m_Id: 39986683585331200
+    m_Localized: Could Do
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39986592967393280
+    m_Localized: Must Do
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

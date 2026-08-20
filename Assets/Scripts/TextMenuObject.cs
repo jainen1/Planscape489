@@ -4,14 +4,15 @@ using UnityEngine.UI;
 
 public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
 {
-    [SerializeField] private GameObject backgroundObject;
-    [SerializeField] private int threshold = 128;
-
     private float fontSize;
     private float characterSpacing;
     private float lineSpacing;
 
-    [SerializeField] TextType textType = TextType.Basic;
+    [SerializeField] private bool useMonotoneColors = true;
+    [SerializeField] private GameObject backgroundObject;
+    [SerializeField] private int threshold = 128;
+
+    [SerializeField] FontType textType = FontType.Basic;
 
     void OnEnable() { GlobalGameManager.OnUpdateThemeText += OnThemeUpdate; }
     void OnDisable() { GlobalGameManager.OnUpdateThemeText -= OnThemeUpdate; }
@@ -46,14 +47,14 @@ public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
         float lineSpacingScale;
 
         switch(textType) {
-            case TextType.Basic: {
+            case FontType.Basic: {
                 font = menuTheme.mainFont;
                 fontSizeScale = menuTheme.mainFontSizeScale;
                 characterSpacingScale = menuTheme.mainCharacterSpacingScale;
                 lineSpacingScale = menuTheme.mainLineSpacingScale;
                 break;
             }
-            case TextType.Timer: {
+            case FontType.Timer: {
                 font = menuTheme.timerFont;
                 fontSizeScale = menuTheme.timerFontSizeScale;
                 characterSpacingScale = menuTheme.timerCharacterSpacingScale;
@@ -78,7 +79,7 @@ public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
     }
 }
 
-public enum TextType {
+public enum FontType {
     Basic,
     Timer
 }

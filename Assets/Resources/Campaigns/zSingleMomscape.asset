@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
+  m_Name: zSingleMomscape
+  m_EditorClassIdentifier: Assembly-CSharp::Campaign
+  translationKey: 
+  thumbnail: {fileID: 89308894535659259, guid: 3a9fe90a50e3243bf8f6c2b0e68b37bd, type: 3}
+  accentColor: {r: 0.79622644, g: 0.45520112, b: 0.7384565, a: 1}
+  weeks: []
+  randomEvents: []
+  title: Single Momscape
+  description: Play as a single mother balancing work, life, and parenthood altogether!
+  difficulty: 2

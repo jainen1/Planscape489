@@ -720,7 +720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!1 &893945368
@@ -1143,7 +1144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!1 &986857319
@@ -1673,7 +1675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!114 &1117289315
@@ -2024,7 +2027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!114 &1493238103
@@ -2099,6 +2103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
+  useMonotoneColors: 1
   backgroundObject: {fileID: 0}
   threshold: 128
   textType: 0
@@ -2456,7 +2461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!114 &1505407302
@@ -2985,7 +2991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!114 &1887105066
@@ -3309,7 +3316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
-  backgroundObject: {fileID: 0}
+  useMonotoneColors: 1
+  backgroundObject: {fileID: 986857319}
   threshold: 128
   textType: 0
 --- !u!114 &2084994641

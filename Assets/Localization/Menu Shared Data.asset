@@ -55,6 +55,14 @@ MonoBehaviour:
     m_Key: menu.save
     m_Metadata:
       m_Items: []
+  - m_Id: 39986592967393280
+    m_Key: menu.tasklist.required
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39986683585331200
+    m_Key: menu.tasklist.optional
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
