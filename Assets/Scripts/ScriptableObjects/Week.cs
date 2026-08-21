@@ -54,21 +54,8 @@ public class Week : StuffedScriptableObject {
             public string text;
         }
 
-        public enum MusicType {
-            Calm,
-            Tense,
-            SuperTense
-        }
-
-        public enum GameplayType {
-            Calendar,
-            Invaders,
-            Zombies
-        }
-
-        public enum TutorialContentType {
-            Tutorial,
-            Dialogue
-        }
+        public enum MusicType { Calm, Tense, SuperTense }
+        public enum GameplayType { Calendar, Invaders, Zombies }
+        public enum TutorialContentType { Tutorial, Dialogue }
     }
 }
