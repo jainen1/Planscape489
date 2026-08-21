@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlanscapeF
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
   translationKey: 
-  thumbnail: {fileID: -667207897711923402, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
+  thumbnail: {fileID: 21300000, guid: b8d2c9d5ca55945f5906cdefd242b2e9, type: 3}
   accentColor: {r: 0.22745098, g: 0.5921569, b: 0.40784314, a: 1}
   weeks:
   - {fileID: 11400000, guid: bfe3ba6738eab2f469b5ffbd86c82acf, type: 2}
@@ -33,7 +33,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf9a07d324090934dac19925987b869b, type: 2}
   - {fileID: 11400000, guid: 42f24b27df35f0044b58f9b19c35e8c7, type: 2}
   - {fileID: 11400000, guid: 6aaec56a2d928654cbd54d393d8b1f8f, type: 2}
-  randomEvents: []
   title: Frenzied Footballer
   description: 'Play as a college student trying to
 
