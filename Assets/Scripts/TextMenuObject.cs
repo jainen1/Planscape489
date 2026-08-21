@@ -13,6 +13,7 @@ public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
     [SerializeField] private int threshold = 128;
 
     [SerializeField] FontType textType = FontType.Basic;
+    public enum FontType { Basic, Timer }
 
     void OnEnable() { GlobalGameManager.OnUpdateThemeText += OnThemeUpdate; }
     void OnDisable() { GlobalGameManager.OnUpdateThemeText -= OnThemeUpdate; }
@@ -77,9 +78,4 @@ public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
         textComponent.characterSpacing = characterSpacing * characterSpacingScale;
         textComponent.lineSpacing = lineSpacing * characterSpacingScale;
     }
-}
-
-public enum FontType {
-    Basic,
-    Timer
 }

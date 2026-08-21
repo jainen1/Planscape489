@@ -1,40 +1,20 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static SimpleMenuObject;
 
 public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
 {
     [SerializeField] private MenuObjectType type;
     [SerializeField] private ThemeTarget target;
+    private enum ThemeTarget { SpriteRenderer, Image, TextMeshPro }
 
-    [HideInInspector] public Color color = Color.red;
+    [SerializeField] private Color color = Color.red;
 
     void OnEnable() { GlobalGameManager.OnUpdateTheme += OnThemeUpdate; LevelManager.OnTimeHandSpeedChange += OnThemeUpdate; }
     void OnDisable() { GlobalGameManager.OnUpdateTheme -= OnThemeUpdate; LevelManager.OnTimeHandSpeedChange -= OnThemeUpdate; }
 
     public void OnThemeUpdate() {
-        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
-
-        switch(type) {
-            case MenuObjectType.GridCell: {
-                color = menuTheme.gridCellColor;
-                GridCell gridCell = gameObject.GetComponent<GridCell>();
-                if(gridCell != null && gridCell.isFixed) { color = menuTheme.fixedGridCellColor; }
-                break;
-            }
-
-            case MenuObjectType.ActivityPanel: color = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme); break;
-            case MenuObjectType.ActivityShadowPanel: {
-                Color temp = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme);
-                temp.a = 0.7f; color = temp;
-                break;
-            }
-
-            case MenuObjectType.ActivityResource: color = ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>(), menuTheme)); break;
-            case MenuObjectType.TimeHand: { color = Color.Lerp(menuTheme.timeHandColor, menuTheme.timeHandFastColor, LevelManager.Instance.timeHand.fastForward.value); break; }
-            default: { color = GetColorForType(type); break; }
-        };
+        color = GetComplexColorForType(type);
 
         switch(target) {
             //case ThemeTarget.SpriteRenderer: gameObject.GetComponent<SpriteRenderer>().color = color; break;
@@ -44,9 +24,28 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
         }
     }
 
+    public Color GetComplexColorForType (MenuObjectType type) {
+        MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
+        switch(type) {
+            case MenuObjectType.GridCell: {
+                GridCell gridCell = gameObject.GetComponent<GridCell>();
+                if(gridCell != null && gridCell.isFixed) { return menuTheme.fixedGridCellColor; }
+                return menuTheme.gridCellColor;
+            }
+
+            case MenuObjectType.ActivityPanel: return GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme);
+            case MenuObjectType.ActivityShadowPanel: {
+                Color temp = GetActivityPanelColor(gameObject.transform.parent.GetComponent<ActivityInitializer>(), menuTheme);
+                temp.a = 0.7f; return temp;
+            }
+
+            case MenuObjectType.ActivityResource: return ActivityResourceColor(GetActivityPanelColor(gameObject.transform.parent.transform.parent.transform.parent.GetComponent<ActivityInitializer>(), menuTheme));
+            default: { return GetColorForType(type); }
+        };
+    }
+
     public static Color GetColorForType (MenuObjectType type) {
         MenuTheme menuTheme = GlobalGameManager.GetCurrentMenuTheme();
-
         switch(type) {
             case MenuObjectType.GridCell: return menuTheme.gridCellColor;
             case MenuObjectType.FixedGridCell: return menuTheme.fixedGridCellColor;
@@ -68,9 +67,7 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
         }
     }
 
-    public Color GetMainColor () {
-        return color;
-    }
+    public Color GetMainColor () { return color; }
 
     private Color ActivityResourceColor(Color color) {
         float change = GetBrightOrDarkColor(color, 200)? 0.4f : -0.4f;
@@ -105,12 +102,6 @@ public class SimpleMenuObject : MonoBehaviour, ReceivesThemeUpdates
 
         //Debug.Log("This object's brightness is " + backgroundColorBrightness + ", which is " + (brighter? "brighter" : "darker")  + " than the threshold of " + threshold + ".");
         return brighter;
-    }
-
-    private enum ThemeTarget {
-        SpriteRenderer,
-        Image,
-        TextMeshPro
     }
 
     public enum MenuObjectType {
