@@ -42,7 +42,7 @@ MonoBehaviour:
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 4.17, y: 1.26}
-  - sprite: {fileID: 5193401657051771739, guid: cf939723f3bdf46b4b3bcf50b51e1eb9, type: 3}
+  - sprite: {fileID: 21300000, guid: cf939723f3bdf46b4b3bcf50b51e1eb9, type: 3}
     color: {r: 0.8886792, g: 0.9836293, b: 1, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
@@ -53,7 +53,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 19.2, y: 10.8}
   levelBackgroundLayers:
-  - sprite: {fileID: 5193401657051771739, guid: cf939723f3bdf46b4b3bcf50b51e1eb9, type: 3}
+  - sprite: {fileID: 21300000, guid: cf939723f3bdf46b4b3bcf50b51e1eb9, type: 3}
     color: {r: 0.8886792, g: 0.9836293, b: 1, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}

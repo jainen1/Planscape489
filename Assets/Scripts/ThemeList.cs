@@ -1,38 +1,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class ThemeList : MonoBehaviour
 {
     [Header("SetupText")]
     [SerializeField] private GameObject itemPrefab; //  button template
-    private List<GameObject> itemList = new List<GameObject>();
-    private int index = 0;
+    [SerializeField] private List<GameObject> itemList = new List<GameObject>();
 
     private void Awake() {
-        CreateList(new List<MenuTheme>(GlobalGameManager.GetActiveMenuThemes()));
-    }
-
-    public void CreateList(List<MenuTheme> themes) {
         // 1. Clear out any old buttons
         foreach (GameObject item in itemList) { Destroy(item); }
         itemList.Clear();
 
-        // 2. Spawn a new button for every theme in your list
-        foreach (MenuTheme theme in themes) { AddThemeButton(); index++; }
-        // will auto-resize.
-    }
+        // 2. Gather JSON files
+        List<MenuTheme> themes = new List<MenuTheme>(GlobalGameManager.GetActiveMenuThemes());
+        foreach (MenuTheme theme in themes) {
+            // 3. Spawn a new button for every theme in your list
 
-    private void AddThemeButton() {
-        // Create the button
-        GameObject newButton = Instantiate(itemPrefab, transform);
-        itemList.Add(newButton);
+            // Create the button
+            GameObject newButton = Instantiate(itemPrefab, transform);
+            itemList.Add(newButton);
 
-        // Access the script on the button to set the text/icon
-        ThemeListItem script = newButton.GetComponent<ThemeListItem>();
-        if (script != null) {
-            script.SetThemeIndex(index);
-            script.SetupText();
-        } else { Debug.LogError("The prefab is missing the ThemeListItem script!"); }
+            // Access the script on the button to set the text/icon
+            ThemeListItem script = newButton.GetComponent<ThemeListItem>();
+            if (script != null) { script.theme = theme; }
+            else { Debug.LogError("The prefab is missing the ThemeListItem script!"); }
+        }
+
+        // Scrollbox will auto-resize.
     }
 }

@@ -42,13 +42,13 @@ MonoBehaviour:
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 4.17, y: 1.26}
-  - sprite: {fileID: 147434752360468177, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
+  - sprite: {fileID: 21300000, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
     color: {r: 0.94117653, g: 1, b: 0.9960785, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 19.2, y: 10.8}
   levelBackgroundLayers:
-  - sprite: {fileID: 147434752360468177, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
+  - sprite: {fileID: 21300000, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
     color: {r: 0.94117653, g: 1, b: 0.9960785, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
