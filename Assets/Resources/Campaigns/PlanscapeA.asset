@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
   m_Name: PlanscapeA
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
-  translationKey: 
+  translationKey: planscape.campaign.a
   thumbnail: {fileID: 21300000, guid: 2ca01e6e4043f4a7297d7672c4af6b5c, type: 3}
   accentColor: {r: 0.83396226, g: 0.8071827, b: 0.38236377, a: 1}
   weeks:
@@ -40,4 +40,4 @@ MonoBehaviour:
 
     last
     semester!'
-  difficulty: 0
+  difficulty: 2

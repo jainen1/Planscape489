@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
   m_Name: zSuperscape
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
-  translationKey: 
+  translationKey: planscape.campaign.super
   thumbnail: {fileID: 21300000, guid: cf939723f3bdf46b4b3bcf50b51e1eb9, type: 3}
   accentColor: {r: 0.066666685, g: 0.6500722, b: 0.8352941, a: 1}
   weeks:

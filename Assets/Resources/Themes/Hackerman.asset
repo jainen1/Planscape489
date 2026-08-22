@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba4bdc42c85935459882df58bab3b69, type: 3}
   m_Name: Hackerman
   m_EditorClassIdentifier: Assembly-CSharp::MenuTheme
-  translationKey: planscape.hackermanTheme
-  mainFont: {fileID: 11400000, guid: dbfc122bffd37814a97d802c9cce9b58, type: 2}
+  translationKey: planscape.theme.hackerman
+  mainFont: 2
   mainFontSizeScale: 0.95
   mainCharacterSpacingScale: 1
   mainLineSpacingScale: 1
-  timerFont: {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
+  timerFont: 1
   timerFontSizeScale: 1
   timerCharacterSpacingScale: 1
   timerLineSpacingScale: 1

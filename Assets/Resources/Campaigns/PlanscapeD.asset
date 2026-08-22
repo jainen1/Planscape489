@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19f4727be9237d42af80dc8e8684c52, type: 3}
   m_Name: PlanscapeD
   m_EditorClassIdentifier: Assembly-CSharp::Campaign
-  translationKey: 
+  translationKey: planscape.campaign.d
   thumbnail: {fileID: 21300000, guid: beeed2acda05cb949b78345ff4ebc113, type: 3}
   accentColor: {r: 0.1870487, g: 0.61590415, b: 0.7132075, a: 1}
   weeks:
@@ -33,7 +33,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49c13e8aef57f4a34ac0f2a277574bfe, type: 2}
   - {fileID: 11400000, guid: 0f0ca4a4ac94a46908ee0d28625528c0, type: 2}
   - {fileID: 11400000, guid: 03bc0f26718504575bb53ebb09428337, type: 2}
-  randomEvents: []
   title: Distressed Director
   description: 'Play as a college student trying to
 
