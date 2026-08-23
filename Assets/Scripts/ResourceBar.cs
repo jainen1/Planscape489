@@ -38,11 +38,13 @@ public class ResourceBar : MonoBehaviour
                 newResourcePiece.transform.SetParent(gameObject.transform);
                 //newResourcePiece.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -(0.1f * (i + 1)));
                 ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
-                    
-                Week.Utilities.ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
 
-                newResourcePieceComponent.min = values.min;
-                newResourcePieceComponent.max = values.max;
+                if(GlobalGameManager.GetCurrentWeek().resourceBars != null) {
+                    Week.Utilities.ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
+                    newResourcePieceComponent.min = values.min;
+                    newResourcePieceComponent.max = values.max;
+                }
+
                 newResourcePieceComponent.fill.GetComponent<Image>().color = resourceBarColors[i].fill;
                 newResourcePieceComponent.change.GetComponent<Image>().color = resourceBarColors[i].change;
 

@@ -93,7 +93,7 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
         itemList.Clear();
 
         // generate _countitem 
-        if(activities.Length > 0) {
+        if(activities != null && activities.Length > 0) {
             firstItem.SetActive(true);// the first item instance has been placed in the first position of the list and directly activate
             firstItem.GetComponent<TaskListItem>().activityWithCount = activities[0];
             firstItem.GetComponent<TaskListItem>().Initialize();
