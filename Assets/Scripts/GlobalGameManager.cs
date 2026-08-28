@@ -2,14 +2,17 @@ using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 {
     [SerializeField] private Campaign campaign;
     [SerializeField] private int currentWeek = 0;
 
-    [SerializeField] private MenuTheme currentTheme;
+    [SerializeField] private List<MenuTheme> loadedThemes;
     [SerializeField] private MenuTheme defaultTheme;
+    [SerializeField] private int currentThemeIndex;
 
     public delegate void UpdateTheme();
     public static event UpdateTheme OnUpdateTheme;
@@ -17,19 +20,28 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     [SerializeField] private Scene activeMenuScene;
 
-    [SerializeField] private MenuTheme[] activeThemes; //temporary
+    [SerializeField] public List<TMPro.TMP_FontAsset> activeFonts;
+    [SerializeField] public List<LanguageFile> activeLangs;
 
     public GameSettings settings;
 
     protected override void OnInitialize() {
-        //SaveAllThemesToJson();
-        //LoadActiveThemes();
-        LoadThemesFromResources();
+        Instance.currentThemeIndex = 0;
+        LoadThemes();
 
         //SaveGame();
+        StartCoroutine(SendLateThemeUpdate());
 
+        foreach(string file in JExtraUtility.LoadJsonFilesOfType("Lang")) {
+            Instance.activeLangs.Add(JsonUtility.FromJson<LanguageFile.JData>(File.ReadAllText(file)).LoadData()); }
+    }
+
+    System.Collections.IEnumerator SendLateThemeUpdate () {
+        yield return null;
         SendThemeUpdate();
     }
+
+    //public void WakeUp () { Debug.Log("GlobalGameManager summoned."); }
 
     // Weeks //
 
@@ -62,15 +74,22 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
 
     // Themes //
 
+    public static void LoadThemes () {
+        Instance.loadedThemes.Clear();
+        try{ 
+            foreach(string file in JExtraUtility.LoadJsonFilesOfType("Themes")) {
+                Instance.loadedThemes.Add(JsonUtility.FromJson<MenuTheme.JData>(File.ReadAllText(file)).LoadData()); }
+        } catch(Exception e) {
+            Debug.LogError("MenuTheme deserialization failed.");
+            //throw;
+        }
+        Debug.Log("Theme initialized to " + GetCurrentMenuTheme());
+    }
+
     public static void CycleTheme() {
-        Debug.Log("cycling theme from: " + Instance.currentTheme.name);
-
-        int currentThemeIndex = Array.IndexOf(Instance.activeThemes, Instance.currentTheme);
-
-        if(currentThemeIndex == Instance.activeThemes.Length - 1) { currentThemeIndex = 0; }
-        else { currentThemeIndex++; }
-
-        Instance.currentTheme = Instance.activeThemes[currentThemeIndex];
+        Debug.Log("cycling theme from: " + GetCurrentMenuTheme().name);
+        if(Instance.currentThemeIndex == Instance.loadedThemes.Count - 1) { Instance.currentThemeIndex = 0; }
+        else {Instance.currentThemeIndex++; }
         SendThemeUpdate();
     }
 
@@ -79,94 +98,30 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
         OnUpdateThemeText();
     }
 
-    public static void SetThemeManually(MenuTheme newTheme) {
+    /*public static void SetThemeManually(MenuTheme newTheme) {
         Instance.currentTheme = newTheme;
-        SendThemeUpdate(); 
-    }
+        SendThemeUpdate();
+        //Debug.Log("Switched to: " + GlobalGameManager.Instance.GetActiveMenuThemes()[themeIndex].name);
+    }*/
 
     public static void SetThemeByIndex(int i) {
-        Instance.currentTheme = Instance.activeThemes[i];
+        Instance.currentThemeIndex = i;
         SendThemeUpdate();
     }
 
     public static MenuTheme GetCurrentMenuTheme() {
-        if(Instance.currentTheme == null) {
-            return Instance.defaultTheme;
-        } return Instance.currentTheme;
+        MenuTheme currentTheme = Instance.loadedThemes[Instance.currentThemeIndex];
+        if(currentTheme == null) { return Instance.defaultTheme; }
+        return currentTheme;
     }
 
-    public static MenuTheme[] GetActiveMenuThemes() { return Instance.activeThemes; }
-
-    private static string planscapeGeneratedFolder = Path.Combine(Application.streamingAssetsPath, "ContentPacks", "PlanscapeGenerated");
-
-    public static void SaveAllResourcesToJson() {
-        SaveAllCampaignsToJson();
-        SaveAllThemesToJson();
-        SaveAllWeeksToJson();
-    }
-
-    public static void SaveAllCampaignsToJson() {
-        string folderPath = Path.Combine(planscapeGeneratedFolder, "Campaigns");
-
-        Campaign[] objectList = Resources.LoadAll<Campaign>("Campaigns");
-        Debug.Log("Writing campaign data to " + folderPath);
-        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
-        for(int i = 0; i < objectList.Length; i++) {
-            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".campaign.json"), JsonUtility.ToJson(objectList[i], true)); // save campaign to JSON
-            Debug.Log("Generating Campaigns... (" + (i + 1) + "/" + objectList.Length + ")");
-        }
-    }
-
-    public static void SaveAllThemesToJson() {
-        string folderPath = Path.Combine(planscapeGeneratedFolder, "Themes");
-
-        MenuTheme[] objectList = Resources.LoadAll<MenuTheme>("Themes");
-        Debug.Log("Writing theme data to " + folderPath);
-        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
-        for(int i = 0; i < objectList.Length; i++) {
-            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".theme.json"), JsonUtility.ToJson(objectList[i], true)); // save theme to JSON
-            Debug.Log("Generating Themes... (" + (i+1) + "/" + objectList.Length + ")");
-        }
-    }
-
-    public static void SaveAllWeeksToJson() {
-        string folderPath = Path.Combine(planscapeGeneratedFolder, "Weeks");
-
-        Week[] objectList = Resources.LoadAll<Week>("Weeks");
-        Debug.Log("Writing week data to " + folderPath);
-        if(!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
-        for(int i = 0; i < objectList.Length; i++) {
-            File.WriteAllText(Path.Combine(folderPath, objectList[i].name.ToLower() + ".week.json"), JsonUtility.ToJson(objectList[i], true)); // save week to JSON
-            Debug.Log("Generating Weeks... (" + (i + 1) + "/" + objectList.Length + ")");
-        }
-    }
-
-    public static void LoadThemesFromResources () { // temporary theme loader
-        Instance.activeThemes = Resources.LoadAll<MenuTheme>("Themes");
-        Instance.currentTheme = Instance.activeThemes[0];
-        Debug.Log("Theme initialized to " + Instance.currentTheme);
-    }
-
-    public static void LoadActiveThemes() {
-        //AssetDatabase.Refresh();
-        int themeFileIndex = 0;
-        foreach(var file in Directory.EnumerateFiles(Path.Combine(planscapeGeneratedFolder, "Themes"), "theme.json")) {
-            string json = File.ReadAllText(file);
-            JsonUtility.FromJsonOverwrite(json, Instance.activeThemes[themeFileIndex]);
-            Debug.Log("Read theme data from file " + file);
-        }
-
-        /*if(Instance.GetCurrentMenuTheme() == Instance.GetActiveMenuThemes()[0]) { }*/
-
-        Instance.currentTheme = Instance.activeThemes[0];
-        Debug.Log("Theme initialized to " + Instance.currentTheme);
-    }
+    public static List<MenuTheme> GetLoadedThemes() { return Instance.loadedThemes; }
 
     public static void PrintThemes() {
-        MenuTheme[] themes = GetActiveMenuThemes();
+        List<MenuTheme> themes = GetLoadedThemes();
         string printmessage = "Printing currently loaded themes: ";
-        if(themes.Length > 0) {
-            for(int i = 0; i < themes.Length; i++) { printmessage += "Theme No. " + i + " \"" + themes[i].name + "\"; "; }
+        if(themes.Count > 0) {
+            for(int i = 0; i < themes.Count; i++) { printmessage += "Theme No. " + i + " \"" + themes[i].name + "\"; "; }
         } else { printmessage += "No themes are loaded."; }
         Debug.Log(printmessage);
     }
@@ -174,11 +129,13 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
     // Scene Management //
 
     public static void SetCampaignAndPlay(Campaign campaign) {
-        //Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
-        Instance.campaign = campaign;
-        Instance.currentWeek = 0;
-        //StartWeekWithTutorial();
-        StartWeek();
+        if(campaign.weeks.Length > 0) {
+            //Instance.campaign = Resources.Load<Campaign>("Campaigns/Planscape");
+            Instance.campaign = campaign;
+            Instance.currentWeek = 0;
+            //StartWeekWithTutorial();
+            StartWeek();
+        } else { Debug.LogWarning("Attempted to play campaign with zero weeks. Don't do that please."); }
     }
 
     public static void StartWeekWithTutorial() {

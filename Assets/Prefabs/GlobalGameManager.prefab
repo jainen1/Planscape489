@@ -52,6 +52,12 @@ MonoBehaviour:
   activeMenuScene:
     m_Handle: 0
   activeThemes: []
+  activeFonts:
+  - {fileID: 11400000, guid: ab248409c87c8d94ea213372ec3baa4e, type: 2}
+  - {fileID: 11400000, guid: 29bc70b740626ea43b8a3b5289512e55, type: 2}
+  - {fileID: 11400000, guid: dbfc122bffd37814a97d802c9cce9b58, type: 2}
+  - {fileID: 11400000, guid: 342efefe25f3c644e9fd234f2740dd34, type: 2}
+  activeLangs: []
   settings:
     musicVolume: 1
     sfxVolume: 1

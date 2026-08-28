@@ -10,14 +10,11 @@ public class CampaignListItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI description;
 
-    private void Start() {
-        if(title != null) {
-            thumbnail.sprite = campaign.thumbnail;
-            shape.color = campaign.accentColor;
-
-            title.text = campaign.title;
-            description.text = campaign.description + "\n\nWeeks: <b>" + campaign.weeks.Length + "</b>\nDifficulty: <b>" + campaign.difficulty + "</b>";
-        }
+    public void SetupText () {
+        thumbnail.sprite = campaign.thumbnail;
+        shape.color = campaign.accentColor;
+        title.text = campaign.title;
+        description.text = campaign.description + "\n\nWeeks: <b>" + campaign.weeks.Length + "</b>\nDifficulty: <b>" + campaign.difficulty + "</b>";
     }
 
     public void OnClickSelect() {

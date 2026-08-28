@@ -14,18 +14,20 @@ public class ThemeList : MonoBehaviour
         foreach (GameObject item in itemList) { Destroy(item); }
         itemList.Clear();
 
-        // 2. Gather JSON files
-        List<MenuTheme> themes = new List<MenuTheme>(GlobalGameManager.GetActiveMenuThemes());
-        foreach (MenuTheme theme in themes) {
-            // 3. Spawn a new button for every theme in your list
-
-            // Create the button
+        // 2. Gather loaded themes
+        for(int i = 0; i < GlobalGameManager.GetLoadedThemes().Count; i++) {
+            MenuTheme theme = GlobalGameManager.GetLoadedThemes()[i];
+            // 3. Spawn a new button for every theme in the list
             GameObject newButton = Instantiate(itemPrefab, transform);
             itemList.Add(newButton);
 
-            // Access the script on the button to set the text/icon
-            ThemeListItem script = newButton.GetComponent<ThemeListItem>();
-            if (script != null) { script.theme = theme; }
+            // 4. Access the script on the button to set the text/icon
+            ThemeListItem themeListItem = newButton.GetComponent<ThemeListItem>();
+            if (themeListItem != null) {
+                themeListItem.theme = theme;
+                themeListItem.index = i;
+                themeListItem.SetupText();
+            }
             else { Debug.LogError("The prefab is missing the ThemeListItem script!"); }
         }
 

@@ -16,12 +16,12 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
     private void Awake() {
         itemList = new List<GameObject>();
 
-        Week.Utilities.ActivityWithCount[] activities;
+        Week.ActivityWithCount[] activities;
 
         switch(activityType) {
             case Activity.Type.Required: activities = GlobalGameManager.GetCurrentWeek().requiredTasks; break;
             case Activity.Type.Bonus: activities = GlobalGameManager.GetCurrentWeek().bonusTasks; break;
-            default: activities = new Week.Utilities.ActivityWithCount[0]; break;
+            default: activities = new Week.ActivityWithCount[0]; break;
         }
         CreateList(activities);
     }
@@ -83,7 +83,7 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
     public Activity.Type GetActivityType() { return activityType; }
     public void SetActivityType(Activity.Type type) { activityType = type; }
 
-    public void CreateList(Week.Utilities.ActivityWithCount[] activities) {
+    public void CreateList(Week.ActivityWithCount[] activities) {
         GameObject content = gameObject;
 
         // destroys the previously generated item and clears the list 
@@ -123,7 +123,7 @@ public class TaskList : MonoBehaviour, ReceivesThemeUpdates
         }
     }
 
-    public void AddTaskListItem(Week.Utilities.ActivityWithCount activity) {
+    public void AddTaskListItem(Week.ActivityWithCount activity) {
         GameObject listItemClone = Instantiate(firstItem);
         listItemClone.transform.SetParent(gameObject.transform); // sub object set to content
         itemList.Add(listItemClone);

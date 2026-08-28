@@ -40,7 +40,7 @@ public class ResourceBar : MonoBehaviour
                 ResourcePiece newResourcePieceComponent = newResourcePiece.GetComponent<ResourcePiece>();
 
                 if(GlobalGameManager.GetCurrentWeek().resourceBars != null) {
-                    Week.Utilities.ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
+                    Week.ResourceBarValues values = GlobalGameManager.GetCurrentWeek().resourceBars[resourceIndex].resourceBars[i];
                     newResourcePieceComponent.min = values.min;
                     newResourcePieceComponent.max = values.max;
                 }

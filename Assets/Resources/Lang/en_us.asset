@@ -10,6 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca8147f029e7ec347a43410e333fe852, type: 3}
-  m_Name: English (en_us)
-  m_EditorClassIdentifier: Assembly-CSharp::Lang
-  translationKey: 
+  m_Name: en_us
+  m_EditorClassIdentifier: Assembly-CSharp::LanguageFile
+  translationKey: en_us
+  translations:
+  - key: en_us
+    value: English (en_us)
+  - key: planscape.activity.gaming
+    value: Gaming
+  - key: planscape.activity.coffeewithfriends
+    value: Coffee w/ Friends
+  - key: planscape.activity.paytaxes
+    value: Pay Taxes

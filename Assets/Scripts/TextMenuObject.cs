@@ -49,21 +49,21 @@ public class TextMenuObject : MonoBehaviour, ReceivesThemeUpdates
 
         switch(textType) {
             case FontType.Basic: {
-                font = menuTheme.mainFont;
+                font = GlobalGameManager.Instance.activeFonts[(int) menuTheme.mainFont];
                 fontSizeScale = menuTheme.mainFontSizeScale;
                 characterSpacingScale = menuTheme.mainCharacterSpacingScale;
                 lineSpacingScale = menuTheme.mainLineSpacingScale;
                 break;
             }
             case FontType.Timer: {
-                font = menuTheme.timerFont;
+                font = GlobalGameManager.Instance.activeFonts[(int) menuTheme.timerFont];
                 fontSizeScale = menuTheme.timerFontSizeScale;
                 characterSpacingScale = menuTheme.timerCharacterSpacingScale;
                 lineSpacingScale = menuTheme.timerLineSpacingScale;
                 break;
             }
             default: {
-                font = menuTheme.mainFont;
+                font = GlobalGameManager.Instance.activeFonts[(int) menuTheme.mainFont];
                 fontSizeScale = menuTheme.mainFontSizeScale;
                 characterSpacingScale = menuTheme.mainCharacterSpacingScale;
                 lineSpacingScale = menuTheme.mainLineSpacingScale;

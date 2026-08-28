@@ -55,8 +55,10 @@ public class TimeHand : MonoBehaviour {
         GridCell cell = collision.GetComponent<GridCell>();
 
         if(cell != null && cell.canBeUsed) {
-            SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().clockTicking[clockTickIndex], SoundManager.AudioChannels.sfx);
-            clockTickIndex = (clockTickIndex > GlobalGameManager.GetCurrentMenuTheme().clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
+            if(GlobalGameManager.GetCurrentMenuTheme().clockTicking != null) {
+                SoundManager.PlayClip(GlobalGameManager.GetCurrentMenuTheme().clockTicking[clockTickIndex], SoundManager.AudioChannels.sfx);
+                clockTickIndex = (clockTickIndex > GlobalGameManager.GetCurrentMenuTheme().clockTicking.Length - 2) ? 0 : clockTickIndex + 1;
+            }
 
             float finalHappiness = LevelManager.GetResource(1);
             float finalMoney = LevelManager.GetResource(2);
