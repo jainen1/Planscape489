@@ -169,5 +169,6 @@ public class GlobalGameManager : MonoSingleton<GlobalGameManager>
             EndSceneManager endSceneManager = FindFirstObjectByType<EndSceneManager>();
             if(endSceneManager != null) { endSceneManager.SetParameters(LevelManager.Instance.activeEndScreen); }
         }
+        SendThemeUpdate();
     }
 }

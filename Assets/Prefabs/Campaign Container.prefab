@@ -217,11 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807d2216dfb867549ba2bf6037cbec50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CampaignListItem
+  campaign: {fileID: 0}
   thumbnail: {fileID: 1383665904060082550}
   shape: {fileID: 2944576595221423988}
   title: {fileID: 2405418073981551091}
   description: {fileID: 2376040834461263444}
-  campaign: {fileID: 0}
 --- !u!1001 &4344229553243174433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -436,11 +436,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66225591807991150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
+  useMonotoneColors: 1
   backgroundObject: {fileID: 0}
   threshold: 128
   textType: 0
@@ -656,11 +657,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 104675300462967497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c605b49b95ae58449babdd50ebb06352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextMenuObject
+  useMonotoneColors: 1
   backgroundObject: {fileID: 0}
   threshold: 128
   textType: 0

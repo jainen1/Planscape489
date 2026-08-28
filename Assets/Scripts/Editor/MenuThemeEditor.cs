@@ -4,6 +4,9 @@ using UnityEngine;
 [CustomEditor(typeof(MenuTheme))]
 public class MenuThemeEditor : Editor {
     public override void OnInspectorGUI() {
+        if(EditorApplication.isPlaying && GUILayout.Button("Update Theme")) {
+            GlobalGameManager.SendThemeUpdate();
+        }
         if(EditorApplication.isPlaying && GUILayout.Button("Reload & Update Theme")) {
             GlobalGameManager.LoadThemes();
             GlobalGameManager.SendThemeUpdate();
