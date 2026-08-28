@@ -4,19 +4,19 @@ using UnityEngine;
 [CustomEditor(typeof(MenuTheme))]
 public class MenuThemeEditor : Editor {
     public override void OnInspectorGUI() {
-        if(EditorApplication.isPlaying && GUILayout.Button("Update Theme")) {
+        /*if(EditorApplication.isPlaying && GUILayout.Button("Update Theme")) {
             GlobalGameManager.SendThemeUpdate();
-        }
-        if(EditorApplication.isPlaying && GUILayout.Button("Reload & Update Theme")) {
+        }*/
+        /*if(EditorApplication.isPlaying && GUILayout.Button("Reload & Update Theme")) {
             GlobalGameManager.LoadThemes();
             GlobalGameManager.SendThemeUpdate();
-        }
+        }*/
         if(EditorApplication.isPlaying && GUILayout.Button("Generate, Reload & Update Theme")) {
             (target as MenuTheme).Save();
             GlobalGameManager.LoadThemes();
             GlobalGameManager.SendThemeUpdate();
         }
-        if(GUILayout.Button("Generate Single JSON")) { 
+        if(!EditorApplication.isPlaying && GUILayout.Button("Generate Single JSON")) { 
             (target as MenuTheme).Save();
             Debug.Log("Saved theme as JSON.");
         }
