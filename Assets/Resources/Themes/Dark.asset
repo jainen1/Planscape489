@@ -42,24 +42,14 @@ MonoBehaviour:
     position: {x: -5, y: 2.4, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 4.17, y: 1.26}
-  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    dimensions: {x: 19.2, y: 10.8}
-  - sprite: {fileID: 21300000, guid: c3d81fabe9b52064e93eaece892cddef, type: 3}
-    color: {r: 0.047058824, g: 0.02745098, b: 0.09019608, a: 1}
+  - sprite: {fileID: 21300000, guid: 0f043ad1bd5b24417a4e6b142d6bba01, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 19.2, y: 10.8}
   levelBackgroundLayers:
-  - sprite: {fileID: 21300000, guid: e27e4f5906728994b86187d8e46f02ef, type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0, w: 0}
-    dimensions: {x: 19.2, y: 10.8}
-  - sprite: {fileID: 21300000, guid: c3d81fabe9b52064e93eaece892cddef, type: 3}
-    color: {r: 0.047058824, g: 0.02745098, b: 0.09019608, a: 1}
+  - sprite: {fileID: 21300000, guid: 0f043ad1bd5b24417a4e6b142d6bba01, type: 3}
+    color: {r: 1, g: 1, b: 1, a: 1}
     position: {x: 0, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0, w: 0}
     dimensions: {x: 19.2, y: 10.8}
