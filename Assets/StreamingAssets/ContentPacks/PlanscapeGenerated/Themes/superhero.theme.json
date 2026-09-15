@@ -11,7 +11,7 @@
     "timerLineSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogoplan",
+            "sprite": "PlanscapeGenerated/Images/planscapelogoplan",
             "color": {
                 "r": 40,
                 "g": 43,
@@ -35,7 +35,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogoscape",
+            "sprite": "PlanscapeGenerated/Images/planscapelogoscape",
             "color": {
                 "r": 226,
                 "g": 54,
@@ -59,7 +59,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogobackground",
+            "sprite": "PlanscapeGenerated/Images/planscapelogobackground",
             "color": {
                 "r": 255,
                 "g": 255,
@@ -83,7 +83,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogobackground2",
+            "sprite": "PlanscapeGenerated/Images/planscapelogobackground2",
             "color": {
                 "r": 40,
                 "g": 43,
@@ -107,7 +107,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\Superhero_Background",
+            "sprite": "PlanscapeGenerated/Images/Superhero_Background",
             "color": {
                 "r": 227,
                 "g": 251,
@@ -133,7 +133,7 @@
     ],
     "levelBackgroundLayers": [
         {
-            "sprite": "PlanscapeGenerated\\Images\\Superhero_Background",
+            "sprite": "PlanscapeGenerated/Images/Superhero_Background",
             "color": {
                 "r": 227,
                 "g": 251,

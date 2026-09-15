@@ -11,7 +11,7 @@
     "timerLineSpacingScale": 1.0,
     "menuBackgroundLayers": [
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogoplan",
+            "sprite": "PlanscapeGenerated/Images/planscapelogoplan",
             "color": {
                 "r": 25,
                 "g": 188,
@@ -35,7 +35,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogoscape",
+            "sprite": "PlanscapeGenerated/Images/planscapelogoscape",
             "color": {
                 "r": 158,
                 "g": 224,
@@ -59,7 +59,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogobackground",
+            "sprite": "PlanscapeGenerated/Images/planscapelogobackground",
             "color": {
                 "r": 18,
                 "g": 34,
@@ -83,7 +83,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\planscapelogobackground2",
+            "sprite": "PlanscapeGenerated/Images/planscapelogobackground2",
             "color": {
                 "r": 255,
                 "g": 255,
@@ -107,7 +107,7 @@
             }
         },
         {
-            "sprite": "PlanscapeGenerated\\Images\\Jungle_Background",
+            "sprite": "PlanscapeGenerated/Images/Jungle_Background",
             "color": {
                 "r": 242,
                 "g": 255,
@@ -133,7 +133,7 @@
     ],
     "levelBackgroundLayers": [
         {
-            "sprite": "PlanscapeGenerated\\Images\\Jungle_Background",
+            "sprite": "PlanscapeGenerated/Images/Jungle_Background",
             "color": {
                 "r": 242,
                 "g": 255,
